@@ -1,9 +1,9 @@
 
 .dice {
   display: inline-block;
-  min-height: 1em;
-  padding-left: 1em;
-  background-size: 1em;
+  min-height: 4em;
+  padding-left: 4em;
+  background-size: 4em;
   background-repeat: no-repeat;
 }
 .dice-1 {
