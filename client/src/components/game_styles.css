@@ -1,0 +1,12 @@
+.map-padding {
+ padding-bottom: 500px;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+    font-family: "Bookman Old Style";
+    font-weight: 1000;
+    font-variant: small-caps;
+    letter-spacing: 4px;
+} 

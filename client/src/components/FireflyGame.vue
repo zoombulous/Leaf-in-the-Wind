@@ -31,6 +31,11 @@
          </div>
     </div>
   </div>
+  <div class="row map-padding">
+    <div class="col">
+      <p></p>
+    </div>
+  </div>
   <div class="row">
     <div class="col">
       <p>
@@ -75,6 +80,10 @@
 </template>
 
 <script src="vue.js"></script>
+
+<style>
+  @import './game_styles.css';
+</style>
 
 <script>
 import io from "socket.io-client";
