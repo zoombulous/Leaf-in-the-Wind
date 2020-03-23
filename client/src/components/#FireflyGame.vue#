@@ -98,8 +98,6 @@ import "./dice_styles/dice.css";
 import "./cards/alliance_closer_folder.css";
 
 
-
-
 export default {
     name: "Firefly",
     data() {

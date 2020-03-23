@@ -1,5 +1,15 @@
 .map-padding {
- padding-bottom: 500px;
+    padding-bottom: 500px;
+    background-image:
+    url("map.jpg");
+    background-repeat:
+    no-repeat;
+    background-size:
+    70.5%;
+    background-position:
+    52% 12%;
+    background-attachment:
+    fixed;
 }
 
 h1 {
@@ -10,3 +20,4 @@ h1 {
     font-variant: small-caps;
     letter-spacing: 4px;
 } 
+

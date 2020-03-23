@@ -30,19 +30,19 @@ Socketio.on("connection", socket => {
     socket.on("move", data => {
         switch(data) {
         case "left":
-            position.x -= 5;
+            position.x -= 20;
             Socketio.emit ("position", position);
             break;
             case "right":
-            position.x += 5;
+            position.x += 20;
             Socketio.emit ("position", position);
             break;
             case "up":
-            position.y -= 5;
+            position.y -= 20;
             Socketio.emit ("position", position);
             break;
             case "down":
-            position.y += 5;
+            position.y += 20;
             Socketio.emit ("position", position);
             break;
         }
@@ -50,19 +50,19 @@ Socketio.on("connection", socket => {
     socket.on("move2", data2 => {
         switch(data2) {
         case "left2":
-            position2.x -= 5;
+            position2.x -= 20;
             Socketio.emit ("position2", position2);
             break;
             case "right2":
-            position2.x += 5;
+            position2.x += 20;
             Socketio.emit ("position2", position2);
             break;
             case "up2":
-            position2.y -= 5;
+            position2.y -= 20;
             Socketio.emit ("position2", position2);
             break;
             case "down2":
-            position2.y += 5;
+            position2.y += 20;
             Socketio.emit ("position2", position2);
             break;
         }
@@ -70,19 +70,19 @@ Socketio.on("connection", socket => {
     socket.on("move3", data3 => {
         switch(data3) {
         case "left3":
-            position3.x -= 5;
+            position3.x -= 20;
             Socketio.emit ("position3", position3);
             break;
             case "right3":
-            position3.x += 5;
+            position3.x += 20;
             Socketio.emit ("position3", position3);
             break;
             case "up3":
-            position3.y -= 5;
+            position3.y -= 20;
             Socketio.emit ("position3", position3);
             break;
             case "down3":
-            position3.y += 5;
+            position3.y += 20;
             Socketio.emit ("position3", position3);
             break;
         }
@@ -90,19 +90,19 @@ Socketio.on("connection", socket => {
     socket.on("move4", data4 => {
         switch(data4) {
         case "left4":
-            position4.x -= 5;
+            position4.x -= 20;
             Socketio.emit ("position4", position4);
             break;
             case "right4":
-            position4.x += 5;
+            position4.x += 20;
             Socketio.emit ("position4", position4);
             break;
             case "up4":
-            position4.y -= 5;
+            position4.y -= 20;
             Socketio.emit ("position4", position4);
             break;
             case "down4":
-            position4.y += 5;
+            position4.y += 20;
             Socketio.emit ("position4", position4);
             break;
         }
