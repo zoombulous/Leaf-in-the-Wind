@@ -1,67 +1,75 @@
 <template>
-<div>
+<div class="container">
   <h1>Firefly Game</h1>
-  <div style="position: relative;">
-    <canvas ref="game1"
-            width="640"
-            height="480"
-            z-index="0"
-            style="border: 1px solid black; position: absolute;">
-    </canvas>
-    <canvas ref="game2"
-            width="640"
-            height="480"
-            z-index="1"
-            style="border: 1px solid black; position: absolute;">
-    </canvas>
-    <canvas ref="game3"
-            width="640"
-            height="480"
-            z-index="2"
-            style="border: 1px solid black; position: absolute;">
-    </canvas>
-    <canvas ref="game4"
-            width="640"
-            height="480"
-            z-index="3"
-            style="border: 1px solid black; position: absolute;">
-    </canvas>
+  <div class="row">
+    <div class="col">
+         <div style="position: relative;">
+           <canvas ref="game1"
+                   width="640"
+                   height="480"
+                   z-index="0"
+                   style="border: 1px solid black; position: absolute;">
+           </canvas>
+           <canvas ref="game2"
+                   width="640"
+                   height="480"
+                   z-index="1"
+                   style="border: 1px solid black; position: absolute;">
+           </canvas>
+           <canvas ref="game3"
+                      width="640"
+                   height="480"
+                   z-index="2"
+                   style="border: 1px solid black; position: absolute;">
+           </canvas>
+           <canvas ref="game4"
+                   width="640"
+                   height="480"
+                   z-index="3"
+                   style="border: 1px solid black; position: absolute;">
+           </canvas>
+         </div>
+    </div>
   </div>
-  <p>
-    <button v-on:click="move('left')">Left</button>
-    <button v-on:click="move('right')">Right</button>
-    <button v-on:click="move('up')">Up</button>
-    <button v-on:click="move('down')">Down</button>
-  </p>
-
-  <p>
-    <button v-on:click="move2('left2')">Left2</button>
-    <button v-on:click="move2('right2')">Right2</button>
-    <button v-on:click="move2('up2')">Up2</button>
-    <button v-on:click="move2('down2')">Down2</button>
-  </p>
-
-  <p>
-    <button v-on:click="move3('left3')">Left3</button>
-    <button v-on:click="move3('right3')">Right3</button>
-    <button v-on:click="move3('up3')">Up3</button>
-    <button v-on:click="move3('down3')">Down3</button>
-  </p>
-
-  <p>
-    <button v-on:click="move4('left4')">Left4</button>
-    <button v-on:click="move4('right4')">Right4</button>
+  <div class="row">
+    <div class="col">
+      <p>
+        <button v-on:click="move('left')">Left</button>
+        <button v-on:click="move('right')">Right</button>
+        <button v-on:click="move('up')">Up</button>
+        <button v-on:click="move('down')">Down</button>
+      </p>
+      
+      <p>
+        <button v-on:click="move2('left2')">Left2</button>
+        <button v-on:click="move2('right2')">Right2</button>
+        <button v-on:click="move2('up2')">Up2</button>
+        <button v-on:click="move2('down2')">Down2</button>
+      </p>
+      
+      <p>
+        <button v-on:click="move3('left3')">Left3</button>
+        <button v-on:click="move3('right3')">Right3</button>
+        <button v-on:click="move3('up3')">Up3</button>
+        <button v-on:click="move3('down3')">Down3</button>
+      </p>
+      
+      <p>
+        <button v-on:click="move4('left4')">Left4</button>
+        <button v-on:click="move4('right4')">Right4</button>
     <button v-on:click="move4('up4')">Up4</button>
     <button v-on:click="move4('down4')">Down4</button>
-  </p>
-  
-  <div class="card-wrapper">
-    <div :class="getCard"></div>
-    <button @click="setCard">draw card</button>
-  </div>
-  <div class="dice-wrapper">
-    <div :class="getDice"></div>
-    <button @click="setDice">Roll the dice!</button>
+      </p>
+      
+      <div class="card-wrapper">
+        <div :class="getCard"></div>
+        <button @click="setCard">draw card</button>
+      </div>
+      <div class="dice-wrapper">
+        <div :class="getDice"></div>
+        <button @click="setDice">Roll the dice!</button>
+      </div>
+    </div>
   </div>
 </div>
 </template>
