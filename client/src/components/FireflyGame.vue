@@ -1,11 +1,32 @@
 <template>
 <div>
   <h1>Firefly Game</h1>
-  <canvas ref="game"
-          width="640"
-          height="480"
-          style="border: 1px solid black;">
-  </canvas>
+  <div style="position: relative;">
+    <canvas ref="game1"
+            width="640"
+            height="480"
+            z-index="0"
+            style="border: 1px solid black; position: absolute;">
+    </canvas>
+    <canvas ref="game2"
+            width="640"
+            height="480"
+            z-index="1"
+            style="border: 1px solid black; position: absolute;">
+    </canvas>
+    <canvas ref="game3"
+            width="640"
+            height="480"
+            z-index="2"
+            style="border: 1px solid black; position: absolute;">
+    </canvas>
+    <canvas ref="game4"
+            width="640"
+            height="480"
+            z-index="3"
+            style="border: 1px solid black; position: absolute;">
+    </canvas>
+  </div>
   <p>
     <button v-on:click="move('left')">Left</button>
     <button v-on:click="move('right')">Right</button>
@@ -82,36 +103,47 @@ export default {
         this.socket = io("http://localhost:3000");
     },
     mounted() {
-        this.context = this.$refs.game.getContext("2d");
+        this.context1 = this.$refs.game1.getContext("2d");
+        this.context2 = this.$refs.game2.getContext("2d");
+        this.context3 = this.$refs.game3.getContext("2d");
+        this.context4 = this.$refs.game4.getContext("2d");
         
         this.socket.on("position", data => {
             this.position = data;
-            this.context.clearRect(0, 0, this.$refs.game.width,
-                                   this.$refs.game.height);
-            this.context.fillRect(this.position.x,
-                                  this.position.y, 20, 20); 
+            this.context1.clearRect(0, 0, this.$refs.game1.width,
+                                   this.$refs.game1.height);
+            this.context1.fillRect(this.position.x,
+                                  this.position.y, 20, 20
+                                 );
+            
         });
         this.socket.on("position2", data2 => {
             this.position2 = data2;
-            this.context.clearRect(0, 0, this.$refs.game.width,
-                                   this.$refs.game.height);
-            this.context.fillRect(this.position2.x,
-                                  this.position2.y, 20, 20); 
+            this.context2.clearRect(0, 0, this.$refs.game2.width,
+                                   this.$refs.game2.height);
+            this.context2.fillRect(this.position2.x,
+                                  this.position2.y, 20, 20
+                                  ); 
         });
         this.socket.on("position3", data3 => {
             this.position3 = data3;
-            this.context.clearRect(0, 0, this.$refs.game.width,
-                                   this.$refs.game.height);
-            this.context.fillRect(this.position3.x,
-                                  this.position3.y, 20, 20); 
+            this.context3.clearRect(0, 0, this.$refs.game3.width,
+                                   this.$refs.game3.height);
+            this.context3.fillRect(this.position3.x,
+                                  this.position3.y, 20, 20
+                                  ); 
         });
         this.socket.on("position4", data4 => {
             this.position4 = data4;
-            this.context.clearRect(0, 0, this.$refs.game.width,
-                                   this.$refs.game.height);
-            this.context.fillRect(this.position4.x,
+            this.context4.clearRect(0, 0, this.$refs.game4.width,
+                                   this.$refs.game4.height);
+            this.context4.fillRect(this.position4.x,
                                   this.position4.y, 20, 20); 
         });
+        console.log(JSON.stringify(this.position))
+        console.log(JSON.stringify(this.position2))
+        console.log(JSON.stringify(this.position3))
+        console.log(JSON.stringify(this.position4))
     },
     methods: {
         
@@ -149,6 +181,10 @@ export default {
         
         move(direction) {
             this.socket.emit("move", direction);
+            console.log(JSON.stringify(this.position))
+        console.log(JSON.stringify(this.position2))
+        console.log(JSON.stringify(this.position3))
+        console.log(JSON.stringify(this.position4))
         },
         move2(direction2) {
             this.socket.emit("move2", direction2);
