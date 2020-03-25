@@ -44,6 +44,12 @@
     </div>
   </div>
   <div class="row">
+    <div class="col card">
+      <p>Random image in Vue.js:</p>
+      <p v-if="selectedImage"><img style="width:10%" :src="selectedImage" alt=""></p>
+    </div>
+  </div>
+  <div class="row">
     <div class="col">
       <p>
         <button v-on:click="move('left')">Left</button>
@@ -96,16 +102,31 @@
 import io from "socket.io-client";
 import "./dice_styles/dice.css";
 import "./cards/alliance_closer_folder.css";
-
-
-
+import "./test1.jpg";
+import "./test2.jpg";
+import "./test3.jpg";
+import "./test4.jpg";
+import "./test5.jpg";
 
 export default {
     name: "Firefly",
     data() {
         return {
+            images: [
+require("./test1.jpg"),
+require("./test2.jpg"),
+require("./test3.jpg"),
+require("./test4.jpg"),
+require("./test5.jpg")
+            ],
+            selectedImage: null,
             diceNum: {},
             cardNum: {},
+            player1Inv: {},
+            player2Inv: {},
+            player3Inv: {},
+            player4Inv: {},
+            removedCards: {},
             socket: {},
             context: {},
             position: {
@@ -128,6 +149,7 @@ export default {
     },
     created() {
         this.socket = io("http://localhost:3000");
+        this.selectedImage = this.randomItem(this.images);
     },
     mounted() {
         this.context1 = this.$refs.game1.getContext("2d");
@@ -167,12 +189,12 @@ export default {
             this.context4.fillRect(this.position4.x,
                                   this.position4.y, 20, 20); 
         });
-        console.log(JSON.stringify(this.position))
-        console.log(JSON.stringify(this.position2))
-        console.log(JSON.stringify(this.position3))
-        console.log(JSON.stringify(this.position4))
     },
     methods: {
+
+        randomItem (items) {
+            return items[Math.floor(Math.random()*items.length)];
+        },
         
         setRandomDiceData() {            
             const randomDiceNum = Math.floor(Math.random() * 6) + 1;
@@ -242,9 +264,10 @@ export default {
         }
     }
 }
-  </script>
+</script>
 
 
-<style scoped>
 
-</style>
+
+
+

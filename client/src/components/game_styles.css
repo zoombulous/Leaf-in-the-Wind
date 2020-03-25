@@ -10,6 +10,11 @@
     52% 12%;
 }
 
+.card {
+  height: auto;
+  width: 10px;
+}
+
 h1 {
     color: black;
     text-align: center;
