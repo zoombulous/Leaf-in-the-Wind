@@ -44,11 +44,16 @@
     </div>
   </div>
   <div class="row">
-    <div class="col card">
-      <p>Random image in Vue.js:</p>
-      <p v-if="selectedImage"><img style="width:10%" :src="selectedImage" alt=""></p>
+    <div class="col">
+      <p v-if="chosenCard">
+        <img style="width:20%" :src="chosenCard" alt=""></p>
+      <button @click="picker">Draw a Card!</button>
     </div>
   </div>
+    
+  
+
+  
   <div class="row">
     <div class="col">
       <p>
@@ -119,6 +124,8 @@ require("./test3.jpg"),
 require("./test4.jpg"),
 require("./test5.jpg")
             ],
+            chosenCard:{},
+            uniqueRandoms: {},
             selectedImage: null,
             diceNum: {},
             cardNum: {},
@@ -149,8 +156,7 @@ require("./test5.jpg")
     },
     created() {
         this.socket = io("http://localhost:3000");
-        this.selectedImage = this.randomItem(this.images);
-    },
+        },
     mounted() {
         this.context1 = this.$refs.game1.getContext("2d");
         this.context2 = this.$refs.game2.getContext("2d");
@@ -192,10 +198,14 @@ require("./test5.jpg")
     },
     methods: {
 
-        randomItem (items) {
-            return items[Math.floor(Math.random()*items.length)];
+        picker: function(){
+            var chosenImage = Math.floor(Math.random() * this.images.length);
+            this.chosenCard = this.images[chosenImage];
+            var val = this.images[chosenImage];
+
+            this.uniqueRandoms.splice(chosenImage, 1);
         },
-        
+
         setRandomDiceData() {            
             const randomDiceNum = Math.floor(Math.random() * 6) + 1;
             this.diceNum = randomDiceNum;
@@ -205,6 +215,7 @@ require("./test5.jpg")
             const randomCardNum = Math.floor(Math.random() * 6) + 1;
             this.cardNum = randomCardNum;
         },
+
         
         setDice() {
             let count = 0;
@@ -255,6 +266,9 @@ require("./test5.jpg")
         getCard() {
             this.setRandomCardData();
             return `card card-${this.cardNum}`;
+        },
+        getItem() {
+            this.selectedImage = this.randomItem(this.images);
         }
     },
     watch: {
