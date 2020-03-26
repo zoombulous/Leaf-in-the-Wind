@@ -48,6 +48,7 @@
       <p v-if="chosenCard">
         <img style="width:20%" :src="chosenCard" alt=""></p>
       <button @click="picker">Draw a Card!</button>
+      <button @click="picker">Reshuffle Deck!</button>
     </div>
   </div>
     
@@ -117,16 +118,18 @@ export default {
     name: "Firefly",
     data() {
         return {
+            
             images: [
-require("./test1.jpg"),
-require("./test2.jpg"),
-require("./test3.jpg"),
-require("./test4.jpg"),
-require("./test5.jpg")
+                require("./test1.jpg"),
+                require("./test2.jpg"),
+                require("./test3.jpg"),
+                require("./test4.jpg"),
+                require("./test5.jpg")
             ],
             chosenCard:{},
             uniqueRandoms: {},
             selectedImage: null,
+            discard: {},
             diceNum: {},
             cardNum: {},
             player1Inv: {},
@@ -198,14 +201,18 @@ require("./test5.jpg")
     },
     methods: {
 
-        picker: function(){
+        picker: function() {
             var chosenImage = Math.floor(Math.random() * this.images.length);
             this.chosenCard = this.images[chosenImage];
             var val = this.images[chosenImage];
 
-            this.uniqueRandoms.splice(chosenImage, 1);
+            this.images.splice(chosenImage, 1);
+            this.chosenCard.push(this.discard, 1);
+            console.log (this.images);
+            return val;
+            
         },
-
+        
         setRandomDiceData() {            
             const randomDiceNum = Math.floor(Math.random() * 6) + 1;
             this.diceNum = randomDiceNum;
