@@ -4,7 +4,7 @@ import 'vue-dice-roller/dist/vue-dice-roller.css'
 import VueDiceRoller from 'vue-dice-roller/dist/vue-dice-roller.common'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css' 
 
 
 Vue.config.productionTip = false

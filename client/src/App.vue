@@ -10,7 +10,7 @@ import FireflyGame from './components/FireflyGame.vue'
 export default {
     name: 'App',
     components: {
-        FireflyGame
+FireflyGame,
     }
 }
   </script>

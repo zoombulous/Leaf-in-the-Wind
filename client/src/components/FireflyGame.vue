@@ -51,8 +51,15 @@
       <button @click="reshuffle">Reshuffle Deck!</button>
     </div>
   </div>
-    
-  
+
+  <div class="row">
+    <div class="col">
+      <div :class="player1Inv">
+        <p v-if="player1Inv">
+          <img style="width:20%" :src="player1Inv" alt=""></p>
+      </div>
+    </div>
+  </div>
 
   
   <div class="row">
@@ -99,6 +106,7 @@
 </template>
 
 <script src="vue.js"></script>
+<script src="https://unpkg.com/vue-gallery-slideshow"></script>
 
 <style>
   @import './game_styles.css';
@@ -113,6 +121,7 @@ import "./test2.jpg";
 import "./test3.jpg";
 import "./test4.jpg";
 import "./test5.jpg";
+import VueGallerySlideshow from 'vue-gallery-slideshow';
 
 export default {
     name: "Firefly",
@@ -138,7 +147,13 @@ export default {
             discard: {},
             diceNum: {},
             cardNum: {},
-            player1Inv: {},
+            player1Inv: [require("./test1.jpg"),
+                         require("./test2.jpg"),
+                         require("./test3.jpg"),
+                         require("./test4.jpg"),
+                         require("./test5.jpg")],
+            index: null,
+            player1Chosen: [],
             player2Inv: {},
             player3Inv: {},
             player4Inv: {},
@@ -228,6 +243,7 @@ export default {
                 require("./test4.jpg"),
                 require("./test5.jpg")
             ];
+            this.picker()
             console.log (this.images);
             console.log ("reshuffled");
         },
@@ -282,6 +298,9 @@ export default {
             this.socket.emit("move4", direction4);
         }
     },
+    beforeMount(){
+        this.picker()
+    },
     computed: {
         
         getDice() {
@@ -295,8 +314,24 @@ export default {
         },
         getItem() {
             this.selectedImage = this.randomItem(this.images);
+        },
+        getPlayer1Deck() {
+            this.player1Inv();
+            var first =  (array, n) => {
+                if (array == null) 
+                    return void 0;
+                if (n == null) 
+                    return array[0];
+                if (n < 0)
+                    return [];
+                return array.slice(0, n);
+            }
         }
     },
+    
+    
+    
+    
     watch: {
         
         diceNum() {
