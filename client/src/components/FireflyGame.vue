@@ -53,12 +53,6 @@
     </div>
   </div>  
 
-  <div class="row">
-    <div class="col">
-      <p v-if="player1Index">
-        <img style="width:20%" :src="images" alt=""></p>
-    </div>
-  </div>
   
   <div class="row">
     <div class="col">
@@ -267,12 +261,22 @@ export default {
         },
 
         p1GiveP2: function() {
-            this.player2Inv.push(this.player1Chosen, 1);
+            var x = Math.floor(this.player1Inv.length);
+            this.player2Inv.push(this.player1Chosen);
+            
+            this.player1Chosen = this.player1Inv[x];
             this.player1Inv.splice(this.player1Chosen, 1);
-            this.player2Picker();
+            
+            console.log("TWEET 1");
+            console.log("TWEET 2");
+            console.log("TWEET 3");
+            console.log("TWEET 4");
+            this.player2Last();
+            this.player1Prev();
             console.log("player1Inv = ", this.player1Inv,
-                        "player1Index =", this.player1Index,
-                        "player2Inv = ", this.player2Inv);
+                        "player2Inv = ", this.player2Inv,
+                        "player1Chosen = ",this.player1Chosen,
+                        "TWEET 5");
         },
 
         player2Picker: function() {
@@ -282,7 +286,7 @@ export default {
         },
 
         player2Last: function () {
-            this.player2Index = this.player2Inv.length;
+            this.player2Index = this.player2Inv.length - 1;
             this.player2Picker();
         },
 
