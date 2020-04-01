@@ -136,6 +136,7 @@ import "./z_engine_room.jpg";
 import "./z_minor_tech_diff.jpg";
 import "./z_the_big_black.jpg";
 import VueGallerySlideshow from 'vue-gallery-slideshow';
+import myImage from "./map.jpg"
 
 export default {
     name: "Firefly",
@@ -202,6 +203,7 @@ export default {
         this.socket = io("http://localhost:3000");
         },
     mounted() {
+        this.func();
         this.context1 = this.$refs.game1.getContext("2d");
         this.context2 = this.$refs.game2.getContext("2d");
         this.context3 = this.$refs.game3.getContext("2d");
@@ -241,6 +243,16 @@ export default {
         });
     },
     methods: {
+
+        func: function() {
+            let cvn = this.$refs.canvas;
+            let ctx = cvn.getContext("2d");
+            let bg = new Image();
+            bg.src = myImage;
+            bg.onload = function() {
+                ctx.drawImage(bg, 0, 0, bg.width * .225, bg.height * .225);
+            };
+        },
 
         picker: function() {
             var chosenImage = Math.floor(Math.random() * this.images.length);
