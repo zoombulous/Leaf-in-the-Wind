@@ -89,16 +89,28 @@
   
   <div class="row">
     <div class="col">
-      <p>Money {{ player1Money }}</p>
+      <p>Money {{ wallet1 }}</p>
+
+      <img src="./money/100Credits.jpg"
+           v-on:click="moveMoney1('1add100')"
+           height="100px"/>
+
+      <img src="./money/500Credits.jpg"
+           v-on:click="moveMoney1('1add500')"
+           height="100px"/>
+
+      <img src="./money/1000Credits.jpg"
+           v-on:click="moveMoney1('1add1000')"
+           height="100px"/>
+
+      <img src="./money/2000Credits.jpg"
+           v-on:click="moveMoney1('1add5000')"
+           height="100px"/>
       <p>
-        <button v-on:click="p1MoneyAdd10">add 10</button>
-        <button v-on:click="p1MoneyAdd100">add 100</button>
-        <button v-on:click="p1MoneyAdd1000">add 1000</button>
-      </p>
-      <p>
-        <button v-on:click="p1MoneyMinus10">minus 10</button>
-        <button v-on:click="p1MoneyMinus100">minus 100</button>
-        <button v-on:click="p1MoneyMinus1000">minus 1000</button>
+        <button v-on:click="moveMoney1('1minus100')">minus 100</button>
+        <button v-on:click="moveMoney1('1minus500')">minus 500</button>
+        <button v-on:click="moveMoney1('1minus1000')">minus 1000</button>
+        <button v-on:click="moveMoney1('1minus2000')">minus 2000</button>
       </p>
     </div>
   </div>
@@ -211,6 +223,10 @@ export default {
             removedCards: {},
             socket: {},
             context: {},
+            wallet1: 4,
+            wallet2: 4,
+            wallet3: 4,
+            wallet4: 4,
             position: {
                 x: 0,
                 y: 0
@@ -238,6 +254,10 @@ export default {
         this.context2 = this.$refs.game2.getContext("2d");
         this.context3 = this.$refs.game3.getContext("2d");
         this.context4 = this.$refs.game4.getContext("2d");
+
+        this.socket.on("wallet1", moneyData1 => {
+            this.wallet1 = moneyData1;
+                       });
         
         this.socket.on("position", data => {
             let img = new Image();
@@ -280,28 +300,36 @@ export default {
     },
     methods: {
 
-        p1MoneyAdd10: function() {
-            this.player1Money += 10;
-        },
-
         p1MoneyAdd100: function() {
             this.player1Money += 100;
+        },
+
+        p1MoneyAdd500: function() {
+            this.player1Money += 500;
         },
 
         p1MoneyAdd1000: function() {
             this.player1Money += 1000;
         },
 
-        p1MoneyMinus10: function() {
-            this.player1Money -= 10;
+        p1MoneyAdd2000: function() {
+            this.player1Money += 2000;
         },
 
         p1MoneyMinus100: function() {
             this.player1Money -= 100;
         },
 
+        p1MoneyMinus500: function() {
+            this.player1Money -= 500;
+        },
+
         p1MoneyMinus1000: function() {
             this.player1Money -= 1000;
+        },
+
+        p1MoneyMinus2000: function() {
+            this.player1Money -= 2000;
         },
 
         func: function() {
@@ -455,6 +483,10 @@ export default {
         },
         move4(direction4) {
             this.socket.emit("move4", direction4);
+        },
+        moveMoney1(amount1) {
+            this.socket.emit("moveMoney1", amount1)
+            console.log("I did something!");
         }
     },
     beforeMount(){

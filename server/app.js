@@ -22,11 +22,60 @@ var position4 = {
     y:240
 };
 
+var wallet1 = 300;
+
+var wallet2 = 100;
+
+var wallet3 = 100;
+
+var wallet4 = 100;
+
 Socketio.on("connection", socket => {
     socket.emit("position", position)
     socket.emit("position2", position2)
     socket.emit("position3", position3)
     socket.emit("position4", position4)
+    socket.emit("wallet1", wallet1)
+    socket.emit("wallet2", wallet2)
+   socket.emit("wallet3", wallet3)
+    socket.emit("wallet4", wallet4)
+    socket.on("moveMoney1", moneyData1 => {
+        switch(moneyData1) {
+        case "1add100":
+            wallet1 += 100;
+            Socketio.emit ("wallet1", wallet1);
+            break;
+        case "1add500":
+            wallet1 += 500;
+            Socketio.emit ("wallet1", wallet1);
+            break;
+        case "1add1000":
+            wallet1 += 1000;
+            Socketio.emit ("wallet1", wallet1);
+            break;
+        case "1add5000":
+            wallet1 += 5000;
+            Socketio.emit ("wallet1", wallet1);
+            break;
+        case "1minus100":
+            wallet1 -= 100;
+            Socketio.emit ("wallet1", wallet1);
+            break;
+        case "1minus500":
+            wallet1 -= 500;
+            Socketio.emit ("wallet1", wallet1);
+            break;
+        case "1minus1000":
+            wallet1 -= 1000;
+            Socketio.emit ("wallet1", wallet1);
+            break;
+        case "1minus2000":
+            wallet1 -= 2000;
+            Socketio.emit ("wallet1", wallet1);
+            break;
+        
+        }
+    });
     socket.on("move", data => {
         switch(data) {
         case "left":
