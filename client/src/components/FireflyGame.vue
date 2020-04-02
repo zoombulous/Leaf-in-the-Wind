@@ -3,38 +3,48 @@
   <h1>Firefly Game</h1>
   <div class="row">
     <div class="col">
-         <div style="position: relative;">
+      <div id="container" class="container">
+        <div>
            <canvas ref="game1"
-                   width="1121"
-                   height="448"
-                   z-index="0"
-                   style="border: 1px solid black; position: absolute;">
-           </canvas>
-           <canvas ref="game2"
-                   width="1121"
-                   height="448"
-                   z-index="1"
-                   style="border: 1px solid black; position: absolute;">
-           </canvas>
-           <canvas ref="game3"
-                      width="1121"
-                   height="448"
-                   z-index="2"
-                   style="border: 1px solid black; position: absolute;">
-           </canvas>
-           <canvas ref="game4"
-                   width="1121"
-                   height="448"
-                   z-index="3"
-                   style="border: 1px solid black; position: absolute;">
-           </canvas>
-           <canvas ref="canvas"
-                   id="canvas"
-                   width="1121"
-                   height="448"
+                   width="5000"
+                   height="2000"
                    z-index="4"
                    style="border: 1px solid black; position: absolute;">
            </canvas>
+        </div>
+        <div>
+           <canvas ref="game2"
+                   width="5000"
+                   height="2000"
+                   z-index="3"
+                   style="border: 1px solid black; position: absolute;">
+           </canvas>
+        </div>
+        <div>
+           <canvas ref="game3"
+                   width="5000"
+                   height="2000"
+                   z-index="2"
+                   style="border: 1px solid black; position: absolute;">
+           </canvas>
+        </div>
+        <div>
+           <canvas ref="game4"
+                   width="5000"
+                   height="2000"
+                   z-index="1"
+                   style="border: 1px solid black; position: absolute;">
+           </canvas>
+         </div>
+         <div>
+           <canvas ref="canvas"
+                   id="canvas"
+                   width="5000"
+                   height="2000"
+                   z-index="0"
+                   style="border: 1px solid black position: relative;">
+           </canvas>
+           </div>
          </div>
     </div>
   </div>
@@ -43,6 +53,38 @@
       <p></p>
     </div>
   </div>
+
+<div class="row">
+    <div class="col">
+      <p>
+        <button v-on:click="move('left')">Left</button>
+        <button v-on:click="move('right')">Right</button>
+        <button v-on:click="move('up')">Up</button>
+        <button v-on:click="move('down')">Down</button>
+      </p>
+      
+      <p>
+        <button v-on:click="move2('left2')">Left2</button>
+        <button v-on:click="move2('right2')">Right2</button>
+        <button v-on:click="move2('up2')">Up2</button>
+        <button v-on:click="move2('down2')">Down2</button>
+      </p>
+      
+      <p>
+        <button v-on:click="move3('left3')">Left3</button>
+        <button v-on:click="move3('right3')">Right3</button>
+        <button v-on:click="move3('up3')">Up3</button>
+        <button v-on:click="move3('down3')">Down3</button>
+      </p>
+      
+      <p>
+        <button v-on:click="move4('left4')">Left4</button>
+        <button v-on:click="move4('right4')">Right4</button>
+    <button v-on:click="move4('up4')">Up4</button>
+    <button v-on:click="move4('down4')">Down4</button>
+      </p>
+    </div>
+</div>
   
   <div class="row">
     <div class="col">
@@ -77,39 +119,8 @@
   </div>
   
   <div class="row">
-    <div class="col">
-      <p>
-        <button v-on:click="move('left')">Left</button>
-        <button v-on:click="move('right')">Right</button>
-        <button v-on:click="move('up')">Up</button>
-        <button v-on:click="move('down')">Down</button>
-      </p>
+    <div class="col">      
       
-      <p>
-        <button v-on:click="move2('left2')">Left2</button>
-        <button v-on:click="move2('right2')">Right2</button>
-        <button v-on:click="move2('up2')">Up2</button>
-        <button v-on:click="move2('down2')">Down2</button>
-      </p>
-      
-      <p>
-        <button v-on:click="move3('left3')">Left3</button>
-        <button v-on:click="move3('right3')">Right3</button>
-        <button v-on:click="move3('up3')">Up3</button>
-        <button v-on:click="move3('down3')">Down3</button>
-      </p>
-      
-      <p>
-        <button v-on:click="move4('left4')">Left4</button>
-        <button v-on:click="move4('right4')">Right4</button>
-    <button v-on:click="move4('up4')">Up4</button>
-    <button v-on:click="move4('down4')">Down4</button>
-      </p>
-      
-      <div class="card-wrapper">
-        <div :class="getCard"></div>
-        <button @click="setCard">draw card</button>
-      </div>
       <div class="dice-wrapper">
         <div :class="getDice"></div>
         <button @click="setDice">Roll the dice!</button>
@@ -136,7 +147,8 @@ import "./z_engine_room.jpg";
 import "./z_minor_tech_diff.jpg";
 import "./z_the_big_black.jpg";
 import VueGallerySlideshow from 'vue-gallery-slideshow';
-import myImage from "./map.jpg"
+import myImage from "./map.jpg";
+import ship from "./ship.png";
 
 export default {
     name: "Firefly",
@@ -210,36 +222,42 @@ export default {
         this.context4 = this.$refs.game4.getContext("2d");
         
         this.socket.on("position", data => {
+            let img = new Image();
+            img.src = ship;
             this.position = data;
+            this.context1.fillStyle = 'green'
             this.context1.clearRect(0, 0, this.$refs.game1.width,
                                    this.$refs.game1.height);
-            this.context1.fillRect(this.position.x,
-                                  this.position.y, 20, 20
+            this.context1.drawImage(img, this.position.x,
+                                    this.position.y, 200, 200
                                  );
             
         });
         this.socket.on("position2", data2 => {
             this.position2 = data2;
+            this.context2.fillStyle = 'green'
             this.context2.clearRect(0, 0, this.$refs.game2.width,
                                    this.$refs.game2.height);
             this.context2.fillRect(this.position2.x,
-                                  this.position2.y, 20, 20
+                                  this.position2.y, 100, 100
                                   ); 
         });
         this.socket.on("position3", data3 => {
             this.position3 = data3;
+            this.context3.fillStyle = 'green'
             this.context3.clearRect(0, 0, this.$refs.game3.width,
                                    this.$refs.game3.height);
             this.context3.fillRect(this.position3.x,
-                                  this.position3.y, 20, 20
+                                  this.position3.y, 100, 100
                                   ); 
         });
         this.socket.on("position4", data4 => {
             this.position4 = data4;
+            this.context4.fillStyle = 'green'
             this.context4.clearRect(0, 0, this.$refs.game4.width,
                                    this.$refs.game4.height);
             this.context4.fillRect(this.position4.x,
-                                  this.position4.y, 20, 20); 
+                                  this.position4.y, 100, 100); 
         });
     },
     methods: {
@@ -250,7 +268,7 @@ export default {
             let bg = new Image();
             bg.src = myImage;
             bg.onload = function() {
-                ctx.drawImage(bg, 0, 0, bg.width * .225, bg.height * .225);
+                ctx.drawImage(bg, 0, 0, bg.width * 1  , bg.height * 1  );
             };
         },
 
@@ -397,6 +415,7 @@ export default {
         }
     },
     beforeMount(){
+        
         this.picker(),
         this.player1Next(),
         this.player2Next()

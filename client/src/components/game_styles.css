@@ -1,10 +1,24 @@
 .map-padding {
-    padding-bottom: 500px;
+    padding-bottom: 20px;
 }
 
 .card {
   height: auto;
   width: 10px;
+}
+
+.container {
+  position: relative;
+}
+
+.container > canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+html{
+    overflow-y: auto;
 }
 
 h1 {
