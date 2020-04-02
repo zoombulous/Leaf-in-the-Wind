@@ -53,14 +53,15 @@
       <p></p>
     </div>
   </div>
-
-<div class="row">
+  
+  <div class="row">
     <div class="col">
       <p>
         <button v-on:click="move('left')">Left</button>
         <button v-on:click="move('right')">Right</button>
         <button v-on:click="move('up')">Up</button>
         <button v-on:click="move('down')">Down</button>
+        <button v-on:click="move('keepPosition')">stay</button>
       </p>
       
       <p>
@@ -80,11 +81,27 @@
       <p>
         <button v-on:click="move4('left4')">Left4</button>
         <button v-on:click="move4('right4')">Right4</button>
-    <button v-on:click="move4('up4')">Up4</button>
-    <button v-on:click="move4('down4')">Down4</button>
+        <button v-on:click="move4('up4')">Up4</button>
+        <button v-on:click="move4('down4')">Down4</button>
       </p>
     </div>
-</div>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <p>Money {{ player1Money }}</p>
+      <p>
+        <button v-on:click="p1MoneyAdd10">add 10</button>
+        <button v-on:click="p1MoneyAdd100">add 100</button>
+        <button v-on:click="p1MoneyAdd1000">add 1000</button>
+      </p>
+      <p>
+        <button v-on:click="p1MoneyMinus10">minus 10</button>
+        <button v-on:click="p1MoneyMinus100">minus 100</button>
+        <button v-on:click="p1MoneyMinus1000">minus 1000</button>
+      </p>
+    </div>
+  </div>
   
   <div class="row">
     <div class="col">
@@ -94,7 +111,7 @@
       <button @click="reshuffle">Reshuffle Deck!</button>
     </div>
   </div>  
-
+  
   
   <div class="row">
     <div class="col">
@@ -104,10 +121,10 @@
       <button @click="player1Next">Next</button>
       <button @click="p1GiveP2">Give</button>
       
-
+      
     </div>`
   </div>
-
+  
   <div class="row">
     <div class="col">
       <p v-if="player2Chosen">
@@ -185,6 +202,7 @@ export default {
             ],
             index: null,
             player1Chosen: {},
+            player1Money: 100,
             player2Chosen: {},
             player1Index: [],
             player2Index: [],
@@ -261,6 +279,30 @@ export default {
         });
     },
     methods: {
+
+        p1MoneyAdd10: function() {
+            this.player1Money += 10;
+        },
+
+        p1MoneyAdd100: function() {
+            this.player1Money += 100;
+        },
+
+        p1MoneyAdd1000: function() {
+            this.player1Money += 1000;
+        },
+
+        p1MoneyMinus10: function() {
+            this.player1Money -= 10;
+        },
+
+        p1MoneyMinus100: function() {
+            this.player1Money -= 100;
+        },
+
+        p1MoneyMinus1000: function() {
+            this.player1Money -= 1000;
+        },
 
         func: function() {
             let cvn = this.$refs.canvas;
@@ -400,10 +442,11 @@ export default {
         move(direction) {
             this.socket.emit("move", direction);
             console.log(JSON.stringify(this.position))
-        console.log(JSON.stringify(this.position2))
-        console.log(JSON.stringify(this.position3))
-        console.log(JSON.stringify(this.position4))
+            console.log(JSON.stringify(this.position2))
+            console.log(JSON.stringify(this.position3))
+            console.log(JSON.stringify(this.position4))
         },
+        
         move2(direction2) {
             this.socket.emit("move2", direction2);
         },
@@ -419,6 +462,7 @@ export default {
         this.picker(),
         this.player1Next(),
         this.player2Next()
+        
     },
     computed: {
         

@@ -33,16 +33,20 @@ Socketio.on("connection", socket => {
             position.x -= 20;
             Socketio.emit ("position", position);
             break;
-            case "right":
+        case "right":
             position.x += 20;
             Socketio.emit ("position", position);
             break;
-            case "up":
+        case "up":
             position.y -= 20;
             Socketio.emit ("position", position);
             break;
-            case "down":
+        case "down":
             position.y += 20;
+            Socketio.emit ("position", position);
+            break;
+        case "keepPosition":
+            position.y += 0;
             Socketio.emit ("position", position);
             break;
         }
@@ -65,6 +69,10 @@ Socketio.on("connection", socket => {
             position2.y += 20;
             Socketio.emit ("position2", position2);
             break;
+        case "keepPosition2":
+            position.y += 0;
+            Socketio.emit ("position2", position);
+            break;
         }
     });
     socket.on("move3", data3 => {
@@ -85,6 +93,10 @@ Socketio.on("connection", socket => {
             position3.y += 20;
             Socketio.emit ("position3", position3);
             break;
+        case "keepPosition3":
+            position.y += 0;
+            Socketio.emit ("position3", position);
+            break;
         }
     });
     socket.on("move4", data4 => {
@@ -104,6 +116,10 @@ Socketio.on("connection", socket => {
             case "down4":
             position4.y += 20;
             Socketio.emit ("position4", position4);
+            break;
+            case "keepPosition4":
+            position.y += 0;
+            Socketio.emit ("position4", position);
             break;
         }
     });
