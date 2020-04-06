@@ -179,28 +179,26 @@ import VueGallerySlideshow from 'vue-gallery-slideshow';
 import myImage from "./map.jpg";
 import ship from "./ship.png";
 
+var z_broken_shuttle = require("./z_broken_shuttle.jpg")
+var z_cruiser_patrol = require("./z_cruiser_patrol.jpg")
+var z_engine_room = require("./z_engine_room.jpg")
+var z_minor_tech_diff = require("./z_minor_tech_diff.jpg")
+var z_the_big_black = require("./z_the_big_black.jpg")
+
 export default {
     name: "Firefly",
     data() {
         return {
-            imagesLocked: [
-                require("./z_broken_shuttle.jpg"),
-                require("./z_cruiser_patrol.jpg"),
-                require("./z_engine_room.jpg"),
-                require("./z_minor_tech_diff.jpg"),
-                require("./z_the_big_black.jpg")
-            ],
+            
             images: [
-                require("./z_broken_shuttle.jpg"),
-                require("./z_cruiser_patrol.jpg"),
-                require("./z_engine_room.jpg"),
-                require("./z_minor_tech_diff.jpg"),
-                require("./z_the_big_black.jpg")
+                z_broken_shuttle,
+                z_cruiser_patrol,
+                z_engine_room,
+                z_minor_tech_diff,
+                z_the_big_black
+
             ],
             chosenCard:{},
-            uniqueRandoms: {},
-            selectedImage: null,
-            discard: {},
             diceNum: {},
             cardNum: {},
             player1Inv: [
@@ -214,7 +212,7 @@ export default {
             ],
             index: null,
             player1Chosen: {},
-            player1Money: 100,
+            
             player2Chosen: {},
             player1Index: [],
             player2Index: [],
@@ -257,7 +255,12 @@ export default {
 
         this.socket.on("wallet1", moneyData1 => {
             this.wallet1 = moneyData1;
-                       });
+        });
+
+        this.socket.on("chosenCard", chooseMove => {
+            this.chosenCard = chooseMove;
+            this.images.splice(chosenImage, 1);
+        });
         
         this.socket.on("position", data => {
             let img = new Image();
@@ -300,38 +303,6 @@ export default {
     },
     methods: {
 
-        p1MoneyAdd100: function() {
-            this.player1Money += 100;
-        },
-
-        p1MoneyAdd500: function() {
-            this.player1Money += 500;
-        },
-
-        p1MoneyAdd1000: function() {
-            this.player1Money += 1000;
-        },
-
-        p1MoneyAdd2000: function() {
-            this.player1Money += 2000;
-        },
-
-        p1MoneyMinus100: function() {
-            this.player1Money -= 100;
-        },
-
-        p1MoneyMinus500: function() {
-            this.player1Money -= 500;
-        },
-
-        p1MoneyMinus1000: function() {
-            this.player1Money -= 1000;
-        },
-
-        p1MoneyMinus2000: function() {
-            this.player1Money -= 2000;
-        },
-
         func: function() {
             let cvn = this.$refs.canvas;
             let ctx = cvn.getContext("2d");
@@ -342,7 +313,7 @@ export default {
             };
         },
 
-        picker: function() {
+        backuPicker: function() {
             var chosenImage = Math.floor(Math.random() * this.images.length);
             this.chosenCard = this.images[chosenImage];
             var val = this.images[chosenImage];
@@ -487,6 +458,10 @@ export default {
         moveMoney1(amount1) {
             this.socket.emit("moveMoney1", amount1)
             console.log("I did something!");
+        },
+        picker(alianceDirection) {
+            this.socket.emit("picker", alianceDirection);
+            console.log("I moved in aliance space");
         }
     },
     beforeMount(){

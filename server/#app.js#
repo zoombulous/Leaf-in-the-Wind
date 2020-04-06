@@ -57,19 +57,16 @@ Socketio.on("connection", socket => {
     socket.emit("wallet3", wallet3)
     socket.emit("wallet4", wallet4)
     socket.emit("images", images)
+    
     socket.on ("picker", chosenMove => {
         switch(chosenMove) {
         case "alliance":
             var chosenImage = Math.floor(Math.random() * images.length);
-            chosenCard = images[chosenImage];
+            let chosenCard = images[chosenImage];
             var val = images[chosenImage];
             
-            images.splice(chosenImage, 1);
-            
-            var smashedTogether = []
-            
             return val;
-            Socketio.emit ("smashedTogether", {images, chosenCard});
+            Socketio.emit ("chosenCard", chosenCard);
             break;
         }
     });
