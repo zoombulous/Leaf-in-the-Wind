@@ -37,7 +37,7 @@ var images = {
     z_the_big_black
 };
 
-var chosenCard = {};
+var chosenCard = {z_the_big_black};
 
 var wallet1 = 300;
 
@@ -56,20 +56,13 @@ Socketio.on("connection", socket => {
     socket.emit("wallet2", wallet2)
     socket.emit("wallet3", wallet3)
     socket.emit("wallet4", wallet4)
+    socket.emit("chosenCard", chosenCard)
     socket.emit("images", images)
     socket.on ("picker", chosenMove => {
         switch(chosenMove) {
         case "alliance":
-            var chosenImage = Math.floor(Math.random() * images.length);
-            chosenCard = images[chosenImage];
-            var val = images[chosenImage];
-            
-            images.splice(chosenImage, 1);
-            
-            var smashedTogether = []
-            
-            return val;
-            Socketio.emit ("smashedTogether", {images, chosenCard});
+            chosenCard = z_engine_room;
+            Socketio.emit ("chosenCard", chosenCard);
             break;
         }
     });
