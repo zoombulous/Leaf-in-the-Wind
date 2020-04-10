@@ -37,7 +37,7 @@ var images = {
     z_the_big_black
 };
 
-var chosenCard = {z_the_big_black};
+var chosenCard = [z_the_big_black];
 
 var wallet1 = 300;
 
@@ -61,7 +61,8 @@ Socketio.on("connection", socket => {
     socket.on ("picker", chosenMove => {
         switch(chosenMove) {
         case "alliance":
-            chosenCard = z_engine_room;
+            console.log(chosenCard);
+            chosenCard.push (z_engine_room);
             Socketio.emit ("chosenCard", chosenCard);
             break;
         }

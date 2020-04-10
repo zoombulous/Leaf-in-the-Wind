@@ -117,9 +117,10 @@
   
   <div class="row">
     <div class="col">
+      <p> {{chosenCard}} </p>
       <p v-if="chosenCard">
         <img style="width:20%" :src="chosenCard" alt=""></p>
-      <button @click="picker">Draw a Card!</button>
+      <button @click="picker('alliance')">Draw a Card!</button>
       <button @click="reshuffle">Reshuffle Deck!</button>
     </div>
   </div>  
@@ -198,7 +199,7 @@ export default {
                 z_the_big_black
 
             ],
-            chosenCard:{},
+            chosenCard:[],
             diceNum: {},
             cardNum: {},
             player1Inv: [
@@ -258,8 +259,9 @@ export default {
         });
 
         this.socket.on("chosenCard", chooseMove => {
+            console.log("socket on before chosenCard runs");
             this.chosenCard = chooseMove;
-            this.images.splice(chosenImage, 1);
+            console.log("socket on chosenCard =",this.chosenCard);
         });
         
         this.socket.on("position", data => {
@@ -459,8 +461,8 @@ export default {
             this.socket.emit("moveMoney1", amount1)
             console.log("I did something!");
         },
-        picker(alianceDirection) {
-            this.socket.emit("picker", alianceDirection);
+        picker(allianceDirection) {
+            this.socket.emit("picker", allianceDirection);
             console.log("I moved in aliance space");
         }
     },
