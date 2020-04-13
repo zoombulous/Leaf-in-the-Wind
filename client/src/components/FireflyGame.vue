@@ -117,6 +117,10 @@
   
   <div class="row">
     <div class="col">
+      <img style="width:20%" :src="test" alt="">
+      <p> above this is a test loaded from client </p>
+      <p> {{test}} </p>
+      <p> above this is the name of the test image </p>
       <p> {{chosenCard}} </p>
       <p v-if="chosenCard">
         <img style="width:20%" :src="chosenCard" alt=""></p>
@@ -200,6 +204,7 @@ export default {
 
             ],
             chosenCard:[],
+            test:[z_broken_shuttle],
             diceNum: {},
             cardNum: {},
             player1Inv: [
@@ -494,7 +499,7 @@ export default {
     watch: {
         
         diceNum() {
-            console.log("Dice rolled!");
+            console.log("Dice rolled!", this.test);
         }
     }
 }
