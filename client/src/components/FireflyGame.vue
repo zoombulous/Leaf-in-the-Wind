@@ -126,7 +126,8 @@
       <p> above this is the base64 imported </p>
       <p> {{chosenCard}} </p>
       <p v-if="chosenCard">
-        <img style="width:20%" v-bind:src="'data:image/jpeg;base64,'+imageBytes" alt=""></p>
+        <img style="width:20%" v-bind:src="chosenCard" alt=""></p>
+      <p> above this is the base64 from socket.io! </p>
       <button @click="picker('alliance')">Draw a Card!</button>
       <button @click="reshuffle">Reshuffle Deck!</button>
     </div>
