@@ -121,7 +121,7 @@
       <p> above this is a test loaded from client </p>
       <p> {{test}} </p>
       <p> above this is the name of the test image </p>
-      
+      <p> {{chosenCard}} </p>
       <p v-if="chosenCard">
         <img style="width:20%" v-bind:src="chosenCard" alt=""></p>
       <p> above this is the base64 from socket.io! </p>
