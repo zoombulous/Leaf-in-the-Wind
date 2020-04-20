@@ -125,6 +125,8 @@
       <p v-if="chosenCard">
         <img style="width:20%" v-bind:src="chosenCard" alt=""></p>
       <p> above this is the base64 from socket.io! </p>
+      {{images.length}}
+      <p> images left in deck </p>
       <button @click="picker('alliance')">Draw a Card!</button>
       <button @click="reshuffle">Reshuffle Deck!</button>
     </div>
@@ -469,11 +471,7 @@ export default {
             console.log("I did something!");
         },
         picker(allianceDirection) {
-            var chosenImage = Math.floor(Math.random() * this.images.length);
-            this.chosenCard = this.images[chosenImage];
-            var val = this.images[chosenImage];
             
-            this.images.splice(chosenImage, 1);
             this.socket.emit("picker", allianceDirection);
             this.socket.emit("chosenCard", chosenCard);
             this.socket.emit("images", images);
