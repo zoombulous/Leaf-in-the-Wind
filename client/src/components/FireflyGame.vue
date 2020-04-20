@@ -471,7 +471,11 @@ export default {
             console.log("I did something!");
         },
         picker(allianceDirection) {
+            var chosenImage = Math.floor(Math.random() * this.images.length);
+            this.chosenCard = this.images[chosenImage];
+            var val = this.images[chosenImage];
             
+            this.images.splice(chosenImage, 1);
             this.socket.emit("picker", allianceDirection);
             this.socket.emit("chosenCard", chosenCard);
             this.socket.emit("images", images);
