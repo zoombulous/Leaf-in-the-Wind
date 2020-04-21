@@ -1,6 +1,10 @@
 const Express = require ("express")();
 const Http = require ("http").Server(Express);
 const Socketio = require ("socket.io")(Http);
+var fs = require('fs');
+
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var xhr = new XMLHttpRequest();
 
 var position = {
     x:200,
@@ -22,22 +26,28 @@ var position4 = {
     y:240
 };
 
-var z_broken_shuttle = "./z_broken_shuttle.jpg"
-var z_cruiser_patrol = "./z_cruiser_patrol.jpg"
-var z_engine_room = "./z_engine_room.jpg"
-var z_minor_tech_diff = "./z_minor_tech_diff.jpg"
-var z_the_big_black = "./z_the_big_black.jpg"
+var z_broken_shuttle = base64_encode('./z_broken_shuttle.jpg');
+                        
+var z_cruiser_patrol = base64_encode('./z_cruiser_patrol.jpg');
+                       
+var z_engine_room = base64_encode('./z_engine_room.jpg');
+                     
+var z_minor_tech_diff = base64_encode('./z_minor_tech_diff.jpg');
+                         
+var z_the_big_black = base64_encode('./z_the_big_black.jpg')
+                       
 
-
-var images = {
+var images = [
     z_broken_shuttle,
     z_cruiser_patrol,
     z_engine_room,
     z_minor_tech_diff,
     z_the_big_black
-};
+];
 
-var chosenCard = [z_the_big_black];
+var funcTest = base64_encode('./z_minor_tech_diff.jpg');
+
+var chosenCard = z_the_big_black;
 
 var wallet1 = 300;
 
@@ -46,6 +56,24 @@ var wallet2 = 100;
 var wallet3 = 100;
 
 var wallet4 = 100;
+
+
+function base64_encode(file) {
+    // read binary data
+    var bitmap = fs.readFileSync(file);
+    // convert binary data to base64 encoded string
+    return 'data:image/jpeg;base64,' +
+        Buffer.from(bitmap).toString('base64');
+}
+
+function base64_decode(base64str, file) {
+    // create buffer object from base64 encoded string, it is important to tell the constructor that the string is base64 encoded
+    var bitmap = Buffer.from(base64str, 'base64');
+    // write buffer to file
+    fs.writeFileSync(file, bitmap);
+    console.log('******** File created from base64 encoded string ********');
+}
+
 
 Socketio.on("connection", socket => {
     socket.emit("position", position)
@@ -61,9 +89,18 @@ Socketio.on("connection", socket => {
     socket.on ("picker", chosenMove => {
         switch(chosenMove) {
         case "alliance":
-            console.log(chosenCard);
-            chosenCard.push (z_engine_room);
+
+            var chosenImage = Math.floor(Math.random() * images.length);
+            chosenCard = images[chosenImage];
+            var val = images[chosenImage];
+            
+            images.splice(chosenImage, 1);
+            
+            console.log (images);
+            return val;
+            
             Socketio.emit ("chosenCard", chosenCard);
+            Socketio.emit ("images", images);
             break;
         }
     });
