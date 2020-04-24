@@ -121,14 +121,27 @@
       <p> above this is a test loaded from client </p>
       <p> {{test}} </p>
       <p> above this is the name of the test image </p>
-      <p> {{chosenCard}} </p>
+      <p> {{nestedImagesArray[1]}} </p>
+      <p v-if="nestedImagesArray[1]">
+        <img style="width:20%" v-bind:src="nestedImagesArray[1]" alt=""></p>
+      <p> above this is the nested array random image! </p>
+      {{nestedImagesArray[0].length}}
+      <button @click="nestedPicker">Draw a Card!</button>
+
       <p v-if="chosenCard">
         <img style="width:20%" v-bind:src="chosenCard" alt=""></p>
-      <p> above this is the base64 from socket.io! </p>
+      <p> above this is an image loading from base64 from socket.io without a working random function </p>
       {{images.length}}
       <p> images left in deck </p>
       <button @click="picker('alliance')">Draw a Card!</button>
       <button @click="reshuffle">Reshuffle Deck!</button>
+      
+      <p> {{travelCards[1]}} </p>
+      <p v-if="travelCards[1]">
+        <img style="width:20%" v-bind:src="travelCards[1]" alt=""></p>
+      <p> above this is a nested array image run through random function! </p>
+      {{travelCards[0].length}}
+      <button @click="movingPicker('alliance')">Draw move Card!</button>
     </div>
   </div>  
   
@@ -197,8 +210,17 @@ export default {
     name: "Firefly",
     data() {
         return {
-            
-            
+            nestedImagesArray: [
+                [
+                    z_broken_shuttle,
+                    z_cruiser_patrol,
+                    z_engine_room,
+                    z_minor_tech_diff,
+                    z_the_big_black
+                ],
+                []
+            ],
+            travelCards: [ [z_engine_room], [z_the_big_black] ],
             images: [
                 z_broken_shuttle,
                 z_cruiser_patrol,
@@ -267,6 +289,13 @@ export default {
             this.wallet1 = moneyData1;
         });
 
+        this.socket.on("travelCards", movingMove => {
+            console.log("socket on before travelCards connect");
+            this.travelCards = movingMove;
+            console.log("socket on travelCards chosen card=",
+                        this.travelCards[1]);
+        });
+
         this.socket.on("chosenCard", chooseMove => {
             console.log("socket on before chosenCard runs");
             this.chosenCard = chooseMove;
@@ -332,6 +361,33 @@ export default {
             this.images.splice(chosenImage, 1);
             
             console.log (this.images);
+            return val;
+            
+        },
+
+        movingPicker: function(allianceDirection) {
+            
+            this.socket.emit("movingPicker", allianceDirection);
+            this.socket.emit("travelCards", travelCards);
+            console.log ("moving cards array images = ",
+                         this.travelCards[0]);
+            return val;
+            
+        },
+
+        nestedPicker: function() {
+            var chosenImage =
+                Math.floor(Math.random() *
+                           this.nestedImagesArray[0].length);
+            this.nestedImagesArray[1] =
+                this.nestedImagesArray[0][chosenImage];
+            var val =
+                this.nestedImagesArray[0][chosenImage];
+            
+            this.nestedImagesArray[0].splice(chosenImage, 1);
+            
+            console.log ("nested array images = ",
+                         this.nestedImagesArray[0]);
             return val;
             
         },
@@ -514,9 +570,3 @@ export default {
     }
 }
 </script>
-
-
-
-
-
-
