@@ -139,7 +139,7 @@
       <p> {{travelCards[1]}} </p>
       <p v-if="travelCards[1]">
         <img style="width:20%" v-bind:src="travelCards[1]" alt=""></p>
-      <p> above this is a nested array image run through random function! </p>
+      <p> above this is a nested array image run through random function from socket.io! </p>
       {{travelCards[0].length}}
       <button @click="movingPicker('alliance')">Draw move Card!</button>
     </div>
@@ -292,14 +292,11 @@ export default {
         this.socket.on("travelCards", movingMove => {
             console.log("socket on before travelCards connect");
             this.travelCards = movingMove;
-            console.log("socket on travelCards chosen card=",
-                        this.travelCards[1]);
+            
         });
 
         this.socket.on("chosenCard", chooseMove => {
             console.log("socket on before chosenCard runs");
-            this.chosenCard = chooseMove;
-            console.log("socket on chosenCard =",this.chosenCard);
         });
         
         this.socket.on("position", data => {
@@ -360,7 +357,6 @@ export default {
             
             this.images.splice(chosenImage, 1);
             
-            console.log (this.images);
             return val;
             
         },
@@ -369,8 +365,7 @@ export default {
             
             this.socket.emit("movingPicker", allianceDirection);
             this.socket.emit("travelCards", travelCards);
-            console.log ("moving cards array images = ",
-                         this.travelCards[0]);
+            
             return val;
             
         },
@@ -386,8 +381,6 @@ export default {
             
             this.nestedImagesArray[0].splice(chosenImage, 1);
             
-            console.log ("nested array images = ",
-                         this.nestedImagesArray[0]);
             return val;
             
         },
@@ -405,16 +398,9 @@ export default {
             this.player1Chosen = this.player1Inv[x];
             this.player1Inv.splice(this.player1Chosen, 1);
             
-            console.log("TWEET 1");
-            console.log("TWEET 2");
-            console.log("TWEET 3");
-            console.log("TWEET 4");
             this.player2Last();
             this.player1Prev();
-            console.log("player1Inv = ", this.player1Inv,
-                        "player2Inv = ", this.player2Inv,
-                        "player1Chosen = ",this.player1Chosen,
-                        "TWEET 5");
+            
         },
 
         player2Picker: function() {
@@ -468,7 +454,6 @@ export default {
                 require("./z_the_big_black.jpg")
             ];
             this.picker()
-            console.log (this.images);
             console.log ("reshuffled");
         },
         
@@ -524,7 +509,6 @@ export default {
         },
         moveMoney1(amount1) {
             this.socket.emit("moveMoney1", amount1)
-            console.log("I did something!");
         },
         picker(allianceDirection) {
             var chosenImage = Math.floor(Math.random() * this.images.length);
@@ -535,7 +519,6 @@ export default {
             this.socket.emit("picker", allianceDirection);
             this.socket.emit("chosenCard", chosenCard);
             this.socket.emit("images", images);
-            console.log("I moved in aliance space");
         }
     },
     beforeMount(){
