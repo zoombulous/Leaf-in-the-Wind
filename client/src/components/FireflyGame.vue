@@ -138,18 +138,35 @@
       
       <p> {{travelCards[1]}} </p>
       <p v-if="travelCards[1]">
-        <img style="width:20%" v-bind:src="travelCards[1]" alt=""></p>
+        <img style="width:100%" v-bind:src="travelCards[1]" alt=""></p>
       <p> above this is a nested array image run through random function from socket.io! </p>
       {{travelCards[0].length}}
       <button @click="movingPicker('alliance')">Draw move Card!</button>
     </div>
   </div>  
   
+  <div class="row">
+    <div class="col">
+      {{playerCards[0][1]}}
+      <p v-if="playerCards[0][1]">
+        <img style="width:20%" :src="playerCards[0][1]" alt=""></p>
+      <p>p1 inv length = </p>
+      {{playerCards[0][0].length}}
+      <p>p2 inv length = </p>
+      <p> </p>
+      {{playerCards[1][0].length}}
+      <button @click="give('oneprev')">View Previous</button>
+      <button @click="p1ViewNext">Next</button>
+      <button @click="give('1to2')">Give</button>
+      
+      <p>Above this is player 1 give to player 2</p>
+    </div>`
+  </div>
   
   <div class="row">
     <div class="col">
       <p v-if="player1Chosen">
-        <img style="width:20%" :src="player1Chosen" alt=""></p>
+        <img style="width:50%" :src="player1Chosen" alt=""></p>
       <button @click="player1Prev">Previous</button>
       <button @click="player1Next">Next</button>
       <button @click="p1GiveP2">Give</button>
@@ -221,6 +238,11 @@ export default {
                 []
             ],
             travelCards: [ [z_engine_room], [z_the_big_black] ],
+            playerCards: [ [ [], [], [] ],
+                           [ [], [], [] ],
+                           [ [], [], [] ],
+                           [ [], [], [] ]
+                         ],
             images: [
                 z_broken_shuttle,
                 z_cruiser_patrol,
@@ -295,8 +317,12 @@ export default {
             
         });
 
-        this.socket.on("chosenCard", chooseMove => {
-            console.log("socket on before chosenCard runs");
+        this.socket.on ("playerCards", giveTo => {
+            console.log("someone tried to give a card");
+            this.playerCards = giveTo;
+            console.log("playerCards should equal giveTo",
+"player1 inv length = ", this.playerCards[0][0].length,
+"player2 inv length = ", this.playerCards[1][0].length);
         });
         
         this.socket.on("position", data => {
@@ -370,6 +396,11 @@ export default {
             
         },
 
+        give: function(x) {
+            this.socket.emit("give", x);
+            this.socket.emit("playerCards", playerCards);
+        },
+
         nestedPicker: function() {
             var chosenImage =
                 Math.floor(Math.random() *
@@ -432,7 +463,7 @@ export default {
             this.player1Index++;
             this.player1Index = this.player1Index % this.player1Inv.length;
             this.player1Picker();
-        },
+        }, 
         
         player1Prev: function () {
             if (this.player1Index === 0) {
@@ -441,9 +472,28 @@ export default {
             this.player1Index = this.player1Index - 1;
             this.player1Picker();
         },
-
         
-
+        p1ViewPrev: function () {
+            console.log("tried to change to previous card");
+            if (this.playerCards[0][2] === 0) {
+                this.playerCards[0][2] = this.playerCards[0][0].length
+            }
+            this.playerCards[0][2] = this.playerCards[0][2] - 1;
+            
+            var x = this.playerCards[0][2];
+            this.playerCards[0][1] = this.playerCards[0][0][x];
+            console.log("was successful changing to previous card",
+                        "player 1 inv = ",playerCards[0][0].length,
+                        "player 2 inv = ",playerCards[1][0].length);
+        },
+        
+        p1ViewNext: function () {
+            this.playerCards[0][2]++;
+            this.playerCards[0][2] = thisplayerCards[0][2] % this.playerCards[0][0].length;
+            var x = this.playerCards[0][2];
+            this.playerCards[0][1] = this.playerCards[0][0][x];
+        }, 
+        
         reshuffle: function() {
             
             this.images = [
