@@ -27,15 +27,15 @@ var position4 = {
     y:240
 };
 
-var z_broken_shuttle = base64_encode('./tiny_broken_shuttle.jpg');
+var z_broken_shuttle = base64_encode('./third_broken_shuttle.jpg');
                         
-var z_cruiser_patrol = base64_encode('./tiny_cruiser_patrol.jpg');
+var z_cruiser_patrol = base64_encode('./third_cruiser_patrol.jpg');
                        
-var z_engine_room = base64_encode('./tiny_engine_room.jpg');
+var z_engine_room = base64_encode('./third_engine_room.jpg');
                      
-var z_minor_tech_diff = base64_encode('./tiny_minor_tech_diff.jpg');
+var z_minor_tech_diff = base64_encode('./third_minor_tech_diff.jpg');
                          
-var z_the_big_black = base64_encode('./tiny_the_big_black.jpg')
+var z_the_big_black = base64_encode('./third_the_big_black.jpg')
 
 
 
@@ -95,6 +95,22 @@ var travelCards = [
     [z_the_big_black]
 ];
 
+
+var playerCards = [
+    // [inventory], [chosen], [index]
+    [ [    "z_broken_shuttle",
+           "z_cruiser_patrol",
+           "z_engine_room",
+           "z_minor_tech_diff",
+           "z_the_big_black"
+           
+           
+      ], [], [4] ],
+    [ [], [], [0] ],
+    [ [], [], [0] ],
+    [ [], [], [0] ]
+];
+
 var images = [
     z_broken_shuttle,
     z_cruiser_patrol,
@@ -112,6 +128,125 @@ var wallet2 = 100;
 var wallet3 = 100;
 
 var wallet4 = 100;
+
+var p1Inv = playerCards[0][0];
+var p2Inv = playerCards[1][0];
+var p3Inv = playerCards[2][0];
+var p4Inv = playerCards[3][0];
+var p1Chosen = playerCards[0][1];
+var p2Chosen = playerCards[1][1];
+var p3Chosen = playerCards[2][1];
+var p4Chosen = playerCards[3][1];
+var p1Index = playerCards[0][2];
+var p2Index = playerCards[1][2];
+var p3Index = playerCards[2][2];
+var p4Index = playerCards[3][2];
+
+
+
+function p1Picker() {
+            var x = p1Index;
+            p1Chosen = p1Inv[x];
+}
+
+function p2Picker() {
+    var x = p2Index;
+    p2Chosen = p2Inv[x];
+    var val = p2Inv[x];
+}
+
+function p2Last() {
+
+    p2Index = p2Inv.length - 1;
+    p2Picker();
+}
+
+function p2Next() {
+    p2Index++;
+    p2Index = p2Index % p2Inv.length;
+    p2Picker();
+}
+
+function p2Prev() {
+    if (p2Index === 0) {
+        p2Index = p2Inv.length
+    }
+    p2Index = p2Index - 1;
+    p2Picker();
+}
+
+function p1Next() {
+    p1Index++;
+    p1Index = p1Index % p1Inv.length;
+    p1Picker();
+} 
+
+function p1Prev() {
+    if (p1Index === 0) {
+                 p1Index = p1Inv.length
+    }
+    p1Index = p1Index - 1;
+    p1Picker();
+}
+
+function giveTemplate(giving, getting) {
+    playerCards[giving][1] = playerCards[giving][0][ playerCards[giving][2] ]
+    
+    console.log("giving player index = ",playerCards[giving][2],
+                "giving player chosen card at start of function = ",
+                        playerCards[giving][1]);
+    
+    console.log("before push, giving player chosen = ",
+                        playerCards[giving][1]);
+    
+    playerCards[getting][0].push(playerCards[giving][1]);
+    
+    if (playerCards[giving][0].length === 0 && Array.isArray(playerCards[giving][0])) {
+                console.log("giving player inv is empty, you cannot give!");
+            };
+
+    var y = playerCards[giving][0]
+                .indexOf
+    (playerCards[giving][1]);
+    
+    playerCards[giving][0]
+        .splice
+    (playerCards[giving][0]
+             .indexOf
+             (playerCards[giving][1]), 1);
+    
+    playerCards[getting][2] = playerCards[getting][0].length - 1;
+    
+    if (y === 0) {
+                playerCards[giving][1] =
+                    playerCards[giving][1][playerCards[giving][0].length]
+            };
+    playerCards[giving][1] = playerCards[giving][0][y];
+    
+    playerCards[getting][0] = playerCards[getting][0].filter(function(x) {
+                return x !== undefined;
+            });
+    
+    if (playerCards[giving][2] === 0) {
+                playerCards[giving][2] = [giving][0].length
+            };
+    
+    playerCards[giving][2] = playerCards[giving][2] - 1;
+    playerCards[giving][1] = playerCards[giving][0][ playerCards[giving][2] ]
+    playerCards[giving][2] = Math.max(0, playerCards[giving][2]);
+
+    playerCards[giving][2] = playerCards[giving][2] || 0;
+    
+    
+    console.log("giving player inv = ",
+                        playerCards[giving][0],
+                        "getting player inv = ",
+                        playerCards[getting][0],
+                        "giving player chosen = ",
+                        playerCards[giving][1],
+                        "giving player index = ",
+                        playerCards[giving][2]);
+}
 
 function base64_encode(file) {
     // read binary data
@@ -142,15 +277,39 @@ Socketio.on("connection", socket => {
     socket.emit("wallet4", wallet4)
     socket.emit("chosenCard", chosenCard)
     socket.emit("images", images)
+    socket.emit("playerCards", playerCards)
     socket.emit("travelCards", travelCards)
+        socket.on ("give", giveTo => {
+        switch(giveTo) {
+        case "1to2":
+
+            giveTemplate(0, 1);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "oneprev":
+
+            console.log("at least you tried");
+            
+            if (playerCards[0][2] === 0) {
+                playerCards[0][2] = p1Inv.length
+            };
+            playerCards[0][2] = playerCards[0][2] - 1;
+            playerCards[0][1] = playerCards[0][0][ playerCards[0][2] ]
+            p1Picker();
+            
+            console.log("pl indx = ", playerCards[0][2], "p1 viewing previous card", playerCards[0][1]);
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        }
+    });
+
     socket.on ("movingPicker", movingMove => {
         switch(movingMove) {
         case "alliance":
 
             for (var i = 0; i < travelCards[0].length; i++)
-            var chosenImage =    
-                Math.floor(Math.random() *
-                           travelCards[0].length);
+                var chosenImage = Array.from(sampleF2(1, travelCards[0].length));
             travelCards[1] =
                 travelCards[0][chosenImage];
             var val =
@@ -160,25 +319,8 @@ Socketio.on("connection", socket => {
 
             console.log("cards left = ",
                         travelCards[0].length,
-                        );
+                       );
             Socketio.emit ("travelCards", travelCards);
-            break;
-        }
-    });
-    socket.on ("picker", chosenMove => {
-        switch(chosenMove) {
-        case "alliance":
-            var chosenImage = Array.from(sampleF2(1, travelCards[0].length));
-            chosenCard = images[chosenImage];
-            var val = images[chosenImage];
-            
-            images.splice(chosenImage, 1);
-            
-            console.log (images);
-            return val;
-            
-            Socketio.emit ("chosenCard", chosenCard);
-            Socketio.emit ("images", images);
             break;
         }
     });
@@ -319,7 +461,15 @@ Socketio.on("connection", socket => {
 });
 
 Http.listen(3000, () => {
+    playerCards[0][1] = playerCards[0][0][ playerCards[0][2] ]
     console.log("Listening at :3000...");
+    console.log("player 1 inventory length = ",
+                playerCards[0][0].length,
+                "player 1 inventory = ",
+                playerCards[0][0],
+                "player 1 chosen = ",
+                playerCards[0][1]
+               );
 });
 
 
