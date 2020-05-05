@@ -1,3 +1,10 @@
+
+#chatbox {
+    height: 200px;
+    max-width: 400px;
+    overflow-y: scroll;
+}
+
 .map-padding {
     padding-bottom: 20px;
 }
