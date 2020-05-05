@@ -2,59 +2,101 @@
 <div class="container">
   <h1>Firefly Game</h1>
   <div class="row">
+    <div class="col-md-4 col-lg-6 offset-lg-3 offset-md-4">
+      <div v-if="ready">
+        <h4>{{name}}</h4>          
+        <h5>{{connectionCount}} Connected, {{online.length}} Online</h5>
+          
+        <p v-for="item in info" :key="item">
+          <small>{{item.name}} {{item.type}}</small>
+        </p>
+      </div>
+      
+      <form @submit.prevent="setName" class="mt-4" v-else>
+        <div class="form-group row">
+          <input type="text" class="form-control col" v-model="name" placeholder="Set Your Name First">
+          <input type="submit" value="Add" class="btn btn-sm btn-info ml-1 col-2">
+        </div>
+      </form>
+
+      <div class="col" v-if="ready">
+        <ul id="chatbox">
+          <table class="list-group text-right">
+            <small v-if="typing" class="text-grey">
+              <i>{{typing}} is typing</i>
+            </small>
+            <li class="list-group-item" v-for="message in messages" :key="message">
+              <span :class="{'float-left':(message.type===1)}">
+                <small class="text-blue">:{{message.by}}</small>
+                {{message.message}}
+              </span>
+            </li>
+          </table>
+        </ul>
+        <div class="card-body">
+          <form @submit.prevent="send">
+            <div class="form-group">
+              <input type="text" class="form-control" v-model="newmessage" placeholder="Type Here">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>  
+  </div>
+  
+  <div class="row">
     <div class="col">
       <div id="container" class="container">
         <div>
-           <canvas ref="game1"
-                   width="5000"
-                   height="2000"
-                   z-index="4"
-                   style="border: 1px solid black; position: absolute;">
-           </canvas>
+          <canvas ref="game1"
+                  width="2500"
+                  height="1000"
+                  z-index="4"
+                  style="border: 1px solid black; position: absolute;">
+          </canvas>
         </div>
         <div>
-           <canvas ref="game2"
-                   width="5000"
-                   height="2000"
-                   z-index="3"
-                   style="border: 1px solid black; position: absolute;">
-           </canvas>
+          <canvas ref="game2"
+                  width="2500"
+                  height="1000"
+                  z-index="3"
+                  style="border: 1px solid black; position: absolute;">
+          </canvas>
         </div>
         <div>
-           <canvas ref="game3"
-                   width="5000"
-                   height="2000"
-                   z-index="2"
-                   style="border: 1px solid black; position: absolute;">
-           </canvas>
+          <canvas ref="game3"
+                  width="2500"
+                  height="1000"
+                  z-index="2"
+                  style="border: 1px solid black; position: absolute;">
+          </canvas>
         </div>
         <div>
-           <canvas ref="game4"
-                   width="5000"
-                   height="2000"
-                   z-index="1"
-                   style="border: 1px solid black; position: absolute;">
-           </canvas>
-         </div>
-         <div>
-           <canvas ref="canvas"
-                   id="canvas"
-                   width="5000"
-                   height="2000"
-                   z-index="0"
-                   style="border: 1px solid black position: relative;">
-           </canvas>
-           </div>
-         </div>
+          <canvas ref="game4"
+                  width="2500"
+                  height="1000"
+                  z-index="1"
+                  style="border: 1px solid black; position: absolute;">
+          </canvas>
+        </div>
+        <div>
+          <canvas ref="canvas"
+                  id="canvas"
+                  width="2500"
+                  height="1000"
+                  z-index="0"
+                  style="border: 1px solid black position: relative;">
+          </canvas>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row map-padding">
+  <div class="row map-padding" v-if="ready">
     <div class="col">
       <p></p>
     </div>
   </div>
-  
-  <div class="row">
+  <div class="row" v-if="ready">
     <div class="col">
       <p>
         <button v-on:click="move('left')">Left</button>
@@ -87,7 +129,7 @@
     </div>
   </div>
   
-  <div class="row">
+  <div class="row" v-if="ready">
     <div class="col">
       <p>Money {{ wallet1 }}</p>
 
@@ -115,7 +157,7 @@
     </div>
   </div>
   
-  <div class="row">
+  <div class="row" v-if="ready">
     <div class="col">
       <img style="width:20%" :src="test" alt="">
       <p> above this is a test loaded from client </p>
@@ -145,7 +187,7 @@
     </div>
   </div>  
   
-  <div class="row">
+  <div class="row" v-if="ready">
     <div class="col">
       {{playerCards[0][1]}}
       <p v-if="playerCards[0][1]">
@@ -163,7 +205,7 @@
     </div>`
   </div>
   
-  <div class="row">
+  <div class="row" v-if="ready">
     <div class="col">
       <p v-if="player1Chosen">
         <img style="width:50%" :src="player1Chosen" alt=""></p>
@@ -175,7 +217,7 @@
     </div>`
   </div>
   
-  <div class="row">
+  <div class="row" v-if="ready">
     <div class="col">
       <p v-if="player2Chosen">
         <img style="width:20%" :src="player2Chosen" alt=""></p>
@@ -185,7 +227,7 @@
     </div>`
   </div>
   
-  <div class="row">
+  <div class="row" v-if="ready">
     <div class="col">      
       
       <div class="dice-wrapper">
@@ -194,7 +236,7 @@
       </div>
     </div>
   </div>
-</div>
+  </div>
 </template>
 
 <script src="vue.js"></script>
@@ -214,7 +256,7 @@ import "./z_engine_room.jpg";
 import "./z_minor_tech_diff.jpg";
 import "./z_the_big_black.jpg";
 import VueGallerySlideshow from 'vue-gallery-slideshow';
-import myImage from "./map.jpg";
+import myImage from "./map-min.jpg";
 import ship from "./ship.png";
 
 var z_broken_shuttle = require("./z_broken_shuttle.jpg")
@@ -227,6 +269,15 @@ export default {
     name: "Firefly",
     data() {
         return {
+            newmessage: null,
+            messages: [],
+            typing: false,
+            online: [],
+            name: null,
+            ready: false,
+            playerPageState: [],
+            info: [],
+            connectionCount: 0,
             nestedImagesArray: [
                 [
                     z_broken_shuttle,
@@ -299,6 +350,44 @@ export default {
     },
     created() {
         this.socket = io("http://localhost:3000");
+        
+        this.socket.on('chat-message', (data) => {
+            this.messages.push({ message: data.message, type: 1, by: data.user })
+            this.typing = false
+            this.$nextTick(() => {
+            this.scrollToEnd();
+            });
+        })
+        
+        this.socket.on('typing', (data) => {
+            console.log(data)
+            this.typing = data
+            
+        })
+        this.socket.on('stoptyping', () => {
+            this.typing = false
+            this.$nextTick(() => {
+                var messageBox = document.getElementByID('chatbox');
+                messageBox.scrollTop = messageBox.scrollHeight;
+            });
+            this.scrollToEnd();
+                })
+        
+        this.socket.on('left', (name) => {
+                    this.online.splice(this.online.indexOf(name))
+                    this.info.push({ name: name, type: 'Left' })
+                    setTimeout(() => {
+                        this.info = []
+                    }, 5000);
+                })
+        
+        this.socket.on('joined', (name) => {
+                    this.online.push(name)
+                    this.info.push({ name: name, type: 'Joined' })
+                    setTimeout(() => {
+                        this.info = []
+                    }, 5000);
+                })
         },
     mounted() {
         this.func();
@@ -306,11 +395,17 @@ export default {
         this.context2 = this.$refs.game2.getContext("2d");
         this.context3 = this.$refs.game3.getContext("2d");
         this.context4 = this.$refs.game4.getContext("2d");
-
         this.socket.on("wallet1", moneyData1 => {
             this.wallet1 = moneyData1;
         });
 
+        window.onbeforeunload = () => {
+            this.socket.emit('left', this.name)
+        }
+        this.socket.on('noOfConnections', (count) => {
+            this.connectionCount = count
+        })
+        
         this.socket.on("travelCards", movingMove => {
             console.log("socket on before travelCards connect");
             this.travelCards = movingMove;
@@ -366,16 +461,43 @@ export default {
     },
     methods: {
 
+         
+        send() {
+            this.socket.emit('chat-message', { message: this.newmessage, user: this.name })
+
+            this.messages.push({ message: this.newmessage, type: 0, by: 'Me' })
+            this.newmessage = null
+            
+            this.$nextTick(() => {
+                this.scrollToEnd();
+            });
+            
+            
+        },
+        isTyping() {
+            this.socket.emit('typing', this.name)
+            
+        },
+        setName() {
+            this.socket.emit('joined', this.name)
+            this.ready = true
+        },
+
+        scrollToEnd: function() {
+            var chatbox = this.$el.querySelector("#chatbox");
+            chatbox.scrollTop = container.scrollHeight;
+        },
+        
         func: function() {
             let cvn = this.$refs.canvas;
             let ctx = cvn.getContext("2d");
             let bg = new Image();
             bg.src = myImage;
             bg.onload = function() {
-                ctx.drawImage(bg, 0, 0, bg.width * 1  , bg.height * 1  );
+                ctx.drawImage(bg, 0, 0, bg.width * .5  , bg.height * .5  );
             };
         },
-
+        
         backuPicker: function() {
             var chosenImage = Math.floor(Math.random() * this.images.length);
             this.chosenCard = this.images[chosenImage];
@@ -599,6 +721,9 @@ export default {
         
         diceNum() {
             console.log("Dice rolled!", this.test);
+        },
+        newmessage(value) {
+            value ? this.socket.emit('typing', this.name) : socket.emit('stoptyping')
         }
     }
 }
