@@ -264,9 +264,10 @@ function base64_decode(base64str, file) {
     console.log('File created from base64 encoded string');
 }
 
-
+const nsp = Socketio.of('/my-namespace');
 
 Socketio.on("connection", socket => {
+    console.log("someone connected");
     socket.emit("position", position)
     socket.emit("position2", position2)
     socket.emit("position3", position3)
@@ -279,7 +280,34 @@ Socketio.on("connection", socket => {
     socket.emit("images", images)
     socket.emit("playerCards", playerCards)
     socket.emit("travelCards", travelCards)
-        socket.on ("give", giveTo => {
+    socket.emit('noOfConnections', Object.keys(Socketio.sockets.connected).length)
+
+    socket.on('disconnect', () => {
+        console.log('disconnected')
+        Socketio.emit('noOfConnections', Object.keys(Socketio.sockets.connected).length)
+    });
+
+
+
+    socket.on('chat-message', (msg) => {
+        socket.broadcast.emit('chat-message', msg)
+    });
+    socket.on('joined', (name) => {
+        socket.broadcast.emit('joined', name)
+    });
+    socket.on('left', (name) => {
+        socket.broadcast.emit('left', name)
+    });
+    
+    socket.on('typing', (data) => {
+        socket.broadcast.emit('typing', data)
+    });
+    socket.on('stoptyping', () => {
+        socket.broadcast.emit('stoptyping')
+    });
+    
+    
+    socket.on ("give", giveTo => {
         switch(giveTo) {
         case "1to2":
 
