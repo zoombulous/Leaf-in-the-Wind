@@ -28,75 +28,69 @@ var position4 = {
 };
 
 var z_broken_shuttle = base64_encode('./third_broken_shuttle.jpg');
-                        
 var z_cruiser_patrol = base64_encode('./third_cruiser_patrol.jpg');
-                       
 var z_engine_room = base64_encode('./third_engine_room.jpg');
-                     
 var z_minor_tech_diff = base64_encode('./third_minor_tech_diff.jpg');
-                         
 var z_the_big_black = base64_encode('./third_the_big_black.jpg')
-
-
+var cargo = base64_encode('./supplies/cargo.jpg')
+var contraband = base64_encode('./supplies/contraband.jpg')
+var fuel = base64_encode('./supplies/fuel.jpg')
+var fugitive = base64_encode('./supplies/fugitive.jpg')
+var part = base64_encode('./supplies/part.jpg')
+var passenger = base64_encode('./supplies/passenger.jpg')
+var empty = base64_encode('./supplies/empty.jpg')
+var bonanza = base64_encodePNG('./ship_cards/bonanza.png')
+var bonniemae = base64_encodePNG('./ship_cards/bonniemae.png')
 
 var travelCards = [
     [
         z_broken_shuttle,
         z_cruiser_patrol,
-        z_engine_room,
         z_minor_tech_diff,
-        z_the_big_black,
         z_broken_shuttle,
         z_cruiser_patrol,
-        z_engine_room,
         z_minor_tech_diff,
-        z_the_big_black,
         z_broken_shuttle,
         z_cruiser_patrol,
-        z_engine_room,
         z_minor_tech_diff,
-        z_the_big_black,
         z_broken_shuttle,
         z_cruiser_patrol,
-        z_engine_room,
         z_minor_tech_diff,
         z_the_big_black,
-        z_broken_shuttle,
-        z_cruiser_patrol,
-        z_engine_room,
-        z_minor_tech_diff,
-        z_the_big_black,
-        z_broken_shuttle,
-        z_cruiser_patrol,
-        z_engine_room,
-        z_minor_tech_diff,
-        z_the_big_black,
-        z_broken_shuttle,
-        z_cruiser_patrol,
-        z_engine_room,
-        z_minor_tech_diff,
-        z_the_big_black,
-        z_broken_shuttle,
-        z_cruiser_patrol,
-        z_engine_room,
-        z_minor_tech_diff,
-        z_the_big_black,
-        z_broken_shuttle,
-        z_cruiser_patrol,
-        z_engine_room,
-        z_minor_tech_diff,
-        z_the_big_black,
-        z_broken_shuttle,
-        z_cruiser_patrol,
-        z_engine_room,
-        z_minor_tech_diff,
-        z_the_big_black
+        bonniemae,
+        bonanza,
+        passenger,
+        empty
     ],
     [z_the_big_black]
 ];
 
+var shipCards = [
+    //[avaiable], [p1], [p2], [p3], [p4], [chosing]
+    [
+        bonanza,
+        bonniemae
+    ],
+    [],[],[],[],
+    []
+];
 
 var playerCards = [
+    // [inventory], [chosen], [index]
+    [ [    z_broken_shuttle,
+           z_cruiser_patrol,
+           z_engine_room,
+           z_minor_tech_diff,
+           z_the_big_black
+           
+           
+      ], [], [4] ],
+    [ [], [], [0] ],
+    [ [], [], [0] ],
+    [ [], [], [0] ]
+];
+
+var playerShips = [
     // [inventory], [chosen], [index]
     [ [    "z_broken_shuttle",
            "z_cruiser_patrol",
@@ -109,7 +103,88 @@ var playerCards = [
     [ [], [], [0] ],
     [ [], [], [0] ],
     [ [], [], [0] ]
-];
+]
+
+var shipInv =
+    [
+        //[possible supply [[i],[n]], [[i],[n]] ]
+        [
+            [ [ [empty], ["Empty Slot"], [1] ],
+              [ [cargo], ["Cargo"], [2] ],
+              [ [contraband], ["Contraband"], [3] ],
+              [ [fuel], ["Fuel"], [4] ],
+              [ [part], ["Part"], [5] ],
+              [ [passenger], ["Passenger"], [6] ]
+            ],
+        ],
+        //[player [total], [chosen 12boxes] ]
+        //player1
+        [
+            //chosen for boxes (12 in total)
+            [  [ [empty], ["Empty Slot"], [1] ],
+               [ [empty], ["Empty Slot"], [1] ],
+               [ [empty], ["Empty Slot"], [1] ],
+               [ [], ["Empty Slot"], [1] ],
+               [ [], ["Empty Slot"], [1] ],
+               [ [], ["Empty Slot"], [1] ],
+               [ [], ["Empty Slot"], [1] ],
+               [ [], ["Empty Slot"], [1] ],
+               [ [], ["Empty Slot"], [1] ],
+               [ [], ["Empty Slot"], [1] ],
+               [ [], ["Empty Slot"], [1] ],
+               [ [], ["Empty Slot"], [1] ]
+            ],
+            //totals
+            [],
+        ],
+        
+        //player2
+        [  
+            //chosen for boxes (12 in total)
+            [  [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ]]
+        ],//player3
+        [  
+            //chosen for boxes (12 in total)
+            [  [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ]]
+        ],//player4
+        [
+            //chosen for boxes (12 in total)
+            [  [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ]]
+        ]
+    ]
 
 var images = [
     z_broken_shuttle,
@@ -189,63 +264,145 @@ function p1Prev() {
     p1Picker();
 }
 
-function giveTemplate(giving, getting) {
-    playerCards[giving][1] = playerCards[giving][0][ playerCards[giving][2] ]
+function giveTemplate(group, giving, getting) {
+    group[giving][1] = group[giving][0][ group[giving][2] ]
     
-    console.log("giving player index = ",playerCards[giving][2],
+    console.log("giving player index = ",group[giving][2],
                 "giving player chosen card at start of function = ",
-                        playerCards[giving][1]);
+                        group[giving][1]);
     
     console.log("before push, giving player chosen = ",
-                        playerCards[giving][1]);
+                        group[giving][1]);
     
-    playerCards[getting][0].push(playerCards[giving][1]);
+    group[getting][0].push(group[giving][1]);
     
-    if (playerCards[giving][0].length === 0 && Array.isArray(playerCards[giving][0])) {
+    if (group[giving][0].length === 0 && Array.isArray(group[giving][0])) {
                 console.log("giving player inv is empty, you cannot give!");
             };
 
-    var y = playerCards[giving][0]
+    var y = group[giving][0]
                 .indexOf
-    (playerCards[giving][1]);
+    (group[giving][1]);
     
-    playerCards[giving][0]
+    group[giving][0]
         .splice
-    (playerCards[giving][0]
+    (group[giving][0]
              .indexOf
-             (playerCards[giving][1]), 1);
+             (group[giving][1]), 1);
     
-    playerCards[getting][2] = playerCards[getting][0].length - 1;
+    group[getting][2] = group[getting][0].length - 1;
     
     if (y === 0) {
-                playerCards[giving][1] =
-                    playerCards[giving][1][playerCards[giving][0].length]
+                group[giving][1] =
+                    group[giving][1][group[giving][0].length]
             };
-    playerCards[giving][1] = playerCards[giving][0][y];
+    group[giving][1] = group[giving][0][y];
     
-    playerCards[getting][0] = playerCards[getting][0].filter(function(x) {
+    group[getting][0] = group[getting][0].filter(function(x) {
                 return x !== undefined;
             });
     
-    if (playerCards[giving][2] === 0) {
-                playerCards[giving][2] = [giving][0].length
+    if (group[giving][2] === 0) {
+                group[giving][2] = [giving][0].length
             };
     
-    playerCards[giving][2] = playerCards[giving][2] - 1;
-    playerCards[giving][1] = playerCards[giving][0][ playerCards[giving][2] ]
-    playerCards[giving][2] = Math.max(0, playerCards[giving][2]);
+    group[giving][2] = group[giving][2] - 1;
+    group[giving][1] = group[giving][0][ group[giving][2] ]
+    group[giving][2] = Math.max(0, group[giving][2]);
 
-    playerCards[giving][2] = playerCards[giving][2] || 0;
+    group[giving][2] = group[giving][2] || 0;
     
     
     console.log("giving player inv = ",
-                        playerCards[giving][0],
+                        group[giving][0],
                         "getting player inv = ",
-                        playerCards[getting][0],
+                        group[getting][0],
                         "giving player chosen = ",
-                        playerCards[giving][1],
+                        group[giving][1],
                         "giving player index = ",
-                        playerCards[giving][2]);
+                        group[giving][2]);
+}
+
+function countDup(arrayLarge, playerTotal) {
+    var array_cleaned = arrayLarge.filter( function( element ) {
+        return element.length <= 15;
+    });
+    arrayStillLarge = array_cleaned.flat(Infinity)
+    array = arrayStillLarge.filter( function( element ) {
+        return element.length <= 15;
+    });
+    array.sort();
+    
+    var current = null;
+    var cnt = 0;
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] != current) {
+            if (cnt > 0) {
+                const set = new Set
+                ([current + ' appears --> ' + cnt + ' times<br>']);
+                playerTotal[0] = Array.from(set);
+            }
+            current = array[i];
+            cnt = 1;
+        } else {
+            cnt++;
+        }
+    }
+    if (cnt > 0) {
+        const set = new Set
+        ([current + ' appears --> ' + cnt + ' times']);
+        playerTotal[0] = Array.from(set);
+    }
+    playerTotal = playerTotal[0]
+    console.log("player total =", playerTotal[0]);
+}
+
+function prevTemplate(group,player) {
+    if (group[player][2] === 0) {
+        group[player][2] = group[player][0].length
+    };
+    group[player][2] = group[player][2] - 1;
+    group[player][1] = group[player][0][ group[player][2] ]
+    
+    var x = group[player][2];
+    group[player][1] = group[player][0][x]
+}
+
+function nextTemplate(group,player) {
+    if (group[player][2] >= group[player][0].length - 1) {
+        group[player][2] = 0
+    };
+
+    group[player][2] = group[player][2] + 1;
+    group[player][1] = group[player][0][ group[player][2] ]
+    
+    var x = group[player][2];
+    group[player][1] = group[player][0][x]
+    
+}
+
+function nextSupplyTemplate() {
+    console.log("started nextSupplyTemplate");
+    var x = shipInv[1][0][0][2];
+    var xNum = Number(x);
+    var z = shipInv[1][0][0]
+    console.log("x num =", xNum);
+    console.log("set x = ", x);
+    var y = shipInv[0][0][0];
+    console.log("shipInv[0][0][5][1] = ", shipInv[0][0][5][1]);
+    console.log("y = ", y);
+
+    console.log("xNum + 1 = ", xNum + 1);
+    console.log("x + 1 = ", shipInv[1][0][0][2] + 1);
+    
+    shipInv[1][0][0] = shipInv[0][0][x++];
+    if (typeof shipInv[1][0][0] == 'undefined') {
+        shipInv[1][0][0] = shipInv[0][0][0]
+    };
+    console.log(shipInv[1][0][0]);
+
+
+    
 }
 
 function base64_encode(file) {
@@ -253,6 +410,14 @@ function base64_encode(file) {
     var bitmap = fs.readFileSync(file);
     // convert binary data to base64 encoded string
     return 'data:image/jpeg;base64,' +
+        Buffer.from(bitmap).toString('base64');
+}
+
+function base64_encodePNG(file) {
+    // read binary data
+    var bitmap = fs.readFileSync(file);
+    // convert binary data to base64 encoded string
+    return 'data:image/png;base64,' +
         Buffer.from(bitmap).toString('base64');
 }
 
@@ -280,6 +445,8 @@ Socketio.on("connection", socket => {
     socket.emit("images", images)
     socket.emit("playerCards", playerCards)
     socket.emit("travelCards", travelCards)
+    socket.emit("shipCards", shipCards)
+    socket.emit("shipInv", shipInv)
     socket.emit('noOfConnections', Object.keys(Socketio.sockets.connected).length)
 
     socket.on('disconnect', () => {
@@ -291,6 +458,9 @@ Socketio.on("connection", socket => {
 
     socket.on('chat-message', (msg) => {
         socket.broadcast.emit('chat-message', msg)
+    });
+    socket.on('playerNumberSet', (player) => {
+        socket.broadcast.emit('playerNumberSet', player)
     });
     socket.on('joined', (name) => {
         socket.broadcast.emit('joined', name)
@@ -306,25 +476,41 @@ Socketio.on("connection", socket => {
         socket.broadcast.emit('stoptyping')
     });
     
+    socket.on("supply", changeSupply => {
+        switch(changeSupply) {
+        case "1box1":
+
+            nextSupplyTemplate();
+            
+            console.log("supply tried to change from socket");
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        }
+    });
     
     socket.on ("give", giveTo => {
         switch(giveTo) {
         case "1to2":
 
-            giveTemplate(0, 1);
+            giveTemplate(playerCards, 0, 1);
             
             Socketio.emit ("playerCards", playerCards);
             break;
         case "oneprev":
-
+            
             console.log("at least you tried");
             
-            if (playerCards[0][2] === 0) {
-                playerCards[0][2] = p1Inv.length
-            };
-            playerCards[0][2] = playerCards[0][2] - 1;
-            playerCards[0][1] = playerCards[0][0][ playerCards[0][2] ]
-            p1Picker();
+            prevTemplate(playerCards,0);
+            
+            console.log("pl indx = ", playerCards[0][2], "p1 viewing previous card", playerCards[0][1]);
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        
+        case "onenext":
+            
+            console.log("at least you tried");
+            
+            nextTemplate(playerCards,0);
             
             console.log("pl indx = ", playerCards[0][2], "p1 viewing previous card", playerCards[0][1]);
             Socketio.emit ("playerCards", playerCards);
@@ -332,6 +518,8 @@ Socketio.on("connection", socket => {
         }
     });
 
+///end of give
+    
     socket.on ("movingPicker", movingMove => {
         switch(movingMove) {
         case "alliance":
@@ -352,6 +540,13 @@ Socketio.on("connection", socket => {
             break;
         }
     });
+
+  //  socket.on("shipPicker", chooseShip => {
+  //      switch(chooseShip) {
+  //      case "1choose"
+
+  //      }
+  //  });
     
     socket.on("moveMoney1", moneyData1 => {
         switch(moneyData1) {
@@ -367,8 +562,8 @@ Socketio.on("connection", socket => {
             wallet1 += 1000;
             Socketio.emit ("wallet1", wallet1);
             break;
-        case "1add5000":
-            wallet1 += 5000;
+        case "1add2000":
+            wallet1 += 2000;
             Socketio.emit ("wallet1", wallet1);
             break;
         case "1minus100":
@@ -387,7 +582,102 @@ Socketio.on("connection", socket => {
             wallet1 -= 2000;
             Socketio.emit ("wallet1", wallet1);
             break;
-        
+        case "2add100":
+            wallet2 += 100;
+            Socketio.emit ("wallet2", wallet2);
+            break;
+        case "2add500":
+            wallet2 += 500;
+            Socketio.emit ("wallet2", wallet2);
+            break;
+        case "2add1000":
+            wallet2 += 1000;
+            Socketio.emit ("wallet2", wallet2);
+            break;
+        case "2add2000":
+            wallet2 += 2000;
+            Socketio.emit ("wallet2", wallet2);
+            break;
+        case "2minus100":
+            wallet2 -= 100;
+            Socketio.emit ("wallet2", wallet2);
+            break;
+        case "2minus500":
+            wallet2 -= 500;
+            Socketio.emit ("wallet2", wallet2);
+            break;
+        case "2minus1000":
+            wallet2 -= 1000;
+            Socketio.emit ("wallet2", wallet2);
+            break;
+        case "2minus2000":
+            wallet2 -= 2000;
+            Socketio.emit ("wallet2", wallet2);
+            break;
+        case "3add100":
+            wallet3 += 100;
+            Socketio.emit ("wallet3", wallet3);
+            break;
+        case "3add500":
+            wallet3 += 500;
+            Socketio.emit ("wallet3", wallet3);
+            break;
+        case "3add1000":
+            wallet3 += 1000;
+            Socketio.emit ("wallet3", wallet3);
+            break;
+        case "3add2000":
+            wallet3 += 2000;
+            Socketio.emit ("wallet3", wallet3);
+            break;
+        case "3minus100":
+            wallet3 -= 100;
+            Socketio.emit ("wallet3", wallet3);
+            break;
+        case "3minus500":
+            wallet3 -= 500;
+            Socketio.emit ("wallet3", wallet3);
+            break;
+        case "3minus1000":
+            wallet3 -= 1000;
+            Socketio.emit ("wallet3", wallet3);
+            break;
+        case "3minus2000":
+            wallet3 -= 2000;
+            Socketio.emit ("wallet3", wallet3);
+            break;
+        case "4add100":
+            wallet4 += 100;
+            Socketio.emit ("wallet4", wallet4);
+            break;
+        case "4add500":
+            wallet4 += 500;
+            Socketio.emit ("wallet4", wallet4);
+            break;
+        case "4add1000":
+            wallet4 += 1000;
+            Socketio.emit ("wallet4", wallet4);
+            break;
+        case "4add2000":
+            wallet4 += 2000;
+            Socketio.emit ("wallet4", wallet4);
+            break;
+        case "4minus100":
+            wallet4 -= 100;
+            Socketio.emit ("wallet4", wallet4);
+            break;
+        case "4minus500":
+            wallet4 -= 500;
+            Socketio.emit ("wallet4", wallet4);
+            break;
+        case "4minus1000":
+            wallet4 -= 1000;
+            Socketio.emit ("wallet4", wallet4);
+            break;
+        case "4minus2000":
+            wallet4 -= 2000;
+            Socketio.emit ("wallet4", wallet4);
+            break;
         }
     });
     socket.on("move", data => {
@@ -488,18 +778,12 @@ Socketio.on("connection", socket => {
     });
 });
 
+
 Http.listen(3000, () => {
     playerCards[0][1] = playerCards[0][0][ playerCards[0][2] ]
     console.log("Listening at :3000...");
-    console.log("player 1 inventory length = ",
-                playerCards[0][0].length,
-                "player 1 inventory = ",
-                playerCards[0][0],
-                "player 1 chosen = ",
-                playerCards[0][1]
-               );
+    console.log(shipInv[1][0][0][2])
 });
-
 
 //below this point is functions to help make the random pick faster
 
