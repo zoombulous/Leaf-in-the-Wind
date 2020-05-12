@@ -109,33 +109,47 @@ var shipInv =
     [
         //[possible supply [[i],[n]], [[i],[n]] ]
         [
-            [ [ [empty], ["Empty Slot"], [1] ],
-              [ [cargo], ["Cargo"], [2] ],
-              [ [contraband], ["Contraband"], [3] ],
-              [ [fuel], ["Fuel"], [4] ],
-              [ [part], ["Part"], [5] ],
-              [ [passenger], ["Passenger"], [6] ]
+            [
+                [ [empty], ["Empty Slot"] ],
+                [ [cargo], ["Cargo"] ],
+                [ [contraband], ["Contraband"] ],
+                [ [fuel], ["Fuel"] ],
+                [ [part], ["Part"] ],
+                [ [passenger], ["Passenger"] ]
             ],
         ],
         //[player [total], [chosen 12boxes] ]
         //player1
         [
             //chosen for boxes (12 in total)
-            [  [ [empty], ["Empty Slot"], [1] ],
-               [ [empty], ["Empty Slot"], [1] ],
-               [ [empty], ["Empty Slot"], [1] ],
-               [ [], ["Empty Slot"], [1] ],
-               [ [], ["Empty Slot"], [1] ],
-               [ [], ["Empty Slot"], [1] ],
-               [ [], ["Empty Slot"], [1] ],
-               [ [], ["Empty Slot"], [1] ],
-               [ [], ["Empty Slot"], [1] ],
-               [ [], ["Empty Slot"], [1] ],
-               [ [], ["Empty Slot"], [1] ],
-               [ [], ["Empty Slot"], [1] ]
+            [  [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Passenger"] ],
+               [ [empty], ["Part"] ],
+               [ [empty], ["Part"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ]
             ],
             //totals
             [],
+            //index
+            [[1],
+             [1],
+             [1],
+             [1],
+             [1],
+             [1],
+             [1],
+             [1],
+             [1],
+             [1],
+             [1],
+             [1]]
         ],
         
         //player2
@@ -152,7 +166,11 @@ var shipInv =
                [ [empty], ["Empty Slot"] ],
                [ [empty], ["Empty Slot"] ],
                [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ]]
+               [ [empty], ["Empty Slot"] ],
+            //totals
+            [],
+            //index
+            [0]]
         ],//player3
         [  
             //chosen for boxes (12 in total)
@@ -167,7 +185,11 @@ var shipInv =
                [ [empty], ["Empty Slot"] ],
                [ [empty], ["Empty Slot"] ],
                [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ]]
+               [ [empty], ["Empty Slot"] ],
+            //totals
+            [],
+            //index
+            [0]]
         ],//player4
         [
             //chosen for boxes (12 in total)
@@ -182,7 +204,11 @@ var shipInv =
                [ [empty], ["Empty Slot"] ],
                [ [empty], ["Empty Slot"] ],
                [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ]]
+               [ [empty], ["Empty Slot"] ],
+            //totals
+            [],
+            //index
+            [0]]
         ]
     ]
 
@@ -323,39 +349,38 @@ function giveTemplate(group, giving, getting) {
                         group[giving][2]);
 }
 
-function countDup(arrayLarge, playerTotal) {
-    var array_cleaned = arrayLarge.filter( function( element ) {
-        return element.length <= 15;
-    });
-    arrayStillLarge = array_cleaned.flat(Infinity)
-    array = arrayStillLarge.filter( function( element ) {
-        return element.length <= 15;
-    });
-    array.sort();
+function countDup3(arrIn, arrOutOriginal) {
     
-    var current = null;
-    var cnt = 0;
-    for (var i = 0; i < array.length; i++) {
-        if (array[i] != current) {
-            if (cnt > 0) {
-                const set = new Set
-                ([current + ' appears --> ' + cnt + ' times<br>']);
-                playerTotal[0] = Array.from(set);
-            }
-            current = array[i];
-            cnt = 1;
-        } else {
-            cnt++;
+    arrIn = arrIn.filter( function( element ) {
+        return element.length <= 50;
+    });
+
+    arrOut = [];
+    
+    var uniqueCount = arrIn.flat(Infinity);
+    var uniqueChars = [];
+    
+    for (i of uniqueCount) {
+        if (uniqueChars.indexOf(i) == -1) {
+            uniqueChars.push(i);
+        } 
+    }
+    
+    for (x of uniqueChars) {
+        let timesAppeared = 0;
+        for (i of uniqueCount) {
+            if (i == x) {timesAppeared++;}
         }
+        arrOut.push(`${x} x ${timesAppeared},`);
+        arrOut = arrOut.filter( function( element ) {
+            return element.length <= 500;
+        });
+        arrOutOriginal[0] = arrOut;
+        console.log("arrOut =",arrOut);
+        
     }
-    if (cnt > 0) {
-        const set = new Set
-        ([current + ' appears --> ' + cnt + ' times']);
-        playerTotal[0] = Array.from(set);
-    }
-    playerTotal = playerTotal[0]
-    console.log("player total =", playerTotal[0]);
 }
+    
 
 function prevTemplate(group,player) {
     if (group[player][2] === 0) {
@@ -381,27 +406,25 @@ function nextTemplate(group,player) {
     
 }
 
-function nextSupplyTemplate() {
-    console.log("started nextSupplyTemplate");
-    var x = shipInv[1][0][0][2];
-    var xNum = Number(x);
-    var z = shipInv[1][0][0]
-    console.log("x num =", xNum);
-    console.log("set x = ", x);
-    var y = shipInv[0][0][0];
-    console.log("shipInv[0][0][5][1] = ", shipInv[0][0][5][1]);
-    console.log("y = ", y);
+function nextSupplyTemplate(supIndex, supBox, player) {
 
-    console.log("xNum + 1 = ", xNum + 1);
-    console.log("x + 1 = ", shipInv[1][0][0][2] + 1);
+      //shipInv[1][2][0]
     
-    shipInv[1][0][0] = shipInv[0][0][x++];
-    if (typeof shipInv[1][0][0] == 'undefined') {
-        shipInv[1][0][0] = shipInv[0][0][0]
+    if (shipInv[player][2][supIndex] >= shipInv[0][0].length - 1) {
+        shipInv[player][2][supIndex] = 0
+
+      //shipInv[1][0][0]
+        shipInv[player][0][supBox] = shipInv[0][0][shipInv[player][2][supIndex]]
     };
-    console.log(shipInv[1][0][0]);
+    
+    shipInv[player][2][supIndex] = shipInv[player][2][supIndex] * 1 + 1;
+    shipInv[player][0][supBox] = shipInv[0][0][shipInv[player][2][supIndex]];
+    
+    countDup3(shipInv[player][0], shipInv[player][1]);
+    console.log("------ shipInv supply is", shipInv[1][0][1]); 
 
-
+    
+    
     
 }
 
@@ -480,11 +503,114 @@ Socketio.on("connection", socket => {
         switch(changeSupply) {
         case "1box1":
 
-            nextSupplyTemplate();
+            nextSupplyTemplate(0, 0, 1);
             
             console.log("supply tried to change from socket");
+            console.log("supIndex =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
             Socketio.emit ("shipInv", shipInv);
             break;
+        case "1box2":
+            
+            nextSupplyTemplate(1, 1, 1);
+            
+            console.log("supply tried to change from socket");
+            console.log("supIndex =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "1box3":
+            
+            nextSupplyTemplate(2, 2, 1);
+            
+            console.log("supply tried to change from socket");
+            console.log("supIndex =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "1box4":
+            
+            nextSupplyTemplate(3, 3, 1);
+            
+            console.log("supply tried to change from socket");
+            console.log("supIndex =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "1box5":
+            
+            nextSupplyTemplate(4, 4, 1);
+            
+            console.log("supply tried to change from socket");
+            console.log("supIndex =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "1box6":
+            
+            nextSupplyTemplate(5, 5, 1);
+            
+            console.log("supply tried to change from socket");
+            console.log("supIndex =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "1box7":
+            
+            nextSupplyTemplate(6, 6, 1);
+            
+            console.log("supply tried to change from socket");
+            console.log("supIndex =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "1box8":
+            
+            nextSupplyTemplate(7, 7, 1);
+            
+            console.log("supply tried to change from socket");
+            console.log("supIndex =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "1box9":
+            
+            nextSupplyTemplate(8, 8, 1);
+            
+            console.log("supply tried to change from socket");
+            console.log("supIndex =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "1box10":
+            
+            nextSupplyTemplate(9, 9, 1);
+            
+            console.log("supply tried to change from socket");
+            console.log("supIndex =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "1box11":
+            
+            nextSupplyTemplate(10, 10, 1);
+            
+            console.log("supply tried to change from socket");
+            console.log("supIndex =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "1box12":
+            
+            nextSupplyTemplate(11, 11, 1);
+            
+            console.log("supply tried to change from socket");
+            console.log("supIndex =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+
+            
         }
     });
     
@@ -781,8 +907,9 @@ Socketio.on("connection", socket => {
 
 Http.listen(3000, () => {
     playerCards[0][1] = playerCards[0][0][ playerCards[0][2] ]
+    countDup3(shipInv[1][0], shipInv[1][1]);
+    console.log("shipInv 1 1 0 0 = ", shipInv[1][0][1][0]);
     console.log("Listening at :3000...");
-    console.log(shipInv[1][0][0][2])
 });
 
 //below this point is functions to help make the random pick faster
