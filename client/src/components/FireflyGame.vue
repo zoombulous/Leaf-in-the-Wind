@@ -1,7 +1,6 @@
 <template>
 <div class="container">
   <h1>Firefly Game</h1>
-  <h5>{{shipInv[0][0][1][1]}}</h5>
   <div v-if="ready">
     <div class="row">
       <div class="col-md-4 col-lg-6 offset-lg-3 offset-md-4">
@@ -150,7 +149,16 @@
     </div>
     <div class="row">
       <div class="col">
-
+        <ul id="example-1">
+          <li v-for="item in shipInv[1][1][0]" :key="item">
+            {{ item }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        
         <div class="img-wrapper">
           <div class="img1">
                <p v-if="player2Chosen"> 
@@ -158,9 +166,16 @@
           </div>
           <div class="img2">
             <img v-bind:src="shipInv[1][0][0][0]"
-             v-on:click="supply('1box1')"
-             height="50px"/>
+                 v-on:click="supply('1box1')"
+                 height="50px"/>
           </div>
+          <div class="img3">
+            <img v-bind:src="shipInv[1][0][1][0]"
+                 v-on:click="supply('1box2')"
+                 height="50px"/>
+          </div>
+          
+          
           
         </div>
       </div>
@@ -566,8 +581,6 @@
 
 <style>
 @import './game_styles.css';
-
-
 </style>
 
 <script>
@@ -584,7 +597,6 @@ import "./bonniemae.png";
 import VueGallerySlideshow from 'vue-gallery-slideshow';
 import myImage from "./map-min.jpg";
 import ship from "./ship.png";
-
 var z_broken_shuttle = require("./z_broken_shuttle.jpg")
 var z_cruiser_patrol = require("./z_cruiser_patrol.jpg")
 var z_engine_room = require("./z_engine_room.jpg")
@@ -592,7 +604,6 @@ var z_minor_tech_diff = require("./z_minor_tech_diff.jpg")
 var z_the_big_black = require("./z_the_big_black.jpg")
 var bonanza = require("./bonanza.png")
 var bonniemae = require("./bonniemae.png")
-
 export default {
     name: "Firefly",
     data() {
@@ -690,7 +701,6 @@ export default {
     },
       created() {
         this.socket = io("http://localhost:3000");
-
 this.socket.on('chat-message', (data) => {
             this.messages.push({ message: data.message, type: 1, by: data.user })
             this.typing = false
@@ -704,7 +714,6 @@ this.socket.on('chat-message', (data) => {
             this.typing = data
             
         })
-
 this.socket.on('stoptyping', () => {
             this.typing = false
             this.$nextTick(() => {
@@ -713,7 +722,6 @@ this.socket.on('stoptyping', () => {
             });
             this.scrollToEnd();
                 })
-
 this.socket.on('left', (name) => {
                     this.online.splice(this.online.indexOf(name))
                     this.info.push({ name: name, type: 'Left' })
@@ -729,7 +737,6 @@ this.socket.on('left', (name) => {
                         this.info = []
                     }, 5000);
                 })
-
         },
     mounted() {
         this.func();
@@ -740,15 +747,12 @@ this.socket.on('left', (name) => {
         this.socket.on("wallet1", moneyData1 => {
             this.wallet1 = moneyData1;
         });
-
  window.onbeforeunload = () => {
             this.socket.emit('left', this.name)
         }
         this.socket.on('noOfConnections', (count) => {
             this.connectionCount = count
         })
-
-
         this.socket.on("travelCards", movingMove => {
             console.log("socket on before travelCards connect");
             this.travelCards = movingMove;
@@ -766,7 +770,6 @@ this.socket.on ("shipInv", changeSupply => {
 console.log("vue tried changing ship supply");
 this.shipInv = changeSupply
 });
-
         this.socket.on("position", data => {
             let img = new Image();
             img.src = ship;
@@ -807,7 +810,6 @@ this.shipInv = changeSupply
         });
     },
     methods: {
-
   send() {
             this.socket.emit('chat-message', { message: this.newmessage, user: this.name })
             this.messages.push({ message: this.newmessage, type: 0, by: 'Me' })
@@ -817,7 +819,6 @@ this.shipInv = changeSupply
                 this.scrollToEnd();
             });
 },
-
  isTyping() {
             this.socket.emit('typing', this.name)
             
@@ -830,7 +831,6 @@ this.shipInv = changeSupply
             var chatbox = this.$el.querySelector("#chatbox");
             chatbox.scrollTop = container.scrollHeight;
         },
-
         func: function() {
             let cvn = this.$refs.canvas;
             let ctx = cvn.getContext("2d");
@@ -862,12 +862,10 @@ this.shipInv = changeSupply
             this.socket.emit("give", x);
             this.socket.emit("playerCards", playerCards);
         },
-
 supply: function(x) {
 this.socket.emit("supply", x);
 this.socket.emit("shipInv", shipInv);
 },
-
         nestedPicker: function() {
             var chosenImage =
                 Math.floor(Math.random() *
