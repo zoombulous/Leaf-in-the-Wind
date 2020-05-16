@@ -5,6 +5,167 @@
     overflow-y: scroll;
 }
 
+.3give1 {
+  position: absolute;
+  top: 92px;
+  bottom: 0;
+  left: 275px;
+  right: 0;
+  text-align: center;
+  z-index:2
+}
+
+.p3s1and2 {
+  position: absolute;
+  top: 92px;
+  bottom: 0;
+  left: 285px;
+  right: 0;
+  text-align: center;
+  z-index:2
+}
+
+img-wrapper {
+  position: relative;
+  width: 10%;
+ }
+
+.img1 {
+  position: absolute;
+  top: 0;
+  bottom: 5000px;
+  left: 100px;
+  right: 0;
+  text-align: center;
+  z-index:-1;
+}
+
+.img2 {
+  position: absolute;
+  top: 92px;
+  bottom: 0;
+  left: 275px;
+  right: 0;
+  text-align: center;
+  z-index:2
+}
+.img3 {
+  position: absolute;
+  top: 92px;
+  bottom: 0;
+  left: 450px;
+  right: 0;
+  text-align: center;
+  z-index:3
+}
+.img4 {
+  position: absolute;
+  top: 92px;
+  bottom: 0;
+  left: 630px;
+  right: 0;
+  text-align: center;
+  z-index:4
+}
+.img5 {
+  position: absolute;
+  top: 92px;
+  bottom: 0;
+  left: 815px;
+  right: 0;
+  text-align: center;
+  z-index:5
+}
+.img6 {
+  position: absolute;
+  top: 182px;
+  bottom: 0;
+  left: 815px;
+  right: 0;
+  text-align: center;
+  z-index:6
+}
+.img7 {
+  position: absolute;
+  top: 182px;
+  bottom: 0;
+  left: 635px;
+  right: 0;
+  text-align: center;
+  z-index:7
+}
+.img8 {
+  position: absolute;
+  top: 182px;
+  bottom: 0;
+  left: 456px;
+  right: 0;
+  text-align: center;
+  z-index:8
+}
+.img9 {
+  position: absolute;
+  top: 182px;
+  bottom: 0;
+  left: 280px;
+  right: 0;
+  text-align: center;
+  z-index:9
+}
+.img10 {
+  position: absolute;
+  top: 310px;
+  bottom: 0;
+  left: 280px;
+  right: 0;
+  text-align: center;
+  z-index:10
+}
+.img11 {
+  position: absolute;
+  top: 310px;
+  bottom: 0;
+  left: 461px;
+  right: 0;
+  text-align: center;
+  z-index:11
+}
+.img12 {
+  position: absolute;
+  top: 310px;
+  bottom: 0;
+  left: 640px;
+  right: 0;
+  text-align: center;
+  z-index:12
+}
+.img13 {
+  position: absolute;
+  top: 310px;
+  bottom: 0;
+  left: 825px;
+  right: 0;
+  text-align: center;
+  z-index:13
+}
+.p3deck1 {
+  position: absolute;
+  top: 7%;
+  bottom: 0;
+  left: 93%;
+  right: 0;
+  text-align: center;
+  z-index:2
+}
+.p3deck2 {
+  position: absolute;
+  top: 7%;
+  bottom: 0;
+  left: 115%;
+  right: 0;
+  text-align: center;
+  z-index:2
+}
 .map-padding {
     padding-bottom: 20px;
 }
@@ -36,4 +197,3 @@ h1 {
     font-variant: small-caps;
     letter-spacing: 4px;
 } 
-
