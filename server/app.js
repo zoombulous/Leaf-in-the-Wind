@@ -65,51 +65,166 @@ var travelCards = [
     [z_the_big_black]
 ];
 
-var shipCards = [
-    //[avaiable], [p1], [p2], [p3], [p4], [chosing]
+var shipCards =
     [
-        bonanza,
-        bonniemae
-    ],
-    [],[],[],[],
-    []
-];
-
+        //[possible supply [[i],[n]], [[i],[n]] ]
+        [
+            [
+                [ [empty], ["Empty Slot"] ],
+                [ [bonniemae], ["Bonnie Mae"] ],
+                [ [bonanza], ["Bonanza"] ]
+                
+            ],
+        ],
+        //[player [total], [chosen 12boxes] ]
+        //player1
+        [
+            //chosen for boxes (12 in total)
+            [  [ [bonniemae], ["Bonnie Mae"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Passenger"] ],
+               [ [empty], ["Part"] ],
+               [ [empty], ["Part"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ]
+            ],
+            //totals
+            [],
+            //index
+            [[1],
+             [1],
+             [1],
+             [1],
+             [1],
+             [1],
+             [1],
+             [1],
+             [1],
+             [1],
+             [1],
+             [1]]
+        ],
+        
+        //player2
+        [  
+            //chosen for boxes (12 in total)
+            [  [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               //totals
+               [],
+               //index
+               [0]]
+        ],//player3
+        [  
+            //chosen for boxes (12 in total)
+            [  [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+            //totals
+               [],
+               //index
+               [0]]
+        ],//player4
+        [
+            //chosen for boxes (12 in total)
+            [  [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+            //totals
+               [],
+               //index
+               [0]]
+        ]
+    ]
 var playerCards = [
     // [inventory], [chosen], [index]
-    [ [    z_broken_shuttle,
+    [ [    empty,
+           z_broken_shuttle,
            z_cruiser_patrol,
            z_engine_room,
            z_minor_tech_diff,
            z_the_big_black
            
+      ], [["empty"], ["empty"]], [4]  ],
+    [ [    empty,
+           z_broken_shuttle,
+           z_cruiser_patrol,
+           z_engine_room,
+           z_minor_tech_diff,
+           z_the_big_black
            
-      ], [], [4] ],
-    [ [], [], [0] ],
-    [ [], [], [0] ],
-    [ [], [], [0] ]
+      ], [empty, empty], [4]  ],
+    [ [    ["empty"],
+           [[z_broken_shuttle],["bazaar"]],
+           [[z_cruiser_patrol],["tinker"]],
+           [[z_engine_room],["z_engine_room"]],
+           [[z_engine_room],["z_engine_room"]],
+           [[z_engine_room],["z_engine_room"]]
+           
+           
+      ], [empty, empty], [4]  ],
+    [ [    empty,
+           z_broken_shuttle,
+           z_cruiser_patrol,
+           z_engine_room,
+           z_minor_tech_diff,
+           z_the_big_black
+           
+      ], [empty, empty], [4] ],
+    //shops
+    [
+        //draw
+        [],
+        //discard
+        []
+    ],
+    [
+        //draw
+        [],
+        //discard
+        []
+    ]
 ];
-
-var playerShips = [
-    // [inventory], [chosen], [index]
-    [ [    "z_broken_shuttle",
-           "z_cruiser_patrol",
-           "z_engine_room",
-           "z_minor_tech_diff",
-           "z_the_big_black"
-           
-           
-      ], [], [4] ],
-    [ [], [], [0] ],
-    [ [], [], [0] ],
-    [ [], [], [0] ]
-]
 
 var shipInv =
     [
         //[possible supply [[i],[n]], [[i],[n]] ]
         [
             [
+                [ [empty], ["Empty Slot"] ],
                 [ [empty], ["Empty Slot"] ],
                 [ [cargo], ["Cargo"] ],
                 [ [contraband], ["Contraband"] ],
@@ -290,15 +405,69 @@ function p1Prev() {
     p1Picker();
 }
 
+function p3c1giveToX(getting) {
+    console.log("start giving = ", playerCards[2][0].length,
+                "getting = ", getting.length);
+    if (playerCards[2][0].length > 2) {
+        
+        getting.push(playerCards[2][0][1]);
+
+        
+        playerCards[2][0] = playerCards[2][0].filter(function(x) {
+            return x !== (playerCards[2][0][1]);
+        });
+        console.log("end giving = ", playerCards[2][0].length,
+                        "getting = ", getting.length);
+    }
+}
+
+function p3c1giveToDiscard() {
+    
+    if (playerCards[2][0].length > 2) {
+
+        
+        if (playerCards[2][0][1][1] = "bazaar") {
+            playerCards[4][1].push(playerCards[2][0][1]);
+            console.log("discarded into bazaar",
+                        "bazaar length = ", playerCards[4][1].length,
+                        "tinker length = ", playerCards[5][1].length);
+        };
+        if (playerCards[2][0][1][1] = "tinker") {
+            playerCards[5][1].push(playerCards[2][0][1]);
+            console.log("discarded into tinker",
+                        "bazaar length = ", playerCards[4][1].length,
+                        "tinker length = ", playerCards[5][1].length);
+        };
+        playerCards[2][0] = playerCards[2][0].filter(function(x) {
+            return x !== (playerCards[2][0][1]);
+        });
+    
+    }
+}
+
+function swap(cardsArray, first, second){
+    console.log(cardsArray);
+    [cardsArray[first], cardsArray[second]] =
+        [cardsArray[second], cardsArray[first]]
+    console.log(cardsArray);
+}
+
+function swapPriv(cardsArray, first, second){
+    console.log(cardsArray[0][first]);
+    [cardsArray[0][first], cardsArray[1][second]] =
+        [cardsArray[1][second], cardsArray[0][first]]
+    console.log(cardsArray[0][first]);
+}
+
 function giveTemplate(group, giving, getting) {
     group[giving][1] = group[giving][0][ group[giving][2] ]
     
     console.log("giving player index = ",group[giving][2],
                 "giving player chosen card at start of function = ",
-                        group[giving][1]);
+                group[giving][1], "give temp was called");
     
     console.log("before push, giving player chosen = ",
-                        group[giving][1]);
+                group[giving][1], "give temp was called");
     
     group[getting][0].push(group[giving][1]);
     
@@ -346,8 +515,10 @@ function giveTemplate(group, giving, getting) {
                         "giving player chosen = ",
                         group[giving][1],
                         "giving player index = ",
-                        group[giving][2]);
+                group[giving][2], "give temp was called");
 }
+
+
 
 function countDup3(arrIn, arrOutOriginal) {
     
@@ -376,7 +547,6 @@ function countDup3(arrIn, arrOutOriginal) {
             return element.length <= 500;
         });
         arrOutOriginal[0] = arrOut;
-        console.log("arrOut =",arrOut);
         
     }
 }
@@ -406,23 +576,22 @@ function nextTemplate(group,player) {
     
 }
 
-function nextSupplyTemplate(supIndex, supBox, player) {
+function nextSupplyTemplate(group, supIndex, supBox, player) {
 
       //shipInv[1][2][0]
     
-    if (shipInv[player][2][supIndex] >= shipInv[0][0].length - 1) {
-        shipInv[player][2][supIndex] = 0
+    if (group[player][2][supIndex] >= group[0][0].length - 1) {
+        group[player][2][supIndex] = 0
 
-      //shipInv[1][0][0]
-        shipInv[player][0][supBox] = shipInv[0][0][shipInv[player][2][supIndex]]
+      //group[1][0][0]
+        group[player][0][supBox] = group[0][0][group[player][2][supIndex]]
     };
     
-    shipInv[player][2][supIndex] = shipInv[player][2][supIndex] * 1 + 1;
-    shipInv[player][0][supBox] = shipInv[0][0][shipInv[player][2][supIndex]];
+    group[player][2][supIndex] = group[player][2][supIndex] * 1 + 1;
+    group[player][0][supBox] = group[0][0][group[player][2][supIndex]];
     
-    countDup3(shipInv[player][0], shipInv[player][1]);
-    console.log("------ shipInv supply is", shipInv[1][0][1]); 
-
+    countDup3(group[player][0], group[player][1]);
+    console.log("supIndex =", supIndex, "supBox =", supBox, "player =", player); 
     
     
     
@@ -498,12 +667,26 @@ Socketio.on("connection", socket => {
     socket.on('stoptyping', () => {
         socket.broadcast.emit('stoptyping')
     });
+
+    socket.on("chosenShip", changeShip => {
+        switch(changeShip) {
+        case "p3nextShip":
+
+            nextSupplyTemplate(shipCards, 0, 0, 1);
+            console.log("vue tried to change ship",shipCards[1][0][0][1]);
+
+            Socketio.emit ("shipCards", shipCards);
+            break;
     
+        }
+    });
+
+                                           
     socket.on("supply", changeSupply => {
         switch(changeSupply) {
         case "1box1":
 
-            nextSupplyTemplate(0, 0, 1);
+            nextSupplyTemplate(shipInv, 0, 0, 1);
             
             console.log("supply tried to change from socket");
             console.log("supIndex =",shipInv[1][2][0],
@@ -512,7 +695,7 @@ Socketio.on("connection", socket => {
             break;
         case "1box2":
             
-            nextSupplyTemplate(1, 1, 1);
+            nextSupplyTemplate(shipInv, 1, 1, 1);
             
             console.log("supply tried to change from socket");
             console.log("supIndex =",shipInv[1][2][0],
@@ -521,7 +704,7 @@ Socketio.on("connection", socket => {
             break;
         case "1box3":
             
-            nextSupplyTemplate(2, 2, 1);
+            nextSupplyTemplate(shipInv, 2, 2, 1);
             
             console.log("supply tried to change from socket");
             console.log("supIndex =",shipInv[1][2][0],
@@ -530,7 +713,7 @@ Socketio.on("connection", socket => {
             break;
         case "1box4":
             
-            nextSupplyTemplate(3, 3, 1);
+            nextSupplyTemplate(shipInv, 3, 3, 1);
             
             console.log("supply tried to change from socket");
             console.log("supIndex =",shipInv[1][2][0],
@@ -539,7 +722,7 @@ Socketio.on("connection", socket => {
             break;
         case "1box5":
             
-            nextSupplyTemplate(4, 4, 1);
+            nextSupplyTemplate(shipInv, 4, 4, 1);
             
             console.log("supply tried to change from socket");
             console.log("supIndex =",shipInv[1][2][0],
@@ -548,7 +731,7 @@ Socketio.on("connection", socket => {
             break;
         case "1box6":
             
-            nextSupplyTemplate(5, 5, 1);
+            nextSupplyTemplate(shipInv, 5, 5, 1);
             
             console.log("supply tried to change from socket");
             console.log("supIndex =",shipInv[1][2][0],
@@ -557,7 +740,7 @@ Socketio.on("connection", socket => {
             break;
         case "1box7":
             
-            nextSupplyTemplate(6, 6, 1);
+            nextSupplyTemplate(shipInv, 6, 6, 1);
             
             console.log("supply tried to change from socket");
             console.log("supIndex =",shipInv[1][2][0],
@@ -566,7 +749,7 @@ Socketio.on("connection", socket => {
             break;
         case "1box8":
             
-            nextSupplyTemplate(7, 7, 1);
+            nextSupplyTemplate(shipInv, 7, 7, 1);
             
             console.log("supply tried to change from socket");
             console.log("supIndex =",shipInv[1][2][0],
@@ -575,7 +758,7 @@ Socketio.on("connection", socket => {
             break;
         case "1box9":
             
-            nextSupplyTemplate(8, 8, 1);
+            nextSupplyTemplate(shipInv, 8, 8, 1);
             
             console.log("supply tried to change from socket");
             console.log("supIndex =",shipInv[1][2][0],
@@ -584,7 +767,7 @@ Socketio.on("connection", socket => {
             break;
         case "1box10":
             
-            nextSupplyTemplate(9, 9, 1);
+            nextSupplyTemplate(shipInv, 9, 9, 1);
             
             console.log("supply tried to change from socket");
             console.log("supIndex =",shipInv[1][2][0],
@@ -593,7 +776,7 @@ Socketio.on("connection", socket => {
             break;
         case "1box11":
             
-            nextSupplyTemplate(10, 10, 1);
+            nextSupplyTemplate(shipInv, 10, 10, 1);
             
             console.log("supply tried to change from socket");
             console.log("supIndex =",shipInv[1][2][0],
@@ -602,7 +785,7 @@ Socketio.on("connection", socket => {
             break;
         case "1box12":
             
-            nextSupplyTemplate(11, 11, 1);
+            nextSupplyTemplate(shipInv, 11, 11, 1);
             
             console.log("supply tried to change from socket");
             console.log("supIndex =",shipInv[1][2][0],
@@ -613,12 +796,58 @@ Socketio.on("connection", socket => {
             
         }
     });
+
+    socket.on ("giveManual", giveToManual => {
+        switch(giveToManual) {
+        case "p3Discard1":
+            p3c1giveToDiscard()
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3Give1ToP1":
+
+            p3c1giveToX
+            //getting
+            (playerCards[0][1],
+             //doing giving and giving chosen weren't working,
+             //so they are put in manually
+             );
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3Priv1SwitchMain1":
+            
+            giveTemplateManualChosen(playerCards, 1, 1, playerCards[2][0][0], 2)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3Switch1To2":
+            
+            swap(playerCards[2][0],1,2);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3Switch1To1Priv":
+            
+            swapPriv(playerCards[2],1,1);
+            
+            Socketio.emit ("playerCards", playerCards);
+        }
+    });
+    
     
     socket.on ("give", giveTo => {
         switch(giveTo) {
+        case "p3Give1ToP1":
+
+            giveTemplateManualChosen(playerCards, 1, 0, playerCards[2][0][0], 2)
+            
+            
+            Socketio.emit ("playerCards", playerCards);
         case "1to2":
 
             giveTemplate(playerCards, 0, 1);
+
+            console.log("dropdown tried to do something");
             
             Socketio.emit ("playerCards", playerCards);
             break;
@@ -904,12 +1133,10 @@ Socketio.on("connection", socket => {
     });
 });
 
-
 Http.listen(3000, () => {
-    playerCards[0][1] = playerCards[0][0][ playerCards[0][2] ]
     countDup3(shipInv[1][0], shipInv[1][1]);
-    console.log("shipInv 1 1 0 0 = ", shipInv[1][0][1][0]);
     console.log("Listening at :3000...");
+    
 });
 
 //below this point is functions to help make the random pick faster
