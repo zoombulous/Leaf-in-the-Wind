@@ -1,4 +1,4 @@
-<template>
+f<template>
 <div class="container">
   <h1>Firefly Game</h1>
   <div v-if="ready">
@@ -27,7 +27,7 @@
       </div>
     </div>
   </div>
-    
+  
   <div v-if="player === '1'">
     <div class="row">
       <div class="col">
@@ -133,7 +133,7 @@
       </p>
     </div>
     
-      </div>
+  </div>
   
   
   <div v-else-if="player === '3'">
@@ -158,31 +158,125 @@
     </div>
     <div class="row">
       <div class="col">
+        <button @click="chosenShip('p3nextShip')">change ship</button>
+        <div class="">
+          <p v-if="playerCards[0][1]"> 
+            <img style="width:50%" :src="playerCards[2][0]" alt=""></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-1-4">
         
         <div class="img-wrapper">
           <div class="img1">
-               <p v-if="player2Chosen"> 
-                 <img style="width:50%" :src="player2Chosen" alt=""></p>
+            <p v-if="shipCards[1][0][0][0]"> 
+              <img height="450px" :src="shipCards[1][0][0][0]" alt=""></p>
           </div>
+            
           <div class="img2">
             <img v-bind:src="shipInv[1][0][0][0]"
                  v-on:click="supply('1box1')"
-                 height="50px"/>
+                 height="88px"/>
           </div>
           <div class="img3">
             <img v-bind:src="shipInv[1][0][1][0]"
                  v-on:click="supply('1box2')"
-                 height="50px"/>
+                 height="88px"/>
           </div>
-          
-          
+          <div class="img4">
+            <img v-bind:src="shipInv[1][0][2][0]"
+                 v-on:click="supply('1box3')"
+                 height="88px"/>
+          </div>
+          <div class="img5">
+            <img v-bind:src="shipInv[1][0][3][0]"
+                 v-on:click="supply('1box4')"
+                 height="88px"/>
+          </div>
+          <div class="img6">
+            <img v-bind:src="shipInv[1][0][4][0]"
+                 v-on:click="supply('1box5')"
+                 height="88px"/>
+          </div>
+          <div class="img7">
+            <img v-bind:src="shipInv[1][0][5][0]"
+                 v-on:click="supply('1box6')"
+                 height="88px"/>
+          </div>
+          <div class="img8">
+            <img v-bind:src="shipInv[1][0][6][0]"
+                 v-on:click="supply('1box7')"
+                 height="88px"/>
+          </div>
+          <div class="img9">
+            <img v-bind:src="shipInv[1][0][7][0]"
+                 v-on:click="supply('1box8')"
+                 height="88px"/>
+          </div>
+          <div class="img10">
+            <img v-bind:src="shipInv[1][0][8][0]"
+                 v-on:click="supply('1box9')"
+                 height="88px"/>
+          </div>
+          <div class="img11">
+            <img v-bind:src="shipInv[1][0][9][0]"
+                 v-on:click="supply('1box10')"
+                 height="88px"/>
+          </div>
+          <div class="img12">
+            <img v-bind:src="shipInv[1][0][10][0]"
+                 v-on:click="supply('1box11')"
+                 height="88px"/>
+          </div>
+          <div class="img13">
+            <img v-bind:src="shipInv[1][0][11][0]"
+                 v-on:click="supply('1box12')"
+                 height="88px"/>
+          </div>
           
         </div>
       </div>
+      <div class="col-1-8">
+        <div>
+          <p v-if="playerCards[2][0][0]">
+            <img class="p3deck1" height="320px" :src="playerCards[2][0][1][0]" alt=""></p>
+        </div>
+        <div>
+          <button width="50px" class="3give1" @click="giveManual('p3Give1ToP1')">give</button>
+        </div>
+        <div>
+          <button width="50px" class="3give1"  @click="giveManual('p3Switch1To2')">switch</button>
+        </div>
+        <div>
+          <button width="50px" class="3give1"  @click="giveManual('p3Switch1To1Priv')">switch private</button>
+        </div>
+        <div>
+          <button width="50px" class="3give1"  @click="giveManual('p3Discard1')">discard</button>
+        </div>
+        <div>
+          <p v-if="playerCards[2][0][0]">
+            <img class="p3deck2" height="320px" :src="playerCards[2][0][2][0]" alt=""></p>
+        </div>
+        
+      </div>
     </div>
-
     <div class="row">
       <div class="col pt-5">
+        <div>
+          <p v-if="playerCards[2][1][0]">
+            <img class="p3deck2" height="320px" :src="playerCards[2][1][1]" alt=""></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col pt-5">
+        <p></p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col pt-5 pb-5">
         <p></p>
       </div>
     </div>
@@ -192,13 +286,13 @@
         <p></p>
       </div>
     </div>
-
+    
     <div class="row">
       <div class="col pt-5">
         <p></p>
       </div>
     </div>
-
+    
     <div class="row">
       <div class="col pt-5 pb-5">
         <p></p>
@@ -244,7 +338,7 @@
         </p>
       </div>
     </div>
-
+    
     <div class="row">
       <div class="col">
         <p>
@@ -316,9 +410,9 @@
   
   <div v-else>
     <div class="row">
-         <div class="col">
-           <p>Please Pick a Player Number</p>
-         </div>
+      <div class="col">
+        <p>Please Pick a Player Number</p>
+      </div>
     </div>
     
     <div class="row">
@@ -336,7 +430,7 @@
         </form>
       </div>
     </div>
-
+    
     <div v-if="ready">
       <div class="row">
         <div class="col">
@@ -378,7 +472,7 @@
       </div>
     </div>
   </div>
-    
+  
   <div class="row">
     <div class="col">
       <div id="container" class="container">
@@ -467,19 +561,19 @@
   <div class="row" v-if="ready">
     <div class="col">
       <p>Money {{ wallet1 }}</p>
-
+      
       <img src="./money/100Credits.jpg"
            v-on:click="moveMoney1('1add100')"
            height="100px"/>
-
+      
       <img src="./money/500Credits.jpg"
            v-on:click="moveMoney1('1add500')"
            height="100px"/>
-
+      
       <img src="./money/1000Credits.jpg"
            v-on:click="moveMoney1('1add1000')"
            height="100px"/>
-
+      
       <img src="./money/2000Credits.jpg"
            v-on:click="moveMoney1('1add2000')"
            height="100px"/>
@@ -504,7 +598,7 @@
       <p> above this is the nested array random image! </p>
       {{nestedImagesArray[0].length}}
       <button @click="nestedPicker">Draw a Card!</button>
-
+      
       <p v-if="chosenCard">
         <img style="width:20%" v-bind:src="chosenCard" alt=""></p>
       <p> above this is an image loading from base64 from socket.io without a working random function </p>
@@ -749,7 +843,7 @@ this.socket.on('left', (name) => {
         });
  window.onbeforeunload = () => {
             this.socket.emit('left', this.name)
-        }
+ }
         this.socket.on('noOfConnections', (count) => {
             this.connectionCount = count
         })
@@ -758,18 +852,34 @@ this.socket.on('left', (name) => {
             this.travelCards = movingMove;
             
         });
+
+this.socket.on ("playerCards", giveToManual => {
+            console.log("someone tried to give a card");
+            this.playerCards = giveToManual;
+            console.log("playerCards should equal giveTo",
+                        "player1 inv length = ", this.playerCards[0][0].length,
+                        "player2 inv length = ", this.playerCards[1][0].length);
+        });
+
         this.socket.on ("playerCards", giveTo => {
             console.log("someone tried to give a card");
             this.playerCards = giveTo;
             console.log("playerCards should equal giveTo",
-"player1 inv length = ", this.playerCards[0][0].length,
-"player2 inv length = ", this.playerCards[1][0].length);
+                        "player1 inv length = ", this.playerCards[0][0].length,
+                        "player2 inv length = ", this.playerCards[1][0].length);
         });
         
-this.socket.on ("shipInv", changeSupply => {
-console.log("vue tried changing ship supply");
-this.shipInv = changeSupply
-});
+        this.socket.on ("shipInv", changeSupply => {
+            console.log("vue tried changing ship supply");
+            this.shipInv = changeSupply
+        });
+
+        this.socket.on ("shipCards", changeShip => {
+            console.log("vue tried changing the ship");
+            this.shipCards = changeShip
+        });
+
+
         this.socket.on("position", data => {
             let img = new Image();
             img.src = ship;
@@ -862,10 +972,19 @@ this.shipInv = changeSupply
             this.socket.emit("give", x);
             this.socket.emit("playerCards", playerCards);
         },
-supply: function(x) {
-this.socket.emit("supply", x);
-this.socket.emit("shipInv", shipInv);
-},
+        
+        giveManual: function(x) {
+            this.socket.emit("giveManual", x);
+            this.socket.emit("playerCards", playerCards);
+        },
+        supply: function(x) {
+            this.socket.emit("supply", x);
+            this.socket.emit("shipInv", shipInv);
+        },
+        chosenShip: function(x) {
+            this.socket.emit("chosenShip", x);
+            this.socket.emit("shipCards", shipCards);
+        },
         nestedPicker: function() {
             var chosenImage =
                 Math.floor(Math.random() *
