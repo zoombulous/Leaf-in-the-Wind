@@ -1,3 +1,7 @@
+.invContainer {
+  width: 100vw;
+  height: 100vh;
+}
 
 #chatbox {
     height: 200px;
@@ -27,130 +31,753 @@
 
 img-wrapper {
   position: relative;
-  width: 10%;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
  }
+
+.job1 {
+  position: absolute;
+  top: 270px;
+  bottom:0px;
+  left: -35px;
+  right: 0px;
+  z-index:2;
+}
+
+.job2 {
+  position: absolute;
+  top: 630px;
+  bottom: 0px;
+  left: -35px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.job3 {
+  position: absolute;
+  top: 1000px;
+  bottom: 0px;
+  left: -35px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3i1Switch2{
+    position: absolute;
+    top: 835px;
+    bottom: 0px;
+    left: 1425px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3i2Switch3{
+    position: absolute;
+    top: 835px;
+    bottom: 0px;
+    left: 1675px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3i3Switch4{
+    position: absolute;
+    top: 835px;
+    bottom: 0px;
+    left: 1925px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3i4Switch5{
+    position: absolute;
+    top: 835px;
+    bottom: 0px;
+    left: 2175px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3i5Switch6{
+    position: absolute;
+    top: 835px;
+    bottom: 0px;
+    left: 2425px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3i6Switch7{
+    position: absolute;
+    top: 835px;
+    bottom: 0px;
+    left: 2675px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3i7Switch8{
+    position: absolute;
+    top: 835px;
+    bottom: 0px;
+    left: 2925px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3i8Switch9{
+    position: absolute;
+    top: 835px;
+    bottom: 0px;
+    left: 3175px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3i9Switch10{
+    position: absolute;
+    top: 835px;
+    bottom: 0px;
+    left: 3425px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3h1Switch2{
+    position: absolute;
+    top: 465px;
+    bottom: 0px;
+    left: 1425px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3h2Switch3{
+    position: absolute;
+    top: 465px;
+    bottom: 0px;
+    left: 1675px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3h3Switch4{
+    position: absolute;
+    top: 465px;
+    bottom: 0px;
+    left: 1925px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3h4Switch5{
+    position: absolute;
+    top: 465px;
+    bottom: 0px;
+    left: 2175px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3h5Switch6{
+    position: absolute;
+    top: 465px;
+    bottom: 0px;
+    left: 2425px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3h6Switch7{
+    position: absolute;
+    top: 465px;
+    bottom: 0px;
+    left: 2675px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3h7Switch8{
+    position: absolute;
+    top: 465px;
+    bottom: 0px;
+    left: 2925px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3h8Switch9{
+    position: absolute;
+    top: 465px;
+    bottom: 0px;
+    left: 3175px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3h9Switch10{
+    position: absolute;
+    top: 465px;
+    bottom: 0px;
+    left: 3425px;
+    right: 0px;
+    text-align: center;
+    z-index:3;
+    font-size: 40px;
+}
+
+.p3h1 {
+  position: absolute;
+  top: 160px;
+  bottom: 0px;
+  left: 600px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3h2 {
+  position: absolute;
+  top: 160px;
+  bottom: 0px;
+  left: 725px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3h3 {
+  position: absolute;
+  top: 160px;
+  bottom: 0px;
+  left: 850px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3h4 {
+  position: absolute;
+  top: 160px;
+  bottom: 0px;
+  left: 975px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3h5 {
+  position: absolute;
+  top: 160px;
+  bottom: 0px;
+  left: 1100px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3h6 {
+  position: absolute;
+  top: 160px;
+  bottom: 0px;
+  left: 1225px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3h7 {
+  position: absolute;
+  top: 160px;
+  bottom: 0px;
+  left: 1350px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3h8 {
+  position: absolute;
+  top: 160px;
+  bottom: 0px;
+  left: 1475px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3h9 {
+  position: absolute;
+  top: 160px;
+  bottom: 0px;
+  left: 1600px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3h10 {
+  position: absolute;
+  top: 160px;
+  bottom: 0px;
+  left: 1725px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3pr1 {
+  position: absolute;
+  top: -40px;
+  bottom: 0px;
+  left: 665px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3pr2 {
+  position: absolute;
+  top: -40px;
+  bottom: 0px;
+  left: 790px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3pr3 {
+  position: absolute;
+  top: -40px;
+  bottom: 0px;
+  left: 915px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3pr4 {
+  position: absolute;
+  top: -40px;
+  bottom: 0px;
+  left: 1040px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3pr5 {
+  position: absolute;
+  top: -40px;
+  bottom: 0px;
+  left: 1165px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3pr6 {
+  position: absolute;
+  top: -40px;
+  bottom: 0px;
+  left: 1290px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3pr7 {
+  position: absolute;
+  top: -40px;
+  bottom: 0px;
+  left: 1415px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3pr8 {
+  position: absolute;
+  top: -40px;
+  bottom: 0px;
+  left: 1540px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3pr9 {
+  position: absolute;
+  top: -40px;
+  bottom: 0px;
+  left: 1665px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3pr10 {
+  position: absolute;
+  top: -40px;
+  bottom: 0px;
+  left: 1790px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3i1 {
+  position: absolute;
+  top: 690px;
+  bottom: 0px;
+  left: 1200px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3i2 {
+  position: absolute;
+  top: 690px;
+  bottom: 0px;
+  left: 1452px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3i3 {
+  position: absolute;
+  top: 690px;
+  bottom: 0px;
+  left: 1698px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3i4 {
+  position: absolute;
+  top: 690px;
+  bottom: 0px;
+  left: 1946px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3i5 {
+  position: absolute;
+  top: 690px;
+  bottom: 0px;
+  left: 2200px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+.p3i6 {
+  position: absolute;
+  top: 690px;
+  bottom: 0px;
+  left: 2450px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+.p3i7 {
+  position: absolute;
+  top: 690px;
+  bottom: 0px;
+  left: 2700px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+.p3i8 {
+  position: absolute;
+  top: 690px;
+  bottom: 0px;
+  left: 2950px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+.p3i9 {
+  position: absolute;
+  top: 690px;
+  bottom: 0px;
+  left: 3200px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+.p3i10 {
+  position: absolute;
+  top: 690px;
+  bottom: 0px;
+  left: 3450px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3su1 {
+  position: absolute;
+  top: 770px;
+  bottom: 0px;
+  left: 220px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.p3su2 {
+  position: absolute;
+  top: 770px;
+  bottom: 0px;
+  left: 465px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+.p3su3 {
+  position: absolute;
+  top: 770px;
+  bottom: 0px;
+  left: 705px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+.p3su4 {
+  position: absolute;
+  top: 770px;
+  bottom: 0px;
+  left: 949px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.shopSelect {
+  position: absolute;
+  top: 1425px;
+  bottom: 0px;
+  left: 100px;
+  right: 0px;
+  text-align: center;
+  width: 500px;
+  z-index:4;
+}
+
+.shop1Draw {
+  position: absolute;
+  top: 1500px;
+  bottom: 0px;
+  left: 100px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.shop1Discard {
+  position: absolute;
+  top: 1500px;
+  bottom: 0px;
+  left: 400px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.shop1Chosen1 {
+  position: absolute;
+  top: 1900px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+.shop1Chosen2 {
+  position: absolute;
+  top: 1900px;
+  bottom: 0px;
+  left: 250px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+.shop1Chosen3 {
+  position: absolute;
+  top: 1900px;
+  bottom: 0px;
+  left: 505px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
 
 .img1 {
   position: absolute;
-  top: 0;
-  bottom: 5000px;
-  left: 100px;
-  right: 0;
+  top: 272px;
+  bottom: 0px;
+  left: 213px;
+  right: 0px;
   text-align: center;
-  z-index:-1;
+  z-index: 1;
 }
 
 .img2 {
   position: absolute;
-  top: 92px;
+  top: 380px;
   bottom: 0;
-  left: 275px;
+  left: 740px;
   right: 0;
   text-align: center;
-  z-index:2
+  z-index: 3;
 }
 .img3 {
   position: absolute;
-  top: 92px;
+  top: 380px;
   bottom: 0;
-  left: 450px;
+  left: 845px;
   right: 0;
   text-align: center;
-  z-index:3
+  z-index: 3;
 }
 .img4 {
   position: absolute;
-  top: 92px;
+  top: 380px;
   bottom: 0;
-  left: 630px;
+  left: 945px;
   right: 0;
   text-align: center;
-  z-index:4
+  z-index: 3;
 }
 .img5 {
   position: absolute;
-  top: 92px;
+  top: 380px;
   bottom: 0;
-  left: 815px;
+  left: 1050px;
   right: 0;
   text-align: center;
-  z-index:5
+  z-index: 3;
 }
 .img6 {
   position: absolute;
-  top: 182px;
+  top: 480px;
   bottom: 0;
-  left: 815px;
+  left: 740px;
   right: 0;
   text-align: center;
-  z-index:6
+  z-index: 3;
 }
 .img7 {
   position: absolute;
-  top: 182px;
+  top: 480px;
   bottom: 0;
-  left: 635px;
+  left: 845px;
   right: 0;
   text-align: center;
-  z-index:7
+  z-index: 3;
 }
 .img8 {
   position: absolute;
-  top: 182px;
+  top: 480px;
   bottom: 0;
-  left: 456px;
+  left: 945px;
   right: 0;
   text-align: center;
-  z-index:8
+  z-index: 3;
 }
 .img9 {
   position: absolute;
-  top: 182px;
+  top: 480px;
   bottom: 0;
-  left: 280px;
+  left: 1050px;
   right: 0;
   text-align: center;
-  z-index:9
+  z-index: 3;
 }
 .img10 {
   position: absolute;
-  top: 310px;
+  top: 623px;
   bottom: 0;
-  left: 280px;
+  left: 740px;
   right: 0;
   text-align: center;
-  z-index:10
+  z-index: 3;
 }
 .img11 {
   position: absolute;
-  top: 310px;
+  top: 623px;
   bottom: 0;
-  left: 461px;
+  left: 845px;
   right: 0;
   text-align: center;
-  z-index:11
+  z-index: 20;
 }
 .img12 {
   position: absolute;
-  top: 310px;
+  top: 623px;
   bottom: 0;
-  left: 640px;
+  left: 945px;
   right: 0;
   text-align: center;
-  z-index:12
+  z-index: 30;
 }
 .img13 {
   position: absolute;
-  top: 310px;
+  top: 623px;
   bottom: 0;
-  left: 825px;
+  left: 1050px;
   right: 0;
   text-align: center;
-  z-index:13
+  z-index: 40;
 }
 .p3deck1 {
   position: absolute;
-  top: 7%;
+  top: 15%;
   bottom: 0;
   left: 93%;
   right: 0;
@@ -159,7 +786,7 @@ img-wrapper {
 }
 .p3deck2 {
   position: absolute;
-  top: 7%;
+  top: 17%;
   bottom: 0;
   left: 115%;
   right: 0;
