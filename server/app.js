@@ -170,7 +170,9 @@ var shipCards =
         ]
     ]
 var playerCards = [
-    // [inventory], [chosen], [index]
+    // [crew],[private],[items],[ship upgr],[jobs]
+
+    //0
     [ [    empty,
            z_broken_shuttle,
            z_cruiser_patrol,
@@ -179,6 +181,8 @@ var playerCards = [
            z_the_big_black
            
       ], [["empty"], ["empty"]], [4]  ],
+    
+    //1
     [ [    empty,
            z_broken_shuttle,
            z_cruiser_patrol,
@@ -187,15 +191,69 @@ var playerCards = [
            z_the_big_black
            
       ], [empty, empty], [4]  ],
-    [ [    ["empty"],
-           [[z_broken_shuttle],["bazaar"]],
-           [[z_cruiser_patrol],["tinker"]],
-           [[z_engine_room],["z_engine_room"]],
-           [[z_engine_room],["z_engine_room"]],
-           [[z_engine_room],["z_engine_room"]]
-           
-           
-      ], [empty, empty], [4]  ],
+
+    //2
+    //crew
+    [ [    [],
+           [[z_broken_shuttle],["bazaar"],["item"]],
+           [[z_cruiser_patrol],["tinker"],["item"]],
+           [[z_engine_room],["london"],["item"]],
+           [[z_broken_shuttle],["bazaar"],["item"]],
+           [[z_cruiser_patrol],["tinker"],["item"]],
+           [[z_engine_room],["london"],["item"]],
+           [[z_broken_shuttle],["bazaar"],["item"]],
+           [[z_cruiser_patrol],["tinker"],["item"]],
+           [[z_engine_room],["london"],["item"]],
+           [[z_engine_room],["london"],["item"]],
+           [[empty],[],[]]
+      ],
+      //private
+      [
+          [],
+          [[z_broken_shuttle],["bazaar"],["crew"]],
+          [[z_cruiser_patrol],["tinker"],["shipUpgrade"]],
+          [[z_cruiser_patrol],["tinker"],["crew"]],
+          [[z_broken_shuttle],["bazaar"],["crew"]],
+          [[z_cruiser_patrol],["tinker"],["shipUpgrade"]],
+          [[z_cruiser_patrol],["tinker"],["crew"]],
+          [[z_broken_shuttle],["bazaar"],["crew"]],
+          [[z_cruiser_patrol],["tinker"],["shipUpgrade"]],
+          [[z_cruiser_patrol],["tinker"],["crew"]],
+          [[z_cruiser_patrol],["tinker"],["shipUpgrade"]],
+          
+      ],
+      //items
+      [[],
+       [[z_broken_shuttle],["bazaar"],["item"]],
+       [[z_minor_tech_diff],["tinker"],["item"]],
+       [[z_engine_room],["london"],["item"]],
+       [[z_broken_shuttle],["bazaar"],["item"]],
+       [[z_minor_tech_diff],["tinker"],["item"]],
+       [[z_the_big_black],["london"],["item"]],
+       [[z_broken_shuttle],["bazaar"],["item"]],
+       [[z_minor_tech_diff],["tinker"],["item"]],
+       [[z_engine_room],["london"],["item"]],
+       [[z_broken_shuttle],["bazaar"],["item"]],
+       [[z_minor_tech_diff],["tinker"],["item"]],
+       [[z_engine_room],["london"],["item"]]
+      ],
+      //ship upgrade
+      [
+          [],
+          [[z_broken_shuttle],["bazaar"],["item"]],
+          [[z_minor_tech_diff],["tinker"],["item"]],
+          [[z_engine_room],["london"],["item"]],
+          [[z_broken_shuttle],["bazaar"],["item"]]
+      ],
+      //jobs
+      [[],
+       [[z_broken_shuttle],["Harken"]],
+       [[z_cruiser_patrol],["Mr.Universe"]],
+       [[z_the_big_black],["Mr.Universe"]]
+      ]
+    ],
+    
+    //3
     [ [    empty,
            z_broken_shuttle,
            z_cruiser_patrol,
@@ -207,15 +265,118 @@ var playerCards = [
     //shops
     [
         //draw
-        [],
+        [
+            [],
+            [[z_minor_tech_diff],["tinker"],["item"]],
+            [[z_engine_room],["london"],["item"]],
+            [[z_broken_shuttle],["bazaar"],["item"]]
+        ],
         //discard
-        []
+        [
+            [],
+            [[z_minor_tech_diff],["tinker"],["item"]],
+            [[z_engine_room],["london"],["item"]],
+            [[z_broken_shuttle],["bazaar"],["item"]]
+        ],
+        //considered
+        [
+            [],
+            [[z_minor_tech_diff],["tinker"],["item"]],
+            [[z_engine_room],["london"],["item"]],
+            [[z_broken_shuttle],["bazaar"],["item"]]
+        ]
     ],
     [
         //draw
-        [],
+        [
+            [],
+            [[z_minor_tech_diff],["tinker"],["item"]],
+            [[z_engine_room],["london"],["item"]],
+            [[z_broken_shuttle],["bazaar"],["item"]]
+        ],
         //discard
-        []
+        [
+            [],
+            [[z_minor_tech_diff],["tinker"],["item"]],
+            [[z_engine_room],["london"],["item"]],
+            [[z_broken_shuttle],["bazaar"],["item"]]
+        ],
+        //considered
+        [
+            [],
+            [[z_minor_tech_diff],["tinker"],["item"]],
+            [[z_engine_room],["london"],["item"]],
+            [[z_broken_shuttle],["bazaar"],["item"]]
+        ]
+    ],
+    [
+        //draw
+        [
+            [],
+            [[z_minor_tech_diff],["tinker"],["item"]],
+            [[z_engine_room],["london"],["item"]],
+            [[z_broken_shuttle],["bazaar"],["item"]]
+        ],
+        //discard
+        [
+            [],
+            [[z_minor_tech_diff],["tinker"],["item"]],
+            [[z_engine_room],["london"],["item"]],
+            [[z_broken_shuttle],["bazaar"],["item"]]
+        ],
+        //considered
+        [
+            [],
+            [[z_minor_tech_diff],["tinker"],["item"]],
+            [[z_engine_room],["london"],["item"]],
+            [[z_broken_shuttle],["bazaar"],["item"]]
+        ]
+    ],
+    [
+        //draw
+        [
+            [],
+            [[z_minor_tech_diff],["tinker"],["item"]],
+            [[z_engine_room],["london"],["item"]],
+            [[z_broken_shuttle],["bazaar"],["item"]]
+        ],
+        //discard
+        [
+            [],
+            [[z_minor_tech_diff],["tinker"],["item"]],
+            [[z_engine_room],["london"],["item"]],
+            [[z_broken_shuttle],["bazaar"],["item"]]
+        ],
+        //considered
+        [
+            [],
+            [[z_minor_tech_diff],["tinker"],["item"]],
+            [[z_engine_room],["london"],["item"]],
+            [[z_broken_shuttle],["bazaar"],["item"]]
+        ]
+    ],
+    [
+        //draw
+        [
+            [],
+            [[z_minor_tech_diff],["tinker"],["item"]],
+            [[z_engine_room],["london"],["item"]],
+            [[z_broken_shuttle],["bazaar"],["item"]]
+        ],
+        //discard
+        [
+            [],
+            [[z_minor_tech_diff],["tinker"],["item"]],
+            [[z_engine_room],["london"],["item"]],
+            [[z_broken_shuttle],["bazaar"],["item"]]
+        ],
+        //considered
+        [
+            [],
+            [[z_minor_tech_diff],["tinker"],["item"]],
+            [[z_engine_room],["london"],["item"]],
+            [[z_broken_shuttle],["bazaar"],["item"]]
+        ]
     ]
 ];
 
@@ -238,7 +399,7 @@ var shipInv =
         [
             //chosen for boxes (12 in total)
             [  [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
+               [ [part], ["Part"] ],
                [ [empty], ["Empty Slot"] ],
                [ [empty], ["Passenger"] ],
                [ [empty], ["Part"] ],
@@ -326,7 +487,6 @@ var shipInv =
             [0]]
         ]
     ]
-
 var images = [
     z_broken_shuttle,
     z_cruiser_patrol,
@@ -444,6 +604,46 @@ function p3c1giveToDiscard() {
     
     }
 }
+
+function p3c1PrivGiveToMain() {
+
+    console.log("items start = ", playerCards[2][2].length);
+
+    if (playerCards[2][0].length > 1) {
+        
+        
+        if (playerCards[2][1][1][2] == "item") {
+   
+            playerCards[2][2].push(playerCards[2][1][1]);
+            console.log("ITEM!!",
+                        "items length = ", playerCards[2][2].length,
+                        "crew length = ", playerCards[2][0].length,
+                        "ship upgrade = ", playerCards[2][3].length,
+                        "items left in private = ", playerCards[2][1].length);
+        };
+        if (playerCards[2][1][1][2] == "crew") {
+            playerCards[2][0].push(playerCards[2][1][1]);
+            console.log("CREW!!",
+                        "items length = ", playerCards[2][2].length,
+                        "crew length = ", playerCards[2][0].length,
+                        "ship upgrade = ", playerCards[2][3].length,
+                        "items left in private = ", playerCards[2][1].length);
+        };
+        if (playerCards[2][1][1][2] == "shipUpgrade") {
+            playerCards[2][3].push(playerCards[2][1][1]);
+            console.log("SHIP UPGRADE!!",
+                        "items length = ", playerCards[2][2].length,
+                        "crew length = ", playerCards[2][0].length,
+                        "ship upgrade = ", playerCards[2][3].length,
+                        "items left in private = ", playerCards[2][1].length);
+        };
+         playerCards[2][1] = playerCards[2][1].filter(function(x) {
+            return x !== (playerCards[2][1][1]);
+         });
+    
+    }
+}
+
 
 function swap(cardsArray, first, second){
     console.log(cardsArray);
@@ -576,6 +776,7 @@ function nextTemplate(group,player) {
     
 }
 
+    
 function nextSupplyTemplate(group, supIndex, supBox, player) {
 
       //shipInv[1][2][0]
@@ -593,9 +794,7 @@ function nextSupplyTemplate(group, supIndex, supBox, player) {
     countDup3(group[player][0], group[player][1]);
     console.log("supIndex =", supIndex, "supBox =", supBox, "player =", player); 
     
-    
-    
-}
+}    
 
 function base64_encode(file) {
     // read binary data
@@ -811,21 +1010,132 @@ Socketio.on("connection", socket => {
              //doing giving and giving chosen weren't working,
              //so they are put in manually
              );
+           
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3Priv1GiveMain":
+            //p3Priv1SwitchMain1
+            p3c1PrivGiveToMain();
             
             Socketio.emit ("playerCards", playerCards);
             break;
-        case "p3Priv1SwitchMain1":
+
+            //player 3 moving around crew
             
-            giveTemplateManualChosen(playerCards, 1, 1, playerCards[2][0][0], 2)
-            
-            Socketio.emit ("playerCards", playerCards);
-            break;
         case "p3Switch1To2":
             
             swap(playerCards[2][0],1,2);
             
             Socketio.emit ("playerCards", playerCards);
             break;
+        case "p3Switch2To3":
+            
+            swap(playerCards[2][0],2,3);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3Switch3To4":
+            
+            swap(playerCards[2][0],3,4);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3Switch4To5":
+            
+            swap(playerCards[2][0],4,5);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3Switch5To6":
+            
+            swap(playerCards[2][0],5,6);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3Switch6To7":
+            
+            swap(playerCards[2][0],6,7);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3Switch7To8":
+            
+            swap(playerCards[2][0],7,8);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3Switch8To9":
+            
+            swap(playerCards[2][0],8,9);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3Switch9To10":
+            
+            swap(playerCards[2][0],9,10);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            //player 3 moving around items
+            
+        case "p3SwitchItems1To2":
+            
+            swap(playerCards[2][2],1,2);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3SwitchItems2To3":
+            
+            swap(playerCards[2][2],2,3);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3SwitchItems3To4":
+            
+            swap(playerCards[2][2],3,4);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3SwitchItems4To5":
+            
+            swap(playerCards[2][2],4,5);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3SwitchItems5To6":
+            
+            swap(playerCards[2][2],5,6);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3SwitchItems6To7":
+            
+            swap(playerCards[2][2],6,7);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3SwitchItems7To8":
+            
+            swap(playerCards[2][2],7,8);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3SwitchItems8To9":
+            
+            swap(playerCards[2][2],8,9);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3SwitchItems9To10":
+            
+            swap(playerCards[2][2],9,10);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+            //player 3 moving between crew and private
+            
         case "p3Switch1To1Priv":
             
             swapPriv(playerCards[2],1,1);
@@ -1134,9 +1444,9 @@ Socketio.on("connection", socket => {
 });
 
 Http.listen(3000, () => {
-    countDup3(shipInv[1][0], shipInv[1][1]);
     console.log("Listening at :3000...");
     
+    console.log();
 });
 
 //below this point is functions to help make the random pick faster
