@@ -1,4 +1,4 @@
-f<template>
+<template>
 <div class="container">
   <h1>Firefly Game</h1>
   <div v-if="ready">
@@ -29,9 +29,466 @@ f<template>
   </div>
   
   <div v-if="player === '1'">
+
     <div class="row">
       <div class="col">
         <h4>You Are Player {{player}}!</h4>
+      </div>
+    </div>
+    <div>
+      <button @click="supply('1box1')">change supply</button>
+      <button @click="player2Prev">Previous</button>
+      <button @click="player2Next">Next</button>
+    </div>
+    <div class="row">
+      <div class="col">
+        <ul id="example-1">
+          <li v-for="item in shipInv[1][1][0]" :key="item">
+            {{ item }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button @click="chosenShip('p3nextShip')">change ship</button>
+        <div class="p3h2">
+          <p v-if="playerCards[0][1]"> 
+            <img style="width:50%" :src="playerCards[2][0]" alt=""></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-1-4">
+        
+        <div class="img-wrapper">
+          <div class="container">
+            <div class="img1">
+            <p v-if="shipCards[1][0][0][0]"> 
+              <img height="500px" :src="shipCards[1][0][0][0]" alt=""></p>
+          </div>
+          <div class="img2">
+          <img v-bind:src="shipInv[1][0][0][0]"
+               v-on:click="supply('1box1')"
+               height="88px"/>
+        </div>
+        <div class="img3">
+          <img v-bind:src="shipInv[1][0][1][0]"
+               v-on:click="supply('1box2')"
+               height="88px"/>
+        </div>
+        <div class="img4">
+          <img v-bind:src="shipInv[1][0][2][0]"
+               v-on:click="supply('1box3')"
+               height="88px"/>
+        </div>
+        <div class="img5">
+          <img v-bind:src="shipInv[1][0][3][0]"
+                 v-on:click="supply('1box4')"
+                 height="88px"/>
+        </div>
+        <div class="img6">
+            <img v-bind:src="shipInv[1][0][4][0]"
+                 v-on:click="supply('1box5')"
+                 height="88px"/>
+          </div>
+          <div class="img7">
+            <img v-bind:src="shipInv[1][0][5][0]"
+                 v-on:click="supply('1box6')"
+                 height="88px"/>
+          </div>
+          <div class="img8">
+            <img v-bind:src="shipInv[1][0][6][0]"
+                 v-on:click="supply('1box7')"
+                 height="88px"/>
+          </div>
+          <div class="img9">
+            <img v-bind:src="shipInv[1][0][7][0]"
+                 v-on:click="supply('1box8')"
+                 height="88px"/>
+          </div>
+          <div class="img10">
+            <img v-bind:src="shipInv[1][0][8][0]"
+                 v-on:click="supply('1box9')"
+                 height="88px"/>
+          </div>
+          <div class="img11">
+            <img v-bind:src="shipInv[1][0][9][0]"
+                 v-on:click="supply('1box10')"
+                 height="88px"
+                 />
+          </div>
+          <div class="img12">
+            <img v-bind:src="shipInv[1][0][10][0]"
+                 v-on:click="supply('1box11')"
+                 height="88px"/>
+          </div>
+          <div class="img13">
+            <img v-bind:src="shipInv[1][0][11][0]"
+                 v-on:click="supply('1box12')"
+                 height="88px"/>
+          </div>
+          
+          <div class="job1">
+            <p v-if="playerCards[2][4][1][0]"> 
+              <img height="350px" :src="playerCards[2][4][1][0]" alt=""></p>
+          </div>
+          <div class="job2">
+            <p v-if="playerCards[2][4][1][0]"> 
+              <img height="350px" :src="playerCards[2][4][2][0]" alt=""></p>
+          </div>
+          <div class="job3">
+            <p v-if="playerCards[2][4][1][0]"> 
+              <img height="350px" :src="playerCards[2][4][3][0]" alt=""></p>
+          </div>
+          
+          <div>
+            <button width="50px" class="3give1" @click="giveManual('p3Give1ToP1')">give</button>
+          </div>
+         
+          <div>
+            <button width="50px" class="3give1"  @click="giveManual('p3Switch1To1Priv')">switch private</button>
+          </div>
+          <div>
+            <button width="50px" class="3give1"  @click="giveManual('p3Discard1')">discard</button>
+          </div>
+          <div class="p3h1">
+            <p v-if="playerCards[2][0][1][0]">
+              <img class="p3h1" height="350px" :src="playerCards[2][0][1][0]" alt="playerCards[0][0]"></p>
+          </div>
+          
+          <div class="p3h1Switch2">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch1To2')">&#11138;</button>
+          </div>
+          
+          <div class="p3h2">
+            <p v-if="playerCards[2][0][2][0]"> 
+              <img class="p3h2" height="350px" :src="playerCards[2][0][2][0]" alt="playerCards[0][0]"></p>
+          </div>
+
+          <div class="p3h2Switch3">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch2To3')">&#11138;</button>
+          </div>
+          
+          <div class="p3h3">
+            <p v-if="playerCards[2][0][3][0]"> 
+              <img class="p3h3" height="350px" :src="playerCards[2][0][3][0]" alt="playerCards[0][0]"></p>
+          </div>
+
+          <div class="p3h3Switch4">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch3To4')">&#11138;</button>
+          </div>
+          
+          <div class="p3h4">
+            <p v-if="playerCards[2][0][4][0]"> 
+              <img class="p3h4" height="350px" :src="playerCards[2][0][4][0]" alt="playerCards[0][0]"></p>
+          </div>
+
+          <div class="p3h4Switch5">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch4To5')">&#11138;</button>
+          </div>
+          
+          <div class="p3h5">
+            <p v-if="playerCards[2][0][5][0]"> 
+              <img class="p3h5" height="350px" :src="playerCards[2][0][5][0]" alt="playerCards[0][0]"></p>
+          </div>
+
+          <div class="p3h5Switch6">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch5To6')">&#11138;</button>
+          </div>
+          
+          <div class="p3h6">
+            <p v-if="playerCards[2][0][6][0]"> 
+              <img class="p3h6" height="350px" :src="playerCards[2][0][6][0]" alt="playerCards[0][0]"></p>
+          </div>
+
+          <div class="p3h6Switch7">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch6To7')">&#11138;</button>
+          </div>
+          
+          <div class="p3h7">
+            <p v-if="playerCards[2][0][7][0]"> 
+              <img class="p3h7" height="350px" :src="playerCards[2][0][7][0]" alt="playerCards[0][0]"></p>
+          </div>
+
+          <div class="p3h7Switch8">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch7To8')">&#11138;</button>
+          </div>
+          
+          <div class="p3h8">
+            <p v-if="playerCards[2][0][8][0]"> 
+              <img class="p3h8" height="350px" :src="playerCards[2][0][8][0]" alt="playerCards[0][0]"></p>
+          </div>
+
+          <div class="p3h8Switch9">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch8To9')">&#11138;</button>
+          </div>
+          
+          <div class="p3h9">
+            <p v-if="playerCards[2][0][9][0]"> 
+              <img class="p3h9" height="350px" :src="playerCards[2][0][9][0]" alt="playerCards[0][0]"></p>
+          </div>
+
+          <div class="p3h9Switch10">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch9To10')">&#11138;</button>
+          </div>
+          
+          <div class="p3h10">
+            <p v-if="playerCards[2][0][10][0]"> 
+              <img class="p3h10" height="350px" :src="playerCards[2][0][10][0]" alt="playerCards[0][0]"></p>
+          </div>
+          
+          <div class="p3pr1">
+            <p v-if="playerCards[2][1][1][0]">
+              <img class="p3pr1" height="350px" :src="playerCards[2][1][1][0]" alt=""></p>
+          </div>
+          <div class="p3pr2">
+            <p v-if="playerCards[2][1][2][0]">
+              <img class="p3pr2" height="350px" :src="playerCards[2][1][2][0]" alt=""></p>
+          </div>
+          <div class="p3pr3">
+            <p v-if="playerCards[2][1][3][0]">
+              <img class="p3pr3" height="350px" :src="playerCards[2][1][3][0]" alt=""></p>
+          </div>
+          <div class="p3pr4">
+            <p v-if="playerCards[2][1][4][0]">
+              <img class="p3pr4" height="350px" :src="playerCards[2][1][4][0]" alt=""></p>
+          </div>
+          <div class="p3pr5">
+            <p v-if="playerCards[2][1][5][0]">
+              <img class="p3pr5" height="350px" :src="playerCards[2][1][5][0]" alt=""></p>
+          </div>
+          <div class="p3pr6">
+            <p v-if="playerCards[2][1][6][0]">
+              <img class="p3pr6" height="350px" :src="playerCards[2][1][6][0]" alt=""></p>
+          </div>
+          <div class="p3pr7">
+            <p v-if="playerCards[2][1][7][0]">
+              <img class="p3pr7" height="350px" :src="playerCards[2][1][7][0]" alt=""></p>
+          </div>
+          <div class="p3pr8">
+            <p v-if="playerCards[2][1][8][0]">
+              <img class="p3pr8" height="350px" :src="playerCards[2][1][8][0]" alt=""></p>
+          </div>
+          <div class="p3pr9">
+            <p v-if="playerCards[2][1][9][0]">
+              <img class="p3pr9" height="350px" :src="playerCards[2][1][9][0]" alt=""></p>
+          </div>
+          <div class="p3pr10">
+            <p v-if="playerCards[2][1][10][0]">
+              <img class="p3pr10" height="350px" :src="playerCards[2][1][10][0]" alt=""></p>
+          </div>
+          <div class="p3i1">
+            <p v-if="playerCards[2][2][1][0]">
+              <img height="350px" :src="playerCards[2][2][1][0]" alt=""></p>
+          </div>
+
+          <div class="p3i1Switch2">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems1To2')">&#11138;</button>
+          </div>
+          
+          <div class="p3i2">
+            <p v-if="playerCards[2][2][2][0]">
+              <img height="350px" :src="playerCards[2][2][2][0]" alt=""></p>
+          </div>
+
+          <div class="p3i2Switch3">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems2To3')">&#11138;</button>
+          </div>
+          
+          <div class="p3i3">
+            <p v-if="playerCards[2][2][3][0]">
+              <img height="350px" :src="playerCards[2][2][3][0]" alt=""></p>
+          </div>
+
+          <div class="p3i3Switch4">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems3To4')">&#11138;</button>
+          </div>
+          
+          <div class="p3i4">
+            <p v-if="playerCards[2][2][4][0]">
+              <img height="350px" :src="playerCards[2][2][4][0]" alt=""></p>
+          </div>
+
+          <div class="p3i4Switch5">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems4To5')">&#11138;</button>
+          </div>
+          
+          <div class="p3i5">
+            <p v-if="playerCards[2][2][5][0]">
+              <img height="350px" :src="playerCards[2][2][5][0]" alt=""></p>
+          </div>
+
+          <div class="p3i5Switch6">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems5To6')">&#11138;</button>
+          </div>
+          
+          <div class="p3i6">
+            <p v-if="playerCards[2][2][6][0]">
+              <img height="350px" :src="playerCards[2][2][6][0]" alt=""></p>
+          </div>
+
+          <div class="p3i6Switch7">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems6To7')">&#11138;</button>
+          </div>
+          
+          <div class="p3i7">
+            <p v-if="playerCards[2][2][7][0]">
+              <img height="350px" :src="playerCards[2][2][7][0]" alt=""></p>
+          </div>
+
+          <div class="p3i7Switch8">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems7To8')">&#11138;</button>
+          </div>
+          
+          <div class="p3i8">
+            <p v-if="playerCards[2][2][8][0]">
+              <img height="350px" :src="playerCards[2][2][8][0]" alt=""></p>
+          </div>
+
+          <div class="p3i8Switch9">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems8To9')">&#11138;</button>
+          </div>
+          
+          <div class="p3i9">
+            <p v-if="playerCards[2][2][9][0]">
+              <img height="350px" :src="playerCards[2][2][9][0]" alt=""></p>
+          </div>
+
+          <div class="p3i9Switch10">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems9To10')">&#11138;</button>
+          </div>
+          
+          <div class="p3i10">
+            <p v-if="playerCards[2][2][10][0]">
+              <img height="350px" :src="playerCards[2][2][10][0]" alt=""></p>
+          </div>
+          <div class="p3su1">
+            <p v-if="playerCards[2][3][1][0]">
+              <img height="350px" :src="playerCards[2][3][1][0]" alt=""></p>
+          </div>
+          <div class="p3su2">
+            <p v-if="playerCards[2][3][2][0]">
+              <img height="350px" :src="playerCards[2][3][2][0]" alt=""></p>
+          </div>
+          <div class="p3su3">
+            <p v-if="playerCards[2][3][3][0]">
+              <img height="350px" :src="playerCards[2][3][3][0]" alt=""></p>
+          </div>
+          <div class="p3su4">
+            <p v-if="playerCards[2][3][4][0]">
+              <img height="350px" :src="playerCards[2][3][4][0]" alt=""></p>
+          </div>
+
+          <div class="shopSelect">
+            <select class="form-control col" v-model="shop" label="Choose Shop">
+              <option value="null" disabled>Choose Shop</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          
+          <div v-if="shop === '1'">
+            <div class="shop1Draw">
+              <p v-if="playerCards[4][0][1][0]">
+                <img height="350px" :src="playerCards[4][0][1][0]" alt=""></p>
+            </div>
+            <div class="shop1Discard">
+              <p v-if="playerCards[4][1][1][0]">
+                <img height="350px" :src="playerCards[4][1][1][0]" alt=""></p>
+            </div>
+            <div class="shop1Chosen1">
+              <p v-if="playerCards[4][2][1][0]">
+                <img height="350px" :src="playerCards[4][2][1][0]" alt=""></p>
+            </div>
+            <div class="shop1Chosen2">
+              <p v-if="playerCards[4][2][2][0]">
+                <img height="350px" :src="playerCards[4][2][2][0]" alt=""></p>
+            </div>
+            <div class="shop1Chosen3">
+              <p v-if="playerCards[4][2][3][0]">
+                <img height="350px" :src="playerCards[4][2][3][0]" alt=""></p>
+            </div>
+          </div>
+          
+          </div>
+        </div>
+      </div>
+      <div>
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col pt-5">
+        <p></p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col pt-5 pb-5">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col pt-5 pb-5">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col pt-5 pb-5">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col pt-5 pb-5">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col pt-5 pb-5">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col pt-5 pb-5">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col pt-5 pb-5">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col pt-5 pb-5">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col pt-5 pb-5">
+        <p></p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col pt-5">
+        <p></p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col pt-5 pb-5">
+        <p></p>
       </div>
     </div>
     
@@ -159,7 +616,7 @@ f<template>
     <div class="row">
       <div class="col">
         <button @click="chosenShip('p3nextShip')">change ship</button>
-        <div class="">
+        <div class="p3h2">
           <p v-if="playerCards[0][1]"> 
             <img style="width:50%" :src="playerCards[2][0]" alt=""></p>
         </div>
@@ -169,32 +626,32 @@ f<template>
       <div class="col-1-4">
         
         <div class="img-wrapper">
-          <div class="img1">
+          <div class="container">
+            <div class="img1">
             <p v-if="shipCards[1][0][0][0]"> 
-              <img height="450px" :src="shipCards[1][0][0][0]" alt=""></p>
+              <img height="500px" :src="shipCards[1][0][0][0]" alt=""></p>
           </div>
-            
           <div class="img2">
-            <img v-bind:src="shipInv[1][0][0][0]"
-                 v-on:click="supply('1box1')"
-                 height="88px"/>
-          </div>
-          <div class="img3">
-            <img v-bind:src="shipInv[1][0][1][0]"
-                 v-on:click="supply('1box2')"
-                 height="88px"/>
-          </div>
-          <div class="img4">
-            <img v-bind:src="shipInv[1][0][2][0]"
-                 v-on:click="supply('1box3')"
-                 height="88px"/>
-          </div>
-          <div class="img5">
-            <img v-bind:src="shipInv[1][0][3][0]"
+          <img v-bind:src="shipInv[1][0][0][0]"
+               v-on:click="supply('1box1')"
+               height="88px"/>
+        </div>
+        <div class="img3">
+          <img v-bind:src="shipInv[1][0][1][0]"
+               v-on:click="supply('1box2')"
+               height="88px"/>
+        </div>
+        <div class="img4">
+          <img v-bind:src="shipInv[1][0][2][0]"
+               v-on:click="supply('1box3')"
+               height="88px"/>
+        </div>
+        <div class="img5">
+          <img v-bind:src="shipInv[1][0][3][0]"
                  v-on:click="supply('1box4')"
                  height="88px"/>
-          </div>
-          <div class="img6">
+        </div>
+        <div class="img6">
             <img v-bind:src="shipInv[1][0][4][0]"
                  v-on:click="supply('1box5')"
                  height="88px"/>
@@ -222,7 +679,8 @@ f<template>
           <div class="img11">
             <img v-bind:src="shipInv[1][0][9][0]"
                  v-on:click="supply('1box10')"
-                 height="88px"/>
+                 height="88px"
+                 />
           </div>
           <div class="img12">
             <img v-bind:src="shipInv[1][0][10][0]"
@@ -235,38 +693,295 @@ f<template>
                  height="88px"/>
           </div>
           
+          <div class="job1">
+            <p v-if="playerCards[2][4][1][0]"> 
+              <img height="350px" :src="playerCards[2][4][1][0]" alt=""></p>
+          </div>
+          <div class="job2">
+            <p v-if="playerCards[2][4][1][0]"> 
+              <img height="350px" :src="playerCards[2][4][2][0]" alt=""></p>
+          </div>
+          <div class="job3">
+            <p v-if="playerCards[2][4][1][0]"> 
+              <img height="350px" :src="playerCards[2][4][3][0]" alt=""></p>
+          </div>
+          
+          <div>
+            <button width="50px" class="3give1" @click="giveManual('p3Give1ToP1')">give</button>
+          </div>
+         
+          <div>
+            <button width="50px" class="3give1"  @click="giveManual('p3Switch1To1Priv')">switch private</button>
+          </div>
+          <div>
+            <button width="50px" class="3give1"  @click="giveManual('p3Discard1')">discard</button>
+          </div>
+          <div class="p3h1">
+            <p v-if="playerCards[2][0][1][0]">
+              <img class="p3h1" height="350px" :src="playerCards[2][0][1][0]" alt="playerCards[0][0]"></p>
+          </div>
+          
+          <div class="p3h1Switch2">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch1To2')">&#11138;</button>
+          </div>
+          
+          <div class="p3h2">
+            <p v-if="playerCards[2][0][2][0]"> 
+              <img class="p3h2" height="350px" :src="playerCards[2][0][2][0]" alt="playerCards[0][0]"></p>
+          </div>
+
+          <div class="p3h2Switch3">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch2To3')">&#11138;</button>
+          </div>
+          
+          <div class="p3h3">
+            <p v-if="playerCards[2][0][3][0]"> 
+              <img class="p3h3" height="350px" :src="playerCards[2][0][3][0]" alt="playerCards[0][0]"></p>
+          </div>
+
+          <div class="p3h3Switch4">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch3To4')">&#11138;</button>
+          </div>
+          
+          <div class="p3h4">
+            <p v-if="playerCards[2][0][4][0]"> 
+              <img class="p3h4" height="350px" :src="playerCards[2][0][4][0]" alt="playerCards[0][0]"></p>
+          </div>
+
+          <div class="p3h4Switch5">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch4To5')">&#11138;</button>
+          </div>
+          
+          <div class="p3h5">
+            <p v-if="playerCards[2][0][5][0]"> 
+              <img class="p3h5" height="350px" :src="playerCards[2][0][5][0]" alt="playerCards[0][0]"></p>
+          </div>
+
+          <div class="p3h5Switch6">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch5To6')">&#11138;</button>
+          </div>
+          
+          <div class="p3h6">
+            <p v-if="playerCards[2][0][6][0]"> 
+              <img class="p3h6" height="350px" :src="playerCards[2][0][6][0]" alt="playerCards[0][0]"></p>
+          </div>
+
+          <div class="p3h6Switch7">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch6To7')">&#11138;</button>
+          </div>
+          
+          <div class="p3h7">
+            <p v-if="playerCards[2][0][7][0]"> 
+              <img class="p3h7" height="350px" :src="playerCards[2][0][7][0]" alt="playerCards[0][0]"></p>
+          </div>
+
+          <div class="p3h7Switch8">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch7To8')">&#11138;</button>
+          </div>
+          
+          <div class="p3h8">
+            <p v-if="playerCards[2][0][8][0]"> 
+              <img class="p3h8" height="350px" :src="playerCards[2][0][8][0]" alt="playerCards[0][0]"></p>
+          </div>
+
+          <div class="p3h8Switch9">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch8To9')">&#11138;</button>
+          </div>
+          
+          <div class="p3h9">
+            <p v-if="playerCards[2][0][9][0]"> 
+              <img class="p3h9" height="350px" :src="playerCards[2][0][9][0]" alt="playerCards[0][0]"></p>
+          </div>
+
+          <div class="p3h9Switch10">
+            <button width="200px" class="3give1"  @click="giveManual('p3Switch9To10')">&#11138;</button>
+          </div>
+          
+          <div class="p3h10">
+            <p v-if="playerCards[2][0][10][0]"> 
+              <img class="p3h10" height="350px" :src="playerCards[2][0][10][0]" alt="playerCards[0][0]"></p>
+          </div>
+          
+          <div class="p3pr1">
+            <p v-if="playerCards[2][1][1][0]">
+              <img class="p3pr1" height="350px" :src="playerCards[2][1][1][0]" alt=""></p>
+          </div>
+          <div class="p3pr2">
+            <p v-if="playerCards[2][1][2][0]">
+              <img class="p3pr2" height="350px" :src="playerCards[2][1][2][0]" alt=""></p>
+          </div>
+          <div class="p3pr3">
+            <p v-if="playerCards[2][1][3][0]">
+              <img class="p3pr3" height="350px" :src="playerCards[2][1][3][0]" alt=""></p>
+          </div>
+          <div class="p3pr4">
+            <p v-if="playerCards[2][1][4][0]">
+              <img class="p3pr4" height="350px" :src="playerCards[2][1][4][0]" alt=""></p>
+          </div>
+          <div class="p3pr5">
+            <p v-if="playerCards[2][1][5][0]">
+              <img class="p3pr5" height="350px" :src="playerCards[2][1][5][0]" alt=""></p>
+          </div>
+          <div class="p3pr6">
+            <p v-if="playerCards[2][1][6][0]">
+              <img class="p3pr6" height="350px" :src="playerCards[2][1][6][0]" alt=""></p>
+          </div>
+          <div class="p3pr7">
+            <p v-if="playerCards[2][1][7][0]">
+              <img class="p3pr7" height="350px" :src="playerCards[2][1][7][0]" alt=""></p>
+          </div>
+          <div class="p3pr8">
+            <p v-if="playerCards[2][1][8][0]">
+              <img class="p3pr8" height="350px" :src="playerCards[2][1][8][0]" alt=""></p>
+          </div>
+          <div class="p3pr9">
+            <p v-if="playerCards[2][1][9][0]">
+              <img class="p3pr9" height="350px" :src="playerCards[2][1][9][0]" alt=""></p>
+          </div>
+          <div class="p3pr10">
+            <p v-if="playerCards[2][1][10][0]">
+              <img class="p3pr10" height="350px" :src="playerCards[2][1][10][0]" alt=""></p>
+          </div>
+          <div class="p3i1">
+            <p v-if="playerCards[2][2][1][0]">
+              <img height="350px" :src="playerCards[2][2][1][0]" alt=""></p>
+          </div>
+
+          <div class="p3i1Switch2">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems1To2')">&#11138;</button>
+          </div>
+          
+          <div class="p3i2">
+            <p v-if="playerCards[2][2][2][0]">
+              <img height="350px" :src="playerCards[2][2][2][0]" alt=""></p>
+          </div>
+
+          <div class="p3i2Switch3">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems2To3')">&#11138;</button>
+          </div>
+          
+          <div class="p3i3">
+            <p v-if="playerCards[2][2][3][0]">
+              <img height="350px" :src="playerCards[2][2][3][0]" alt=""></p>
+          </div>
+
+          <div class="p3i3Switch4">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems3To4')">&#11138;</button>
+          </div>
+          
+          <div class="p3i4">
+            <p v-if="playerCards[2][2][4][0]">
+              <img height="350px" :src="playerCards[2][2][4][0]" alt=""></p>
+          </div>
+
+          <div class="p3i4Switch5">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems4To5')">&#11138;</button>
+          </div>
+          
+          <div class="p3i5">
+            <p v-if="playerCards[2][2][5][0]">
+              <img height="350px" :src="playerCards[2][2][5][0]" alt=""></p>
+          </div>
+
+          <div class="p3i5Switch6">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems5To6')">&#11138;</button>
+          </div>
+          
+          <div class="p3i6">
+            <p v-if="playerCards[2][2][6][0]">
+              <img height="350px" :src="playerCards[2][2][6][0]" alt=""></p>
+          </div>
+
+          <div class="p3i6Switch7">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems6To7')">&#11138;</button>
+          </div>
+          
+          <div class="p3i7">
+            <p v-if="playerCards[2][2][7][0]">
+              <img height="350px" :src="playerCards[2][2][7][0]" alt=""></p>
+          </div>
+
+          <div class="p3i7Switch8">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems7To8')">&#11138;</button>
+          </div>
+          
+          <div class="p3i8">
+            <p v-if="playerCards[2][2][8][0]">
+              <img height="350px" :src="playerCards[2][2][8][0]" alt=""></p>
+          </div>
+
+          <div class="p3i8Switch9">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems8To9')">&#11138;</button>
+          </div>
+          
+          <div class="p3i9">
+            <p v-if="playerCards[2][2][9][0]">
+              <img height="350px" :src="playerCards[2][2][9][0]" alt=""></p>
+          </div>
+
+          <div class="p3i9Switch10">
+            <button width="200px" class="3give1"  @click="giveManual('p3SwitchItems9To10')">&#11138;</button>
+          </div>
+          
+          <div class="p3i10">
+            <p v-if="playerCards[2][2][10][0]">
+              <img height="350px" :src="playerCards[2][2][10][0]" alt=""></p>
+          </div>
+          <div class="p3su1">
+            <p v-if="playerCards[2][3][1][0]">
+              <img height="350px" :src="playerCards[2][3][1][0]" alt=""></p>
+          </div>
+          <div class="p3su2">
+            <p v-if="playerCards[2][3][2][0]">
+              <img height="350px" :src="playerCards[2][3][2][0]" alt=""></p>
+          </div>
+          <div class="p3su3">
+            <p v-if="playerCards[2][3][3][0]">
+              <img height="350px" :src="playerCards[2][3][3][0]" alt=""></p>
+          </div>
+          <div class="p3su4">
+            <p v-if="playerCards[2][3][4][0]">
+              <img height="350px" :src="playerCards[2][3][4][0]" alt=""></p>
+          </div>
+
+          <div class="shopSelect">
+            <select class="form-control col" v-model="shop" label="Choose Shop">
+              <option value="null" disabled>Choose Shop</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          
+          <div v-if="shop === '1'">
+            <div class="shop1Draw">
+              <p v-if="playerCards[4][0][1][0]">
+                <img height="350px" :src="playerCards[4][0][1][0]" alt=""></p>
+            </div>
+            <div class="shop1Discard">
+              <p v-if="playerCards[4][1][1][0]">
+                <img height="350px" :src="playerCards[4][1][1][0]" alt=""></p>
+            </div>
+            <div class="shop1Chosen1">
+              <p v-if="playerCards[4][2][1][0]">
+                <img height="350px" :src="playerCards[4][2][1][0]" alt=""></p>
+            </div>
+            <div class="shop1Chosen2">
+              <p v-if="playerCards[4][2][2][0]">
+                <img height="350px" :src="playerCards[4][2][2][0]" alt=""></p>
+            </div>
+            <div class="shop1Chosen3">
+              <p v-if="playerCards[4][2][3][0]">
+                <img height="350px" :src="playerCards[4][2][3][0]" alt=""></p>
+            </div>
+          </div>
+          
+          </div>
         </div>
       </div>
-      <div class="col-1-8">
-        <div>
-          <p v-if="playerCards[2][0][0]">
-            <img class="p3deck1" height="320px" :src="playerCards[2][0][1][0]" alt=""></p>
-        </div>
-        <div>
-          <button width="50px" class="3give1" @click="giveManual('p3Give1ToP1')">give</button>
-        </div>
-        <div>
-          <button width="50px" class="3give1"  @click="giveManual('p3Switch1To2')">switch</button>
-        </div>
-        <div>
-          <button width="50px" class="3give1"  @click="giveManual('p3Switch1To1Priv')">switch private</button>
-        </div>
-        <div>
-          <button width="50px" class="3give1"  @click="giveManual('p3Discard1')">discard</button>
-        </div>
-        <div>
-          <p v-if="playerCards[2][0][0]">
-            <img class="p3deck2" height="320px" :src="playerCards[2][0][2][0]" alt=""></p>
-        </div>
+      <div>
         
-      </div>
-    </div>
-    <div class="row">
-      <div class="col pt-5">
-        <div>
-          <p v-if="playerCards[2][1][0]">
-            <img class="p3deck2" height="320px" :src="playerCards[2][1][1]" alt=""></p>
-        </div>
       </div>
     </div>
     <div class="row">
@@ -275,6 +990,48 @@ f<template>
       </div>
     </div>
     
+    <div class="row">
+      <div class="col pt-5 pb-5">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col pt-5 pb-5">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col pt-5 pb-5">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col pt-5 pb-5">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col pt-5 pb-5">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col pt-5 pb-5">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col pt-5 pb-5">
+        <p></p>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col pt-5 pb-5">
         <p></p>
@@ -710,6 +1467,7 @@ export default {
             name: null,
             ready: false,
             player: null,
+shop: null,
             shipCards: [
                 [bonanza], [bonniemae]],
             info: [],
@@ -852,7 +1610,6 @@ this.socket.on('left', (name) => {
             this.travelCards = movingMove;
             
         });
-
 this.socket.on ("playerCards", giveToManual => {
             console.log("someone tried to give a card");
             this.playerCards = giveToManual;
@@ -860,7 +1617,6 @@ this.socket.on ("playerCards", giveToManual => {
                         "player1 inv length = ", this.playerCards[0][0].length,
                         "player2 inv length = ", this.playerCards[1][0].length);
         });
-
         this.socket.on ("playerCards", giveTo => {
             console.log("someone tried to give a card");
             this.playerCards = giveTo;
@@ -873,13 +1629,10 @@ this.socket.on ("playerCards", giveToManual => {
             console.log("vue tried changing ship supply");
             this.shipInv = changeSupply
         });
-
         this.socket.on ("shipCards", changeShip => {
             console.log("vue tried changing the ship");
             this.shipCards = changeShip
         });
-
-
         this.socket.on("position", data => {
             let img = new Image();
             img.src = ship;
@@ -937,6 +1690,7 @@ this.socket.on ("playerCards", giveToManual => {
             this.socket.emit('joined', this.name)
             this.ready = true
         },
+
         scrollToEnd: function() {
             var chatbox = this.$el.querySelector("#chatbox");
             chatbox.scrollTop = container.scrollHeight;
