@@ -10,10 +10,12 @@
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
+    "serve": "^11.3.0",
     "vue": "^2.6.11",
     "vue-dice-roller": "0.0.2",
     "vue-gallery-slideshow": "^1.5.0",
-    "vue-runtime-helpers": "^1.1.2"
+    "vue-runtime-helpers": "^1.1.2",
+    "vue-socket.io": "^3.0.7"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.2.0",
