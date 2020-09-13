@@ -6,11 +6,13 @@ var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var xhr = new XMLHttpRequest();
 var FastBitSet = require('fastbitset');
 
+process.setMaxListeners(5)
 
 var position = {
     x:200,
-    y:200
+    y:300
 };
+
 
 var position2 = {
     x:220,
@@ -27,6 +29,22 @@ var position4 = {
     y:240
 };
 
+var position5 = {
+    x:240,
+    y:240
+};
+
+var position6 = {
+    x:240,
+    y:250
+};
+
+var position7 = {
+    x:240,
+    y:260
+};
+
+
 var z_broken_shuttle = base64_encode('./third_broken_shuttle.jpg');
 var z_cruiser_patrol = base64_encode('./third_cruiser_patrol.jpg');
 var z_engine_room = base64_encode('./third_engine_room.jpg');
@@ -42,6 +60,19 @@ var one_part = base64_encode('./1part.jpg')
 var two_part = base64_encode('./2part.jpg')
 var passenger = base64_encode('./passenger.jpg')
 var empty = base64_encode('./empty.jpg')
+
+//money
+
+var z100Credits = base64_encode('./100Credits.jpg')
+var z500Credits = base64_encode('./500Credits.jpg')
+var z1000Credits = base64_encode('./1000Credits.jpg')
+var z2000Credits = base64_encode('./2000Credits.jpg')
+var znegative_100 = base64_encode('./negative_100.jpg')
+var znegative_500 = base64_encode('./negative_500.jpg')
+var znegative_1000 = base64_encode('./negative_1000.jpg')
+var znegative_2000 = base64_encode('./negative_2000.jpg')
+
+
 
 //alliance cards
 
@@ -311,6 +342,10 @@ var interceptor = base64_encodePNG('./interceptor.png')
 var s_s_walden = base64_encodePNG('./s_s_walden.png')
 var serenity = base64_encodePNG('./serenity.png')
 var yun_qi = base64_encodePNG('./yun_qi.png')
+
+var smile_sad = base64_encodePNG('./smile_sad.png')
+var smile_happy = base64_encodePNG('./smile_happy.png')
+
 
 //jobs
 
@@ -617,7 +652,7 @@ var mr_universe_with_your_hands_tied = base64_encode('./mr_universe_with_your_ha
 //niska
 
 var niska_not_solid_red = base64_encode('./niska_not_solid_red.jpg')
-var niska_not_solid_red = base64_encode('./niska_solid.jpg')
+var niska_solid = base64_encode('./niska_solid.jpg')
 
 var niska_a_judge_in_niskas_pocket = base64_encode('./niska_a_judge_in_niskas_pocket.jpg')
 var niska_a_message_from_niska_01 = base64_encode('./niska_a_message_from_niska_01.jpg')
@@ -1094,6 +1129,66 @@ var empty_shop = base64_encode('./empty_shop.jpg')
 var empty_card = base64_encode('./empty_card.jpg')
 
 
+var crewMood = [
+    //player 1
+    [
+        //crew
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+    ],
+    //player 2
+    [
+        //crew
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+    ],
+    //player 3
+    [
+        //crew
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+    ],
+    //player 4
+    [
+        //crew
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+        [[smile_happy],["smile_happy"]],
+    ]
+
+]
+
 
 
 var travelCards = [
@@ -1417,7 +1512,7 @@ var shipCards =
         //[possible supply [[i],[n]], [[i],[n]] ]
         [
             [
-                [ [empty], ["Empty Slot"] ],
+                [ [empty_card], ["Empty Slot"] ],
                 [ [bonniemae], ["Bonnie Mae"] ],
                 [ [bonanza], ["Bonanza"] ],
                 [ [interceptor], ["Interceptor"] ],
@@ -1432,8 +1527,8 @@ var shipCards =
         [
             //chosen for boxes (12 in total)
             [  [ [bonniemae], ["Bonnie Mae"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Passenger"] ],
+               [ [empty], ["Passenger"] ]
                [ [empty], ["Passenger"] ],
                [ [empty], ["Part"] ],
                [ [empty], ["Part"] ],
@@ -1462,96 +1557,1185 @@ var shipCards =
         ],
         
         //player2
-        [  
+[
             //chosen for boxes (12 in total)
-            [  [ [empty], ["Empty Slot"] ],
+            [  [ [bonniemae], ["Bonnie Mae"] ],
+               [ [passenger], ["Passenger"] ],
+               [ [empty], ["Passenger"] ]
+               [ [empty], ["Passenger"] ],
+               [ [empty], ["Part"] ],
+               [ [empty], ["Part"] ],
                [ [empty], ["Empty Slot"] ],
                [ [empty], ["Empty Slot"] ],
                [ [empty], ["Empty Slot"] ],
                [ [empty], ["Empty Slot"] ],
                [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               //totals
-               [],
-               //index
-               [0]]
-        ],//player3
-        [  
-            //chosen for boxes (12 in total)
-            [  [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ]
+            ],
             //totals
-               [],
-               //index
-               [0]]
-        ],//player4
+            [],
+            //index
+            [[2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2]]
+        ]
+        ,//player3
         [
             //chosen for boxes (12 in total)
-            [  [ [empty], ["Empty Slot"] ],
+            [  [ [bonniemae], ["Bonnie Mae"] ],
+               [ [passenger], ["Passenger"] ],
+               [ [empty], ["Passenger"] ]
+               [ [empty], ["Passenger"] ],
+               [ [empty], ["Part"] ],
+               [ [empty], ["Part"] ],
                [ [empty], ["Empty Slot"] ],
                [ [empty], ["Empty Slot"] ],
                [ [empty], ["Empty Slot"] ],
                [ [empty], ["Empty Slot"] ],
                [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ]
+            ],
             //totals
-               [],
-               //index
-               [0]]
-        ]
+            [],
+            //index
+            [[2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2]]
+        ],
+        //player4
+        [
+            //chosen for boxes (12 in total)
+            [  [ [bonniemae], ["Bonnie Mae"] ],
+               [ [passenger], ["Passenger"] ],
+               [ [empty], ["Passenger"] ]
+               [ [empty], ["Passenger"] ],
+               [ [empty], ["Part"] ],
+               [ [empty], ["Part"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ]
+            ],
+            //totals
+            [],
+            //index
+            [[2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2],
+             [2]]
+        ],
+        
     ]
+
+var shipCards2 = [4]
+
 var playerCards = [
     // [crew],[private],[items],[ship upgr],[jobs]
 
     //0
     [ [    [],
-           [[empty],["empty"],["empty"]],
-           [[empty],["empty"],["empty"]],
-           [[empty],["empty"],["empty"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]]
+           
+      ],
+      //private
+      [
+          [],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]]
+          
+      ],
+      //items
+      [[],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]]
+      ],
+      //ship upgrade
+      [
+          [],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]]
+           
+      ],
+      //jobs
+      [[],
+       [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]]
+           
+      ],
+      //finished jobs
+      [
+          [
+              []
+              
+          ],
+          //index
+          [0],
+          //displayed
+          [
+              [[empty_card],["empty_card"],["empty_card"]]
+           
+          ]
+      ],
+      //current jobs
+      [
+          [],
+          [empty_card],
+          [empty_card],
+          [empty_card]
+      ],
+
+      //core
+      [
+          [],
+          [[radion_core_01],["original"],["core"]]
+      ]
+      
+    ],
+    //1
+[ [    [],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]]
+           
+      ],
+      //private
+      [
+          [],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]]
+          
+      ],
+      //items
+      [[],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]]
+      ],
+      //ship upgrade
+      [
+          [],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]]
+           
+      ],
+      //jobs
+      [[],
+       [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]]
+           
+      ],
+      //finished jobs
+      [
+          [
+              []
+              
+          ],
+          //index
+          [0],
+          //displayed
+          [
+              [[empty_card],["empty_card"],["empty_card"]]
+           
+          ]
+      ],
+      //current jobs
+      [
+          [],
+          [empty_card],
+          [empty_card],
+          [empty_card]
+      ],
+
+      //core
+      [
+          [],
+          [[radion_core_01],["original"],["core"]]
+      ]
+      
+    ],
+    //2
+    //crew
+    [ [    [],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]]
+           
+      ],
+      //private
+      [
+          [],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]]
+          
+      ],
+      //items
+      [[],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]]
+      ],
+      //ship upgrade
+      [
+          [],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]]
+           
+      ],
+      //jobs
+      [[],
+       [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]]
+           
+      ],
+      //finished jobs
+      [
+          [
+              []
+              
+          ],
+          //index
+          [0],
+          //displayed
+          [
+              [[empty_card],["empty_card"],["empty_card"]]
+           
+          ]
+      ],
+      //current jobs
+      [
+          [],
+          [empty_card],
+          [empty_card],
+          [empty_card]
+      ],
+
+      //core
+      [
+          [],
+          [[radion_core_01],["original"],["core"]]
+      ]
+      
+    ],
+    
+    //3
+    [ [    [],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]]
+           
+      ],
+      //private
+      [
+          [],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]]
+          
+      ],
+      //items
+      [[],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]]
+      ],
+      //ship upgrade
+      [
+          [],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[empty_card],["empty_card"],["empty_card"]]
+           
+      ],
+      //jobs
+      [[],
+       [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]]
+           
+      ],
+      //finished jobs
+      [
+          [
+              []
+              
+          ],
+          //index
+          [0],
+          //displayed
+          [
+              [[empty_card],["empty_card"],["empty_card"]]
+           
+          ]
+      ],
+      //current jobs
+      [
+          [],
+          [empty_card],
+          [empty_card],
+          [empty_card]
+      ],
+
+      //core
+      [
+          [],
+          [[radion_core_01],["original"],["core"]]
+      ]
+      
+    ],
+    //shops and jobs
+    
+    //shops
+    [
+        //4 - shop 1
+        //beaumonde
+        [
+            //draw
+            [
+                [[beaumonde_01],["beaumonde"],["shipUpgrade"]],
+                [[beaumonde_02],["beaumonde"],["item"]],
+                [[beaumonde_03],["beaumonde"],["item"]],
+                [[beaumonde_04],["beaumonde"],["item"]],
+                [[beaumonde_05],["beaumonde"],["item"]],
+                [[beaumonde_06],["beaumonde"],["crew"]],
+                [[beaumonde_07],["beaumonde"],["crew"]],
+                [[beaumonde_08],["beaumonde"],["crew"]],
+                [[beaumonde_09],["beaumonde"],["crew"]],
+                [[beaumonde_10],["beaumonde"],["item"]],
+                [[beaumonde_11],["beaumonde"],["crew"]],
+                [[beaumonde_12],["beaumonde"],["item"]],
+                [[beaumonde_13],["beaumonde"],["crew"]],
+                [[beaumonde_14],["beaumonde"],["item"]],
+                [[beaumonde_15],["beaumonde"],["crew"]],
+                [[beaumonde_16],["beaumonde"],["shipUpgrade"]],
+                [[beaumonde_17],["beaumonde"],["item"]],
+                [[beaumonde_18],["beaumonde"],["shipUpgrade"]],
+                [[beaumonde_19],["beaumonde"],["crew"]],
+                [[beaumonde_20],["beaumonde"],["item"]],
+                [[beaumonde_21],["beaumonde"],["item"]],
+                [[beaumonde_22],["beaumonde"],["crew"]],
+                [[beaumonde_23],["beaumonde"],["item"]],
+                [[beaumonde_24],["beaumonde"],["item"]],
+                [[beaumonde_25],["beaumonde"],["item"]],
+                
+            ],
+            //discard 4-1
+            [
+                //all discards 4-1-0
+                [
+                    
+                ],
+                //chosen to display 4-0-1-1
+                [
+                    [empty_card]
+                ],
+                
+                //index 4-1-2
+                
+                [0]
+                
+            ],
+            //considered
+            [
+                [empty_card],
+                [empty_card],
+                [empty_card]
+            ],
+            //back of card
+            [beaumonde_back] 
+        ]
+    ],
+    [
+        //5 - shop 2
+        //meridian
+        [
+            //draw
+            [
+                [[meridian_01],["meridian"],["crew"]],
+                [[meridian_02],["meridian"],["crew"]],
+                [[meridian_03],["meridian"],["item"]],
+                [[meridian_04],["meridian"],["shipUpgrade"]],
+                [[meridian_05],["meridian"],["item"]],
+                [[meridian_06],["meridian"],["shipUpgrade"]],
+                [[meridian_07],["meridian"],["item"]],
+                [[meridian_08],["meridian"],["core"]],
+                [[meridian_09],["meridian"],["crew"]],
+                [[meridian_10],["meridian"],["item"]],
+                [[meridian_11],["meridian"],["item"]],
+                [[meridian_12],["meridian"],["item"]],
+                [[meridian_13],["meridian"],["item"]],
+                [[meridian_14],["meridian"],["shipUpgrade"]],
+                [[meridian_15],["meridian"],["item"]],
+                [[meridian_16],["meridian"],["item"]],
+                [[meridian_17],["meridian"],["crew"]],
+                [[meridian_18],["meridian"],["item"]],
+                [[meridian_19],["meridian"],["shipUpgrade"]],
+                [[meridian_20],["meridian"],["item"]],
+                [[meridian_21],["meridian"],["crew"]],
+                [[meridian_22],["meridian"],["crew"]],
+                [[meridian_23],["meridian"],["crew"]],
+                [[meridian_24],["meridian"],["shipUpgrade"]],
+                [[meridian_25],["meridian"],["shipUpgrade"]]
+            ],
+            //discard
+            [
+                //all discards 4-1-0
+                [],
+                //chosen to display 4-0-1-1
+                [
+                    [empty_card]
+                ],
+                
+                //index 4-1-2
+                
+                [0]
+                
+            ],
+            //considered
+            [
+                [empty_card],
+                [empty_card],
+                [empty_card]
+            ],
+            //back of card
+            [meridian_back] 
+        ]
+    ],
+    [
+        //6 - shop 3
+        //osiris shipworks
+        
+        [
+            //draw
+            [
+                [[osiris_shipworks_01],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_02],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_03],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_04],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_05],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_06],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_07],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_08],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_09],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_10],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_11],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_12],["osiris_shipworks"],["core"]],
+                [[osiris_shipworks_13],["osiris_shipworks"],["core"]],
+                [[osiris_shipworks_14],["osiris_shipworks"],["core"]],
+                [[osiris_shipworks_15],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_16],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_17],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_18],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_19],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_20],["osiris_shipworks"],["core"]],
+                [[osiris_shipworks_21],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_22],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_23],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_24],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_25],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_26],["osiris_shipworks"],["core"]],
+                [[osiris_shipworks_27],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_28],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_29],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_30],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_31],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_32],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_33],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_34],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_35],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_36],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_37],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_38],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_39],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_40],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_41],["osiris_shipworks"],["crew"]]
+                
+            ],
+            //discard
+            [
+                [   
+                ],
+                //chosen to display 6-0-1-1
+                [
+                    [empty_card]
+                ],
+            
+                //index 6-1-2
+                
+                [1]
+                
+            ],
+            //considered
+            [
+                [empty_card],
+                [empty_card],
+                [empty_card]
+            ],
+            //back of card
+            [osiris_shipworks_back] 
+            
+        ]    
+    ],
+    [
+        //7 - shop 4
+        //persephone
+        
+        [
+            //draw
+            [
+                [[persephone_01],["persephone"],["item"]],
+                [[persephone_02],["persephone"],["item"]],
+                [[persephone_03],["persephone"],["item"]],
+                [[persephone_04],["persephone"],["shipUpgrade"]],
+                [[persephone_05],["persephone"],["shipUpgrade"]],
+                [[persephone_06],["persephone"],["crew"]],
+                [[persephone_07],["persephone"],["item"]],
+                [[persephone_08],["persephone"],["item"]],
+                [[persephone_09],["persephone"],["shipUpgrade"]],
+                [[persephone_10],["persephone"],["shipUpgrade"]],
+                [[persephone_11],["persephone"],["item"]],
+                [[persephone_12],["persephone"],["crew"]],
+                [[persephone_13],["persephone"],["item"]],
+                [[persephone_14],["persephone"],["item"]],
+                [[persephone_15],["persephone"],["item"]],
+                [[persephone_16],["persephone"],["shipUpgrade"]],
+                [[persephone_17],["persephone"],["item"]],
+                [[persephone_18],["persephone"],["crew"]],
+                [[persephone_19],["persephone"],["item"]],
+                [[persephone_20],["persephone"],["crew"]],
+                [[persephone_21],["persephone"],["crew"]],
+                [[persephone_22],["persephone"],["crew"]],
+                [[persephone_23],["persephone"],["item"]],
+                [[persephone_24],["persephone"],["crew"]],
+                [[persephone_25],["persephone"],["crew"]],
+                [[persephone_26],["persephone"],["crew"]],
+                [[persephone_27],["persephone"],["item"]],
+                [[persephone_28],["persephone"],["crew"]],
+                [[persephone_29],["persephone"],["crew"]],
+                [[persephone_30],["persephone"],["crew"]],
+                [[persephone_31],["persephone"],["crew"]],
+                [[persephone_32],["persephone"],["crew"]],
+                [[persephone_33],["persephone"],["item"]],
+                [[persephone_34],["persephone"],["shipUpgrade"]],
+                [[persephone_35],["persephone"],["crew"]],
+                [[persephone_36],["persephone"],["item"]],
+                [[persephone_37],["persephone"],["crew"]],
+                [[persephone_38],["persephone"],["crew"]],
+                [[persephone_39],["persephone"],["item"]],
+                [[persephone_40],["persephone"],["item"]],
+                [[persephone_41],["persephone"],["crew"]]
+                
+            ],
+            //discard
+            [
+                [   
+                ],
+                //chosen to display 7-0-1-1
+                [
+                    [empty_card]
+                ],
+                
+                //index 7-0-1-2
+                
+                [0]
+                
+            ],
+            //considered
+                [
+                    [empty_card],
+                    [empty_card],
+                    [empty_card]
+                ],
+            //back of card
+            [persephone_back] 
+            
+            
+        ]
+    ],
+    //8 - shop 5
+    //regina
+    [
+        [
+        //draw
+            [
+                [[regina_01],["regina"],["item"]],
+                [[regina_02],["regina"],["item"]],
+                [[regina_03],["regina"],["shipUpgrade"]],
+                [[regina_04],["regina"],["item"]],
+                [[regina_05],["regina"],["item"]],
+                [[regina_06],["regina"],["item"]],
+                [[regina_07],["regina"],["shipUpgrade"]],
+                [[regina_08],["regina"],["crew"]],
+                [[regina_09],["regina"],["item"]],
+                [[regina_10],["regina"],["item"]],
+                [[regina_11],["regina"],["item"]],
+                [[regina_12],["regina"],["crew"]],
+                [[regina_13],["regina"],["shipUpgrade"]],
+                [[regina_14],["regina"],["crew"]],
+                [[regina_15],["regina"],["crew"]],
+                [[regina_16],["regina"],["crew"]],
+                [[regina_17],["regina"],["crew"]],
+                [[regina_18],["regina"],["crew"]],
+                [[regina_19],["regina"],["item"]],
+                [[regina_20],["regina"],["shipUpgrade"]],
+                [[regina_21],["regina"],["item"]],
+                [[regina_22],["regina"],["item"]],
+                [[regina_23],["regina"],["item"]],
+                [[regina_24],["regina"],["shipUpgrade"]],
+                [[regina_25],["regina"],["crew"]],
+                [[regina_26],["regina"],["crew"]],
+                [[regina_27],["regina"],["crew"]],
+                [[regina_28],["regina"],["shipUpgrade"]],
+                [[regina_29],["regina"],["crew"]],
+                [[regina_30],["regina"],["shipUpgrade"]],
+                [[regina_31],["regina"],["shipUpgrade"]],
+                [[regina_32],["regina"],["crew"]],
+                [[regina_33],["regina"],["shipUpgrade"]],
+                [[regina_34],["regina"],["item"]],
+                [[regina_35],["regina"],["crew"]],
+                [[regina_36],["regina"],["crew"]],
+                [[regina_37],["regina"],["crew"]],
+                [[regina_38],["regina"],["shipUpgrade"]],
+                [[regina_39],["regina"],["crew"]],
+                [[regina_40],["regina"],["item"]],
+                [[regina_41],["regina"],["crew"]]
+                
+            ],
+            //discard
+            [
+                [],
+            //chosen to display 8-0-1-1
+                [
+                    [empty_card]
+                ],
+                
+                //index 8-0-1-2
+                
+                [1]
+
+            ],
+                //considered
+            [
+                [empty_card],
+                [empty_card],
+                [empty_card]
+            ],
+            //back of card
+            [regina_back] 
+            
+        ]
+    ],
+    //9 - shop 6
+    //silverhold munitions
+    [
+        [
+            //draw
+            [
+                [[silverhold_munitions_01],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_02],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_03],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_04],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_05],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_06],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_07],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_08],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_09],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_10],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_11],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_12],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_13],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_14],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_15],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_16],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_17],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_18],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_19],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_20],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_21],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_22],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_23],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_24],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_25],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_26],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_27],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_28],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_30],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_31],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_32],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_33],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_34],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_35],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_36],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_37],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_38],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_39],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_40],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_41],["silverhold_munitions"],["crew"]]
+            ],
+            //discard
+            [
+                [   
+                ],
+                //chosen to display 9-0-1-1
+                [
+                    [empty_card]
+                ],
+                
+                //index 9-0-1-2
+                
+                [1]
+                
+            ],
+            //considered
+            [
+                [empty_card],
+                [empty_card],
+                [empty_card]
+            ],
+            //back of card
+            [silverhold_munitions_back] 
+            
+                
+        ]
+    ],
+    //10 - shop 7
+    //space bazaar
+    [
+        [
+            //draw
+            [
+                [[space_bazaar_01],["space_bazaar"],["crew"]],
+                [[space_bazaar_02],["space_bazaar"],["item"]],
+                [[space_bazaar_03],["space_bazaar"],["item"]],
+                [[space_bazaar_04],["space_bazaar"],["crew"]],
+                [[space_bazaar_05],["space_bazaar"],["item"]],
+                [[space_bazaar_06],["space_bazaar"],["crew"]],
+                [[space_bazaar_07],["space_bazaar"],["item"]],
+                [[space_bazaar_08],["space_bazaar"],["item"]],
+                [[space_bazaar_09],["space_bazaar"],["item"]],
+                [[space_bazaar_10],["space_bazaar"],["shipUpgrade"]],
+                [[space_bazaar_11],["space_bazaar"],["item"]],
+                [[space_bazaar_12],["space_bazaar"],["crew"]],
+                [[space_bazaar_13],["space_bazaar"],["item"]],
+                [[space_bazaar_14],["space_bazaar"],["item"]],
+                [[space_bazaar_15],["space_bazaar"],["crew"]],
+                [[space_bazaar_16],["space_bazaar"],["item"]],
+                [[space_bazaar_17],["space_bazaar"],["crew"]],
+                [[space_bazaar_18],["space_bazaar"],["shipUpgrade"]],
+                [[space_bazaar_19],["space_bazaar"],["item"]],
+                [[space_bazaar_20],["space_bazaar"],["crew"]],
+                [[space_bazaar_21],["space_bazaar"],["item"]],
+                [[space_bazaar_22],["space_bazaar"],["item"]],
+                [[space_bazaar_23],["space_bazaar"],["crew"]],
+                [[space_bazaar_24],["space_bazaar"],["item"]],
+                [[space_bazaar_25],["space_bazaar"],["crew"]],
+                [[space_bazaar_26],["space_bazaar"],["crew"]],
+                [[space_bazaar_27],["space_bazaar"],["item"]],
+                [[space_bazaar_28],["space_bazaar"],["item"]],
+                [[space_bazaar_29],["space_bazaar"],["item"]],
+                [[space_bazaar_30],["space_bazaar"],["shipUpgrade"]],
+                [[space_bazaar_31],["space_bazaar"],["item"]],
+                [[space_bazaar_32],["space_bazaar"],["item"]],
+                [[space_bazaar_33],["space_bazaar"],["crew"]],
+                [[space_bazaar_34],["space_bazaar"],["item"]],
+                [[space_bazaar_35],["space_bazaar"],["crew"]],
+                [[space_bazaar_36],["space_bazaar"],["crew"]],
+                [[space_bazaar_37],["space_bazaar"],["shipUpgrade"]],
+                [[space_bazaar_38],["space_bazaar"],["crew"]],
+                [[space_bazaar_39],["space_bazaar"],["crew"]],
+                [[space_bazaar_40],["space_bazaar"],["crew"]],
+                [[space_bazaar_41],["space_bazaar"],["item"]]
+                
+            ],
+            //discard
+            [
+                [],
+                //chosen to display 10-0-1-1
+                [
+                    [empty_card]
+                ],
+                
+                //index 10-0-1-2
+                
+                [1]
+
+            ],
+            //considered
+            [
+                [empty_card],
+                [empty_card],
+                [empty_card]
+            ],
+            //back of card
+            [space_bazaar_back] 
+            
+            
+        ]
+    ],
+        
+        //jobs
+        
+        //11 amnon duul
+    [
+        
+    ],
+        //12 badger
+    [
+        
+    ],
+    //13 fanty and mingo
+    [
+        
+    ],
+    
+    //14 harken
+    [
+        
+    ],
+    
+    //15 lord harrow
+    [
+        
+    ],
+    
+    //16 magistrate higgins
+    [
+            
+    ],
+    
+    //17 mr universe
+    
+    [
+        
+    ],
+
+        //18 niska
+    [
+        
+    ],
+    
+    //19 patience
+    [
+        
+    ],
+    
+    //20 card backs
+    
+    [
+        amnon_duul_solid,
+        badger_solid,
+        fanty_mingo_solid,
+        harken_solid,
+        lord_harrow_solid,
+        magistrate_higgins_solid,
+        niska_solid,
+        patience_solid
+    ],
+
+    //21 random draw cards
+    
+    [
+        [
+            //test
+            
+            //draw
+            [
+                ["test 1"],
+                ["test 2"],
+                ["test 3"],
+                ["test 4"],
+                ["test 5"]
+            ],
+            //chosen
+            [],
+            //index
+            [1],
+            //discards
+            []
+            
+        ],
+        
+        //alliance
+        [
+            //draw
+            [
+                
+            ],
+            //chosen
+            [alliance_space],
+            //index
+            [],
+            //discards
+            [],
+            //reshuffle
+            [
+                
+            ],
+            //card face
+            []
+        ],
+        
+        //border
+        [
+            //draw
+            [
+                
+            ],
+            //chosen
+            [border_space],
+            //index
+            [],
+            //discards
+            [],
+            //reshuffle
+            [
+            ],
+            //card face
+            []
+        ],
+        //rim
+        [
+            //draw
+            [
+                
+            ],
+            //chosen
+            [rim_space],
+            //index
+            [],
+            //discards
+            [],
+            //reshuffle
+            [
+                
+            ],
+            //card face
+            []
+        ],
+        //bounty
+        [
+            //draw
+            [
+                
+            ],
+            //chosen
+            [bounty_alert],
+            //index
+            [],
+            //discards
+            [],
+            //reshuffle
+            [
+                
+            ],
+            //card face
+            []
+        ],
+        //misbehave
+        [
+            //draw
+            [
+                
+            ],
+            //chosen
+            [aim_to_misbehave],
+            //index
+            [],
+            //discards
+            [],
+            //reshuffle
+            [
+                
+            ],
+            //card face
+            []
+        ]
+        
+    ],
+    //money
+    [
+        [z100Credits],
+        [z500Credits],
+        [z1000Credits],
+        [z2000Credits],
+        [znegative_100],
+        [znegative_500],
+        [znegative_1000],
+        [znegative_2000],
+    ],
+    //scenario
+    [scenario_1]
+    
+];
+
+var playerCardsData = [
+    // [crew],[private],[items],[ship upgr],[jobs]
+
+    //0
+    [
+        [    [],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
            [[z_cruiser_patrol],["tinker"],["crew"]],
            [[z_engine_room],["london"],["crew"]],
            [[z_broken_shuttle],["bazaar"],["crew"]],
            [[z_cruiser_patrol],["tinker"],["crew"]],
            [[z_engine_room],["london"],["crew"]],
            [[z_engine_room],["london"],["crew"]],
-           [[empty],["empty"],["empty"]]
+           [[empty_card],["empty_card"],["empty_card"]]
            
-      ], [["empty"], ["empty"]], [4]  ],
+      ], [["empty_card"], ["empty_card"]], [4]  ],
     
     //1
     [ [    [],
-           [[empty],["empty"],["empty"]],
-           [[empty],["empty"],["empty"]],
-           [[empty],["empty"],["empty"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
            [[z_cruiser_patrol],["tinker"],["crew"]],
            [[z_engine_room],["london"],["crew"]],
            [[z_broken_shuttle],["bazaar"],["crew"]],
            [[z_cruiser_patrol],["tinker"],["crew"]],
            [[z_engine_room],["london"],["crew"]],
            [[z_engine_room],["london"],["crew"]],
-           [[empty],["empty"],["empty"]]
+           [[empty_card],["empty_card"],["empty_card"]]
            
-      ], [["empty"], ["empty"]], [4]  ],
+      ], [["empty_card"], ["empty_card"]], [4]  ],
 
     //2
     //crew
@@ -1566,21 +2750,21 @@ var playerCards = [
            [[z_cruiser_patrol],["tinker"],["crew"]],
            [[z_engine_room],["bazaar"],["crew"]],
            [[z_engine_room],["bazaar"],["crew"]],
-           [[empty],["empty"],["empty"]]
+           [[empty_card],["empty_card"],["empty_card"]]
       ],
       //private
       [
           [],
-          [[z_the_big_black],["bazaar"],["crew"]],
-          [[z_cruiser_patrol],["tinker"],["item"]],
-          [[z_cruiser_patrol],["tinker"],["crew"]],
-          [[empty],["empty"],["empty"]],
-          [[z_cruiser_patrol],["tinker"],["item"]],
-          [[z_cruiser_patrol],["tinker"],["crew"]],
-          [[z_broken_shuttle],["bazaar"],["crew"]],
-          [[z_cruiser_patrol],["tinker"],["item"]],
-          [[empty],["empty"],["empty"]],
-          [[z_minor_tech_diff],["tinker"],["item"]],
+          [[z_the_big_black],["silverhold_munitions"],["crew"]],
+          [[z_cruiser_patrol],["space_bazaar"],["item"]],
+          [[z_cruiser_patrol],["silverhold_munitions"],["crew"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[z_cruiser_patrol],["space_bazaar"],["item"]],
+          [[z_cruiser_patrol],["silverhold_munitions"],["crew"]],
+          [[z_broken_shuttle],["space_bazaar"],["crew"]],
+          [[z_cruiser_patrol],["silverhold_munitions"],["item"]],
+          [[empty_card],["empty_card"],["empty_card"]],
+          [[z_minor_tech_diff],["space_bazaar"],["item"]],
           [],
           
       ],
@@ -1609,443 +2793,566 @@ var playerCards = [
       ],
       //jobs
       [[],
-       [[z_broken_shuttle],["Harken"]],
-       [[z_cruiser_patrol],["Mr.Universe"]],
-       [[z_the_big_black],["Mr.Universe"]]
+       [[amnon_duul_contract_jumper_01],["amnon_duul"],["job"]],
+       [[amnon_duul_contract_jumper_02],["amnon_duul"],["job"]],
+       [[amnon_duul_contract_jumper_03],["amnon_duul"],["job"]]
+      ],
+      //finished jobs
+      [
+          [
+              [[amnon_duul_courting_aphrodite],["amnon_duul"],["job"]],
+        [[amnon_duul_courting_kerry],["amnon_duul"],["job"]],
+        [[amnon_duul_courting_regina],["amnon_duul"],["job"]],
+        [[amnon_duul_discrete_transportation],["amnon_duul"],["job"]]
+              
+          ],
+          //index
+          [0],
+          //displayed
+          [
+              [amnon_duul_courting_aphrodite],["amnon_duul"],["job"]
+          ]
       ]
     ],
     
     //3
     [ [    [],
-           [[empty],["empty"],["empty"]],
-           [[empty],["empty"],["empty"]],
-           [[empty],["empty"],["empty"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
+           [[empty_card],["empty_card"],["empty_card"]],
            [[z_cruiser_patrol],["tinker"],["crew"]],
            [[z_engine_room],["london"],["crew"]],
            [[z_broken_shuttle],["bazaar"],["crew"]],
            [[z_cruiser_patrol],["tinker"],["crew"]],
            [[z_engine_room],["london"],["crew"]],
            [[z_engine_room],["london"],["crew"]],
-           [[empty],["empty"],["empty"]]
+           [[empty_card],["empty_card"],["empty_card"]]
            
-      ], [["empty"], ["empty"]], [4]  ],
+      ], [["empty_card"], ["empty_card"]], [4]  ],
     //shops and jobs
     
     //shops
     [
-    //4 - shop 1
-    //beaumonde
-    [
-        //draw
+        //4 - shop 1
+        //beaumonde
         [
-            [["beaumonde_01"],["beaumonde"],["shipUpgrade"]],
-            [["beaumonde_02"],["beaumonde"],["item"]],
-            [["beaumonde_03"],["beaumonde"],["item"]],
-            [["beaumonde_04"],["beaumonde"],["item"]],
-            [["beaumonde_05"],["beaumonde"],["item"]],
-            [["beaumonde_06"],["beaumonde"],["crew"]],
-            [["beaumonde_07"],["beaumonde"],["crew"]],
-            [["beaumonde_08"],["beaumonde"],["crew"]],
-            [["beaumonde_09"],["beaumonde"],["crew"]],
-            [["beaumonde_10"],["beaumonde"],["item"]],
-            [["beaumonde_11"],["beaumonde"],["crew"]],
-            [["beaumonde_12"],["beaumonde"],["item"]],
-            [["beaumonde_13"],["beaumonde"],["crew"]],
-            [["beaumonde_14"],["beaumonde"],["item"]],
-            [["beaumonde_15"],["beaumonde"],["crew"]],
-            [["beaumonde_16"],["beaumonde"],["shipUpgrade"]],
-            [["beaumonde_17"],["beaumonde"],["item"]],
-            [["beaumonde_18"],["beaumonde"],["shipUpgrade"]],
-            [["beaumonde_19"],["beaumonde"],["crew"]],
-            [["beaumonde_20"],["beaumonde"],["item"]],
-            [["beaumonde_21"],["beaumonde"],["item"]],
-            [["beaumonde_22"],["beaumonde"],["crew"]],
-            [["beaumonde_23"],["beaumonde"],["item"]],
-            [["beaumonde_24"],["beaumonde"],["item"]],
-            [["beaumonde_25"],["beaumonde"],["item"]],
-            
-        ],
-        //discard 4-1
-        [
-            //all discards 4-1-0
+            //draw
             [
-                
-                [["beaumonde_25"],["beaumonde"],["item"]],
-                [["beaumonde_20"],["beaumonde"],["item"]],
-                [["beaumonde_21"],["beaumonde"],["item"]],
-                [["beaumonde_22"],["beaumonde"],["crew"]],
-                [["beaumonde_23"],["beaumonde"],["item"]],
+                [[beaumonde_01],["beaumonde"],["shipUpgrade"]],
+                [[beaumonde_02],["beaumonde"],["item"]],
+                [[beaumonde_03],["beaumonde"],["item"]],
+                [[beaumonde_04],["beaumonde"],["item"]],
+                [[beaumonde_05],["beaumonde"],["item"]],
+                [[beaumonde_06],["beaumonde"],["crew"]],
+                [[beaumonde_07],["beaumonde"],["crew"]],
+                [[beaumonde_08],["beaumonde"],["crew"]],
+                [[beaumonde_09],["beaumonde"],["crew"]],
+                [[beaumonde_10],["beaumonde"],["item"]],
+                [[beaumonde_11],["beaumonde"],["crew"]],
+                [[beaumonde_12],["beaumonde"],["item"]],
+                [[beaumonde_13],["beaumonde"],["crew"]],
+                [[beaumonde_14],["beaumonde"],["item"]],
+                [[beaumonde_15],["beaumonde"],["crew"]],
+                [[beaumonde_16],["beaumonde"],["shipUpgrade"]],
+                [[beaumonde_17],["beaumonde"],["item"]],
+                [[beaumonde_18],["beaumonde"],["shipUpgrade"]],
+                [[beaumonde_19],["beaumonde"],["crew"]],
+                [[beaumonde_20],["beaumonde"],["item"]],
+                [[beaumonde_21],["beaumonde"],["item"]],
+                [[beaumonde_22],["beaumonde"],["crew"]],
+                [[beaumonde_23],["beaumonde"],["item"]],
+                [[beaumonde_24],["beaumonde"],["item"]],
+                [[beaumonde_25],["beaumonde"],["item"]],
                 
             ],
-            //chosen to display 4-0-1-1
-            [["beaumonde_17"],["beaumonde"],["item"]],
-            
-            
-            //index 4-1-2
-            [0]
-        ],
-        //considered
-        [
-            ["empty_card"]
-        ],
-        //back of card
-        ["beaumonde_back"] 
-    ]
-    ],
-    [
-    //5 - shop 2
-    //meridian
-    [
-        //draw
-        [
-            [["meridian_01"],["meridian"],["crew"]],
-            [["meridian_02"],["meridian"],["crew"]],
-            [["meridian_03"],["meridian"],["item"]],
-            [["meridian_04"],["meridian"],["shipUpgrade"]],
-            [["meridian_05"],["meridian"],["item"]],
-            [["meridian_06"],["meridian"],["shipUpgrade"]],
-            [["meridian_07"],["meridian"],["item"]],
-            [["meridian_08"],["meridian"],["core"]],
-            [["meridian_09"],["meridian"],["crew"]],
-            [["meridian_10"],["meridian"],["item"]],
-            [["meridian_11"],["meridian"],["item"]],
-            [["meridian_12"],["meridian"],["item"]],
-            [["meridian_13"],["meridian"],["item"]],
-            [["meridian_14"],["meridian"],["shipUpgrade"]],
-            [["meridian_15"],["meridian"],["item"]],
-            [["meridian_16"],["meridian"],["item"]],
-            [["meridian_17"],["meridian"],["crew"]],
-            [["meridian_18"],["meridian"],["item"]],
-            [["meridian_19"],["meridian"],["shipUpgrade"]],
-            [["meridian_20"],["meridian"],["item"]],
-            [["meridian_21"],["meridian"],["crew"]],
-            [["meridian_22"],["meridian"],["crew"]],
-            [["meridian_23"],["meridian"],["crew"]],
-            [["meridian_24"],["meridian"],["shipUpgrade"]],
-            [["meridian_25"],["meridian"],["shipUpgrade"]]
-        ],
-        //discard
-        [
+            //discard 4-1
             [
-                ["discard"],
-                ["discard2"],
-                ["discard3"],
-                ["discard4"],
-                ["discard5"]
-            ],
-            //considered
-            ["meridian considered"],
-            //back of card
-            ["meridian_back"]
-        ]
-    ]
-    ],
-    [
-    //6 - shop 3
-    //osiris shipworks
-    
-    [
-        //draw
-        [
-            [[osiris_shipworks_01],["osiris_shipworks"],["crew"]],
-            [[osiris_shipworks_02],["osiris_shipworks"],["item"]],
-            [[osiris_shipworks_03],["osiris_shipworks"],["item"]],
-            [[osiris_shipworks_04],["osiris_shipworks"],["item"]],
-            [[osiris_shipworks_05],["osiris_shipworks"],["item"]],
-            [[osiris_shipworks_06],["osiris_shipworks"],["crew"]],
-            [[osiris_shipworks_07],["osiris_shipworks"],["crew"]],
-            [[osiris_shipworks_08],["osiris_shipworks"],["crew"]],
-            [[osiris_shipworks_09],["osiris_shipworks"],["item"]],
-            [[osiris_shipworks_10],["osiris_shipworks"],["crew"]],
-            [[osiris_shipworks_11],["osiris_shipworks"],["shipUpgrade"]],
-            [[osiris_shipworks_12],["osiris_shipworks"],["core"]],
-            [[osiris_shipworks_13],["osiris_shipworks"],["core"]],
-            [[osiris_shipworks_14],["osiris_shipworks"],["core"]],
-            [[osiris_shipworks_15],["osiris_shipworks"],["item"]],
-            [[osiris_shipworks_16],["osiris_shipworks"],["shipUpgrade"]],
-            [[osiris_shipworks_17],["osiris_shipworks"],["shipUpgrade"]],
-            [[osiris_shipworks_18],["osiris_shipworks"],["item"]],
-            [[osiris_shipworks_19],["osiris_shipworks"],["shipUpgrade"]],
-            [[osiris_shipworks_20],["osiris_shipworks"],["core"]],
-            [[osiris_shipworks_21],["osiris_shipworks"],["shipUpgrade"]],
-            [[osiris_shipworks_22],["osiris_shipworks"],["shipUpgrade"]],
-            [[osiris_shipworks_23],["osiris_shipworks"],["shipUpgrade"]],
-            [[osiris_shipworks_24],["osiris_shipworks"],["item"]],
-            [[osiris_shipworks_25],["osiris_shipworks"],["shipUpgrade"]],
-            [[osiris_shipworks_26],["osiris_shipworks"],["core"]],
-            [[osiris_shipworks_27],["osiris_shipworks"],["item"]],
-            [[osiris_shipworks_28],["osiris_shipworks"],["item"]],
-            [[osiris_shipworks_29],["osiris_shipworks"],["shipUpgrade"]],
-            [[osiris_shipworks_30],["osiris_shipworks"],["item"]],
-            [[osiris_shipworks_31],["osiris_shipworks"],["crew"]],
-            [[osiris_shipworks_32],["osiris_shipworks"],["item"]],
-            [[osiris_shipworks_33],["osiris_shipworks"],["crew"]],
-            [[osiris_shipworks_34],["osiris_shipworks"],["item"]],
-            [[osiris_shipworks_35],["osiris_shipworks"],["item"]],
-            [[osiris_shipworks_36],["osiris_shipworks"],["shipUpgrade"]],
-            [[osiris_shipworks_37],["osiris_shipworks"],["crew"]],
-            [[osiris_shipworks_38],["osiris_shipworks"],["item"]],
-            [[osiris_shipworks_39],["osiris_shipworks"],["crew"]],
-            [[osiris_shipworks_40],["osiris_shipworks"],["crew"]],
-            [[osiris_shipworks_41],["osiris_shipworks"],["crew"]]
-            
-        ],
-        //discard
-        [
-            [
-
-            ],
-        //considered
-            [
+                //all discards 4-1-0
+                [
+                    [empty_card]
+                ],
+                //chosen to display 4-0-1-1
+                [
+                    [empty_card],
+                    [empty_card],
+                    [empty_card]
+                ],
                 
-            ],
-            //back of card
-            [osiris_shipworks_back]
-        ]
-    ],
-    //7 - shop 4
-    //persephone
-    
-    [
-        //draw
-        [
-            [[persephone_01],["persephone"],["item"]],
-            [[persephone_02],["persephone"],["item"]],
-            [[persephone_03],["persephone"],["item"]],
-            [[persephone_04],["persephone"],["shipUpgrade"]],
-            [[persephone_05],["persephone"],["shipUpgrade"]],
-            [[persephone_06],["persephone"],["crew"]],
-            [[persephone_07],["persephone"],["item"]],
-            [[persephone_08],["persephone"],["item"]],
-            [[persephone_09],["persephone"],["shipUpgrade"]],
-            [[persephone_10],["persephone"],["shipUpgrade"]],
-            [[persephone_11],["persephone"],["item"]],
-            [[persephone_12],["persephone"],["crew"]],
-            [[persephone_13],["persephone"],["item"]],
-            [[persephone_14],["persephone"],["item"]],
-            [[persephone_15],["persephone"],["item"]],
-            [[persephone_16],["persephone"],["shipUpgrade"]],
-            [[persephone_17],["persephone"],["item"]],
-            [[persephone_18],["persephone"],["crew"]],
-            [[persephone_19],["persephone"],["item"]],
-            [[persephone_20],["persephone"],["crew"]],
-            [[persephone_21],["persephone"],["crew"]],
-            [[persephone_22],["persephone"],["crew"]],
-            [[persephone_23],["persephone"],["item"]],
-            [[persephone_24],["persephone"],["crew"]],
-            [[persephone_25],["persephone"],["crew"]],
-            [[persephone_26],["persephone"],["crew"]],
-            [[persephone_27],["persephone"],["item"]],
-            [[persephone_28],["persephone"],["crew"]],
-            [[persephone_29],["persephone"],["crew"]],
-            [[persephone_30],["persephone"],["crew"]],
-            [[persephone_31],["persephone"],["crew"]],
-            [[persephone_32],["persephone"],["crew"]],
-            [[persephone_33],["persephone"],["item"]],
-            [[persephone_34],["persephone"],["shipUpgrade"]],
-            [[persephone_35],["persephone"],["crew"]],
-            [[persephone_36],["persephone"],["item"]],
-            [[persephone_37],["persephone"],["crew"]],
-            [[persephone_38],["persephone"],["crew"]],
-            [[persephone_39],["persephone"],["item"]],
-            [[persephone_40],["persephone"],["item"]],
-            [[persephone_41],["persephone"],["crew"]]
-            
-        ],
-        //discard
-        [
-            [
+                //index 4-1-2
+                
+                [0]
+                
             ],
             //considered
             [
+                [empty_card],
+                [empty_card],
+                [empty_card]
             ],
             //back of card
-            [persephone_back]
+            [beaumonde_back] 
+        ]
+    ],
+    [
+        //5 - shop 2
+        //meridian
+        [
+            //draw
+            [
+                [[meridian_01],["meridian"],["crew"]],
+                [[meridian_02],["meridian"],["crew"]],
+                [[meridian_03],["meridian"],["item"]],
+                [[meridian_04],["meridian"],["shipUpgrade"]],
+                [[meridian_05],["meridian"],["item"]],
+                [[meridian_06],["meridian"],["shipUpgrade"]],
+                [[meridian_07],["meridian"],["item"]],
+                [[meridian_08],["meridian"],["core"]],
+                [[meridian_09],["meridian"],["crew"]],
+                [[meridian_10],["meridian"],["item"]],
+                [[meridian_11],["meridian"],["item"]],
+                [[meridian_12],["meridian"],["item"]],
+                [[meridian_13],["meridian"],["item"]],
+                [[meridian_14],["meridian"],["shipUpgrade"]],
+                [[meridian_15],["meridian"],["item"]],
+                [[meridian_16],["meridian"],["item"]],
+                [[meridian_17],["meridian"],["crew"]],
+                [[meridian_18],["meridian"],["item"]],
+                [[meridian_19],["meridian"],["shipUpgrade"]],
+                [[meridian_20],["meridian"],["item"]],
+                [[meridian_21],["meridian"],["crew"]],
+                [[meridian_22],["meridian"],["crew"]],
+                [[meridian_23],["meridian"],["crew"]],
+                [[meridian_24],["meridian"],["shipUpgrade"]],
+                [[meridian_25],["meridian"],["shipUpgrade"]]
+            ],
+            //discard
+            [
+                //all discards 4-1-0
+                [
+                    [empty_card]
+                ],
+                //chosen to display 4-0-1-1
+                [
+                    [empty_card],
+                    [empty_card],
+                    [empty_card]
+                ],
+                
+                //index 4-1-2
+                
+                [0]
+                
+            ],
+            //considered
+            [
+                [empty_card],
+                [empty_card],
+                [empty_card]
+            ],
+            //back of card
+            [meridian_back] 
+        ]
+    ],
+    [
+        //6 - shop 3
+        //osiris shipworks
+        
+        [
+            //draw
+            [
+                [[osiris_shipworks_01],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_02],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_03],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_04],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_05],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_06],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_07],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_08],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_09],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_10],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_11],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_12],["osiris_shipworks"],["core"]],
+                [[osiris_shipworks_13],["osiris_shipworks"],["core"]],
+                [[osiris_shipworks_14],["osiris_shipworks"],["core"]],
+                [[osiris_shipworks_15],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_16],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_17],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_18],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_19],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_20],["osiris_shipworks"],["core"]],
+                [[osiris_shipworks_21],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_22],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_23],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_24],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_25],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_26],["osiris_shipworks"],["core"]],
+                [[osiris_shipworks_27],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_28],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_29],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_30],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_31],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_32],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_33],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_34],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_35],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_36],["osiris_shipworks"],["shipUpgrade"]],
+                [[osiris_shipworks_37],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_38],["osiris_shipworks"],["item"]],
+                [[osiris_shipworks_39],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_40],["osiris_shipworks"],["crew"]],
+                [[osiris_shipworks_41],["osiris_shipworks"],["crew"]]
+                
+            ],
+            //discard
+            [
+                [
+                    [empty_card]   
+                    
+                ],
+                //chosen to display 6-0-1-1
+                [
+                    [empty_card],
+                    [empty_card],
+                    [empty_card]
+                ],
+            
+                //index 6-1-2
+                
+                [1]
+                
+            ],
+            //considered
+            [
+                [empty_card],
+                [empty_card],
+                [empty_card]
+            ],
+            //back of card
+            [osiris_shipworks_back] 
+            
+        ]    
+    ],
+    [
+        //7 - shop 4
+        //persephone
+        
+        [
+            //draw
+            [
+                [[persephone_01],["persephone"],["item"]],
+                [[persephone_02],["persephone"],["item"]],
+                [[persephone_03],["persephone"],["item"]],
+                [[persephone_04],["persephone"],["shipUpgrade"]],
+                [[persephone_05],["persephone"],["shipUpgrade"]],
+                [[persephone_06],["persephone"],["crew"]],
+                [[persephone_07],["persephone"],["item"]],
+                [[persephone_08],["persephone"],["item"]],
+                [[persephone_09],["persephone"],["shipUpgrade"]],
+                [[persephone_10],["persephone"],["shipUpgrade"]],
+                [[persephone_11],["persephone"],["item"]],
+                [[persephone_12],["persephone"],["crew"]],
+                [[persephone_13],["persephone"],["item"]],
+                [[persephone_14],["persephone"],["item"]],
+                [[persephone_15],["persephone"],["item"]],
+                [[persephone_16],["persephone"],["shipUpgrade"]],
+                [[persephone_17],["persephone"],["item"]],
+                [[persephone_18],["persephone"],["crew"]],
+                [[persephone_19],["persephone"],["item"]],
+                [[persephone_20],["persephone"],["crew"]],
+                [[persephone_21],["persephone"],["crew"]],
+                [[persephone_22],["persephone"],["crew"]],
+                [[persephone_23],["persephone"],["item"]],
+                [[persephone_24],["persephone"],["crew"]],
+                [[persephone_25],["persephone"],["crew"]],
+                [[persephone_26],["persephone"],["crew"]],
+                [[persephone_27],["persephone"],["item"]],
+                [[persephone_28],["persephone"],["crew"]],
+                [[persephone_29],["persephone"],["crew"]],
+                [[persephone_30],["persephone"],["crew"]],
+                [[persephone_31],["persephone"],["crew"]],
+                [[persephone_32],["persephone"],["crew"]],
+                [[persephone_33],["persephone"],["item"]],
+                [[persephone_34],["persephone"],["shipUpgrade"]],
+                [[persephone_35],["persephone"],["crew"]],
+                [[persephone_36],["persephone"],["item"]],
+                [[persephone_37],["persephone"],["crew"]],
+                [[persephone_38],["persephone"],["crew"]],
+                [[persephone_39],["persephone"],["item"]],
+                [[persephone_40],["persephone"],["item"]],
+                [[persephone_41],["persephone"],["crew"]]
+                
+            ],
+            //discard
+            [
+                [
+                    [empty_card],
+                    [empty_card]
+                    
+                ],
+                //chosen to display 7-0-1-1
+                [
+                    [empty_card],
+                    [empty_card],
+                    [empty_card]
+                ],
+                
+                //index 7-0-1-2
+                
+                [0]
+                
+            ],
+            //considered
+                [
+                    [empty_card],
+                    [empty_card],
+                    [empty_card]
+                ],
+            //back of card
+            [persephone_back] 
+            
+            
         ]
     ],
     //8 - shop 5
     //regina
-        
     [
+        [
         //draw
-        [
-            [[regina_01],["regina"],["item"]],
-            [[regina_02],["regina"],["item"]],
-            [[regina_03],["regina"],["shipUpgrade"]],
-            [[regina_04],["regina"],["item"]],
-            [[regina_05],["regina"],["item"]],
-            [[regina_06],["regina"],["item"]],
-            [[regina_07],["regina"],["shipUpgrade"]],
-            [[regina_08],["regina"],["crew"]],
-            [[regina_09],["regina"],["item"]],
-            [[regina_10],["regina"],["item"]],
-            [[regina_11],["regina"],["item"]],
-            [[regina_12],["regina"],["crew"]],
-            [[regina_13],["regina"],["shipUpgrade"]],
-            [[regina_14],["regina"],["crew"]],
-            [[regina_15],["regina"],["crew"]],
-            [[regina_16],["regina"],["crew"]],
-            [[regina_17],["regina"],["crew"]],
-            [[regina_18],["regina"],["crew"]],
-            [[regina_19],["regina"],["item"]],
-            [[regina_20],["regina"],["shipUpgrade"]],
-            [[regina_21],["regina"],["item"]],
-            [[regina_22],["regina"],["item"]],
-            [[regina_23],["regina"],["item"]],
-            [[regina_24],["regina"],["shipUpgrade"]],
-            [[regina_25],["regina"],["crew"]],
-            [[regina_26],["regina"],["crew"]],
-            [[regina_27],["regina"],["crew"]],
-            [[regina_28],["regina"],["shipUpgrade"]],
-            [[regina_29],["regina"],["crew"]],
-            [[regina_30],["regina"],["shipUpgrade"]],
-            [[regina_31],["regina"],["shipUpgrade"]],
-            [[regina_32],["regina"],["crew"]],
-            [[regina_33],["regina"],["shipUpgrade"]],
-            [[regina_34],["regina"],["item"]],
-            [[regina_35],["regina"],["crew"]],
-            [[regina_36],["regina"],["crew"]],
-            [[regina_37],["regina"],["crew"]],
-            [[regina_38],["regina"],["shipUpgrade"]],
-            [[regina_39],["regina"],["crew"]],
-            [[regina_40],["regina"],["item"]],
-            [[regina_41],["regina"],["crew"]]
-            
-        ],
-        //discard
-        [
             [
+                [[regina_01],["regina"],["item"]],
+                [[regina_02],["regina"],["item"]],
+                [[regina_03],["regina"],["shipUpgrade"]],
+                [[regina_04],["regina"],["item"]],
+                [[regina_05],["regina"],["item"]],
+                [[regina_06],["regina"],["item"]],
+                [[regina_07],["regina"],["shipUpgrade"]],
+                [[regina_08],["regina"],["crew"]],
+                [[regina_09],["regina"],["item"]],
+                [[regina_10],["regina"],["item"]],
+                [[regina_11],["regina"],["item"]],
+                [[regina_12],["regina"],["crew"]],
+                [[regina_13],["regina"],["shipUpgrade"]],
+                [[regina_14],["regina"],["crew"]],
+                [[regina_15],["regina"],["crew"]],
+                [[regina_16],["regina"],["crew"]],
+                [[regina_17],["regina"],["crew"]],
+                [[regina_18],["regina"],["crew"]],
+                [[regina_19],["regina"],["item"]],
+                [[regina_20],["regina"],["shipUpgrade"]],
+                [[regina_21],["regina"],["item"]],
+                [[regina_22],["regina"],["item"]],
+                [[regina_23],["regina"],["item"]],
+                [[regina_24],["regina"],["shipUpgrade"]],
+                [[regina_25],["regina"],["crew"]],
+                [[regina_26],["regina"],["crew"]],
+                [[regina_27],["regina"],["crew"]],
+                [[regina_28],["regina"],["shipUpgrade"]],
+                [[regina_29],["regina"],["crew"]],
+                [[regina_30],["regina"],["shipUpgrade"]],
+                [[regina_31],["regina"],["shipUpgrade"]],
+                [[regina_32],["regina"],["crew"]],
+                [[regina_33],["regina"],["shipUpgrade"]],
+                [[regina_34],["regina"],["item"]],
+                [[regina_35],["regina"],["crew"]],
+                [[regina_36],["regina"],["crew"]],
+                [[regina_37],["regina"],["crew"]],
+                [[regina_38],["regina"],["shipUpgrade"]],
+                [[regina_39],["regina"],["crew"]],
+                [[regina_40],["regina"],["item"]],
+                [[regina_41],["regina"],["crew"]]
+                
             ],
-            //considered
+            //discard
             [
+                [
+                    [empty_card],
+                ],
+            //chosen to display 8-0-1-1
+                [
+                    [empty_card],
+                    [empty_card],
+                    [empty_card]
+                ],
+                
+                //index 8-0-1-2
+                
+                [1]
+
+            ],
+                //considered
+            [
+                [empty_card],
+                [empty_card],
+                [empty_card]
             ],
             //back of card
-            [regina_back]
+            [regina_back] 
+            
         ]
     ],
     //9 - shop 6
     //silverhold munitions
     [
-        //draw
         [
-            [[silverhold_munitions_01],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_02],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_03],["silverhold_munitions"],["crew"]],
-            [[silverhold_munitions_04],["silverhold_munitions"],["crew"]],
-            [[silverhold_munitions_05],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_06],["silverhold_munitions"],["crew"]],
-            [[silverhold_munitions_07],["silverhold_munitions"],["crew"]],
-            [[silverhold_munitions_08],["silverhold_munitions"],["crew"]],
-            [[silverhold_munitions_09],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_10],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_11],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_12],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_13],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_14],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_15],["silverhold_munitions"],["crew"]],
-            [[silverhold_munitions_16],["silverhold_munitions"],["crew"]],
-            [[silverhold_munitions_17],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_18],["silverhold_munitions"],["crew"]],
-            [[silverhold_munitions_19],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_20],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_21],["silverhold_munitions"],["crew"]],
-            [[silverhold_munitions_22],["silverhold_munitions"],["crew"]],
-            [[silverhold_munitions_23],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_24],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_25],["silverhold_munitions"],["crew"]],
-            [[silverhold_munitions_26],["silverhold_munitions"],["crew"]],
-            [[silverhold_munitions_27],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_28],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_30],["silverhold_munitions"],["crew"]],
-            [[silverhold_munitions_31],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_32],["silverhold_munitions"],["crew"]],
-            [[silverhold_munitions_33],["silverhold_munitions"],["crew"]],
-            [[silverhold_munitions_34],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_35],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_36],["silverhold_munitions"],["crew"]],
-            [[silverhold_munitions_37],["silverhold_munitions"],["crew"]],
-            [[silverhold_munitions_38],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_39],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_40],["silverhold_munitions"],["item"]],
-            [[silverhold_munitions_41],["silverhold_munitions"],["crew"]]
-        ],
-        //discard
-        [
+            //draw
             [
+                [[silverhold_munitions_01],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_02],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_03],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_04],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_05],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_06],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_07],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_08],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_09],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_10],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_11],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_12],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_13],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_14],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_15],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_16],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_17],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_18],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_19],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_20],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_21],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_22],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_23],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_24],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_25],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_26],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_27],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_28],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_30],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_31],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_32],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_33],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_34],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_35],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_36],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_37],["silverhold_munitions"],["crew"]],
+                [[silverhold_munitions_38],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_39],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_40],["silverhold_munitions"],["item"]],
+                [[silverhold_munitions_41],["silverhold_munitions"],["crew"]]
+            ],
+            //discard
+            [
+                [
+                    [empty_card],
+                    [empty_card]
+                    
+                ],
+                //chosen to display 9-0-1-1
+                [
+                    [empty_card],
+                    [empty_card],
+                    [empty_card]
+                ],
+                
+                //index 9-0-1-2
+                
+                [1]
+                
             ],
             //considered
             [
+                [empty_card],
+                [empty_card],
+                [empty_card]
             ],
             //back of card
-            [silverhold_munitions_back]
+            [silverhold_munitions_back] 
+            
+                
         ]
     ],
     //10 - shop 7
     //space bazaar
-    
     [
-        //draw
         [
-            [[space_bazaar_01],["space_bazaar"],["crew"]],
-            [[space_bazaar_02],["space_bazaar"],["item"]],
-            [[space_bazaar_03],["space_bazaar"],["item"]],
-            [[space_bazaar_04],["space_bazaar"],["crew"]],
-            [[space_bazaar_05],["space_bazaar"],["item"]],
-            [[space_bazaar_06],["space_bazaar"],["crew"]],
-            [[space_bazaar_07],["space_bazaar"],["item"]],
-            [[space_bazaar_08],["space_bazaar"],["item"]],
-            [[space_bazaar_09],["space_bazaar"],["item"]],
-            [[space_bazaar_10],["space_bazaar"],["shipUpgrade"]],
-            [[space_bazaar_11],["space_bazaar"],["item"]],
-            [[space_bazaar_12],["space_bazaar"],["crew"]],
-            [[space_bazaar_13],["space_bazaar"],["item"]],
-            [[space_bazaar_14],["space_bazaar"],["item"]],
-            [[space_bazaar_15],["space_bazaar"],["crew"]],
-            [[space_bazaar_16],["space_bazaar"],["item"]],
-            [[space_bazaar_17],["space_bazaar"],["crew"]],
-            [[space_bazaar_18],["space_bazaar"],["shipUpgrade"]],
-            [[space_bazaar_19],["space_bazaar"],["item"]],
-            [[space_bazaar_20],["space_bazaar"],["crew"]],
-            [[space_bazaar_21],["space_bazaar"],["item"]],
-            [[space_bazaar_22],["space_bazaar"],["item"]],
-            [[space_bazaar_23],["space_bazaar"],["crew"]],
-            [[space_bazaar_24],["space_bazaar"],["item"]],
-            [[space_bazaar_25],["space_bazaar"],["crew"]],
-            [[space_bazaar_26],["space_bazaar"],["crew"]],
-            [[space_bazaar_27],["space_bazaar"],["item"]],
-            [[space_bazaar_28],["space_bazaar"],["item"]],
-            [[space_bazaar_29],["space_bazaar"],["item"]],
-            [[space_bazaar_30],["space_bazaar"],["shipUpgrade"]],
-            [[space_bazaar_31],["space_bazaar"],["item"]],
-            [[space_bazaar_32],["space_bazaar"],["item"]],
-            [[space_bazaar_33],["space_bazaar"],["crew"]],
-            [[space_bazaar_34],["space_bazaar"],["item"]],
-            [[space_bazaar_35],["space_bazaar"],["crew"]],
-            [[space_bazaar_36],["space_bazaar"],["crew"]],
-            [[space_bazaar_37],["space_bazaar"],["shipUpgrade"]],
-            [[space_bazaar_38],["space_bazaar"],["crew"]],
-            [[space_bazaar_39],["space_bazaar"],["crew"]],
-            [[space_bazaar_40],["space_bazaar"],["crew"]],
-            [[space_bazaar_41],["space_bazaar"],["item"]]
-            
-        ],
-        //discard
-        [
+            //draw
             [
+                [[space_bazaar_01],["space_bazaar"],["crew"]],
+                [[space_bazaar_02],["space_bazaar"],["item"]],
+                [[space_bazaar_03],["space_bazaar"],["item"]],
+                [[space_bazaar_04],["space_bazaar"],["crew"]],
+                [[space_bazaar_05],["space_bazaar"],["item"]],
+                [[space_bazaar_06],["space_bazaar"],["crew"]],
+                [[space_bazaar_07],["space_bazaar"],["item"]],
+                [[space_bazaar_08],["space_bazaar"],["item"]],
+                [[space_bazaar_09],["space_bazaar"],["item"]],
+                [[space_bazaar_10],["space_bazaar"],["shipUpgrade"]],
+                [[space_bazaar_11],["space_bazaar"],["item"]],
+                [[space_bazaar_12],["space_bazaar"],["crew"]],
+                [[space_bazaar_13],["space_bazaar"],["item"]],
+                [[space_bazaar_14],["space_bazaar"],["item"]],
+                [[space_bazaar_15],["space_bazaar"],["crew"]],
+                [[space_bazaar_16],["space_bazaar"],["item"]],
+                [[space_bazaar_17],["space_bazaar"],["crew"]],
+                [[space_bazaar_18],["space_bazaar"],["shipUpgrade"]],
+                [[space_bazaar_19],["space_bazaar"],["item"]],
+                [[space_bazaar_20],["space_bazaar"],["crew"]],
+                [[space_bazaar_21],["space_bazaar"],["item"]],
+                [[space_bazaar_22],["space_bazaar"],["item"]],
+                [[space_bazaar_23],["space_bazaar"],["crew"]],
+                [[space_bazaar_24],["space_bazaar"],["item"]],
+                [[space_bazaar_25],["space_bazaar"],["crew"]],
+                [[space_bazaar_26],["space_bazaar"],["crew"]],
+                [[space_bazaar_27],["space_bazaar"],["item"]],
+                [[space_bazaar_28],["space_bazaar"],["item"]],
+                [[space_bazaar_29],["space_bazaar"],["item"]],
+                [[space_bazaar_30],["space_bazaar"],["shipUpgrade"]],
+                [[space_bazaar_31],["space_bazaar"],["item"]],
+                [[space_bazaar_32],["space_bazaar"],["item"]],
+                [[space_bazaar_33],["space_bazaar"],["crew"]],
+                [[space_bazaar_34],["space_bazaar"],["item"]],
+                [[space_bazaar_35],["space_bazaar"],["crew"]],
+                [[space_bazaar_36],["space_bazaar"],["crew"]],
+                [[space_bazaar_37],["space_bazaar"],["shipUpgrade"]],
+                [[space_bazaar_38],["space_bazaar"],["crew"]],
+                [[space_bazaar_39],["space_bazaar"],["crew"]],
+                [[space_bazaar_40],["space_bazaar"],["crew"]],
+                [[space_bazaar_41],["space_bazaar"],["item"]]
+                
+            ],
+            //discard
+            [
+                [
+                    [empty_card],
+                    [empty_card]
+                ],
+                //chosen to display 10-0-1-1
+                [
+                    [empty_card],
+                    [empty_card],
+                    [empty_card]
+                ],
+                
+                //index 10-0-1-2
+                
+                [1]
+
             ],
             //considered
             [
+                [empty_card],
+                [empty_card],
+                [empty_card]
             ],
             //back of card
-            [space_bazaar_back]
+            [space_bazaar_back] 
+            
+            
         ]
     ],
-    
-    //jobs
         
-    //amnon duul
+        //jobs
+        
+        //11 amnon duul
     [
-        [[amnon_duul_coachworks_trade_secrets],["amnon_duul"],["job"]],
+        [[amnon_duul_coachworks_trade_secrets],["amnon_duul"],["job"],["amnon_duul_coachworks_trade_secrets"]],
         [[amnon_duul_contract_jumper_01],["amnon_duul"],["job"]],
         [[amnon_duul_contract_jumper_02],["amnon_duul"],["job"]],
         [[amnon_duul_contract_jumper_03],["amnon_duul"],["job"]],
@@ -2092,7 +3399,7 @@ var playerCards = [
         [[amnon_duul_zir_com_franchising_urp_transport_hub],["amnon_duul"],["job"]]
         
     ],
-        //badger
+        //12 badger
     [
         [[badger_a_stick_as_big_as_harrows],["badger"],["job"]],
         [[badger_bilking_the_yokels],["badger"],["job"]],
@@ -2129,7 +3436,6 @@ var playerCards = [
         [[badger_robbing_peter_to_feed_paul],["badger"],["job"]],
         [[badger_send_them_to_the_ruttin_mines],["badger"],["job"]],
         [[badger_slave_wrangling],["badger"],["job"]],
-        [[badger_solid],["badger"],["job"]],
         [[badger_sowing_chaos],["badger"],["job"]],
         [[badger_street_sweepers],["badger"],["job"]],
         [[badger_takes_my_breath_away],["badger"],["job"]],
@@ -2141,7 +3447,7 @@ var playerCards = [
         [[badger_withdraw_from_the_first_bank],["badger"],["job"]],
         [[badger_pushing_drops],["badger"],["job"]]
     ],
-    //fanty and mingo
+    //13 fanty and mingo
     [
         [[fanty_mingo_brothers_keeper],["fanty_mingo"],["job"]],
         [[fanty_mingo_double_dealing_duo],["fanty_mingo"],["job"]],
@@ -2170,7 +3476,7 @@ var playerCards = [
         [[fanty_mingo_two_ways],["fanty_mingo"],["job"]]
     ],
     
-    //harken
+    //14 harken
     [
         [[harken_alliance_commission_01],["harken"],["job"]],
         [[harken_alliance_commission_02],["harken"],["job"]],
@@ -2220,7 +3526,7 @@ var playerCards = [
         
     ],
     
-    //lord harrow
+    //15 lord harrow
     [
         [[lord_harrow_a_favor_for_his_lordship],["lord_harrow"],["job"]],
         [[lord_harrow_a_fight_before_your_gutted],["lord_harrow"],["job"]],
@@ -2250,7 +3556,7 @@ var playerCards = [
         
     ],
     
-    //magistrate higgins
+    //16 magistrate higgins
     [
         [[magistrate_higgins_dirt_nap_fetch_lien_wong],["magistrate_higgins"],["job"]],
         [[magistrate_higgins_dirt_nap_fetch_conroy],["magistrate_higgins"],["job"]],
@@ -2280,7 +3586,7 @@ var playerCards = [
             
     ],
     
-    //mr universe
+    //17 mr universe
     
     [
         [[mr_universe_a_wee_bit_naughty_01],["mr_universe"],["job"]],
@@ -2311,7 +3617,7 @@ var playerCards = [
             
         ],
 
-        //niska
+        //18 niska
         [
             [[niska_a_judge_in_niskas_pocket],["niska"],["job"]],
             [[niska_a_message_from_niska_01],["niska"],["job"]],
@@ -2361,7 +3667,7 @@ var playerCards = [
             
         ],
         
-        //patience
+        //19 patience
         [
             [[patience_aggresive_recruitment],["patience"],["job"]],
             [[patience_bank_holdup],["patience"],["job"]],
@@ -2408,239 +3714,28 @@ var playerCards = [
             [[patience_the_beef_must_flow_04],["patience"],["job"]],
             [[patience_the_shoje_downs],["patience"],["job"]],
             [[patience_the_zephyr_stakes],["patience"],["job"]]
+            
+        ],
 
-        ],
-        
-        //draw
-        [
-            [],
-            [[z_minor_tech_diff],["tinker"],["crew"]],
-            [[z_engine_room],["london"],["item"]],
-            [[z_broken_shuttle],["bazaar"],["item"]]
-        ],
-        //discard
-        [
-            [],
-            [[z_minor_tech_diff],["tinker"],["crew"]],
-            [[z_engine_room],["london"],["item"]],
-            [[z_broken_shuttle],["bazaar"],["item"]]
-        ],
-        //considered
-        [
-            [],
-            [[z_minor_tech_diff],["tinker"],["crew"]],
-            [[z_engine_room],["london"],["item"]],
-            [[z_broken_shuttle],["bazaar"],["item"]]
-        ]
-    ],
+    //20 card backs
+    
     [
-        //draw
-        [
-            [],
-            [[z_minor_tech_diff],["tinker"],["crew"]],
-            [[z_engine_room],["london"],["item"]],
-            [[z_broken_shuttle],["bazaar"],["item"]]
-        ],
-        //discard
-        [
-            [],
-            [[z_minor_tech_diff],["tinker"],["crew"]],
-            [[z_engine_room],["london"],["item"]],
-            [[z_broken_shuttle],["bazaar"],["item"]]
-        ],
-        //considered
-        [
-            [],
-            [[z_minor_tech_diff],["tinker"],["item"]],
-            [[z_engine_room],["london"],["item"]],
-            [[z_broken_shuttle],["bazaar"],["item"]]
-        ]
+        amnon_duul_solid,
+        badger_solid,
+        fanty_mingo_solid,
+        harken_solid,
+        lord_harrow_solid,
+        magistrate_higgins_solid,
+        niska_solid,
+        patience_solid
     ],
-    [
-        //draw
-        [
-            [],
-            [[z_minor_tech_diff],["tinker"],["item"]],
-            [[z_engine_room],["london"],["item"]],
-            [[z_broken_shuttle],["bazaar"],["item"]]
-        ],
-        //discard
-        [
-            [],
-            [[z_minor_tech_diff],["tinker"],["item"]],
-            [[z_engine_room],["london"],["item"]],
-            [[z_broken_shuttle],["bazaar"],["item"]]
-        ],
-        //considered
-        [
-            [],
-            [[z_minor_tech_diff],["tinker"],["item"]],
-            [[z_engine_room],["london"],["item"]],
-            [[z_broken_shuttle],["bazaar"],["item"]]
-        ]
-    ],
-    [
-        //draw
-        [
-            [],
-            [[z_minor_tech_diff],["tinker"],["item"]],
-            [[z_engine_room],["london"],["item"]],
-            [[z_broken_shuttle],["bazaar"],["item"]]
-        ],
-        //discard
-        [
-            [],
-            [[z_minor_tech_diff],["tinker"],["item"]],
-            [[z_engine_room],["london"],["item"]],
-            [[z_broken_shuttle],["bazaar"],["item"]]
-        ],
-        //considered
-        [
-            [],
-            [[z_minor_tech_diff],["tinker"],["item"]],
-            [[z_engine_room],["london"],["item"]],
-            [[z_broken_shuttle],["bazaar"],["item"]]
-        ]
-    ],
-    [
-        //draw
-        [
-            [],
-            [[z_minor_tech_diff],["tinker"],["item"]],
-            [[z_engine_room],["london"],["item"]],
-            [[z_broken_shuttle],["bazaar"],["item"]]
-        ],
-        //discard
-        [
-            [],
-            [[z_minor_tech_diff],["tinker"],["item"]],
-            [[z_engine_room],["london"],["item"]],
-            [[z_broken_shuttle],["bazaar"],["item"]]
-        ],
-        //considered
-        [
-            [],
-            [[z_minor_tech_diff],["tinker"],["item"]],
-            [[z_engine_room],["london"],["item"]],
-            [[z_broken_shuttle],["bazaar"],["item"]]
-        ]
-    ]
-];
 
-var shipInv =
+    //21 random draw cards
+    
     [
-        //[possible supply [[i],[n]], [[i],[n]] ]
         [
-            [
-                [ [empty], ["Empty Slot"] ],
-                [ [empty], ["Empty Slot"] ],
-                [ [cargo], ["Cargo"] ],
-                [ [contraband], ["Contraband"] ],
-                [ [one_fuel], ["1fuel"] ],
-                [ [two_fuel], ["2fuel"] ],
-                [ [one_part], ["1part"] ],
-                [ [two_part], ["two part"] ],
-                [ [passenger], ["Passenger"] ]
-            ],
-        ],
-        //[player [total], [chosen 12boxes] ]
-        //player1
-        [
-            //chosen for boxes (12 in total)
-            [  [ [empty], ["Empty Slot"] ],
-               [ [one_part], ["One_Part"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Passenger"] ],
-               [ [empty], ["One_Part"] ],
-               [ [empty], ["One_Part"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ]
-            ],
-            //totals
-            [],
-            //index
-            [[1],
-             [1],
-             [1],
-             [1],
-             [1],
-             [1],
-             [1],
-             [1],
-             [1],
-             [1],
-             [1],
-             [1]]
-        ],
-        
-        //player2
-        [  
-            //chosen for boxes (12 in total)
-            [  [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-            //totals
-            [],
-            //index
-            [0]]
-        ],//player3
-        [  
-            //chosen for boxes (12 in total)
-            [  [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-            //totals
-            [],
-            //index
-            [0]]
-        ],//player4
-        [
-            //chosen for boxes (12 in total)
-            [  [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-            //totals
-            [],
-            //index
-            [0]]
-        ]
-    ]
-
-var drawRandomCards = [
-    [
-        //test
-        [
+            //test
+            
             //draw
             [
                 ["test 1"],
@@ -2655,6 +3750,7 @@ var drawRandomCards = [
             [1],
             //discards
             []
+            
         ],
         
         //alliance
@@ -2723,14 +3819,783 @@ var drawRandomCards = [
                 [the_big_black_25]
             ],
             //chosen
-            [],
+            [alliance_space],
             //index
             [],
             //discards
-            []
+            [],
+            //reshuffle
+            [
+                [coil_busted_01],
+                [the_big_black_01],
+                [minor_tech_difficulties],
+                [the_big_black_02],
+                [cruiser_patrol_01],
+                [the_big_black_03],
+                [broken_down_shuttle_01],
+                [persistent_pursuit_01],
+                [the_big_black_04],
+                [hell_come_at_you_sideways_01],
+                [persistent_pursuit_02],
+                [family_dinner_01],
+                [the_big_black_05],
+                [outbound_colonists_01],
+                [distress_signal_01],
+                [the_big_black_06],
+                [cruiser_patrol_02],
+                [fire_in_the_engine_room_01],
+                [alliance_checkpoint_01],
+                [customs_inspection_01],
+                [the_big_black_07],
+                [the_big_black_08],
+                [cruiser_patrol_03],
+                [the_big_black_09],
+                [cruiser_patrol_04],
+                [leave_no_ground_to_go_to_01],
+                [persistent_pursuit_03],
+                [the_big_black_10],
+                [alliance_entaglements_01],
+                [alliance_cruiser_01],
+                [the_big_black_11],
+                [the_big_black_12],
+                [the_big_black_13],
+                [badgers_boys_01],
+                [cruiser_patrol_05],
+                [the_big_black_14],
+                [alliance_harassment_01],
+                [the_big_black_15],
+                [the_big_black_16],
+                [the_big_black_17],
+                [passenger_unrest_01],
+                [the_big_black_18],
+                [alliance_harassment_02],
+                [the_big_black_19],
+                [customs_inspection_02],
+                [the_big_black_20],
+                [alliance_interrogation_01],
+                [whats_going_on_in_the_engine_room_01],
+                [freighter_convoy_01],
+                [the_big_black_21],
+                [regulated_salvage_01],
+                [enhanced_enforcement_01],
+                [the_big_black_22],
+                [the_big_black_23],
+                [the_big_black_24],
+                [the_big_black_26],
+                [abandoned_ship_01],
+                [the_big_black_27],
+                [persistent_pursuit_04],
+                [the_big_black_25]
+            ],
+            //card face
+            [alliance_space]
+        ],
+        
+        //border
+        [
+            //draw
+            [
+                [border_a_rogue_trader_01],
+                [border_an_adrift_transport_01],
+                [border_bait_01],
+                [border_dangerous_salvage_01],
+                [border_derelict_ship_01],
+                [border_derelict_ship_02],
+                [border_enhanced_enforcement_01],
+                [border_enhanced_enforcement_02],
+                [border_family_dinner_01],
+                [border_ghost_ship_01],
+                [border_hallowed_out_space_liner_01],
+                [border_hell_come_at_you_sideways_01],
+                [border_leave_no_ground_to_go_to_01],
+                [border_nav_hazard_asteroid_01],
+                [border_nav_hazard_debris_field_01],
+                [border_patiences_posse_01],
+                [border_persistent_pursuit_01],
+                [border_persistent_pursuit_02],
+                [border_persistent_pursuit_03],
+                [border_persistent_pursuit_04],
+                [border_punctured_fuel_lines_01],
+                [border_reaver_bait_01],
+                [border_reaver_cutter_01],
+                [border_reaver_cutter_02],
+                [border_reavers_dead_ahead_01],
+                [border_reavers_dead_ahead_02],
+                [border_reavers_dead_ahead_03],
+                [border_reavers_on_the_hunt_01],
+                [border_reavers_on_the_hunt_02],
+                [border_reavers_on_the_hunt_03],
+                [border_reavers_on_the_hunt_04],
+                [border_reavers_on_the_hunt_05],
+                [border_reavers_on_the_hunt_06],
+                [border_reavers_on_the_hunt_07],
+                [border_reavers_on_the_hunt_08],
+                [border_reavers_on_the_hunt_09],
+                [border_reavers_on_the_hunt_10],
+                [border_reavers_on_the_hunt_11],
+                [border_reavers_on_the_hunt_12],
+                [border_reavers_on_the_hunt_13],
+                [border_reavers_on_the_hunt_14],
+                [border_reavers_on_the_hunt_15],
+                [border_ruttin_drive_cores_blown_01],
+                [border_scrapper_ambush_01],
+                [border_shes_tore_up_plenty_01],
+                [border_ship_graveyard],
+                [border_space_pox_01],
+                [border_storms_gettin_worse_01],
+                [border_the_big_black_01],
+                [border_the_big_black_02],
+                [border_the_big_black_03],
+                [border_the_big_black_04],
+                [border_the_big_black_05],
+                [border_the_big_black_06],
+                [border_the_big_black_07],
+                [border_the_big_black_08],
+                [border_the_big_black_09],
+                [border_the_big_black_10],
+                [border_the_big_black_11],
+                [border_the_big_black_12],
+                [border_the_big_black_13],
+                [border_the_big_black_14],
+                [border_the_big_black_15],
+                [border_the_big_black_16],
+                [border_the_big_black_17],
+                [border_the_big_black_18],
+                [border_the_big_black_19],
+                [border_the_big_black_20],
+                [border_the_big_black_21],
+                [border_whats_that_noise_01]
+            ],
+            //chosen
+            [border_space],
+            //index
+            [],
+            //discards
+            [],
+            //reshuffle
+            [
+                [border_a_rogue_trader_01],
+                [border_an_adrift_transport_01],
+                [border_bait_01],
+                [border_dangerous_salvage_01],
+                [border_derelict_ship_01],
+                [border_derelict_ship_02],
+                [border_enhanced_enforcement_01],
+                [border_enhanced_enforcement_02],
+                [border_family_dinner_01],
+                [border_ghost_ship_01],
+                [border_hallowed_out_space_liner_01],
+                [border_hell_come_at_you_sideways_01],
+                [border_leave_no_ground_to_go_to_01],
+                [border_nav_hazard_asteroid_01],
+                [border_nav_hazard_debris_field_01],
+                [border_patiences_posse_01],
+                [border_persistent_pursuit_01],
+                [border_persistent_pursuit_02],
+                [border_persistent_pursuit_03],
+                [border_persistent_pursuit_04],
+                [border_punctured_fuel_lines_01],
+                [border_reaver_bait_01],
+                [border_reaver_cutter_01],
+                [border_reaver_cutter_02],
+                [border_reavers_dead_ahead_01],
+                [border_reavers_dead_ahead_02],
+                [border_reavers_dead_ahead_03],
+                [border_reavers_on_the_hunt_01],
+                [border_reavers_on_the_hunt_02],
+                [border_reavers_on_the_hunt_03],
+                [border_reavers_on_the_hunt_04],
+                [border_reavers_on_the_hunt_05],
+                [border_reavers_on_the_hunt_06],
+                [border_reavers_on_the_hunt_07],
+                [border_reavers_on_the_hunt_08],
+                [border_reavers_on_the_hunt_09],
+                [border_reavers_on_the_hunt_10],
+                [border_reavers_on_the_hunt_11],
+                [border_reavers_on_the_hunt_12],
+                [border_reavers_on_the_hunt_13],
+                [border_reavers_on_the_hunt_14],
+                [border_reavers_on_the_hunt_15],
+                [border_ruttin_drive_cores_blown_01],
+                [border_scrapper_ambush_01],
+                [border_shes_tore_up_plenty_01],
+                [border_ship_graveyard],
+                [border_space_pox_01],
+                [border_storms_gettin_worse_01],
+                [border_the_big_black_01],
+                [border_the_big_black_02],
+                [border_the_big_black_03],
+                [border_the_big_black_04],
+                [border_the_big_black_05],
+                [border_the_big_black_06],
+                [border_the_big_black_07],
+                [border_the_big_black_08],
+                [border_the_big_black_09],
+                [border_the_big_black_10],
+                [border_the_big_black_11],
+                [border_the_big_black_12],
+                [border_the_big_black_13],
+                [border_the_big_black_14],
+                [border_the_big_black_15],
+                [border_the_big_black_16],
+                [border_the_big_black_17],
+                [border_the_big_black_18],
+                [border_the_big_black_19],
+                [border_the_big_black_20],
+                [border_the_big_black_21],
+                [border_whats_that_noise_01]
+            ],
+            //card face
+            [border_space]
+        ],
+        //rim
+        [
+            //draw
+            [
+                [rim_reavers_in_orbit],
+                [rim_storms_gettin_worse],
+                [rim_the_big_black_01],
+                [rim_reavers_on_the_hunt_01],
+                [rim_reavers_on_the_hunt_02],
+                [rim_reavers_on_the_hunt_03],
+                [rim_reaver_cutter_01],
+                [rim_hell_come_at_you_sideways_01],
+                [rim_reavers_on_the_hunt_04],
+                [rim_fly_by_night_casino_ship],
+                [rim_objects_in_space],
+                [rim_persistent_persuit_01],
+                [rim_the_big_black_02],
+                [rim_the_big_black_03],
+                [rim_reavers_on_the_hunt_05],
+                [rim_ravaged_transport],
+                [rim_alliance_spy_satellite],
+                [rim_the_big_black_04],
+                [rim_the_big_black_05],
+                [rim_nav_system_on_the_fritz],
+                [rim_the_big_black_06],
+                [rim_the_big_black_07],
+                [rim_persistent_persuit_02],
+                [rim_blown_out_buffer_panel],
+                [rim_persistent_persuit_03],
+                [rim_reavers_in_orbit_01],
+                [rim_first_come_first_serve],
+                [rim_reaver_booby_trap],
+                [rim_reavers_on_the_hunt_06],
+                [rim_reavers_in_orbit_02],
+                [rim_enhanced_enforcement],
+                [rim__the_big_black_08],
+                [rim_reavers_on_the_hunt_07],
+                [rim_damaged_spy_satellite],
+                [rim_fuel_coupling_failure],
+                [rim_the_big_black_09],
+                [rim_reavers_on_the_hunt_08],
+                [rim__the_big_black_10],
+                [rim_orphaned_cargo_pod],
+                [rim_leave_no_ground_to_go_to],
+                [rim_failure_to_communicate],
+                [rim_abandoned_tanker],
+                [rim_the_bit_black_11],
+                [rim_the_bit_black_12],
+                [rim_the_bit_black_13],
+                [rim_the_bit_black_14],
+                [rim_the_bit_black_15],
+                [rim_shes_tore_up_plenty],
+                [rim_grav_well_maneuver],
+                [rim_persistent_pursuit_03],
+                [rim_the_big_black_16],
+                [rim_reaver_cutter_02],
+                [rim_the_big_black_17],
+                [rim_horowitz_trading_scow],
+                [rim_nishas_neer_do_wells],
+                [rim_local_tariff_patrol],
+                [rim_first_rule_of_flying],
+                [rim_locking_horns_over_scraps],
+                [rim_the_big_black_18],
+                [rim_the_big_black_19],
+                [rim_the_big_black]
+            ],
+            //chosen
+            [rim_space],
+            //index
+            [],
+            //discards
+            [],
+            //reshuffle
+            [
+                [rim_reavers_in_orbit],
+                [rim_storms_gettin_worse],
+                [rim_the_big_black_01],
+                [rim_reavers_on_the_hunt_01],
+                [rim_reavers_on_the_hunt_02],
+                [rim_reavers_on_the_hunt_03],
+                [rim_reaver_cutter_01],
+                [rim_hell_come_at_you_sideways_01],
+                [rim_reavers_on_the_hunt_04],
+                [rim_fly_by_night_casino_ship],
+                [rim_objects_in_space],
+                [rim_persistent_persuit_01],
+                [rim_the_big_black_02],
+                [rim_the_big_black_03],
+                [rim_reavers_on_the_hunt_05],
+                [rim_ravaged_transport],
+                [rim_alliance_spy_satellite],
+                [rim_the_big_black_04],
+                [rim_the_big_black_05],
+                [rim_nav_system_on_the_fritz],
+                [rim_the_big_black_06],
+                [rim_the_big_black_07],
+                [rim_persistent_persuit_02],
+                [rim_blown_out_buffer_panel],
+                [rim_persistent_persuit_03],
+                [rim_reavers_in_orbit_01],
+                [rim_first_come_first_serve],
+                [rim_reaver_booby_trap],
+                [rim_reavers_on_the_hunt_06],
+                [rim_reavers_in_orbit_02],
+                [rim_enhanced_enforcement],
+                [rim__the_big_black_08],
+                [rim_reavers_on_the_hunt_07],
+                [rim_damaged_spy_satellite],
+                [rim_fuel_coupling_failure],
+                [rim_the_big_black_09],
+                [rim_reavers_on_the_hunt_08],
+                [rim__the_big_black_10],
+                [rim_orphaned_cargo_pod],
+                [rim_leave_no_ground_to_go_to],
+                [rim_failure_to_communicate],
+                [rim_abandoned_tanker],
+                [rim_the_bit_black_11],
+                [rim_the_bit_black_12],
+                [rim_the_bit_black_13],
+                [rim_the_bit_black_14],
+                [rim_the_bit_black_15],
+                [rim_shes_tore_up_plenty],
+                [rim_grav_well_maneuver],
+                [rim_persistent_pursuit_03],
+                [rim_the_big_black_16],
+                [rim_reaver_cutter_02],
+                [rim_the_big_black_17],
+                [rim_horowitz_trading_scow],
+                [rim_nishas_neer_do_wells],
+                [rim_local_tariff_patrol],
+                [rim_first_rule_of_flying],
+                [rim_locking_horns_over_scraps],
+                [rim_the_big_black_18],
+                [rim_the_big_black_19],
+                [rim_the_big_black]
+            ],
+            //card face
+            [rim_space]
+        ],
+        //bounty
+        [
+            //draw
+            [
+                [bounty_alert],
+                [bounty_bandits],
+                [bounty_billy],
+                [bounty_bree],
+                [bounty_crow],
+                [bounty_dalin],
+                [bounty_enforcers],
+                [bounty_grange_brothers],
+                [bounty_helen],
+                [bounty_interrogator],
+                [bounty_jayne],
+                [bounty_jesse],
+                [bounty_river_tam],
+                [bounty_scrappers],
+                [bounty_simon_tam],
+                [bounty_stitch],
+                [bounty_the_fixer],
+                [bounty_the_specialist],
+                [bounty_tracey],
+                [bounty_two_fry],
+                [bounty_zoe]
+            ],
+            //chosen
+            [bounty_alert],
+            //index
+            [],
+            //discards
+            [],
+            //reshuffle
+            [
+                [bounty_alert],
+                [bounty_bandits],
+                [bounty_billy],
+                [bounty_bree],
+                [bounty_crow],
+                [bounty_dalin],
+                [bounty_enforcers],
+                [bounty_grange_brothers],
+                [bounty_helen],
+                [bounty_interrogator],
+                [bounty_jayne],
+                [bounty_jesse],
+                [bounty_river_tam],
+                [bounty_scrappers],
+                [bounty_simon_tam],
+                [bounty_stitch],
+                [bounty_the_fixer],
+                [bounty_the_specialist],
+                [bounty_tracey],
+                [bounty_two_fry],
+                [bounty_zoe]
+            ],
+            //card face
+            [bounty_alert]
+        ],
+        //misbehave
+        [
+            //draw
+            [
+                [state_of_the_art_security_system],
+                [old_fashioned_shoot_out],
+                [a_bit_of_local_color_01],
+                [time_for_some_thrillin_heroics],
+                [keep_a_low_profile_01],
+                [lets_go_see_the_crappy_town],
+                [old_vendetta],
+                [kidnapped_by_hill_folk],
+                [a_bit_of_local_color_02],
+                [gun_play_01],
+                [the_local_law_01],
+                [gun_play_02],
+                [knife_fight],
+                [the_local_law_02],
+                [locals_in_need],
+                [an_unexpected_oportunity],
+                [a_formal_affair],
+                [the_sheriffs_justice],
+                [ambush],
+                [it_takes_a_womans_touch],
+                [we_need_a_distraction],
+                [alliance_patrol],
+                [keep_a_low_profile_02],
+                [alliance_patrol_01],
+                [a_rival_crew],
+                [everything_thats_not_nailed_down_01],
+                [kill_the_alarm_01],
+                [a_little_job_on_the_side],
+                [an_interesting_day],
+                [it_was_the_best_day_ever],
+                [kill_the_alarm_02],
+                [backwater_deputies],
+                [tight_security_01],
+                [reaver_raid],
+                [alliance_patrol_02],
+                [tight_security_02],
+                [denied_docking_rights],
+                [everything_thats_not_nailed_down_02],
+                [alliance_operatives],
+                [a_vote_of_no_confidence]
+            ],
+            //chosen
+            [aim_to_misbehave],
+            //index
+            [],
+            //discards
+            [],
+            //reshuffle
+            [
+                [state_of_the_art_security_system],
+                [old_fashioned_shoot_out],
+                [a_bit_of_local_color_01],
+                [time_for_some_thrillin_heroics],
+                [keep_a_low_profile_01],
+                [lets_go_see_the_crappy_town],
+                [old_vendetta],
+                [kidnapped_by_hill_folk],
+                [a_bit_of_local_color_02],
+                [gun_play_01],
+                [the_local_law_01],
+                [gun_play_02],
+                [knife_fight],
+                [the_local_law_02],
+                [locals_in_need],
+                [an_unexpected_oportunity],
+                [a_formal_affair],
+                [the_sheriffs_justice],
+                [ambush],
+                [it_takes_a_womans_touch],
+                [we_need_a_distraction],
+                [alliance_patrol],
+                [keep_a_low_profile_02],
+                [alliance_patrol_01],
+                [a_rival_crew],
+                [everything_thats_not_nailed_down_01],
+                [kill_the_alarm_01],
+                [a_little_job_on_the_side],
+                [an_interesting_day],
+                [it_was_the_best_day_ever],
+                [kill_the_alarm_02],
+                [backwater_deputies],
+                [tight_security_01],
+                [reaver_raid],
+                [alliance_patrol_02],
+                [tight_security_02],
+                [denied_docking_rights],
+                [everything_thats_not_nailed_down_02],
+                [alliance_operatives],
+                [a_vote_of_no_confidence]
+            ],
+            //card face
+            [aim_to_misbehave]
         ]
         
     ],
+
+    //22 money
+    [],
+
+    //23 scenarios
+    []
+    
+]
+
+var possibleScenario = [
+
+    [
+        [scenario_1],
+        [scenario_2],
+        [scenario_3],
+        [scenario_4],
+        [scenario_5],
+        [scenario_6],
+        [scenario_7],
+        [scenario_8],
+        [scenario_9],
+        [scenario_10],
+        [scenario_11],
+        [scenario_12],
+        [scenario_13],
+        [scenario_14],
+        [scenario_15],
+        [scenario_16],
+        [scenario_17],
+        [scenario_18],
+        [scenario_19],
+        [scenario_20]
+    ],
+    //index
+    [0]
+
+]
+
+var possibleCaptains = [
+    [[captain_atherton], ["captain"]],
+    [[captain_burgess], ["captain"]],
+    [[captain_corbin], ["captain"]],
+    [[captain_jubal_early], ["captain"]],
+    [[captain_malcolm], ["captain"]],
+    [[captain_marco], ["captain"]],
+    [[captain_monty], ["captain"]],
+    [[captain_murphy], ["captain"]],
+    [[captain_nandi], ["captain"]],
+    [[captain_sash], ["captain"]],
+    [[captain_womack], ["captain"]],
+    [[captain_wright], ["captain"]]
+]
+
+var shipInv =
+    [
+        //[possible supply [[i],[n]], [[i],[n]] ]
+        [
+            [
+                [ [empty] ],
+                [ [cargo], ["Cargo"] ],
+                [ [contraband], ["Contraband"] ],
+                [ [one_fuel], ["Fuel"] ],
+                [ [two_fuel], ["Fuel"], ["Fuel"] ],
+                [ [one_part], ["Part"] ],
+                [ [two_part], ["Part"], ["Part"] ],
+                [ [passenger], ["Passenger"] ]
+            ],
+        ],
+        //[player [total], [chosen 12boxes] ]
+        //player1
+        [
+            //chosen for boxes (12 in total)
+            [  [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ]
+            ],
+            //totals
+            [],
+            //index
+            []
+        ],
+        
+        //player2
+        [  
+            //chosen for boxes (12 in total)
+            [  [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ]
+               ],
+            //totals
+            [],
+            //index
+               [0]
+            
+        ],//player3
+        [  
+            //chosen for boxes (12 in total)
+            [  [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ]
+            ],
+            //totals
+            [],
+               //index
+            [0]
+        ],
+        //player4
+        [  
+            //chosen for boxes (12 in total)
+            [  [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ],
+               [ [empty], ["Empty Slot"] ]
+            ],
+            //totals
+            [],
+               //index
+            [0]
+        ]
+    ]
+
+var drawRandomCards =
+    [
+    [
+        //test
+        
+            //draw
+            [
+                ["test 1"],
+                ["test 2"],
+                ["test 3"],
+                ["test 4"],
+                ["test 5"]
+            ],
+            //chosen
+            [],
+            //index
+            [1],
+            //discards
+            []
+        
+    ],
+        
+    //alliance
+    [
+        //draw
+        [
+            [coil_busted_01],
+            [the_big_black_01],
+            [minor_tech_difficulties],
+            [the_big_black_02],
+            [cruiser_patrol_01],
+            [the_big_black_03],
+            [broken_down_shuttle_01],
+            [persistent_pursuit_01],
+            [the_big_black_04],
+            [hell_come_at_you_sideways_01],
+            [persistent_pursuit_02],
+            [family_dinner_01],
+            [the_big_black_05],
+            [outbound_colonists_01],
+            [distress_signal_01],
+            [the_big_black_06],
+            [cruiser_patrol_02],
+            [fire_in_the_engine_room_01],
+            [alliance_checkpoint_01],
+            [customs_inspection_01],
+            [the_big_black_07],
+            [the_big_black_08],
+            [cruiser_patrol_03],
+            [the_big_black_09],
+            [cruiser_patrol_04],
+            [leave_no_ground_to_go_to_01],
+            [persistent_pursuit_03],
+            [the_big_black_10],
+            [alliance_entaglements_01],
+            [alliance_cruiser_01],
+            [the_big_black_11],
+            [the_big_black_12],
+            [the_big_black_13],
+            [badgers_boys_01],
+            [cruiser_patrol_05],
+            [the_big_black_14],
+            [alliance_harassment_01],
+            [the_big_black_15],
+            [the_big_black_16],
+            [the_big_black_17],
+            [passenger_unrest_01],
+            [the_big_black_18],
+            [alliance_harassment_02],
+            [the_big_black_19],
+            [customs_inspection_02],
+            [the_big_black_20],
+            [alliance_interrogation_01],
+            [whats_going_on_in_the_engine_room_01],
+            [freighter_convoy_01],
+            [the_big_black_21],
+            [regulated_salvage_01],
+            [enhanced_enforcement_01],
+            [the_big_black_22],
+            [the_big_black_23],
+            [the_big_black_24],
+            [the_big_black_26],
+            [abandoned_ship_01],
+            [the_big_black_27],
+            [persistent_pursuit_04],
+            [the_big_black_25]
+        ],
+        //chosen
+        [alliance_space],
+        //index
+        [],
+        //discards
+        []
+    ],
+    
     //border
     [
         //draw
@@ -2807,7 +4672,7 @@ var drawRandomCards = [
             [border_whats_that_noise_01]
         ],
         //chosen
-        [],
+        [border_space],
         //index
         [],
         //discards
@@ -2880,7 +4745,7 @@ var drawRandomCards = [
             [rim_the_big_black]
         ],
         //chosen
-        [],
+        [rim_space],
         //index
         [],
         //discards
@@ -2913,7 +4778,7 @@ var drawRandomCards = [
             [bounty_zoe]
         ],
         //chosen
-        [],
+        [bounty_alert],
         //index
         [],
         //discards
@@ -2965,7 +4830,7 @@ var drawRandomCards = [
             [a_vote_of_no_confidence]
         ],
         //chosen
-        [],
+        [aim_to_misbehave],
         //index
         [],
         //discards
@@ -2973,6 +4838,7 @@ var drawRandomCards = [
     ]
         
 ]
+
 var images = [
     z_broken_shuttle,
     z_cruiser_patrol,
@@ -2991,6 +4857,23 @@ var wallet3 = 100;
 
 var wallet4 = 100;
 
+var warrant1 = 0;
+
+var warrant2 = 0;
+
+var warrant3 = 0;
+
+var warrant4 = 0;
+
+var goalTokens1 = 0;
+
+var goalTokens2 = 0;
+
+var goalTokens3 = 0;
+
+var goalTokens4 = 0;
+
+
 var p1Inv = playerCards[0][0];
 var p2Inv = playerCards[1][0];
 var p3Inv = playerCards[2][0];
@@ -3004,44 +4887,243 @@ var p2Index = playerCards[1][2];
 var p3Index = playerCards[2][2];
 var p4Index = playerCards[3][2];
 
+function c(player, crew) {
+    crewMood[player][crew] =
+        [[smile_sad],["smile_sad"]];
+}
+
+function b(player, crew) {
+    console.log("began changing mood function");
+    if (crewMood[player][crew][0] == smile_happy) {
+        console.log("began as happy");
+        crewMood[player][crew] = [[smile_sad],["smile_sad"]];
+        console.log(crewMood[player][crew][1]);
+    }
+    else if (crewMood[player][crew][0] == smile_sad) {
+        console.log("began as sad");
+        
+        crewMood[player][crew] =
+            [[smile_happy],["smile_happy"]];
+        console.log(crewMood[player][crew][1])
+    }
+                console.log("ended changing mood");
+                console.log(crewMood[player][crew][1]);
+};
 
 function discardShopConsidered1(shop) {
-    playerCards[shop][0][0].push(playerCards[shop][0][2][0]);
-    playerCards[shop][0][2][0] = ["empty_card"];
-    console.log("considered cards =", playerCards[shop][0][2]);
-    console.log("deck cards =", playerCards[shop][0][0]);
+    playerCards[shop][0][1][0].push(playerCards[shop][0][2][0]);
+    console.log("discards length =", playerCards[shop][0][1][0].length);
+    
+    playerCards[shop][0][1][1] = playerCards[shop][0][2][0]
+    playerCards[shop][0][2][0] = [empty_card];
+    //console.log("considered cards =", playerCards[shop][0][2]);
+    //console.log("deck cards =", playerCards[shop][0][0]);
+}
+
+function drawShopConsidered(shop, player, considered) {
+    //giveReplaceEmptyShop(2,0,shop,0)
+    console.log("player =", player);
+
+    if (playerCards[shop][0][2][considered] != empty_card) {
+        console.log("considered card is not empty")
+        if (playerCards[player][1][1][0] == empty_card) {
+            playerCards[player][1][1] = playerCards[shop][0][2][considered]
+            playerCards[shop][0][2][considered] = [empty_card]
+            console.log("changed elm 1")
+        }
+        else if (playerCards[player][1][2][0] == empty_card) {
+            playerCards[player][1][2] = playerCards[shop][0][2][considered]
+            playerCards[shop][0][2][considered] = [empty_card]
+            console.log("changed elm 2")
+        }
+        else if (playerCards[player][1][3][0] == empty_card) {
+            playerCards[player][1][3] = playerCards[shop][0][2][considered]
+            playerCards[shop][0][2][considered] = [empty_card]
+            console.log("changed elm 3")
+        }
+        else if (playerCards[player][1][4][0] == empty_card) {
+            playerCards[player][1][4] = playerCards[shop][0][2][considered]
+            playerCards[shop][0][2][considered] = [empty_card]
+            console.log("changed elm 4")
+        }
+        else if (playerCards[player][1][5][0] == empty_card) {
+            playerCards[player][1][5] = playerCards[shop][0][2][considered]
+            playerCards[shop][0][2][considered] = [empty_card]
+            console.log("changed elm 5")
+        }
+        else if (playerCards[player][1][6][0] == empty_card) {
+            playerCards[player][1][6] = playerCards[shop][0][2][considered]
+            playerCards[shop][0][2][considered] = [empty_card]
+            console.log("changed elm 6")
+        }
+        else if (playerCards[player][1][7][0] == empty_card) {
+            playerCards[player][1][7] = playerCards[shop][0][2][considered]
+            playerCards[shop][0][2][considered] = [empty_card]
+            console.log("changed elm 7")
+        }
+        else if (playerCards[player][1][8][0] == empty_card) {
+            playerCards[player][1][8] = playerCards[shop][0][2][considered]
+            playerCards[shop][0][2][considered] = [empty_card]
+            console.log("changed elm 8")
+        }
+        else if (playerCards[player][1][9][0] == empty_card) {
+            playerCards[player][1][9] = playerCards[shop][0][2][considered]
+            playerCards[shop][0][2][considered] = [empty_card]
+            console.log("changed elm 9")
+        }
+        else if (playerCards[player][1][10][0] == empty_card) {
+            playerCards[player][1][10] = playerCards[shop][0][2][considered]
+            playerCards[shop][0][2][considered] = [empty_card]
+            console.log("changed elm 10")
+        }
+        console.log("failed finding an empty spot");
+    }
+    console.log("tried to draw card")
+}
+
+function giveReplaceEmptyShop(player, deckSection, givingPlayer, givingCard) {
+    
+    if (playerCards[player][deckSection][1][1] == "empty_card") {
+        const x = playerCards[player][deckSection][1]
+        playerCards[player][deckSection][1] =
+            playerCards[givingPlayer][0][2][givingCard]
+        playerCards[givingPlayer][0][2][givingCard] = empty_card;
+        console.log("removed elm 1");
+    }
+    else if (playerCards[player][deckSection][2][1] == "empty_card") {
+        const x = playerCards[player][deckSection][2]
+        playerCards[player][deckSection][2] =
+            playerCards[givingPlayer][0][2][givingCard]
+        playerCards[givingPlayer][0][2][givingCard] = empty_card;
+        console.log("removed elm 2");
+    }
+    else if (playerCards[player][deckSection][3][1] == "empty_card") {
+        const x = playerCards[player][deckSection][3]
+        playerCards[player][deckSection][3] =
+            playerCards[givingPlayer][0][2][givingCard]
+        playerCards[givingPlayer][0][2][givingCard] = empty_card;
+        console.log("removed elm 3");
+    }
+    else if (playerCards[player][deckSection][4][1] == "empty_card") {
+        const x = playerCards[player][deckSection][4]
+        playerCards[player][deckSection][4] =
+            playerCards[givingPlayer][0][2][givingCard]
+        playerCards[givingPlayer][0][2][givingCard] = empty_card;
+        console.log("removed elm 4");
+    }
+    else if (playerCards[player][deckSection][5][1] == "empty_card") {
+        const x = playerCards[player][deckSection][5]
+        playerCards[player][deckSection][5] =
+            playerCards[givingPlayer][0][2][givingCard]
+        playerCards[givingPlayer][0][2][givingCard] = empty_card;
+        console.log("removed elm 5");
+    }
+    else if (playerCards[player][deckSection][6][1] == "empty_card") {
+        const x = playerCards[player][deckSection][6]
+        playerCards[player][deckSection][6] =
+            playerCards[givingPlayer][0][2][givingCard]
+        playerCards[givingPlayer][0][2][givingCard] = empty_card;
+        console.log("removed elm 6");
+    }
+    else if (playerCards[player][deckSection][7][1] == "empty_card") {
+        const x = playerCards[player][deckSection][7]
+        playerCards[player][deckSection][7] =
+            playerCards[givingPlayer][0][2][givingCard]
+        playerCards[givingPlayer][0][2][givingCard] = empty_card;
+        console.log("removed elm 7");
+    }
+    else if (playerCards[player][deckSection][8][1] == "empty_card") {
+        const x = playerCards[player][deckSection][8]
+        playerCards[player][deckSection][8] =
+            playerCards[givingPlayer][0][2][givingCard]
+        playerCards[givingPlayer][0][2][givingCard] = empty_card;
+        console.log("removed elm 8");
+    }
+    else if (playerCards[player][deckSection][9][1] == "empty_card") {
+        const x = playerCards[player][deckSection][9]
+        playerCards[player][deckSection][9] =
+            playerCards[givingPlayer][0][2][givingCard]
+        playerCards[givingPlayer][0][2][givingCard] = empty_card;
+        console.log("removed elm 9");
+    }
+    else if (playerCards[player][deckSection][10][1] == "empty_card") {
+        const x = playerCards[player][deckSection][10]
+        playerCards[player][deckSection][10] =
+            playerCards[givingPlayer][0][2][givingCard]
+        playerCards[givingPlayer][0][2][givingCard] = empty_card;
+        console.log("removed elm 10");
+    }
+    else {
+        console.log("OPERATION FAILED")
+    }
+    
 }
 
 function discardShopConsidered2(shop) {
-    playerCards[shop][0][0].push(playerCards[shop][0][2][1]);
-    playerCards[shop][0][2][1] = ["empty_card"];
+    playerCards[shop][0][1][0].push(playerCards[shop][0][2][1]);
+
+    playerCards[shop][0][1][1] = playerCards[shop][0][2][1]
+    playerCards[shop][0][2][1] = [empty_card];
     console.log("considered cards =", playerCards[shop][0][2]);
     console.log("deck cards =", playerCards[shop][0][0]);
 }
 
 function discardShopConsidered3(shop) {
-    playerCards[shop][0][0].push(playerCards[shop][0][2][2]);
-    playerCards[shop][0][2][2] = ["empty_card"];
+    playerCards[shop][0][1][0].push(playerCards[shop][0][2][2]);
+    playerCards[shop][0][1][1] = playerCards[shop][0][2][2]
+    playerCards[shop][0][2][2] = [empty_card];
+    
     console.log("considered cards =", playerCards[shop][0][2]);
     console.log("deck cards =", playerCards[shop][0][0]);
 }
 
-function randomGameCards() {
+function reshuffleGameCards(type) {
+    playerCards[21][type][0] = playerCardsData[21][type][4];
+    playerCards[21][type][1] = playerCardsData[21][type][5];
+    console.log("shuffled deck");
+}
+
+function rollDice() {
+    var newRoll = Math.floor(Math.random() * 6) + 1;
+    shipCards2[0] = newRoll;
+    console.log("new dice = ", shipCards2[0]);
+}
+
+function randomCaptain(player) {
+    var randomCap = Math.floor(Math.random() * 12);
+    playerCards[player][0][1] = possibleCaptains[randomCap]
+}
+
+function randomGameCards(type) {
     var randomPick =
-        Math.floor(Math.random() * (drawRandomCards[0][0][0].length - 1))
-    drawRandomCards[0][0][2] = randomPick
-    if (drawRandomCards[0][0][1].length > 0) {
-        drawRandomCards[0][0][3].push(drawRandomCards[0][0][1])
+        Math.floor(Math.random() * (playerCardsData[21][type][0].length - 1))
+    playerCards[21][type][2] = randomPick
+    if (playerCardsData[21][type][1].length > 0) {
+        playerCards[21][type][3].push(playerCards[21][type][1])
     }
-    drawRandomCards[0][0][1] = drawRandomCards[0][0][0][
-        drawRandomCards[0][0][2] ]
-    drawRandomCards[0][0][0].splice(randomPick, 1)
-    var chosenRan = drawRandomCards[0][0][1]
-    var drawRan = drawRandomCards[0][0][0]
-    var discardsRan = drawRandomCards[0][0][3]
+    playerCards[21][type][1] = playerCardsData[21][type][0][
+        playerCards[21][type][2] ]
+    playerCardsData[21][type][0].splice(randomPick, 1)
+    var chosenRan = playerCards[21][type][1]
+    var drawRan = playerCards[21][type][0]
+    var discardsRan = playerCards[21][type][3]
     console.log("chosen =", chosenRan)
-    console.log("left to draw =", drawRan),
-    console.log("discards =", discardsRan);
+
+}
+
+function nextScenario() {
+    if (possibleScenario[1][0] >= possibleScenario[0].length) {
+        possibleScenario[1][0] = 0;
+        playerCards[23][0] = possibleScenario[0][
+            possibleScenario[1][0]
+        ];
+    }
+    if (possibleScenario[1][0] < possibleScenario[0].length) {
+        possibleScenario[1][0]++;
+        playerCards[23][0] = possibleScenario[0][
+            possibleScenario[1][0]
+        ];
+    }
 }
 
 function addShopToConsidered(shop) {
@@ -3051,33 +5133,33 @@ function addShopToConsidered(shop) {
     if (playerCards[shop][0][2].length < 3) {
         if (playerCards[shop][0][2].length < 2) {
             if (playerCards[shop][0][2].length < 1){
-                playerCards[shop][0][2].push(["empty_card"],
-                                          ["empty_card"],
-                                          ["empty_card"])
+                playerCards[shop][0][2].push([empty_card],
+                                          [empty_card],
+                                          [empty_card])
             }
             else {
-                playerCards[shop][0][2].push(["empty_card"], ["empty_card"])
+                playerCards[shop][0][2].push([empty_card], [empty_card])
             }
         }
         else {
-            playerCards[shop][0][2].push(["empty_card"])
+            playerCards[shop][0][2].push([empty_card])
         }
     }
-    if (playerCards[shop][0][0][0] == "empty_card") {
+    if (playerCards[shop][0][0][0] == empty_card) {
         console.log("there are no cards to draw");
     }
     else {
-        if (playerCards[shop][0][2][0] == "empty_card") {
+        if (playerCards[shop][0][2][0] == empty_card) {
             playerCards[shop][0][2][0] = playerCards[shop][0][0][randomBeaumonde]
             playerCards[shop][0][0].splice([randomBeaumonde], 1);
             console.log("removed elm 1");
         }
-        else if (playerCards[shop][0][2][1] == "empty_card") {
+        else if (playerCards[shop][0][2][1] == empty_card) {
             playerCards[shop][0][2][1] = playerCards[shop][0][0][randomBeaumonde]
             playerCards[shop][0][0].splice([randomBeaumonde], 1);
             console.log("removed elm 2");
         }
-        else if (playerCards[shop][0][2][2] == "empty_card") {
+        else if (playerCards[shop][0][2][2] == empty_card) {
             playerCards[shop][0][2][2] = playerCards[shop][0][0][randomBeaumonde]
             playerCards[shop][0][0].splice([randomBeaumonde], 1);
             console.log("removed elm 3");
@@ -3085,33 +5167,36 @@ function addShopToConsidered(shop) {
     }
     if (playerCards[shop][0][0].length < 1) {
         console.log("there are no more cards to draw, so replacing with empty");
-        playerCards[shop][0][0].push("empty_card")
+        playerCards[shop][0][0].push(empty_card)
     }
     console.log(playerCards[shop][0][2]);
-    console.log("deck", playerCards[shop][0][0]);
 }
 
 
 
 function addShopDiscardToConsidered(shop) {
     var originalChosen = playerCards[shop][0][1][1]
+    playerCards[shop][0][1][1].filter(function(x) {
+        return (x !== empty_card);
+        });
     if (playerCards[shop][0][2].length < 3) {
         if (playerCards[shop][0][2].length < 2) {
             if (playerCards[shop][0][2].length < 1){
-                playerCards[shop][0][2].push(["empty_card"],
-                                          ["empty_card"],
-                                          ["empty_card"])
+                playerCards[shop][0][2].push([empty_card],
+                                             [empty_card],
+                                             [empty_card])
             }
             else {
-                playerCards[shop][0][2].push(["empty_card"], ["empty_card"])
+                playerCards[shop][0][2].push([empty_card],
+                                             [empty_card])
             }
         }
         else {
-            playerCards[shop][0][2].push(["empty_card"])
+            playerCards[shop][0][2].push([empty_card])
         }
     }
     console.log("the considered cards at start after filling emptys ", playerCards[shop][0][2]);
-    if (playerCards[shop][0][2][0] == "empty_card") {
+    if (playerCards[shop][0][2][0] == empty_card) {
         console.log("first card", playerCards[shop][0][2][0],
                     "= empty_card")
         playerCards[shop][0][2][0] = playerCards[shop][0][1][1];
@@ -3120,58 +5205,102 @@ function addShopDiscardToConsidered(shop) {
             return (x !== playerCards[shop][0][1][1])
         });    
     }
-    else if (playerCards[shop][0][2][1] == "empty_card") {
+    else if (playerCards[shop][0][2][1] == empty_card) {
         console.log("second card", playerCards[shop][0][2][1],
                     "= empty_card")
+        //first chosen now equals the chosen display of discard
         playerCards[shop][0][2][1] = playerCards[shop][0][1][1];
+        //discard that was moved into first chosen is filtered from discard
         playerCards[shop][0][1][0] = playerCards[shop][0][1][0].filter(function(x) {
             return (x !== playerCards[shop][0][1][1])
         });
+        //rotate discards to make it so there is a new discard display
+        rotateDiscardsShop(shop)
     }
-    else if (playerCards[shop][0][2][2] == "empty_card") {
+    else if (playerCards[shop][0][2][2] == empty_card) {
         console.log("third card", playerCards[shop][0][2][0],
                     "= empty_card")
+        //second chosen now equals the chosen display of discard
         playerCards[shop][0][2][2] = playerCards[shop][0][1][1];
+        //discard that was moved into second chosen is filtered from discard   
         playerCards[shop][0][1][0] = playerCards[shop][0][1][0].filter(function(x) {
             return (x !== playerCards[shop][0][1][1])
         });
+        //rotate discards to make it so there is a new discard display
+        rotateDiscardsShop(shop)
     }
     playerCards[shop][0][1][0] = playerCards[shop][0][1][0].filter(function(x) {
         return (x !== playerCards[shop][0][1][1])
     });
-    rotateDiscardsShop(shop)
-    if (playerCards[shop][0][1][1] = originalChosen){
-        rotateDiscardsShop(shop)
-    }
+    
+    
     if (playerCards[shop][0][1][1] == undefined) {
         console.log("going to try to set empty card now")
-            playerCards[shop][0][1][1] = ["empty_card"]
+            playerCards[shop][0][1][1] = [empty_card]
     }
     else {
         console.log("chosen should not be undefined",
                     playerCards[shop][0][1][1]);
     }
-    console.log("check chosen =", playerCards[shop][0][1][1]);
-    console.log("considered at end =",playerCards[shop][0][2]);
+    rotateDiscardsShop(shop);
+    //console.log("check chosen =", playerCards[shop][0][1][1]);
+    //console.log("considered at end =",playerCards[shop][0][2]);
 }
 
 function rotateDiscardsShop(shop) {
-    var index = playerCards[shop][0][1][2];
+    console.log("started rotate discards shop function");
+    var index = parseInt(playerCards[shop][0][1][2], 10);
+    //console.log(playerCards[shop][0][1][0]);
+    console.log("index at start =", index);
     
-    if (index > playerCards[shop][0][1][0].length - 1) {
-        console.log("need to restart from zero");
-        playerCards[shop][0][1][2] = 0
-        console.log("index change", playerCards[shop][0][1][2]);
-        playerCards[shop][0][1][1] = playerCards[shop][0][1][0][
-            playerCards[shop][0][1][2]]
+    if (playerCards[shop][0][1][0].length > 1){
+        console.log("there are no discards");
     }
-    else {
-        playerCards[shop][0][1][2]++;
-        playerCards[shop][0][1][2] = [playerCards[shop][0][1][2]]
+    
+    if (playerCards[shop][0][1][0].length == 1){
+        playerCards[shop][0][1][1] = playerCards[shop][0][1][0][0]
+        console.log("there is only one card");
+    }
+    else if (playerCards[shop][0][1][0].length) {
+        console.log("there is more than one card in discard", "discard length =", playerCards[shop][0][1][0].length);
         
-        playerCards[shop][0][1][1] = playerCards[shop][0][1][0][index]
-        console.log("new index =", playerCards[shop][0][1][2]);
+        if (playerCards[shop][0][1][0].length < 2) {
+            playerCards[shop][0][1][2] = 0;
+            
+        }
+        else if (index > playerCards[shop][0][1][0].length - 1) {
+            console.log("need to restart from zero");
+            playerCards[shop][0][1][2] = 0
+            console.log("index change", playerCards[shop][0][1][2]);
+            playerCards[shop][0][1][1] = playerCards[shop][0][1][0][
+                playerCards[shop][0][1][2]]
+            playerCards[shop][0][1][0].filter(function(x) {
+                return (x !== empty_card);
+            });
+        }
+        else {
+            playerCards[shop][0][1][2]++
+            playerCards[shop][0][1][2] = [playerCards[shop][0][1][2]];
+            playerCards[shop][0][1][1] =
+                playerCards[shop][0][1][0][index]
+            console.log("new index !! =", playerCards[shop][0][1][2]);
+        }
+        if (playerCards[shop][0][1].length < 1) {
+            playerCards[shop][0][1][1] = [empty_card]
+        }
+        playerCards[shop][0][1].filter(function(x) {
+            return (x !== [empty_card]);
+        });
+        if (playerCards[shop][0][1][0].length < 1) {
+            playerCards[shop][0][1][1] = [empty_card];
+        }
+        else if (playerCards[shop][0][1][1][0] == empty_card) {
+            playerCards[shop][0][1][1] = playerCards[shop][0][1][0][0];
+        }
     }
+    
+    console.log(playerCards[shop][0][1][0].length);
+    
 }
 
 
@@ -3330,22 +5459,472 @@ function p3c1giveToX(getting) {
     }
 }
 
+function p3c1giveToDiscard() {
+    
+    if (playerCards[2][0].length > 2) {
+
+        console.log("card shop label = ", playerCards[2][0][1][1]);
+
+        
+        if (playerCards[2][0][1][1] = "beaumonde") {
+            playerCards[4][1].push(playerCards[2][0][1]);
+            console.log("discarded into beaumonde");
+        };
+        if (playerCards[2][0][1][1] = "meridian") {
+            playerCards[5][1].push(playerCards[2][0][1]);
+            console.log("discarded into meridian");
+        };
+        if (playerCards[2][0][1][1] = "osiris_shipworks") {
+            playerCards[6][1].push(playerCards[2][0][1]);
+            console.log("discarded into osiris_shipworks");
+        };
+        if (playerCards[2][0][1][1] = "persephone") {
+            playerCards[7][1].push(playerCards[2][0][1]);
+            console.log("discarded into persephone");
+        };
+        if (playerCards[2][0][1][1] = "regina") {
+            playerCards[8][1].push(playerCards[2][0][1]);
+            console.log("discarded into regina");
+        };
+        if (playerCards[2][0][1][1] = "silverhold_munitions") {
+            playerCards[9][1].push(playerCards[2][0][1]);
+            console.log("discarded into silverhold_munitions");
+        };
+        if (playerCards[2][0][1][1] = "space_bazaar") {
+            playerCards[10][1].push(playerCards[2][0][1]);
+            console.log("discarded into space_bazaar");
+        };
+        playerCards[2][0] = playerCards[2][0].filter(function(x) {
+            return x !== (playerCards[2][0][1]);
+        });
+    
+    }
+}
+
+function finishedJobBackup(player, deckSection, card) {
+    console.log("started finished job function")
+    if (playerCards[player][deckSection][card][0] == empty_card){
+        console.log("empty card")
+    }
+    else {
+        playerCards[player][5][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("finished jobs length =", playerCards[player][5][0].length);
+        
+        playerCards[player][5][0].filter(function(x) {
+            return x !== (empty_card);
+        });
+        
+        finishedJobRotate(player);
+    }
+}
+
+function finishedJob(player, deckSection, card) {
+    console.log("started finished job function")
+    if (playerCards[player][deckSection][card][0] == empty_card){
+        console.log("empty card")
+    }
+    else {
+        playerCards[player][5][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("finished jobs length =", playerCards[player][5][0].length);
+        
+        playerCards[player][5][0].filter(function(x) {
+            return x !== (empty_card);
+        });
+        
+        finishedJobRotate(player);
+    }
+}
+
+
+function finishedJobRotate(player) {
+    console.log("starting finished job rotate");
+    console.log("index = ", playerCards[player][5][1]);
+    if (playerCards[player][5][1] >
+        playerCards[player][5][0].length - 1) {
+        console.log("need to restart from zero");
+        playerCards[player][5][1] = 0
+        playerCards[player][5][2] =
+            playerCards[player][5][0][
+                playerCards[player][5][1]]
+    }
+    else {
+        playerCards[player][5][1]++;
+        playerCards[player][5][2] =
+            playerCards[player][5][0][
+                playerCards[player][5][1]];
+    }
+}
+
+function drawJobBackup(player, shop) {
+    console.log(playerCards[shop][0][3])
+    randNum = Math.floor(Math.random() *
+                        playerCards[shop].length)
+    console.log("random number = ", randNum)
+    if (playerCards[player][4][1][0] == empty_card) {
+        console.log("first slot was empty");
+        playerCards[player][4][1] =
+            playerCards[shop][randNum];
+        playerCards[shop].filter(function(x) {
+            return (x !== playerCards[shop][randNum])
+        });
+    }
+    else if (playerCards[player][4][2][0] == empty_card) {
+        playerCards[player][4][2] =
+            playerCards[shop][randNum];
+        playerCards[shop].filter(function(x) {
+            return (x !== playerCards[shop][randNum])
+        });
+    }
+    else if (playerCards[player][4][3][0] == empty_card) {
+        playerCards[player][4][3] =
+            playerCards[shop][randNum];
+        playerCards[shop].filter(function(x) {
+            return (x !== playerCards[shop][randNum])
+        });
+    }
+    else if (playerCards[player][4][3][4] != empty_card ) {
+        console.log("no empty slots for jobs available");
+    }
+}
+
+function startJob(player, jobNumber) {
+
+    if (playerCards[player][6][jobNumber][0] == empty_card){
+        console.log("finishedJob is empty");
+        playerCards[player][6][jobNumber] =
+            playerCards[player][4][jobNumber];
+        playerCards[player][4][jobNumber] =
+            [empty_card]
+        console.log("startJob complete");
+    }
+    
+}
+
+
+function drawJob(player, shop) {
+    randNum = Math.floor(Math.random() *
+                        playerCardsData[shop].length)
+    console.log("random number = ", randNum)
+    if (playerCards[player][4][1][0] == empty_card) {
+        console.log("first slot was empty");
+        playerCards[player][4][1] =
+            playerCardsData[shop][randNum];
+        playerCardsData[shop].filter(function(x) {
+            return (x !== playerCardsData[shop][randNum])
+        });
+    }
+    else if (playerCards[player][4][2][0] == empty_card) {
+        playerCards[player][4][2] =
+            playerCardsData[shop][randNum];
+        playerCardsData[shop].filter(function(x) {
+            return (x !== playerCardsData[shop][randNum])
+        });
+    }
+    else if (playerCards[player][4][3][0] == empty_card) {
+        playerCards[player][4][3] =
+            playerCardsData[shop][randNum];
+        playerCardsData[shop].filter(function(x) {
+            return (x !== playerCardsData[shop][randNum])
+        });
+    }
+    else if (playerCards[player][4][3][4] != empty_card ) {
+        console.log("no empty slots for jobs available");
+    }
+}
+
 function discard(player, deckSection, card) {
     console.log("started discard function")
-    if (playerCards[player][deckSection][card][1] = "bazaar") {
-        playerCards[4][1].push(playerCards[player][deckSection][card]);
-        playerCards[player][deckSection][card] = [[empty],["empty"],["empty"]]
+    console.log("shop label = ", playerCards[player][deckSection][card][1])
+    if (playerCards[player][deckSection][card][1] == "captain") {
+        console.log("There will be no munity on this ship");
+    }
+    if (playerCards[player][deckSection][card][1] == "beaumonde") {
+        console.log("equaled beaumonde");
+        playerCards[4][0][1][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
         console.log("discarded into bazaar",
-                    "bazaar length = ", playerCards[4][1].length,
-                    "tinker length = ", playerCards[5][1].length);
+                    "bazaar length = ", playerCards[4][0][1][0].length)
+};
+    if (playerCards[player][deckSection][card][1] == "meridian") {
+        playerCards[5][0][1][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into meridian",
+                    "meridian length = ", playerCards[5][0][1][0].length);
     };
-    if (playerCards[player][deckSection][card][1] = "tinker") {
-        playerCards[5][1].push(playerCards[player][deckSection][card]);
-        playerCards[player][deckSection][card] = [[empty],["empty"],["empty"]]
-        console.log("discarded into tinker",
-                    "bazaar length = ", playerCards[4][1].length,
-                    "tinker length = ", playerCards[5][1].length);
+
+    if (playerCards[player][deckSection][card][1] == "osiris_shipworks") {
+        playerCards[6][0][1][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into osiris_shipworks",
+                    "osiris_shipworks = ", playerCards[6][0][1][0].length);
     };
+
+    if (playerCards[player][deckSection][card][1] == "persephone") {
+        playerCards[7][0][1][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into persephone",
+                    "persephone = ", playerCards[7][0][1][0].length);
+    };
+
+    if (playerCards[player][deckSection][card][1] == "regina") {
+        playerCards[8][0][1][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into regina",
+                    "regina = ", playerCards[8][0][1][0].length);
+    };
+
+    if (playerCards[player][deckSection][card][1] == "silverhold_munitions") {
+        playerCards[9][0][1][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into silverhold_munitions")
+        console.log("silverhold_munitions = ")
+    };
+
+    if (playerCards[player][deckSection][card][1] == "space_bazaar") {
+        playerCards[10][0][1][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into space_bazaar",
+                    "space_bazaar = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "amnon_duul") {
+        playerCardsData[11][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into amnon duul",
+                    "amnon duul = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "badger") {
+        playerCardsData[12][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into badger",
+                    "badger = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "fanty_mingo") {
+        playerCardsData[13][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into fanty_mingo",
+                    "fanty_mingo = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "harken") {
+        playerCardsData[14][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into harken",
+                    "harken = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "lord_harrow") {
+        playerCardsData[15][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into lord_harrow",
+                    "lord_harrow = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "magistrate_higgins") {
+        playerCardsData[16][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into magistrate_higgins",
+                    "magistrate_higgins = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "mr_universe") {
+        playerCardsData[17][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into mr_universe",
+                    "mr_universe = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "niska") {
+        playerCardsData[18][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into niska",
+                    "niska = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "patience") {
+        playerCardsData[19][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into patience",
+                    "patience = ");
+    };
+
+    if (playerCards[player][deckSection][card][0] == empty_card) {
+        console.log("already empty");
+    }
+
+    else {
+        playerCards[player][deckSection][card] = [empty_card]
+    }
+}
+
+
+function discardBackup(player, deckSection, card) {
+    console.log("started discard function")
+    console.log("shop label = ", playerCards[player][deckSection][card][1])
+    if (playerCards[player][deckSection][card][1] == "beaumonde") {
+        console.log("equaled beaumonde");
+        playerCards[4][0][1][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into bazaar",
+                    "bazaar length = ", playerCards[4][0][1][0].length)
+};
+    if (playerCards[player][deckSection][card][1] == "meridian") {
+        playerCards[5][0][1][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into meridian",
+                    "meridian length = ", playerCards[5][0][1][0].length);
+    };
+
+    if (playerCards[player][deckSection][card][1] == "osiris_shipworks") {
+        playerCards[6][0][1][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into osiris_shipworks",
+                    "osiris_shipworks = ", playerCards[6][0][1][0].length);
+    };
+
+    if (playerCards[player][deckSection][card][1] == "persephone") {
+        playerCards[7][0][1][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into persephone",
+                    "persephone = ", playerCards[7][0][1][0].length);
+    };
+
+    if (playerCards[player][deckSection][card][1] == "regina") {
+        playerCards[8][0][1][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into regina",
+                    "regina = ", playerCards[8][0][1][0].length);
+    };
+
+    if (playerCards[player][deckSection][card][1] == "silverhold_munitions") {
+        playerCards[9][0][1][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into silverhold_munitions")
+        console.log("silverhold_munitions = ")
+    };
+
+    if (playerCards[player][deckSection][card][1] == "space_bazaar") {
+        playerCards[10][0][1][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into space_bazaar",
+                    "space_bazaar = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "amnon_duul") {
+        playerCards[11][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into amnon duul",
+                    "amnon duul = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "badger") {
+        playerCards[12][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into badger",
+                    "badger = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "fanty_mingo") {
+        playerCards[13][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into fanty_mingo",
+                    "fanty_mingo = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "harken") {
+        playerCards[14][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into harken",
+                    "harken = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "lord_harrow") {
+        playerCards[15][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into lord_harrow",
+                    "lord_harrow = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "magistrate_higgins") {
+        playerCards[16][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into magistrate_higgins",
+                    "magistrate_higgins = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "mr_universe") {
+        playerCards[17][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into mr_universe",
+                    "mr_universe = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "niska") {
+        playerCards[18][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into niska",
+                    "niska = ");
+    };
+
+    if (playerCards[player][deckSection][card][1] == "patience") {
+        playerCards[19][0].push(playerCards[player][deckSection][card]);
+        playerCards[player][deckSection][card] = [empty_card]
+        console.log("discarded into patience",
+                    "patience = ");
+    };
+
+    if (playerCards[player][deckSection][card][0] == empty_card) {
+        console.log("already empty");
+    }
+
+    else {
+        playerCards[player][deckSection][card] = [empty_card]
+    }
+}
+
+//p3c1
+
+function PrivGiveToMain(player,card) {
+
+    console.log("items start = ", playerCards[2][2].length);
+
+    if (playerCards[2][0].length > 1) {
+        
+        
+        if (playerCards[2][1][1][2] == "item") {
+   
+            playerCards[2][2].push(playerCards[2][1][1]);
+            console.log("ITEM!!",
+                        "items length = ", playerCards[2][2].length,
+                        "crew length = ", playerCards[2][0].length,
+                        "ship upgrade = ", playerCards[2][3].length,
+                        "items left in private = ", playerCards[2][1].length);
+        };
+        if (playerCards[2][1][1][2] == "crew") {
+            playerCards[2][0].push(playerCards[2][1][1]);
+            console.log("CREW!!",
+                        "items length = ", playerCards[2][2].length,
+                        "crew length = ", playerCards[2][0].length,
+                        "ship upgrade = ", playerCards[2][3].length,
+                        "items left in private = ", playerCards[2][1].length);
+        };
+        if (playerCards[2][1][1][2] == "shipUpgrade") {
+            playerCards[2][3].push(playerCards[2][1][1]);
+            console.log("SHIP UPGRADE!!",
+                        "items length = ", playerCards[2][2].length,
+                        "crew length = ", playerCards[2][0].length,
+                        "ship upgrade = ", playerCards[2][3].length,
+                        "items left in private = ", playerCards[2][1].length);
+        };
+         playerCards[2][1] = playerCards[2][1].filter(function(x) {
+            return x !== (playerCards[2][1][1]);
+         });
+    
+    }
 }
 
 
@@ -3414,54 +5993,70 @@ function swapPriv2(player, cardNum) {
         playerCards[player][2][cardNum] = original
         console.log("ITEM new card = ",
                     playerCards[player][1][cardNum]);
-    } else if (playerCards[player][1][cardNum][2] == "crew") {
+        
+    }
+    else if (playerCards[player][1][cardNum][2] == "crew") {
         playerCards[player][1][cardNum] = playerCards[player][0][cardNum]
         playerCards[player][0][cardNum] = original
         console.log("CREW new card = ",
                     playerCards[player][1][cardNum]);
-    } else if (playerCards[player][1][cardNum][2] == "empty") {
+    }
+    else if (playerCards[player][1][cardNum][2] == "shipUpgrade") {
+        playerCards[player][1][cardNum] = playerCards[player][3][cardNum]
+        playerCards[player][3][cardNum] = original
+        console.log("SHIP UPGRADE new card = ",
+                    playerCards[player][1][cardNum]);
+    }
+    else if (playerCards[player][1][cardNum][2] == "core") {
+        playerCards[player][1][cardNum] = playerCards[player][7][cardNum]
+        playerCards[player][7][cardNum] = original
+        console.log("CORE new card = ",
+                    playerCards[player][1][cardNum]);
+    }
+
+    else if (playerCards[player][1][cardNum][2] == "empty_card") {
         console.log("tried to trade empty card");
     }
 }
 
 function filterLastEmpty(player, deckSection) {
-    if (playerCards[player][deckSection][10][0] == "empty") {
+    if (playerCards[player][deckSection][10][0] == "empty_card") {
         playerCards[player][deckSection].splice(10, 1);
         console.log("remove elm 10");
     }
-    else if (playerCards[player][deckSection][9][0] == "empty") {
+    else if (playerCards[player][deckSection][9][0] == "empty_card") {
         playerCards[player][deckSection].splice(9, 1);
         console.log("remove elm 9");
     }
-    else if (playerCards[player][deckSection][8][0] == "empty") {
+    else if (playerCards[player][deckSection][8][0] == "empty_card") {
         playerCards[player][deckSection].splice(8, 1);
         console.log("remove elm 8");
     }
-    else if (playerCards[player][deckSection][7][0] == "empty") {
+    else if (playerCards[player][deckSection][7][0] == "empty_card") {
         playerCards[player][deckSection].splice(7, 1);
         console.log("remove elm 7");
     }
-    else if (playerCards[player][deckSection][6][0] == "empty") {
+    else if (playerCards[player][deckSection][6][0] == "empty_card") {
         playerCards[player][deckSection].splice(6, 1);
         console.log("remove elm 6");
     }
-    else if (playerCards[player][deckSection][5][0] == "empty") {
+    else if (playerCards[player][deckSection][5][0] == "empty_card") {
         playerCards[player][deckSection].splice(5, 1);
         console.log("remove elm 5");
     }
-    else if (playerCards[player][deckSection][4][0] == "empty") {
+    else if (playerCards[player][deckSection][4][0] == "empty_card") {
         playerCards[player][deckSection].splice(4, 1);
         console.log("remove elm 4");
     }
-    else if (playerCards[player][deckSection][3][0] == "empty") {
+    else if (playerCards[player][deckSection][3][0] == "empty_card") {
         playerCards[player][deckSection].splice(3, 1);
         console.log("remove elm 3");
     }
-    else if (playerCards[player][deckSection][2][0] == "empty") {
+    else if (playerCards[player][deckSection][2][0] == "empty_card") {
         playerCards[player][deckSection].splice(2, 1)
         console.log("remove elm 2");;
     }
-    else if (playerCards[player][deckSection][1][0] == "empty") {
+    else if (playerCards[player][deckSection][1][0] == "empty_card") {
         playerCards[player][deckSection].splice(1, 1);
         console.log("remove elm 1");
     }
@@ -3469,61 +6064,61 @@ function filterLastEmpty(player, deckSection) {
 }
 
 function giveReplaceEmpty(player, deckSection, givingPlayer, givingDeck, givingCard) {
-    if (playerCards[player][deckSection][1][1] == "empty") {
+    if (playerCards[player][deckSection][1][0] == empty_card) {
         const x = playerCards[player][deckSection][1]
         playerCards[player][deckSection][1] = playerCards[givingPlayer][givingDeck][givingCard]
         playerCards[givingPlayer][givingDeck][givingCard] = x;
         console.log("removed elm 1");
     }
-    else if (playerCards[player][deckSection][2][1] == "empty") {
+    else if (playerCards[player][deckSection][2][0] == empty_card) {
         const x = playerCards[player][deckSection][2]
         playerCards[player][deckSection][2] = playerCards[givingPlayer][givingDeck][givingCard]
         playerCards[givingPlayer][givingDeck][givingCard] = x;
         console.log("removed elm 2");
     }
-    else if (playerCards[player][deckSection][3][1] == "empty") {
+    else if (playerCards[player][deckSection][3][0] == empty_card) {
         const x = playerCards[player][deckSection][3]
         playerCards[player][deckSection][3] = playerCards[givingPlayer][givingDeck][givingCard]
         playerCards[givingPlayer][givingDeck][givingCard] = x;
         console.log("removed elm 3");
     }
-    else if (playerCards[player][deckSection][4][1] == "empty") {
+    else if (playerCards[player][deckSection][4][0] == empty_card) {
         const x = playerCards[player][deckSection][4]
         playerCards[player][deckSection][4] =  playerCards[givingPlayer][givingDeck][givingCard]
         playerCards[givingPlayer][givingDeck][givingCard] = x;
         console.log("removed elm 4");
     }
-    else if (playerCards[player][deckSection][5][1] == "empty") {
+    else if (playerCards[player][deckSection][5][0] == empty_card) {
         const x = playerCards[player][deckSection][5]
         playerCards[player][deckSection][5] = playerCards[givingPlayer][givingDeck][givingCard]
         playerCards[givingPlayer][givingDeck][givingCard] = x;
         console.log("removed elm 5");
     }
-    else if (playerCards[player][deckSection][6][1] == "empty") {
+    else if (playerCards[player][deckSection][6][0] == empty_card) {
         const x = playerCards[player][deckSection][6]
         playerCards[player][deckSection][6] = playerCards[givingPlayer][givingDeck][givingCard]
         playerCards[givingPlayer][givingDeck][givingCard] = x;
         console.log("removed elm 6");
     }
-    else if (playerCards[player][deckSection][7][1] == "empty") {
+    else if (playerCards[player][deckSection][7][0] == empty_card) {
         const x = playerCards[player][deckSection][7]
         playerCards[player][deckSection][7] = playerCards[givingPlayer][givingDeck][givingCard]
         playerCards[givingPlayer][givingDeck][givingCard] = x;
         console.log("removed elm 7");
     }
-    else if (playerCards[player][deckSection][8][1] == "empty") {
+    else if (playerCards[player][deckSection][8][0] == empty_card) {
         const x = playerCards[player][deckSection][8]
         playerCards[player][deckSection][8] = playerCards[givingPlayer][givingDeck][givingCard]
         playerCards[givingPlayer][givingDeck][givingCard] = x;
         console.log("removed elm 8");
     }
-    else if (playerCards[player][deckSection][9][1] == "empty") {
+    else if (playerCards[player][deckSection][9][0] == empty_card) {
         const x = playerCards[player][deckSection][9]
         playerCards[player][deckSection][9] = playerCards[givingPlayer][givingDeck][givingCard]
         playerCards[givingPlayer][givingDeck][givingCard] = x;
         console.log("removed elm 9");
     }
-    else if (playerCards[player][deckSection][10][1] == "empty") {
+    else if (playerCards[player][deckSection][10][0] == empty_card) {
         const x = playerCards[player][deckSection][10]
         playerCards[player][deckSection][10] = playerCards[givingPlayer][givingDeck][givingCard]
         playerCards[givingPlayer][givingDeck][givingCard] = x;
@@ -3650,24 +6245,67 @@ function nextTemplate(group,player) {
 }
 
     
-function nextSupplyTemplate(group, supIndex, supBox, player) {
-
-      //shipInv[1][2][0]
+function nextSupplyTemplate(supBox, player) {
+    console.log("tried to change ship supply")
+      //restart if index is too great
     
-    if (group[player][2][supIndex] >= group[0][0].length - 1) {
-        group[player][2][supIndex] = 0
+    if (shipInv[player][2][0] >= shipInv[0][0].length - 1) {
+        shipInv[player][2][0] = 0
 
-      //group[1][0][0]
-        group[player][0][supBox] = group[0][0][group[player][2][supIndex]]
+        console.log("Supply Index number = ", shipInv[player][2][0])
+
+      //shipInv[1][0][0]
+        shipInv[player][0][supBox] = shipInv[0][0][shipInv[player][2][0]]
+        console.log("supply box = ", shipInv[player][0][supBox][1])
+    }
+    else {
+        shipInv[player][2][0]++;
+        shipInv[player][0][supBox] = shipInv[0][0][
+            shipInv[player][2][0]];
+        
+        countDup3(shipInv[player][0], shipInv[player][1]);
+        console.log("supply box = ", shipInv[player][0][supBox][1])
+        console.log("supIndex =", shipInv[player][2][0], "supBox =", supBox, "player =", player); 
+    }
+}
+
+function nextSupplyTemplateBackup(supIndex, supBox, player) {
+    console.log("tried to change ship supply")
+      //restart if index is too great
+    
+    if (shipInv[player][2][supIndex] >= shipInv[0][0].length - 1) {
+        shipInv[player][2][supIndex] = 0
+
+      //shipInv[1][0][0]
+        shipInv[player][0][supBox] = shipInv[0][0][shipInv[player][2][supIndex]]
     };
     
-    group[player][2][supIndex] = group[player][2][supIndex] * 1 + 1;
-    group[player][0][supBox] = group[0][0][group[player][2][supIndex]];
+    shipInv[player][2][supIndex] = shipInv[player][2][supIndex] * 1 + 1;
+    shipInv[player][0][supBox] = shipInv[0][0][shipInv[player][2][supIndex]];
     
-    countDup3(group[player][0], group[player][1]);
+    countDup3(shipInv[player][0], shipInv[player][1]);
     console.log("supIndex =", supIndex, "supBox =", supBox, "player =", player); 
     
-}    
+}
+
+function nextShipTemplate(supIndex, supBox, player) {
+    console.log("tried to change ship supply")
+      //shipInv[1][2][0]
+    
+    if (shipCards[player][2][supIndex] >= shipCards[0][0].length - 1) {
+        shipCards[player][2][supIndex] = 0
+
+      //shipCards[1][0][0]
+        shipCards[player][0][supBox] = shipCards[0][0][shipCards[player][2][supIndex]]
+    };
+    
+    shipCards[player][2][supIndex] = shipCards[player][2][supIndex] * 1 + 1;
+    shipCards[player][0][supBox] = shipCards[0][0][shipCards[player][2][supIndex]];
+    
+    countDup3(shipCards[player][0], shipCards[player][1]);
+    console.log("supIndex =", supIndex, "supBox =", supBox, "player =", player); 
+    
+}
 
 function base64_encode(file) {
     // read binary data
@@ -3701,15 +6339,28 @@ Socketio.on("connection", socket => {
     socket.emit("position2", position2)
     socket.emit("position3", position3)
     socket.emit("position4", position4)
+    socket.emit("position5", position5)
+    socket.emit("position6", position6)
+    socket.emit("position7", position7)
     socket.emit("wallet1", wallet1)
     socket.emit("wallet2", wallet2)
     socket.emit("wallet3", wallet3)
     socket.emit("wallet4", wallet4)
+    socket.emit("warrant1", warrant1)
+    socket.emit("warrant2", warrant2)
+    socket.emit("warrant3", warrant3)
+    socket.emit("warrant4", warrant4)
+    socket.emit("goalTokens1", goalTokens1)
+    socket.emit("goalTokens2", goalTokens2)
+    socket.emit("goalTokens3", goalTokens3)
+    socket.emit("goalTokens4", goalTokens4)
     socket.emit("chosenCard", chosenCard)
     socket.emit("images", images)
+    socket.emit("crewMood", crewMood)
     socket.emit("playerCards", playerCards)
     socket.emit("travelCards", travelCards)
     socket.emit("shipCards", shipCards)
+    socket.emit("shipCards2", shipCards2)
     socket.emit("shipInv", shipInv)
     socket.emit('noOfConnections', Object.keys(Socketio.sockets.connected).length)
 
@@ -3744,12 +6395,32 @@ Socketio.on("connection", socket => {
         switch(changeShip) {
         case "p3nextShip":
 
-            nextSupplyTemplate(shipCards, 0, 0, 1);
+            nextShipTemplate(0, 0, 1);
             console.log("vue tried to change ship",shipCards[1][0][0][1]);
 
             Socketio.emit ("shipCards", shipCards);
             break;
+
+            case "rollDice":
+
+            rollDice();
+
+            Socketio.emit ("shipCards", shipCards);
+            break;
     
+        }
+    });
+
+    socket.on("chosenShip2", changeShip2 => {
+        switch(changeShip2) {
+            
+        case "rollDice":
+            
+            rollDice();
+            
+            Socketio.emit ("shipCards2", shipCards2);
+            break;
+            
         }
     });
 
@@ -3758,109 +6429,439 @@ Socketio.on("connection", socket => {
         switch(changeSupply) {
         case "1box1":
 
-            nextSupplyTemplate(shipInv, 0, 0, 1);
+            nextSupplyTemplate(0, 1);
             
             console.log("supply tried to change from socket");
-            console.log("supIndex =",shipInv[1][2][0],
-                        "supBox =", shipInv[1][0][0]);
+            console.log("socket supIndex =",shipInv[1][2][0],
+                        "socket supBox =", shipInv[1][0][0]);
             Socketio.emit ("shipInv", shipInv);
             break;
         case "1box2":
             
-            nextSupplyTemplate(shipInv, 1, 1, 1);
+            nextSupplyTemplate(1, 1);
             
             console.log("supply tried to change from socket");
-            console.log("supIndex =",shipInv[1][2][0],
+            console.log("socket supply index =",shipInv[1][2][0],
                         "supBox =", shipInv[1][0][0]);
             Socketio.emit ("shipInv", shipInv);
             break;
         case "1box3":
             
-            nextSupplyTemplate(shipInv, 2, 2, 1);
+            nextSupplyTemplate(2, 1);
             
             console.log("supply tried to change from socket");
-            console.log("supIndex =",shipInv[1][2][0],
+            console.log("socket supply index =",shipInv[1][2][0],
                         "supBox =", shipInv[1][0][0]);
             Socketio.emit ("shipInv", shipInv);
             break;
         case "1box4":
             
-            nextSupplyTemplate(shipInv, 3, 3, 1);
+            nextSupplyTemplate(3, 1);
             
             console.log("supply tried to change from socket");
-            console.log("supIndex =",shipInv[1][2][0],
+            console.log("socket supply index =",shipInv[1][2][0],
                         "supBox =", shipInv[1][0][0]);
             Socketio.emit ("shipInv", shipInv);
             break;
         case "1box5":
             
-            nextSupplyTemplate(shipInv, 4, 4, 1);
+            nextSupplyTemplate(4, 1);
             
             console.log("supply tried to change from socket");
-            console.log("supIndex =",shipInv[1][2][0],
+            console.log("socket supply index =",shipInv[1][2][0],
                         "supBox =", shipInv[1][0][0]);
             Socketio.emit ("shipInv", shipInv);
             break;
         case "1box6":
             
-            nextSupplyTemplate(shipInv, 5, 5, 1);
+            nextSupplyTemplate(5, 1);
             
             console.log("supply tried to change from socket");
-            console.log("supIndex =",shipInv[1][2][0],
+            console.log("socket supply index =",shipInv[1][2][0],
                         "supBox =", shipInv[1][0][0]);
             Socketio.emit ("shipInv", shipInv);
             break;
         case "1box7":
             
-            nextSupplyTemplate(shipInv, 6, 6, 1);
+            nextSupplyTemplate(6, 1);
             
             console.log("supply tried to change from socket");
-            console.log("supIndex =",shipInv[1][2][0],
+            console.log("socket supply index =",shipInv[1][2][0],
                         "supBox =", shipInv[1][0][0]);
             Socketio.emit ("shipInv", shipInv);
             break;
         case "1box8":
             
-            nextSupplyTemplate(shipInv, 7, 7, 1);
+            nextSupplyTemplate(7, 1);
             
             console.log("supply tried to change from socket");
-            console.log("supIndex =",shipInv[1][2][0],
+            console.log("socket supply index =",shipInv[1][2][0],
                         "supBox =", shipInv[1][0][0]);
             Socketio.emit ("shipInv", shipInv);
             break;
         case "1box9":
             
-            nextSupplyTemplate(shipInv, 8, 8, 1);
+            nextSupplyTemplate(8, 1);
             
             console.log("supply tried to change from socket");
-            console.log("supIndex =",shipInv[1][2][0],
+            console.log("socket supply index =",shipInv[1][2][0],
                         "supBox =", shipInv[1][0][0]);
             Socketio.emit ("shipInv", shipInv);
             break;
         case "1box10":
             
-            nextSupplyTemplate(shipInv, 9, 9, 1);
+            nextSupplyTemplate(9, 1);
             
             console.log("supply tried to change from socket");
-            console.log("supIndex =",shipInv[1][2][0],
+            console.log("socket supply index =",shipInv[1][2][0],
                         "supBox =", shipInv[1][0][0]);
             Socketio.emit ("shipInv", shipInv);
             break;
         case "1box11":
             
-            nextSupplyTemplate(shipInv, 10, 10, 1);
+            nextSupplyTemplate(10, 1);
             
             console.log("supply tried to change from socket");
-            console.log("supIndex =",shipInv[1][2][0],
+            console.log("socket supply index =",shipInv[1][2][0],
                         "supBox =", shipInv[1][0][0]);
             Socketio.emit ("shipInv", shipInv);
             break;
         case "1box12":
             
-            nextSupplyTemplate(shipInv, 11, 11, 1);
+            nextSupplyTemplate(11, 1);
             
             console.log("supply tried to change from socket");
-            console.log("supIndex =",shipInv[1][2][0],
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+
+
+        case "2box1":
+
+            nextSupplyTemplate(0, 2);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "2box2":
+            
+            nextSupplyTemplate(1, 2);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "2box3":
+            
+            nextSupplyTemplate(2, 2);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "2box4":
+            
+            nextSupplyTemplate(3, 2);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "2box5":
+            
+            nextSupplyTemplate(4, 2);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "2box6":
+            
+            nextSupplyTemplate(5, 2);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "2box7":
+            
+            nextSupplyTemplate(6, 2);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "2box8":
+            
+            nextSupplyTemplate(7, 2);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "2box9":
+            
+            nextSupplyTemplate(8, 2);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "2box10":
+            
+            nextSupplyTemplate(9, 2);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "2box11":
+            
+            nextSupplyTemplate(10, 2);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "2box12":
+            
+            nextSupplyTemplate(11, 2);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+
+            
+        case "3box1":
+
+            nextSupplyTemplate(0, 3);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[3][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "3box2":
+            
+            nextSupplyTemplate(1, 3);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[3][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "3box3":
+            
+            nextSupplyTemplate(2, 3);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[3][2][0],
+                        "supBox =", shipInv[3][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "3box4":
+            
+            nextSupplyTemplate(3, 3);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "3box5":
+            
+            nextSupplyTemplate(4, 3);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "3box6":
+            
+            nextSupplyTemplate(5, 3);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "3box7":
+            
+            nextSupplyTemplate(6, 3);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "3box8":
+            
+            nextSupplyTemplate(7, 3);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "3box9":
+            
+            nextSupplyTemplate(8, 3);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "3box10":
+            
+            nextSupplyTemplate(9, 3);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "3box11":
+            
+            nextSupplyTemplate(10, 3);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "3box12":
+            
+            nextSupplyTemplate(11, 3);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+
+            
+        case "4box1":
+
+            nextSupplyTemplate(0, 4);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "4box2":
+            
+            nextSupplyTemplate(1, 4);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "4box3":
+            
+            nextSupplyTemplate(2, 4);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "4box4":
+            
+            nextSupplyTemplate(3, 4);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "4box5":
+            
+            nextSupplyTemplate(4, 4);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "4box6":
+            
+            nextSupplyTemplate(5, 4);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "4box7":
+            
+            nextSupplyTemplate(6, 4);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "4box8":
+            
+            nextSupplyTemplate(7, 4);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "4box9":
+            
+            nextSupplyTemplate(8, 4);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "4box10":
+            
+            nextSupplyTemplate(9, 4);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "4box11":
+            
+            nextSupplyTemplate(10, 4);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
+                        "supBox =", shipInv[1][0][0]);
+            Socketio.emit ("shipInv", shipInv);
+            break;
+        case "4box12":
+            
+            nextSupplyTemplate(11, 4);
+            
+            console.log("supply tried to change from socket");
+            console.log("socket supply index =",shipInv[1][2][0],
                         "supBox =", shipInv[1][0][0]);
             Socketio.emit ("shipInv", shipInv);
             break;
@@ -3869,8 +6870,1211 @@ Socketio.on("connection", socket => {
         }
     });
 
+    socket.on("chosenMood", changeMood => {
+        switch(changeMood) {
+            
+        case "p1c1ChangeMood":
+            b(0,0);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+            
+            case "p1c2ChangeMood":
+            b(0,1);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p1c3ChangeMood":
+            b(0,2);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p1c4ChangeMood":
+            b(0,3);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p1c5ChangeMood":
+            b(0,4);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p1c6ChangeMood":
+            b(0,5);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p1c7ChangeMood":
+            b(0,6);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p1c8ChangeMood":
+            b(0,7);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p1c9ChangeMood":
+            b(0,8);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+        case "p1c10ChangeMood":
+            b(0,9);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+
+            case "p2c1ChangeMood":
+            b(1,0);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+            
+            case "p2c2ChangeMood":
+            b(1,1);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p2c3ChangeMood":
+            b(1,2);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p2c4ChangeMood":
+            b(1,3);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p2c5ChangeMood":
+            b(1,4);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p2c6ChangeMood":
+            b(1,5);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p2c7ChangeMood":
+            b(1,6);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p2c8ChangeMood":
+            b(1,7);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p2c9ChangeMood":
+            b(1,8);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+        case "p2c10ChangeMood":
+            b(1,9);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+
+        case "p3c1ChangeMood":
+            b(2,0);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+            
+            case "p3c2ChangeMood":
+            b(2,1);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p3c3ChangeMood":
+            b(2,2);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p3c4ChangeMood":
+            b(2,3);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p3c5ChangeMood":
+            b(2,4);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p3c6ChangeMood":
+            b(2,5);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p3c7ChangeMood":
+            b(2,6);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p3c8ChangeMood":
+            b(2,7);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p3c9ChangeMood":
+            b(2,8);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+        case "p3c10ChangeMood":
+            b(2,9);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+
+            case "p4c1ChangeMood":
+            b(3,0);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+            
+            case "p4c2ChangeMood":
+            b(3,1);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p4c3ChangeMood":
+            b(3,2);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p4c4ChangeMood":
+            b(3,3);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p4c5ChangeMood":
+            b(3,4);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p4c6ChangeMood":
+            b(3,5);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p4c7ChangeMood":
+            b(3,6);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p4c8ChangeMood":
+            b(3,7);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+            case "p4c9ChangeMood":
+            b(3,8);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+
+        case "p4c10ChangeMood":
+            b(3,9);
+            Socketio.emit ("crewMood", crewMood);
+            break;
+            
+            
+        }
+    });
+    
     socket.on ("giveManual", giveToManual => {
         switch(giveToManual) {
+
+            //draw random cards for moving ect
+    
+        case "drawAlliance":
+            randomGameCards(1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "shuffleAlliance":
+            reshuffleGameCards(1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "drawBorder":
+            randomGameCards(2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "shuffleBorder":
+            reshuffleGameCards(2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "drawRim":
+            randomGameCards(3)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "shuffleRim":
+            reshuffleGameCards(3)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "drawBounty":
+            randomGameCards(4)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "shuffleBounty":
+            reshuffleGameCards(4)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "drawMisbehave":
+            randomGameCards(5)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "shuffleMisbehave":
+            reshuffleGameCards(5)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            //end of draw random
+            
+            //draw shop
+
+            
+        
+            
+            
+            // player 1
+        case "Player1DrawAmnonDuul":
+            drawJob(0, 11)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player1DrawBadger":
+            drawJob(0, 12)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player1DrawFantyMingo":
+            drawJob(0, 13)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player1DrawHarken":
+            drawJob(0, 14)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player1DrawHarrow":
+            drawJob(0, 15)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "Player1DrawHiggins":
+            drawJob(0, 16)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player1DrawNiska":
+            drawJob(0, 18)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player1DrawPatience":
+            drawJob(0, 19)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            // player 2
+
+        case "Player2DrawAmnonDuul":
+            drawJob(1, 11)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player2DrawBadger":
+            drawJob(1, 12)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player2DrawFantyMingo":
+            drawJob(1, 13)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player2DrawHarken":
+            drawJob(1, 14)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player2DrawHarrow":
+            drawJob(1, 15)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "Player2DrawHiggins":
+            drawJob(1, 16)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player2DrawNiska":
+            drawJob(1, 18)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player2DrawPatience":
+            drawJob(1, 19)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            //player 3
+
+        case "Player3DrawAmnonDuul":
+            drawJob(2, 11)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player3DrawBadger":
+            drawJob(2, 12)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player3DrawFantyMingo":
+            drawJob(2, 13)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player3DrawHarken":
+            drawJob(2, 14)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player3DrawHarrow":
+            drawJob(2, 15)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "Player3DrawHiggins":
+            drawJob(2, 16)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player3DrawNiska":
+            drawJob(2, 18)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player3DrawPatience":
+            drawJob(2, 19)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            //player 4
+
+        case "Player4DrawAmnonDuul":
+            drawJob(3, 11)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player4DrawBadger":
+            drawJob(3, 12)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player4DrawFantyMingo":
+            drawJob(3, 13)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player4DrawHarken":
+            drawJob(3, 14)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player4DrawHarrow":
+            drawJob(3, 15)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "Player4DrawHiggins":
+            drawJob(3, 16)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player4DrawNiska":
+            drawJob(3, 18)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "Player4DrawPatience":
+            drawJob(3, 19)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            
+            //end of draw shop
+
+
+        case "startJobP1C1":
+            startJob(0, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "startJobP1C2":
+            startJob(0, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "startJobP1C3":
+            startJob(0, 3)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "startJobP2C1":
+            startJob(1, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "startJobP2C2":
+            startJob(1, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "startJobP2C3":
+            startJob(1, 3)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+
+        case "startJobP3C1":
+            startJob(2, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "startJobP3C2":
+            startJob(2, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "startJobP3C3":
+            startJob(2, 3)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+
+        case "startJobP4C1":
+            startJob(3, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "startJobP4C2":
+            startJob(3, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "startJobP4C3":
+            startJob(3, 3)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+            
+        case "finishedJobRotatePlayer1":
+            finishedJobRotate(0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "finishedJobRotatePlayer2":
+            finishedJobRotate(1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "finishedJobRotatePlayer3":
+            finishedJobRotate(2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "finishedJobRotatePlayer4":
+            finishedJobRotate(3)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "rotateBeaumondeDiscards":
+            rotateDiscardsShop(4)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "rotateMeridianDiscards":
+            rotateDiscardsShop(5)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "rotateOsirisShipworksDiscards":
+            rotateDiscardsShop(6)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "rotatePersephoneDiscards":
+            rotateDiscardsShop(7)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "rotateReginaDiscards":
+            rotateDiscardsShop(8)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "rotateSilverholdMunitionsDiscards":
+            rotateDiscardsShop(9)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "rotateSpaceBazaarDiscards":
+            rotateDiscardsShop(10)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            
+
+            //draw
+
+        case "drawBeaumondeConsidered1Player3":
+            drawShopConsidered(4, 2, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawBeaumondeConsidered2Player3":
+            drawShopConsidered(4, 2, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawBeaumondeConsidered3Player3":
+            drawShopConsidered(4, 2, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawBeaumondeConsidered1Player1":
+            drawShopConsidered(4, 0, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawBeaumondeConsidered2Player1":
+            drawShopConsidered(4, 0, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawBeaumondeConsidered3Player1":
+            drawShopConsidered(4, 0, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawBeaumondeConsidered1Player2":
+            drawShopConsidered(4, 1, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawBeaumondeConsidered2Player2":
+            drawShopConsidered(4, 1, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawBeaumondeConsidered3Player2":
+            drawShopConsidered(4, 1, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawBeaumondeConsidered1Player4":
+            drawShopConsidered(4, 3, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawBeaumondeConsidered2Player4":
+            drawShopConsidered(4, 3, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawBeaumondeConsidered3Player4":
+            drawShopConsidered(4, 3, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "discardBeaumondeShopConsidered1":
+            discardShopConsidered1(4)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "discardBeaumondeShopConsidered2":
+            discardShopConsidered2(4)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "discardBeaumondeShopConsidered3":
+            discardShopConsidered3(4)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "addBeaumondeShopToConsidered":
+            addShopToConsidered(4)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            //meridian
+
+        case "drawMeridianConsidered1Player3":
+            drawShopConsidered(5, 2, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawMeridianConsidered2Player3":
+            drawShopConsidered(5, 2, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawMeridianConsidered3Player3":
+            drawShopConsidered(5, 2, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawMeridianConsidered1Player1":
+            drawShopConsidered(5, 0, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawMeridianConsidered2Player1":
+            drawShopConsidered(5, 0, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawMeridianConsidered3Player1":
+            drawShopConsidered(5, 0, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawMeridianConsidered1Player2":
+            drawShopConsidered(5, 1, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawMeridianConsidered2Player2":
+            drawShopConsidered(5, 1, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawMeridianConsidered3Player2":
+            drawShopConsidered(5, 1, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawMeridianConsidered1Player4":
+            drawShopConsidered(5, 3, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawMeridianConsidered2Player4":
+            drawShopConsidered(5, 3, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawMeridianConsidered3Player4":
+            drawShopConsidered(5, 3, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "discardMeridianShopConsidered1":
+            discardShopConsidered1(5)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "discardMeridianShopConsidered2":
+            discardShopConsidered2(5)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "discardMeridianShopConsidered3":
+            discardShopConsidered3(5)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "addMeridianShopToConsidered":
+            addShopToConsidered(5)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            //osiris shipworks
+
+            case "drawOsirisShipworksConsidered1Player3":
+            drawShopConsidered(6, 2, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawOsirisShipworksConsidered2Player3":
+            drawShopConsidered(6, 2, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawOsirisShipworksConsidered3Player3":
+            drawShopConsidered(6, 2, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawOsirisShipworksConsidered1Player1":
+            drawShopConsidered(6, 0, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawOsirisShipworksConsidered2Player1":
+            drawShopConsidered(6, 0, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawOsirisShipworksConsidered3Player1":
+            drawShopConsidered(6, 0, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawOsirisShipworksConsidered1Player2":
+            drawShopConsidered(6, 1, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawOsirisShipworksConsidered2Player2":
+            drawShopConsidered(6, 1, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawOsirisShipworksConsidered3Player2":
+            drawShopConsidered(6, 1, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawOsirisShipworksConsidered1Player4":
+            drawShopConsidered(6, 3, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawOsirisShipworksConsidered2Player4":
+            drawShopConsidered(6, 3, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawOsirisShipworksConsidered3Player4":
+            drawShopConsidered(6, 3, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "discardOsirisShipworksShopConsidered1":
+            discardShopConsidered1(6)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "discardOsirisShipworksShopConsidered2":
+            discardShopConsidered2(6)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "discardOsirisShipworksShopConsidered3":
+            discardShopConsidered3(6)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "addOsirisShipworksShopToConsidered":
+            addShopToConsidered(6)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            //persephone
+
+        case "drawPersephoneConsidered1Player3":
+            drawShopConsidered(7, 2, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawPersephoneConsidered2Player3":
+            drawShopConsidered(7, 2, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawPersephoneConsidered3Player3":
+            drawShopConsidered(7, 2, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawPersephoneConsidered1Player1":
+            drawShopConsidered(7, 0, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawPersephoneConsidered2Player1":
+            drawShopConsidered(7, 0, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawPersephoneConsidered3Player1":
+            drawShopConsidered(7, 0, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawPersephoneConsidered1Player2":
+            drawShopConsidered(7, 1, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawPersephoneConsidered2Player2":
+            drawShopConsidered(7, 1, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawPersephoneConsidered3Player2":
+            drawShopConsidered(7, 1, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawPersephoneConsidered1Player4":
+            drawShopConsidered(7, 3, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawPersephoneConsidered2Player4":
+            drawShopConsidered(7, 3, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawPersephoneConsidered3Player4":
+            drawShopConsidered(7, 3, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "discardPersephoneShopConsidered1":
+            discardShopConsidered1(7)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "discardPersephoneShopConsidered2":
+            discardShopConsidered2(7)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "discardPersephoneShopConsidered3":
+            discardShopConsidered3(7)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "addPersephoneShopToConsidered":
+            addShopToConsidered(7)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            //regina
+            
+        case "drawReginaConsidered1Player3":
+            drawShopConsidered(8, 2, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawReginaConsidered2Player3":
+            drawShopConsidered(8, 2, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawReginaConsidered3Player3":
+            drawShopConsidered(8, 2, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawReginaConsidered1Player1":
+            drawShopConsidered(8, 0, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawReginaConsidered2Player1":
+            drawShopConsidered(8, 0, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawReginaConsidered3Player1":
+            drawShopConsidered(8, 0, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawReginaConsidered1Player2":
+            drawShopConsidered(8, 1, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawReginaConsidered2Player2":
+            drawShopConsidered(8, 1, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawReginaConsidered3Player2":
+            drawShopConsidered(8, 1, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawReginaConsidered1Player4":
+            drawShopConsidered(8, 3, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawReginaConsidered2Player4":
+            drawShopConsidered(8, 3, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawReginaConsidered3Player4":
+            drawShopConsidered(8, 3, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "discardReginaShopConsidered1":
+            discardShopConsidered1(8)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "discardReginaShopConsidered2":
+            discardShopConsidered2(8)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "discardReginaShopConsidered3":
+            discardShopConsidered3(8)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "addReginaShopToConsidered":
+            addShopToConsidered(8)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            //silverhold munitions
+
+        case "drawSilverholdMunitionsConsidered1Player3":
+            drawShopConsidered(9, 2, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawSilverholdMunitionsConsidered2Player3":
+            drawShopConsidered(9, 2, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawSilverholdMunitionsConsidered3Player3":
+            drawShopConsidered(9, 2, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawSilverholdMunitionsConsidered1Player1":
+            drawShopConsidered(9, 0, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawSilverholdMunitionsConsidered2Player1":
+            drawShopConsidered(9, 0, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawSilverholdMunitionsConsidered3Player1":
+            drawShopConsidered(9, 0, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawSilverholdMunitionsConsidered1Player2":
+            drawShopConsidered(9, 1, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawSilverholdMunitionsConsidered2Player2":
+            drawShopConsidered(9, 1, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawSilverholdMunitionsConsidered3Player2":
+            drawShopConsidered(9, 1, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawSilverholdMunitionsConsidered1Player4":
+            drawShopConsidered(9, 3, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawSilverholdMunitionsConsidered2Player4":
+            drawShopConsidered(9, 3, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawSilverholdMunitionsConsidered3Player4":
+            drawShopConsidered(9, 3, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "discardSilverholdMunitionsShopConsidered1":
+            discardShopConsidered1(9)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "discardSilverholdMunitionsShopConsidered2":
+            discardShopConsidered2(9)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "discardSilverholdMunitionsShopConsidered3":
+            discardShopConsidered3(9)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "addSilverholdMunitionsShopToConsidered":
+            addShopToConsidered(9)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            //space bazaar
+
+        case "drawSpaceBazaarConsidered1Player3":
+            drawShopConsidered(10, 2, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawSpaceBazaarConsidered2Player3":
+            drawShopConsidered(10, 2, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawSpaceBazaarConsidered3Player3":
+            drawShopConsidered(10, 2, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawSpaceBazaarConsidered1Player1":
+            drawShopConsidered(10, 0, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawSpaceBazaarConsidered2Player1":
+            drawShopConsidered(10, 0, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawSpaceBazaarConsidered3Player1":
+            drawShopConsidered(10, 0, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawSpaceBazaarConsidered1Player2":
+            drawShopConsidered(10, 1, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawSpaceBazaarConsidered2Player2":
+            drawShopConsidered(10, 1, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawSpaceBazaarConsidered3Player2":
+            drawShopConsidered(10, 1, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawSpaceBazaarConsidered1Player4":
+            drawShopConsidered(10, 3, 0)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "drawSpaceBazaarConsidered2Player4":
+            drawShopConsidered(10, 3, 1)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "drawSpaceBazaarConsidered3Player4":
+            drawShopConsidered(10, 3, 2)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "discardSpaceBazaarShopConsidered1":
+            discardShopConsidered1(10)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "discardSpaceBazaarShopConsidered2":
+            discardShopConsidered2(10)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "discardSpaceBazaarShopConsidered3":
+            discardShopConsidered3(10)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "addSpaceBazaarShopToConsidered":
+            addShopToConsidered(10)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            //end of draw
+            
+        case "addMeridianShopToConsidered":
+            addShopToConsidered(5)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "addOsirisShipworksShopToConsidered":
+            addShopToConsidered(6)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "addPersephoneShopToConsidered":
+            addShopToConsidered(7)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "addReginaShopToConsidered":
+            addShopToConsidered(8)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "addSilverholdMunitionsShopToConsidered":
+            addShopToConsidered(9)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "addSpaceBazaarShopToConsidered":
+            addShopToConsidered(10)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "addBeaumondeShopDiscardToConsidered":
+            addShopDiscardToConsidered(4)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "addMeridianShopDiscardToConsidered":
+            addShopDiscardToConsidered(5)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "addOsirisShipworksShopDiscardToConsidered":
+            addShopDiscardToConsidered(6)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "addPersephoneShopDiscardToConsidered":
+            addShopDiscardToConsidered(7)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+        case "addReginaShopDiscardToConsidered":
+            addShopDiscardToConsidered(8)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "addSilverholdMunitionsShopDiscardToConsidered":
+            addShopDiscardToConsidered(9)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "addSpaceBazaarShopDiscardToConsidered":
+            addShopDiscardToConsidered(10)
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
         case "rotateDiscardsBeaumonde":
             rotateDiscardsBeaumonde()
             Socketio.emit ("playerCards", playerCards);
@@ -6013,7 +10217,7 @@ Socketio.on("connection", socket => {
             Socketio.emit ("playerCards", playerCards);
             break;
 
-                    case "p3CrewC1P1":
+                    case "p3CrewC2P1":
 
             giveReplaceEmpty(
                 //receiving player
@@ -6025,7 +10229,7 @@ Socketio.on("connection", socket => {
                 //giving deck
                 0,
                 //giving card
-                1)
+                2)
 
             Socketio.emit ("playerCards", playerCards);
             break;
@@ -8428,7 +12632,7 @@ Socketio.on("connection", socket => {
                 //player
                 0,
                 //deck
-                3,
+                7,
                 //giving card
                 1)
             
@@ -8443,7 +12647,7 @@ Socketio.on("connection", socket => {
                 //deck
                 3,
                 //giving card
-                2)
+                1)
             
             Socketio.emit ("playerCards", playerCards);
             break;
@@ -8456,7 +12660,7 @@ Socketio.on("connection", socket => {
                 //deck
                 3,
                 //giving card
-                3)
+                2)
             
             Socketio.emit ("playerCards", playerCards);
             break;
@@ -8469,7 +12673,7 @@ Socketio.on("connection", socket => {
                 //deck
                 3,
                 //giving card
-                4)
+                3)
             
             Socketio.emit ("playerCards", playerCards);
             break;
@@ -8540,6 +12744,168 @@ Socketio.on("connection", socket => {
             break;
 
             //player 1 jobs
+
+
+        case "p1DiscardJobsStarted1":
+            
+            discard(
+                //player
+                0,
+                //deck
+                6,
+                //giving card
+                1)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p1DiscardJobsStarted2":
+            
+            discard(
+                //player
+                0,
+                //deck
+                6,
+                //giving card
+                2)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p1DiscardJobsStarted3":
+            
+            discard(
+                //player
+                0,
+                //deck
+                6,
+                //giving card
+                3)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+
+
+        case "p2DiscardJobsStarted1":
+            
+            discard(
+                //player
+                1,
+                //deck
+                6,
+                //giving card
+                1)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p2DiscardJobsStarted2":
+            
+            discard(
+                //player
+                1,
+                //deck
+                6,
+                //giving card
+                2)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p2DiscardJobsStarted3":
+            
+            discard(
+                //player
+                1,
+                //deck
+                6,
+                //giving card
+                3)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+
+        case "p3DiscardJobsStarted1":
+            
+            discard(
+                //player
+                2,
+                //deck
+                6,
+                //giving card
+                1)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p3DiscardJobsStarted2":
+            
+            discard(
+                //player
+                2,
+                //deck
+                6,
+                //giving card
+                2)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p3DiscardJobsStarted3":
+            
+            discard(
+                //player
+                2,
+                //deck
+                6,
+                //giving card
+                3)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+
+        case "p4DiscardJobsStarted1":
+            
+            discard(
+                //player
+                2,
+                //deck
+                6,
+                //giving card
+                1)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p4DiscardJobsStarted2":
+            
+            discard(
+                //player
+                3,
+                //deck
+                6,
+                //giving card
+                2)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p4DiscardJobsStarted3":
+            
+            discard(
+                //player
+                3,
+                //deck
+                6,
+                //giving card
+                3)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
 
         case "p1DiscardJobs1":
             
@@ -9144,7 +13510,7 @@ Socketio.on("connection", socket => {
                 //player
                 1,
                 //deck
-                3,
+                7,
                 //giving card
                 1)
             
@@ -9159,7 +13525,7 @@ Socketio.on("connection", socket => {
                 //deck
                 3,
                 //giving card
-                2)
+                1)
             
             Socketio.emit ("playerCards", playerCards);
             break;
@@ -9172,7 +13538,7 @@ Socketio.on("connection", socket => {
                 //deck
                 3,
                 //giving card
-                3)
+                2)
             
             Socketio.emit ("playerCards", playerCards);
             break;
@@ -9185,7 +13551,7 @@ Socketio.on("connection", socket => {
                 //deck
                 3,
                 //giving card
-                4)
+                3)
             
             Socketio.emit ("playerCards", playerCards);
             break;
@@ -9858,7 +14224,7 @@ Socketio.on("connection", socket => {
                 //player
                 2,
                 //deck
-                3,
+                7,
                 //giving card
                 1)
             
@@ -9873,7 +14239,7 @@ Socketio.on("connection", socket => {
                 //deck
                 3,
                 //giving card
-                2)
+                1)
             
             Socketio.emit ("playerCards", playerCards);
             break;
@@ -9886,7 +14252,7 @@ Socketio.on("connection", socket => {
                 //deck
                 3,
                 //giving card
-                3)
+                2)
             
             Socketio.emit ("playerCards", playerCards);
             break;
@@ -9899,7 +14265,7 @@ Socketio.on("connection", socket => {
                 //deck
                 3,
                 //giving card
-                4)
+                3)
             
             Socketio.emit ("playerCards", playerCards);
             break;
@@ -9971,6 +14337,167 @@ Socketio.on("connection", socket => {
 
             //player 3 jobs
 
+
+            case "p1DiscardJobsStarted1":
+            
+            discard(
+                //player
+                0,
+                //deck
+                6,
+                //giving card
+                1)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p1DiscardJobsStarted2":
+            
+            discard(
+                //player
+                0,
+                //deck
+                6,
+                //giving card
+                2)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p1DiscardJobsStarted3":
+            
+            discard(
+                //player
+                0,
+                //deck
+                6,
+                //giving card
+                3)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+
+            case "p2DiscardJobsStarted1":
+            
+            discard(
+                //player
+                1,
+                //deck
+                6,
+                //giving card
+                1)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p2DiscardJobsStarted2":
+            
+            discard(
+                //player
+                1,
+                //deck
+                6,
+                //giving card
+                2)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p2DiscardJobsStarted3":
+            
+            discard(
+                //player
+                1,
+                //deck
+                6,
+                //giving card
+                3)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+
+            case "p4DiscardJobsStarted1":
+            
+            discard(
+                //player
+                3,
+                //deck
+                6,
+                //giving card
+                1)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p4DiscardJobsStarted2":
+            
+            discard(
+                //player
+                3,
+                //deck
+                6,
+                //giving card
+                2)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p4DiscardJobsStarted3":
+            
+            discard(
+                //player
+                3,
+                //deck
+                6,
+                //giving card
+                3)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+
+        case "p3DiscardJobsStarted1":
+            
+            discard(
+                //player
+                2,
+                //deck
+                6,
+                //giving card
+                1)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p3DiscardJobsStarted2":
+            
+            discard(
+                //player
+                2,
+                //deck
+                6,
+                //giving card
+                2)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p3DiscardJobsStarted3":
+            
+            discard(
+                //player
+                2,
+                //deck
+                6,
+                //giving card
+                3)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+            
         case "p3DiscardJobs1":
             
             discard(
@@ -9984,7 +14511,59 @@ Socketio.on("connection", socket => {
             Socketio.emit ("playerCards", playerCards);
             break;
 
-            case "p3DiscardJobs2":
+            case "p3FinishedJobs1":
+            
+            finishedJob(
+                //player
+                2,
+                //deck
+                6,
+                //giving card
+                1)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "p1FinishedJobs1":
+            
+            finishedJob(
+                //player
+                0,
+                //deck
+                6,
+                //giving card
+                1)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "p2FinishedJobs1":
+            
+            finishedJob(
+                //player
+                1,
+                //deck
+                6,
+                //giving card
+                1)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "p4FinishedJobs1":
+            
+            finishedJob(
+                //player
+                3,
+                //deck
+                6,
+                //giving card
+                1)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p3DiscardJobs2":
             
             discard(
                 //player
@@ -9997,13 +14576,169 @@ Socketio.on("connection", socket => {
             Socketio.emit ("playerCards", playerCards);
             break;
 
-            case "p3DiscardJobs3":
+        case "p3DiscardJobs3":
             
             discard(
                 //player
                 2,
                 //deck
                 4,
+                //giving card
+                3)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p1DiscardJobs2":
+            
+            discard(
+                //player
+                0,
+                //deck
+                4,
+                //giving card
+                2)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "p2DiscardJobs2":
+            
+            discard(
+                //player
+                1,
+                //deck
+                4,
+                //giving card
+                2)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "p4DiscardJobs2":
+            
+            discard(
+                //player
+                3,
+                //deck
+                4,
+                //giving card
+                2)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "p3FinishedJobs2":
+            
+            finishedJob(
+                //player
+                2,
+                //deck
+                6,
+                //giving card
+                2)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "p1FinishedJobs2":
+            
+            finishedJob(
+                //player
+                0,
+                //deck
+                6,
+                //giving card
+                2)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "p2FinishedJobs2":
+            
+            finishedJob(
+                //player
+                1,
+                //deck
+                6,
+                //giving card
+                2)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "p3FinishedJobs2":
+            
+            finishedJob(
+                //player
+                2,
+                //deck
+                6,
+                //giving card
+                2)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "p4DiscardJobs3":
+            
+            discard(
+                //player
+                3,
+                //deck
+                4,
+                //giving card
+                3)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "p3FinishedJobs3":
+            
+            finishedJob(
+                //player
+                2,
+                //deck
+                6,
+                //giving card
+                3)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "p1FinishedJobs3":
+            
+            finishedJob(
+                //player
+                0,
+                //deck
+                6,
+                //giving card
+                3)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "p2FinishedJobs3":
+            
+            finishedJob(
+                //player
+                1,
+                //deck
+                6,
+                //giving card
+                3)
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            case "p4FinishedJobs3":
+            
+            finishedJob(
+                //player
+                3,
+                //deck
+                6,
                 //giving card
                 3)
             
@@ -10574,7 +15309,7 @@ Socketio.on("connection", socket => {
                 //player
                 3,
                 //deck
-                3,
+                7,
                 //giving card
                 1)
             
@@ -10589,7 +15324,7 @@ Socketio.on("connection", socket => {
                 //deck
                 3,
                 //giving card
-                2)
+                1)
             
             Socketio.emit ("playerCards", playerCards);
             break;
@@ -10602,7 +15337,7 @@ Socketio.on("connection", socket => {
                 //deck
                 3,
                 //giving card
-                3)
+                2)
             
             Socketio.emit ("playerCards", playerCards);
             break;
@@ -10615,7 +15350,7 @@ Socketio.on("connection", socket => {
                 //deck
                 3,
                 //giving card
-                4)
+                3)
             
             Socketio.emit ("playerCards", playerCards);
             break;
@@ -11060,6 +15795,7 @@ Socketio.on("connection", socket => {
             Socketio.emit ("playerCards", playerCards);
             break;
 
+
             //player 3 moving around items
             
         case "p3SwitchItems1To2":
@@ -11116,6 +15852,843 @@ Socketio.on("connection", socket => {
             
             Socketio.emit ("playerCards", playerCards);
             break;
+
+        case "nextScenario":
+            
+            nextScenario();
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            //player 3 private switching around
+
+        case "p3SwitchPriv1To2":
+            
+            swap(playerCards[2][1],1,2);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3SwitchPriv2To3":
+            
+            swap(playerCards[2][1],2,3);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3SwitchPriv3To4":
+            
+            swap(playerCards[2][1],3,4);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3SwitchPriv4To5":
+            
+            swap(playerCards[2][1],4,5);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3SwitchPriv5To6":
+            
+            swap(playerCards[2][1],5,6);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3SwitchPriv6To7":
+            
+            swap(playerCards[2][1],6,7);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3SwitchPriv7To8":
+            
+            swap(playerCards[2][1],7,8);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3SwitchPriv8To9":
+            
+            swap(playerCards[2][1],8,9);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p3SwitchPriv9To10":
+            
+            swap(playerCards[2][1],9,10);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            //player 4 switching
+
+        case "p4Priv1SwitchMain":
+            
+            swapPriv2(3,1);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+            //player 4 moving around crew
+
+        case "p4Priv2SwitchMain":
+            
+            swapPriv2(3,2);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p4Priv3SwitchMain":
+            
+            swapPriv2(3,3);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p4Priv4SwitchMain":
+            
+            swapPriv2(3,4);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p4Priv5SwitchMain":
+            
+            swapPriv2(3,5);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4Priv6SwitchMain":
+            
+            swapPriv2(3,6);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4Priv7SwitchMain":
+            
+            swapPriv2(3,7);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4Priv8SwitchMain":
+            
+            swapPriv2(3,8);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4Priv9SwitchMain":
+            
+            swapPriv2(3,9);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4Priv10SwitchMain":
+            
+            swapPriv2(3,10);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4Switch1To2":
+            
+            swap(playerCards[3][0],1,2);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4Switch2To3":
+            
+            swap(playerCards[3][0],2,3);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4Switch3To4":
+            
+            swap(playerCards[3][0],3,4);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4Switch4To5":
+            
+            swap(playerCards[3][0],4,5);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4Switch5To6":
+            
+            swap(playerCards[3][0],5,6);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4Switch6To7":
+            
+            swap(playerCards[3][0],6,7);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4Switch7To8":
+            
+            swap(playerCards[3][0],7,8);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4Switch8To9":
+            
+            swap(playerCards[3][0],8,9);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4Switch9To10":
+            
+            swap(playerCards[3][0],9,10);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+
+            //player 4 moving around items
+            
+        case "p4SwitchItems1To2":
+            
+            swap(playerCards[3][2],1,2);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4SwitchItems2To3":
+            
+            swap(playerCards[3][2],2,3);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4SwitchItems3To4":
+            
+            swap(playerCards[3][2],3,4);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4SwitchItems4To5":
+            
+            swap(playerCards[3][2],4,5);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4SwitchItems5To6":
+            
+            swap(playerCards[3][2],5,6);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4SwitchItems6To7":
+            
+            swap(playerCards[3][2],6,7);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4SwitchItems7To8":
+            
+            swap(playerCards[3][2],7,8);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4SwitchItems8To9":
+            
+            swap(playerCards[3][2],8,9);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4SwitchItems9To10":
+            
+            swap(playerCards[3][2],9,10);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+
+            //player 4 private switching around
+
+            case "p4SwitchPriv1To2":
+            
+            swap(playerCards[3][1],1,2);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4SwitchPriv2To3":
+            
+            swap(playerCards[3][1],2,3);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4SwitchPriv3To4":
+            
+            swap(playerCards[3][1],3,4);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4SwitchPriv4To5":
+            
+            swap(playerCards[3][1],4,5);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4SwitchPriv5To6":
+            
+            swap(playerCards[3][1],5,6);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4SwitchPriv6To7":
+            
+            swap(playerCards[3][1],6,7);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4SwitchPriv7To8":
+            
+            swap(playerCards[3][1],7,8);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4SwitchPriv8To9":
+            
+            swap(playerCards[3][1],8,9);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p4SwitchPriv9To10":
+            
+            swap(playerCards[3][1],9,10);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p4Switch1To1Priv":
+            
+            swapPriv(playerCards[3],1,1);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            //player 2 switching
+
+
+        case "p2Priv1SwitchMain":
+            
+            swapPriv2(1,1);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+            //player 4 moving around crew
+
+        case "p2Priv2SwitchMain":
+            
+            swapPriv2(1,2);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p2Priv3SwitchMain":
+            
+            swapPriv2(1,3);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p2Priv4SwitchMain":
+            
+            swapPriv2(1,4);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p2Priv5SwitchMain":
+            
+            swapPriv2(1,5);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2Priv6SwitchMain":
+            
+            swapPriv2(1,6);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2Priv7SwitchMain":
+            
+            swapPriv2(1,7);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2Priv8SwitchMain":
+            
+            swapPriv2(1,8);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2Priv9SwitchMain":
+            
+            swapPriv2(1,9);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2Priv10SwitchMain":
+            
+            swapPriv2(1,10);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2Switch1To2":
+            
+            swap(playerCards[1][0],1,2);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2Switch2To3":
+            
+            swap(playerCards[1][0],2,3);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2Switch3To4":
+            
+            swap(playerCards[1][0],3,4);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2Switch4To5":
+            
+            swap(playerCards[1][0],4,5);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2Switch5To6":
+            
+            swap(playerCards[1][0],5,6);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2Switch6To7":
+            
+            swap(playerCards[1][0],6,7);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2Switch7To8":
+            
+            swap(playerCards[1][0],7,8);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2Switch8To9":
+            
+            swap(playerCards[1][0],8,9);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2Switch9To10":
+            
+            swap(playerCards[1][0],9,10);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+
+            //player 2 moving around items
+            
+        case "p2SwitchItems1To2":
+            
+            swap(playerCards[1][2],1,2);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2SwitchItems2To3":
+            
+            swap(playerCards[1][2],2,3);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2SwitchItems3To4":
+            
+            swap(playerCards[1][2],3,4);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2SwitchItems4To5":
+            
+            swap(playerCards[1][2],4,5);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2SwitchItems5To6":
+            
+            swap(playerCards[1][2],5,6);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2SwitchItems6To7":
+            
+            swap(playerCards[1][2],6,7);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2SwitchItems7To8":
+            
+            swap(playerCards[1][2],7,8);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2SwitchItems8To9":
+            
+            swap(playerCards[1][2],8,9);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2SwitchItems9To10":
+            
+            swap(playerCards[1][2],9,10);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+
+            //player 2 private switching around
+
+        case "p2SwitchPriv1To2":
+            
+            swap(playerCards[1][1],1,2);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2SwitchPriv2To3":
+            
+            swap(playerCards[1][1],2,3);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2SwitchPriv3To4":
+            
+            swap(playerCards[1][1],3,4);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2SwitchPriv4To5":
+            
+            swap(playerCards[1][1],4,5);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2SwitchPriv5To6":
+            
+            swap(playerCards[1][1],5,6);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2SwitchPriv6To7":
+            
+            swap(playerCards[1][1],6,7);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2SwitchPriv7To8":
+            
+            swap(playerCards[1][1],7,8);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2SwitchPriv8To9":
+            
+            swap(playerCards[1][1],8,9);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p2SwitchPriv9To10":
+            
+            swap(playerCards[1][1],9,10);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p2Switch1To1Priv":
+            
+            swapPriv(playerCards[1],1,1);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            
+            //player 1 switching
+
+
+        case "p1Priv1SwitchMain":
+            
+            swapPriv2(0,1);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+            
+            //player 1 moving around crew
+
+        case "p1Priv2SwitchMain":
+            
+            swapPriv2(0,2);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p1Priv3SwitchMain":
+            
+            swapPriv2(0,3);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p1Priv4SwitchMain":
+            
+            swapPriv2(0,4);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p1Priv5SwitchMain":
+            
+            swapPriv2(0,5);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1Priv6SwitchMain":
+            
+            swapPriv2(0,6);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1Priv7SwitchMain":
+            
+            swapPriv2(0,7);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1Priv8SwitchMain":
+            
+            swapPriv2(0,8);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1Priv9SwitchMain":
+            
+            swapPriv2(0,9);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1Priv10SwitchMain":
+            
+            swapPriv2(0,10);
+            console.log("tried to swap");
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1Switch1To2":
+            
+            swap(playerCards[0][0],1,2);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1Switch2To3":
+            
+            swap(playerCards[0][0],2,3);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1Switch3To4":
+            
+            swap(playerCards[0][0],3,4);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1Switch4To5":
+            
+            swap(playerCards[0][0],4,5);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1Switch5To6":
+            
+            swap(playerCards[0][0],5,6);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1Switch6To7":
+            
+            swap(playerCards[0][0],6,7);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1Switch7To8":
+            
+            swap(playerCards[0][0],7,8);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1Switch8To9":
+            
+            swap(playerCards[0][0],8,9);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1Switch9To10":
+            
+            swap(playerCards[0][0],9,10);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+
+            //player 1 moving around items
+            
+        case "p1SwitchItems1To2":
+            
+            swap(playerCards[0][2],1,2);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1SwitchItems2To3":
+            
+            swap(playerCards[0][2],2,3);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1SwitchItems3To4":
+            
+            swap(playerCards[0][2],3,4);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1SwitchItems4To5":
+            
+            swap(playerCards[0][2],4,5);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1SwitchItems5To6":
+            
+            swap(playerCards[0][2],5,6);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1SwitchItems6To7":
+            
+            swap(playerCards[0][2],6,7);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1SwitchItems7To8":
+            
+            swap(playerCards[0][2],7,8);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1SwitchItems8To9":
+            
+            swap(playerCards[0][2],8,9);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1SwitchItems9To10":
+            
+            swap(playerCards[0][2],9,10);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+
+            //player 1 private switching around
+
+            case "p1SwitchPriv1To2":
+            
+            swap(playerCards[0][1],1,2);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1SwitchPriv2To3":
+            
+            swap(playerCards[0][1],2,3);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1SwitchPriv3To4":
+            
+            swap(playerCards[0][1],3,4);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1SwitchPriv4To5":
+            
+            swap(playerCards[0][1],4,5);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1SwitchPriv5To6":
+            
+            swap(playerCards[0][1],5,6);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1SwitchPriv6To7":
+            
+            swap(playerCards[0][1],6,7);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1SwitchPriv7To8":
+            
+            swap(playerCards[0][1],7,8);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1SwitchPriv8To9":
+            
+            swap(playerCards[0][1],8,9);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+        case "p1SwitchPriv9To10":
+            
+            swap(playerCards[0][1],9,10);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+        case "p1Switch1To1Priv":
+            
+            swapPriv(playerCards[0],1,1);
+            
+            Socketio.emit ("playerCards", playerCards);
+            break;
+
+            
             
             //player 3 moving between crew and private
             
@@ -11125,6 +16698,8 @@ Socketio.on("connection", socket => {
             
             Socketio.emit ("playerCards", playerCards);
         }
+
+        
     });
     
     
@@ -11198,6 +16773,87 @@ Socketio.on("connection", socket => {
     
     socket.on("moveMoney1", moneyData1 => {
         switch(moneyData1) {
+            
+        case "warrant1Add1":
+            warrant1 += 1;
+            Socketio.emit ("warrant1", warrant1);
+            break;
+
+        case "warrant1Subtract1":
+            warrant1 -= 1;
+            Socketio.emit ("warrant1", warrant1);
+            break;
+
+        case "warrant2Add1":
+            warrant2 += 1;
+            Socketio.emit ("warrant2", warrant2);
+            break;
+
+        case "warrant2Subtract1":
+            warrant2 -= 1;
+            Socketio.emit ("warrant2", warrant2);
+            break;
+
+        case "warrant3Add1":
+            warrant3 += 1;
+            Socketio.emit ("warrant3", warrant3);
+            break;
+
+        case "warrant3Subtract1":
+            warrant3 -= 1;
+            Socketio.emit ("warrant3", warrant3);
+            break;
+
+        case "warrant4Add1":
+            warrant4 += 1;
+            Socketio.emit ("warrant4", warrant4);
+            break;
+
+        case "warrant4Subtract1":
+            warrant4 -= 1;
+            Socketio.emit ("warrant4", warrant4);
+            break;
+
+        case "goal1Add1":
+            goalTokens1 += 1;
+            Socketio.emit ("goalTokens1", goalTokens1);
+            break;
+
+        case "goal1Subtract1":
+            goalTokens1 -= 1;
+            Socketio.emit ("goalTokens1", goalTokens1);
+            break;
+
+        case "goal2Add1":
+            goalTokens2 += 1;
+            Socketio.emit ("goalTokens2", goalTokens2);
+            break;
+
+        case "goal2Subtract1":
+            goalTokens2 -= 1;
+            Socketio.emit ("goalTokens2", goalTokens2);
+            break;
+
+        case "goal3Add1":
+            goalTokens3 += 1;
+            Socketio.emit ("goalTokens3", goalTokens3);
+            break;
+
+        case "goal3Subtract1":
+            goalTokens3 -= 1;
+            Socketio.emit ("goalTokens3", goalTokens3);
+            break;
+
+        case "goal4Add1":
+            goalTokens4 += 1;
+            Socketio.emit ("goalTokens4", goalTokens4);
+            break;
+
+        case "goal4Subtract1":
+            goalTokens4 -= 1;
+            Socketio.emit ("goalTokens4", goalTokens4);
+            break;
+            
         case "1add100":
             wallet1 += 100;
             Socketio.emit ("wallet1", wallet1);
@@ -11347,7 +17003,7 @@ Socketio.on("connection", socket => {
             Socketio.emit ("position", position);
             break;
         case "keepPosition":
-            position.y += 0;
+            position.y += 20;
             Socketio.emit ("position", position);
             break;
         }
@@ -11371,7 +17027,7 @@ Socketio.on("connection", socket => {
             Socketio.emit ("position2", position2);
             break;
         case "keepPosition2":
-            position.y += 0;
+            position2.y += 20;
             Socketio.emit ("position2", position);
             break;
         }
@@ -11395,7 +17051,7 @@ Socketio.on("connection", socket => {
             Socketio.emit ("position3", position3);
             break;
         case "keepPosition3":
-            position.y += 0;
+            position3.y += 20;
             Socketio.emit ("position3", position);
             break;
         }
@@ -11419,8 +17075,82 @@ Socketio.on("connection", socket => {
             Socketio.emit ("position4", position4);
             break;
             case "keepPosition4":
-            position.y += 0;
+            position4.y += 20;
             Socketio.emit ("position4", position);
+            break;
+        }
+    });
+    socket.on("move5", data5 => {
+        switch(data5) {
+        case "left5":
+            position5.x -= 20;
+            Socketio.emit ("position5", position5);
+            break;
+        case "right5":
+            position5.x += 20;
+            Socketio.emit ("position5", position5);
+            break;
+            case "up5":
+            position5.y -= 20;
+            Socketio.emit ("position5", position5);
+            break;
+            case "down5":
+            position5.y += 20;
+            Socketio.emit ("position5", position5);
+            break;
+            case "keepPosition5":
+            position.y += 10;
+            Socketio.emit ("position5", position);
+            break;
+        }
+    });
+    socket.on("move6", data6 => {
+        switch(data6) {
+        case "left6":
+            position6.x -= 20;
+            console.log("moved reaver ship");
+            Socketio.emit ("position6", position6);
+            break;
+            case "right6":
+            position6.x += 20;
+            Socketio.emit ("position6", position6);
+            break;
+            case "up6":
+            position6.y -= 20;
+            Socketio.emit ("position6", position6);
+            break;
+            case "down6":
+            position6.y += 20;
+            Socketio.emit ("position6", position6);
+            break;
+            case "keepPosition6":
+            position.y += 10;
+            Socketio.emit ("position6", position);
+            break;
+        }
+    });
+    socket.on("move7", data7 => {
+        switch(data7) {
+        case "left7":
+            position7.x -= 20;
+            console.log("moved reaver ship");
+            Socketio.emit ("position7", position7);
+            break;
+            case "right7":
+            position7.x += 20;
+            Socketio.emit ("position7", position7);
+            break;
+            case "up7":
+            position7.y -= 20;
+            Socketio.emit ("position7", position7);
+            break;
+            case "down7":
+            position7.y += 20;
+            Socketio.emit ("position7", position7);
+            break;
+            case "keepPosition7":
+            position.y += 1;
+            Socketio.emit ("position7", position);
             break;
         }
     });
@@ -11429,15 +17159,19 @@ Socketio.on("connection", socket => {
 Http.listen(3000, () => {
     console.log("Listening at :3000...");
     console.log("!! RESTARTED SERVER !!");
-   // addShopToConsidered(4);
-   // discardShopConsidered1(4);
-   // addShopDiscardToConsidered(4);
+    console.log("Random Game Cards");
+    console.log("checking index =", shipInv[3][2][0]);
+    randomCaptain(0);
+    randomCaptain(1);
+    randomCaptain(2);
+    randomCaptain(3);
+    
+    //discardShopConsidered2(4);
+    //addShopToConsidered(4);
+    //addShopDiscardToConsidered(4);
     // rotateDiscardsShop(4);
-    randomGameCards();
-        randomGameCards();
-        randomGameCards();
-        randomGameCards();
 });
+
 
 //below this point is functions to help make the random pick faster
 

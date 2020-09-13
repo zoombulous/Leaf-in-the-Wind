@@ -1,3 +1,64 @@
+.masterPosition {
+    position: relative;
+    top: 1400px;
+    left: 300px;
+}
+
+.masterPositionPlayer1 {
+    position: relative;
+    top: 2500px;
+    left: 300px;
+}
+
+.masterPositionPlayer2 {
+    position: relative;
+    top: 1000px;
+    left: 300px;
+}
+
+.masterPositionPlayer2Altered {
+    position: relative;
+    top: -1500px;
+    left: 0px;
+}
+
+.masterPositionPlayer3 {
+    position: relative;
+    top: -1500px;
+    left: 0px;
+}
+
+.masterPositionPlayer3Altered {
+    position: relative;
+    top: -400px;
+    left: 300px;
+}
+
+.masterPositionPlayer4 {
+    position: relative;
+    top: -2000px;
+    left: 300px;
+}
+
+.masterPositionPlayer4Altered2 {
+    position: relative;
+    top: -300px;
+    left: 300px;
+}
+
+
+.startPage {
+    position: relative;
+    top: -30px;
+    left: 0px;
+}
+
+.boxPosition {
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
 .invContainer {
   width: 100vw;
   height: 100vh;
@@ -13,6 +74,163 @@
     padding: 10% 0; 
     /* define values in pixels / Percentage or em. whatever suits 
        your requirements */
+}
+
+p.solid {border-style: solid;}
+
+.canvasPosition {
+  position: absolute;
+  top: 220px;
+  bottom: 0;
+  left: 0px;
+  right: 0;
+}
+
+.rollDice {
+  position: absolute;
+  top: 2021.5px;
+  bottom: 0;
+  left: 1740px;
+  right: 0;
+  text-align: center;
+  z-index:7;
+  font-size: 80px;
+}
+
+.playerLabel {
+  position: absolute;
+  top: -450px;
+  bottom: 0;
+  left: -1300px;
+  right: 0;
+  text-align: center;
+  z-index:7;
+  font-size: 100px;
+}
+
+.playerNumber {
+  position: absolute;
+  top: -230px;
+  bottom: 0;
+  left: 350px;
+  right: 0;
+  text-align: left;
+  z-index:7;
+  font-size: 60px;
+  height: 700px;
+  max-width: 500px;
+}
+
+.totalSupply {
+  position: absolute;
+  top: -200px;
+  bottom: 0;
+  left: -90px;
+  right: 0;
+  text-align: left;
+  z-index:7;
+  font-size: 20px;
+  height: 900px;
+  max-width: 400px;
+}
+
+.scrollDown {
+  position: absolute;
+  top: -1400px;
+  bottom: 0;
+  left: -100px;
+  right: 0;
+  text-align: center;
+  z-index:7;
+}
+
+.playerShipLabel {
+  position: absolute;
+  top: -1320px;
+  bottom: 0;
+  left: -1400px;
+  right: 0;
+  text-align: center;
+  z-index:7;
+}
+
+.movingButtons {
+  position: absolute;
+  top: -1330px;
+  bottom: 0;
+  left: -855px;
+  right: 0px;
+  text-align: center;
+  z-index:10;
+}
+
+.allianceButtons {
+  position: absolute;
+  top: -1330px;
+  bottom: 0;
+  left: 550px;
+  right: 0px;
+  text-align: center;
+  z-index:10;
+}
+
+.cruiserButtons {
+  position: absolute;
+  top: -1330px;
+  bottom: 0;
+  left: 1040px;
+  right: 0px;
+  width: 1000px;
+  text-align: center;
+  z-index:10;
+}
+
+.reaverButtons {
+  position: absolute;
+  top: -1330px;
+  bottom: 0;
+  left: 1730px;
+  right: 0px;
+  width: 1000px;
+  text-align: center;
+  z-index:10;
+}
+
+.diceBox {
+  position: absolute;
+  top: 2000px;
+  bottom: 0;
+  left: 1715px;
+  right: 0;
+  text-align: center;
+  z-index:3;
+  font-size: 100px;
+}
+
+.jobsCompleteLabel {
+  position: absolute;
+  top: 5px;
+  bottom: 0;
+  left: 415px;
+  right: 0;
+  text-align: center;
+  z-index:10;
+  font-size: 40px;
+  display: inline;
+}
+
+.diceButton {
+  position: absolute;
+  top: 2150px;
+  bottom: 0;
+  left: 1705px;
+  right: 0;
+  text-align: center;
+  z-index:10;
+  font-size: 100px;
+  width: 118px;
+  height: 70px;
+
 }
 
 .3give1 {
@@ -41,97 +259,352 @@ img-wrapper {
   bottom: 0px;
   left: 0px;
   right: 0px;
- }
+}
+
+.moneyAmount {
+  position: absolute;
+  top: -10px;
+  bottom:0px;
+  left: 640px;
+  right: 0px;
+  z-index:1;
+  text-align: left;
+  font-size: 40px;
+  height: 2000px;
+  width: 1000px;
+  max-width: 2000px;
+}
+
+.goalTokens {
+  position: absolute;
+  top: -140px;
+  bottom:0px;
+  left: 790px;
+  right: 0px;
+  z-index:1;
+  text-align: left;
+  font-size: 30px;
+  height: 2000px;
+  width: 1000px;
+  max-width: 2000px;
+}
+
+.goalTokensAdd {
+  position: absolute;
+  top: -140px;
+  bottom:0px;
+  left: 640px;
+  right: 0px;
+  z-index:10;
+  text-align: left;
+  font-size: 30px;
+}
+
+.warrants {
+  position: absolute;
+  top: -70px;
+  bottom:0px;
+  left: 790px;
+  right: 0px;
+  z-index:1;
+  text-align: left;
+  font-size: 30px;
+  height: 2000px;
+  width: 1000px;
+  max-width: 2000px;
+}
+
+.warrantsAdd {
+  position: absolute;
+  top: -70px;
+  bottom:0px;
+  left: 640px;
+  right: 0px;
+  z-index:10;
+  text-align: left;
+  font-size: 30px;
+}
+
+.hundredCredits {
+  position: absolute;
+  top: 50px;
+  bottom:0px;
+  left: 634px;
+  right: 0px;
+  z-index:50;
+}
+
+.negativeHundredCredits {
+  position: absolute;
+  top: 150px;
+  bottom:0px;
+  left: 634px;
+  right: 0px;
+  z-index:50;
+}
+
+.fiveHundred {
+  position: absolute;
+  top: 50px;
+  bottom:0px;
+  left: 775px;
+  right: 0px;
+  z-index:50;
+}
+
+.negativeFiveHundred {
+  position: absolute;
+  top: 150px;
+  bottom:0px;
+  left: 775px;
+  right: 0px;
+  z-index:50;
+}
+
+.thousand {
+  position: absolute;
+  top: 50px;
+  bottom:0px;
+  left: 920px;
+  right: 0px;
+  z-index:50;
+}
+
+.negativeThousand {
+  position: absolute;
+  top: 150px;
+  bottom:0px;
+  left: 920px;
+  right: 0px;
+  z-index:50;
+}
+
+.twoThousand {
+  position: absolute;
+  top: 50px;
+  bottom:0px;
+  left: 1060px;
+  right: 0px;
+  z-index:50;
+}
+
+.negativeTwoThousand {
+  position: absolute;
+  top: 150px;
+  bottom:0px;
+  left: 1060px;
+  right: 0px;
+  z-index:50;
+}
+
+.finishedJobs {
+  position: absolute;
+  top: 50px;
+  bottom:0px;
+  left: 370px;
+  right: 0px;
+  z-index:52;
+}
+
+.rotateJobs {
+  position: absolute;
+  top: 225px;
+  bottom:0px;
+  left: 430px;
+  right: 0px;
+  z-index:50;
+  width: 109px;
+  height: 50px;
+}
 
 .job1 {
   position: absolute;
   top: 270px;
   bottom:0px;
-  left: 435px;
+  left: -40px;
   right: 0px;
   z-index:1;
+  width: 10%;
+}
+
+.p3h1StartJob{
+  position: absolute;
+  top: 450px;
+  bottom:0px;
+  left: -315px;
+  right: 0px;
+  z-index:100;
+  width: 109px;
+  height: 50px;
+}
+
+.p3h2StartJob{
+  position: absolute;
+  top: 690px;
+  bottom:0px;
+  left: -315px;
+  right: 0px;
+  z-index:100;
+  width: 109px;
+  height: 50px;
+}
+
+.p3h3StartJob{
+  position: absolute;
+  top: 935px;
+  bottom:0px;
+  left: -315px;
+  right: 0px;
+  z-index:100;
+  width: 109px;
+  height: 50px;
+}
+
+.jobHidden1 {
+  position: absolute;
+  top: 270px;
+  bottom:0px;
+  left: -320px;
+  right: 0px;
+  z-index:1;
+  width: 10%;
+}
+
+.jobHidden2 {
+  position: absolute;
+  top: 510px;
+  bottom: 0px;
+  left: -320px;
+  right: 0px;
+  z-index:2;
+  width: 50%;
+}
+
+.jobHidden3 {
+  position: absolute;
+  top: 750px;
+  bottom: 0px;
+  left: -320px;
+  right: 0px;
+  z-index:2;
+  width: 50%;
+}
+
+.job2 {
+  position: absolute;
+  top: 510px;
+  bottom: 0px;
+  left: -40px;
+  right: 0px;
+  z-index:2;
+  width: 50%;
+}
+
+.job3 {
+  position: absolute;
+  top: 750px;
+  bottom: 0px;
+  left: -40px;
+  right: 0px;
+  z-index:2;
+  width: 50%;
 }
 
 .p3h1JobComplete{
   position: absolute;
-  top: 617px;
+  top: 450px;
   bottom:0px;
-  left: -21px;
+  left: -35px;
   right: 0px;
-  z-index:2;
+  z-index:100;
   width: 109px;
   height: 50px;
 }
 
 .p3h1DiscardJob{
   position: absolute;
-  top: 617px;
+  top: 450px;
   bottom:0px;
-  left: 90px;
+  left: -190px;
   right: 0px;
-  z-index:3;
+  z-index:100;
   width: 109px;
   height: 50px;
 }
 
-.job2 {
+.p3h1DiscardJobStarted{
   position: absolute;
-  top: 685px;
-  bottom: 0px;
-  left: -35px;
+  top: 450px;
+  bottom:0px;
+  left: 90px;
   right: 0px;
-  z-index:2;
+  z-index:100;
+  width: 109px;
+  height: 50px;
+}
+
+.p3h2DiscardJobStarted{
+  position: absolute;
+  top: 690px;
+  bottom:0px;
+  left: 90px;
+  right: 0px;
+  z-index:100;
+  width: 109px;
+  height: 50px;
+}
+
+.p3h3DiscardJobStarted{
+  position: absolute;
+  top: 935px;
+  bottom:0px;
+  left: 90px;
+  right: 0px;
+  z-index:100;
+  width: 109px;
+  height: 50px;
 }
 
 .p3h2JobComplete{
   position: absolute;
-  top: 1033px;
+  top: 690px;
   bottom:0px;
-  left: -21px;
+  left: -35px;
   right: 0px;
-  z-index:2;
+  z-index:30;
   width: 109px;
   height: 50px;
 }
 
 .p3h2DiscardJob{
   position: absolute;
-  top: 1033px;
+  top: 690px;
   bottom:0px;
-  left: 90px;
+  left: -190px;
   right: 0px;
-  z-index:3;
+  z-index:30;
   width: 109px;
   height: 50px;
 }
 
-.job3 {
-  position: absolute;
-  top: 1101px;
-  bottom: 0px;
-  left: -35px;
-  right: 0px;
-  z-index:2;
-}
-
 .p3h3JobComplete{
   position: absolute;
-  top: 1450px;
+  top: 935px;
   bottom:0px;
-  left: -21px;
+  left: -35px;
   right: 0px;
-  z-index:2;
+  z-index:30;
   width: 109px;
   height: 50px;
 }
 
 .p3h3DiscardJob{
   position: absolute;
-  top: 1450px;
+  top: 935px;
   bottom:0px;
-  left: 90px;
+  left: -190px;
   right: 0px;
-  z-index:3;
+  z-index:30;
   width: 109px;
   height: 50px;
 }
@@ -143,7 +616,19 @@ img-wrapper {
     left: 1216px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
+    width: 67px;
+    height: 70px;
+}
+
+.p3h1GiveP1Crew{
+    position: absolute;
+    top: 665px;
+    bottom: 0px;
+    left: 1215px;
+    right: 0px;
+    text-align: center;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -155,7 +640,7 @@ img-wrapper {
     left: 1290px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -167,7 +652,7 @@ img-wrapper {
     left: 1365px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -180,7 +665,7 @@ img-wrapper {
     left: 1215px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -192,7 +677,7 @@ img-wrapper {
     left: 1462px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -204,7 +689,7 @@ img-wrapper {
     left: 1537px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -216,7 +701,7 @@ img-wrapper {
     left: 1613px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -229,7 +714,7 @@ img-wrapper {
     left: 1462px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -241,7 +726,7 @@ img-wrapper {
     left: 1713px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -253,7 +738,7 @@ img-wrapper {
     left: 1788px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -265,7 +750,7 @@ img-wrapper {
     left: 1863px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -278,7 +763,7 @@ img-wrapper {
     left: 1713px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -290,7 +775,7 @@ img-wrapper {
     left: 1963px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -302,7 +787,7 @@ img-wrapper {
     left: 2038px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -314,7 +799,7 @@ img-wrapper {
     left: 2113px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -327,7 +812,7 @@ img-wrapper {
     left: 1963px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -339,7 +824,7 @@ img-wrapper {
     left: 2213px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -351,7 +836,7 @@ img-wrapper {
     left: 2288px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -363,7 +848,7 @@ img-wrapper {
     left: 2363px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -376,7 +861,7 @@ img-wrapper {
     left: 2213px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -388,7 +873,7 @@ img-wrapper {
     left: 2464px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -400,7 +885,7 @@ img-wrapper {
     left: 2539px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -412,7 +897,7 @@ img-wrapper {
     left: 2614px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -425,7 +910,7 @@ img-wrapper {
     left: 2464px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -437,7 +922,7 @@ img-wrapper {
     left: 2713px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -449,7 +934,7 @@ img-wrapper {
     left: 2788px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -461,7 +946,7 @@ img-wrapper {
     left: 2864px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -474,7 +959,7 @@ img-wrapper {
     left: 2713px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -486,7 +971,7 @@ img-wrapper {
     left: 2964px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -498,7 +983,7 @@ img-wrapper {
     left: 3039px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -510,7 +995,7 @@ img-wrapper {
     left: 3115px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -523,7 +1008,7 @@ img-wrapper {
     left: 2964px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -535,7 +1020,7 @@ img-wrapper {
     left: 3214px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -547,7 +1032,7 @@ img-wrapper {
     left: 3289px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -559,7 +1044,7 @@ img-wrapper {
     left: 3364px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -572,7 +1057,7 @@ img-wrapper {
     left: 3214px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -584,7 +1069,7 @@ img-wrapper {
     left: 3464px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -596,7 +1081,7 @@ img-wrapper {
     left: 3539px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -608,7 +1093,7 @@ img-wrapper {
     left: 3614px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -621,7 +1106,7 @@ img-wrapper {
     left: 3464px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -633,7 +1118,7 @@ img-wrapper {
     left: 1216px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -645,7 +1130,7 @@ img-wrapper {
     left: 1290px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -657,7 +1142,7 @@ img-wrapper {
     left: 1365px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -670,7 +1155,7 @@ img-wrapper {
     left: 1215px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -682,7 +1167,7 @@ img-wrapper {
     left: 1462px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -694,7 +1179,7 @@ img-wrapper {
     left: 1537px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -706,7 +1191,7 @@ img-wrapper {
     left: 1613px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -719,7 +1204,7 @@ img-wrapper {
     left: 1462px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -731,7 +1216,7 @@ img-wrapper {
     left: 1713px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -743,7 +1228,7 @@ img-wrapper {
     left: 1788px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -755,7 +1240,7 @@ img-wrapper {
     left: 1863px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -768,7 +1253,7 @@ img-wrapper {
     left: 1713px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -780,7 +1265,7 @@ img-wrapper {
     left: 1963px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -792,7 +1277,7 @@ img-wrapper {
     left: 2038px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -804,7 +1289,7 @@ img-wrapper {
     left: 2113px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -817,7 +1302,7 @@ img-wrapper {
     left: 1963px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -829,7 +1314,7 @@ img-wrapper {
     left: 2213px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -841,7 +1326,7 @@ img-wrapper {
     left: 2288px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -853,7 +1338,7 @@ img-wrapper {
     left: 2363px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -866,7 +1351,7 @@ img-wrapper {
     left: 2213px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -878,7 +1363,7 @@ img-wrapper {
     left: 2464px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -890,7 +1375,7 @@ img-wrapper {
     left: 2539px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -902,7 +1387,7 @@ img-wrapper {
     left: 2614px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -915,7 +1400,7 @@ img-wrapper {
     left: 2464px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -927,7 +1412,7 @@ img-wrapper {
     left: 2713px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -939,7 +1424,7 @@ img-wrapper {
     left: 2788px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -951,7 +1436,7 @@ img-wrapper {
     left: 2864px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -964,7 +1449,7 @@ img-wrapper {
     left: 2713px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -976,7 +1461,7 @@ img-wrapper {
     left: 2964px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -988,7 +1473,7 @@ img-wrapper {
     left: 3039px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -1000,7 +1485,7 @@ img-wrapper {
     left: 3115px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -1013,7 +1498,7 @@ img-wrapper {
     left: 2964px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -1025,7 +1510,7 @@ img-wrapper {
     left: 3214px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -1037,7 +1522,7 @@ img-wrapper {
     left: 3289px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -1049,7 +1534,7 @@ img-wrapper {
     left: 3364px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -1062,7 +1547,7 @@ img-wrapper {
     left: 3214px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -1074,7 +1559,7 @@ img-wrapper {
     left: 3464px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -1086,7 +1571,7 @@ img-wrapper {
     left: 3539px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 }
@@ -1098,7 +1583,7 @@ img-wrapper {
     left: 3614px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 67px;
     height: 70px;
 
@@ -1111,7 +1596,7 @@ img-wrapper {
     left: 3464px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     width: 218px;
     height: 50px;
 }
@@ -1123,7 +1608,7 @@ img-wrapper {
     left: 1216px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1136,7 +1621,7 @@ img-wrapper {
     left: 1216px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1149,7 +1634,7 @@ img-wrapper {
     left: 1463px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1162,7 +1647,7 @@ img-wrapper {
     left: 1463px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1175,7 +1660,7 @@ img-wrapper {
     left: 1713px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1188,7 +1673,7 @@ img-wrapper {
     left: 1713px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1201,7 +1686,7 @@ img-wrapper {
     left: 1963px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1214,7 +1699,7 @@ img-wrapper {
     left: 1963px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1227,7 +1712,7 @@ img-wrapper {
     left: 2213px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1240,7 +1725,7 @@ img-wrapper {
     left: 2213px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1253,7 +1738,7 @@ img-wrapper {
     left: 2464px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1266,7 +1751,7 @@ img-wrapper {
     left: 2464px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1279,7 +1764,7 @@ img-wrapper {
     left: 2713px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1292,7 +1777,7 @@ img-wrapper {
     left: 2713px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1305,7 +1790,7 @@ img-wrapper {
     left: 1425px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
 }
 
@@ -1316,7 +1801,7 @@ img-wrapper {
     left: 2964px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1329,7 +1814,7 @@ img-wrapper {
     left: 2964px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1342,7 +1827,7 @@ img-wrapper {
     left: 3214px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1355,7 +1840,7 @@ img-wrapper {
     left: 3214px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1368,7 +1853,7 @@ img-wrapper {
     left: 3464px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1381,7 +1866,7 @@ img-wrapper {
     left: 3464px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1394,7 +1879,7 @@ img-wrapper {
     left: 234px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:50;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1407,7 +1892,7 @@ img-wrapper {
     left: 475px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:50;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1420,7 +1905,7 @@ img-wrapper {
     left: 717px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:50;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1433,7 +1918,7 @@ img-wrapper {
     left: 962px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:50;
     font-size: 40px;
     width: 218px;
     height: 50px;
@@ -1446,7 +1931,7 @@ img-wrapper {
     left: 1675px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
 }
 
@@ -1457,7 +1942,7 @@ img-wrapper {
     left: 1925px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
 }
 
@@ -1468,7 +1953,7 @@ img-wrapper {
     left: 2175px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
 }
 
@@ -1479,7 +1964,7 @@ img-wrapper {
     left: 2425px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
 }
 
@@ -1490,7 +1975,7 @@ img-wrapper {
     left: 2675px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
 }
 
@@ -1501,7 +1986,7 @@ img-wrapper {
     left: 2925px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
 }
 
@@ -1512,7 +1997,7 @@ img-wrapper {
     left: 3175px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
 }
 
@@ -1523,9 +2008,10 @@ img-wrapper {
     left: 3425px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
 }
+
 
 .p3h1Switch2{
     position: absolute;
@@ -1534,7 +2020,7 @@ img-wrapper {
     left: 1425px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
 }
 
@@ -1545,7 +2031,7 @@ img-wrapper {
     left: 1675px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
 }
 
@@ -1556,7 +2042,7 @@ img-wrapper {
     left: 1925px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
 }
 
@@ -1567,7 +2053,7 @@ img-wrapper {
     left: 2175px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
 }
 
@@ -1578,7 +2064,7 @@ img-wrapper {
     left: 2425px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
 }
 
@@ -1589,7 +2075,7 @@ img-wrapper {
     left: 2675px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
 }
 
@@ -1600,7 +2086,7 @@ img-wrapper {
     left: 2925px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
 }
 
@@ -1611,7 +2097,7 @@ img-wrapper {
     left: 3175px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
     font-size: 40px;
 }
 
@@ -1622,7 +2108,107 @@ img-wrapper {
     left: 3425px;
     right: 0px;
     text-align: center;
-    z-index:3;
+    z-index:10;
+    font-size: 40px;
+}
+
+
+.p3priv1Switch2{
+    position: absolute;
+    top: -22px;
+    bottom: 0px;
+    left: 1425px;
+    right: 0px;
+    text-align: center;
+    z-index:10;
+    font-size: 40px;
+}
+
+.p3priv2Switch3{
+    position: absolute;
+    top: -22px;
+    bottom: 0px;
+    left: 1675px;
+    right: 0px;
+    text-align: center;
+    z-index:10;
+    font-size: 40px;
+}
+
+.p3priv3Switch4{
+    position: absolute;
+    top: -22px;
+    bottom: 0px;
+    left: 1925px;
+    right: 0px;
+    text-align: center;
+    z-index:10;
+    font-size: 40px;
+}
+
+.p3priv4Switch5{
+    position: absolute;
+    top: -22px;
+    bottom: 0px;
+    left: 2175px;
+    right: 0px;
+    text-align: center;
+    z-index:10;
+    font-size: 40px;
+}
+
+.p3priv5Switch6{
+    position: absolute;
+    top: -22px;
+    bottom: 0px;
+    left: 2425px;
+    right: 0px;
+    text-align: center;
+    z-index:10;
+    font-size: 40px;
+}
+
+.p3priv6Switch7{
+    position: absolute;
+    top: -22px;
+    bottom: 0px;
+    left: 2675px;
+    right: 0px;
+    text-align: center;
+    z-index:10;
+    font-size: 40px;
+}
+
+.p3priv7Switch8{
+    position: absolute;
+    top: -22px;
+    bottom: 0px;
+    left: 2925px;
+    right: 0px;
+    text-align: center;
+    z-index:10;
+    font-size: 40px;
+}
+
+.p3priv8Switch9{
+    position: absolute;
+    top: -22px;
+    bottom: 0px;
+    left: 3175px;
+    right: 0px;
+    text-align: center;
+    z-index:10;
+    font-size: 40px;
+}
+
+.p3priv9Switch10{
+    position: absolute;
+    top: -22px;
+    bottom: 0px;
+    left: 3425px;
+    right: 0px;
+    text-align: center;
+    z-index:10;
     font-size: 40px;
 }
 
@@ -1634,6 +2220,106 @@ img-wrapper {
   right: 0px;
   text-align: center;
   z-index:2;
+}
+
+.p3h1Mood {
+  position: absolute;
+  top: 330px;
+  bottom: 0px;
+  left: 1216px;
+  right: 0px;
+  text-align: center;
+  z-index:50;
+}
+
+.p3h2Mood {
+  position: absolute;
+  top: 330px;
+  bottom: 0px;
+  left: 1462px;
+  right: 0px;
+  text-align: center;
+  z-index:50;
+}
+
+.p3h3Mood {
+  position: absolute;
+  top: 330px;
+  bottom: 0px;
+  left: 1713px;
+  right: 0px;
+  text-align: center;
+  z-index:50;
+}
+
+.p3h4Mood {
+  position: absolute;
+  top: 330px;
+  bottom: 0px;
+  left: 1961px;
+  right: 0px;
+  text-align: center;
+  z-index:50;
+}
+
+.p3h5Mood {
+  position: absolute;
+  top: 330px;
+  bottom: 0px;
+  left: 2211px;
+  right: 0px;
+  text-align: center;
+  z-index:50;
+}
+
+.p3h6Mood {
+  position: absolute;
+  top: 330px;
+  bottom: 0px;
+  left: 2464px;
+  right: 0px;
+  text-align: center;
+  z-index:50;
+}
+
+.p3h7Mood {
+  position: absolute;
+  top: 330px;
+  bottom: 0px;
+  left: 2711px;
+  right: 0px;
+  text-align: center;
+  z-index:50;
+}
+
+.p3h8Mood {
+  position: absolute;
+  top: 330px;
+  bottom: 0px;
+  left: 2961px;
+  right: 0px;
+  text-align: center;
+  z-index:50;
+}
+
+.p3h9Mood {
+  position: absolute;
+  top: 330px;
+  bottom: 0px;
+  left: 3213px;
+  right: 0px;
+  text-align: center;
+  z-index:50;
+}
+
+.p3h10Mood {
+  position: absolute;
+  top: 330px;
+  bottom: 0px;
+  left: 3462px;
+  right: 0px;
+  text-align: center;
+  z-index:50;
 }
 
 .p3h2 {
@@ -1967,7 +2653,7 @@ img-wrapper {
   right: 0px;
   text-align: center;
   width: 500px;
-  z-index:4;
+  z-index: 12;
 }
 
 .shop1Draw {
@@ -1977,7 +2663,10 @@ img-wrapper {
   left: 100px;
   right: 0px;
   text-align: center;
-  z-index:2;
+  z-index:50;
+    width: 118px;
+  height: 80px;
+
 }
 
 .shop1Discard {
@@ -1987,32 +2676,451 @@ img-wrapper {
   left: 400px;
   right: 0px;
   text-align: center;
-  z-index:2;
+  z-index:50;
+    width: 118px;
+  height: 80px;
+
+}
+
+.addShopToConsidered {
+  position: absolute;
+  top: 1855px;
+  bottom: 0px;
+  left: 115px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+    width: 218px;
+  height: 80px;
+
+}
+
+.addShopDiscardToConsidered {
+  position: absolute;
+  top: 1855px;
+  bottom: 0px;
+  left: 415px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+  width: 218px;
+  height: 80px;
+
+}
+
+.discardBeaumondeShopConsidered1 {
+  position: absolute;
+  top: 2315px;
+  bottom: 0px;
+  left: 130px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+    width: 100px;
+  height: 80px;
+
+}
+
+.discardBeaumondeShopConsidered2 {
+  position: absolute;
+  top: 2315px;
+  bottom: 0px;
+  left: 380px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+    width: 100px;
+  height: 80px;
+
+}
+
+.discardBeaumondeShopConsidered3 {
+  position: absolute;
+  top: 2315px;
+  bottom: 0px;
+  left: 625px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+    width: 100px;
+  height: 80px;
+
+}
+
+.rotateBeaumondeDiscards {
+  position: absolute;
+  top: 1640px;
+  bottom: 0px;
+  left: 700px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+  width: 118px;
+  height: 80px;
+
+}
+
+.drawShopConsidered1 {
+  position: absolute;
+  top: 2315px;
+  bottom: 0px;
+  left: 20px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+    width: 100px;
+  height: 80px;
+
+}
+
+.drawShopConsidered2 {
+  position: absolute;
+  top: 2315px;
+  bottom: 0px;
+  left: 270px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+    width: 100px;
+  height: 80px;
+
+}
+
+.drawShopConsidered3 {
+  position: absolute;
+  top: 2315px;
+  bottom: 0px;
+  left: 515px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+    width: 100px;
+  height: 80px;
+
+}
+
+.drawAlliance {
+  position: absolute;
+  top: 2315px;
+  bottom: 0px;
+  left: 920px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+    width: 100px;
+  height: 80px;
+}
+
+.shuffleAlliance {
+  position: absolute;
+  top: 2315px;
+  bottom: 0px;
+  left: 1022px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+    width: 100px;
+  height: 80px;
+}
+
+.drawBorder {
+  position: absolute;
+  top: 2315px;
+  bottom: 0px;
+  left: 1160px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+    width: 100px;
+  height: 80px;
+}
+
+.nextScenario {
+  position: absolute;
+  top: 2520px;
+  bottom: 0px;
+  left: 600px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+  width: 200px;
+  height: 160px;
+  font-size: 40px;
+}
+
+.chatPosition {
+  position: absolute;
+  top: 2815px;
+  bottom: 0px;
+  left: 1160px;
+  right: 0px;
+}
+
+.shuffleBorder {
+  position: absolute;
+  top: 2315px;
+  bottom: 0px;
+  left: 1262px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+    width: 100px;
+  height: 80px;
+}
+
+.drawRim {
+  position: absolute;
+  top: 2315px;
+  bottom: 0px;
+  left: 1402px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+  width: 100px;
+  height: 80px;
+  font-size: 150px;
+}
+
+.shuffleRim {
+  position: absolute;
+  top: 2315px;
+  bottom: 0px;
+  left: 1505px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+    width: 100px;
+  height: 80px;
+}
+
+.drawMisbehave {
+  position: absolute;
+  top: 2315px;
+  bottom: 0px;
+  left: 1920px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+  width: 100px;
+  height: 80px;
+  font-size: 150px;
+}
+
+.shuffleMisbehave {
+  position: absolute;
+  top: 2315px;
+  bottom: 0px;
+  left: 2022px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+  width: 100px;
+  height: 80px;
+  font-size: 150px;
+}
+
+
+.drawBounty {
+  position: absolute;
+  top: 2315px;
+  bottom: 0px;
+  left: 2220px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+  width: 100px;
+  height: 80px;
+  font-size: 150px;
+}
+
+.shuffleBounty {
+  position: absolute;
+  top: 2315px;
+  bottom: 0px;
+  left: 2322px;
+  right: 0px;
+  text-align: center;
+  z-index: 50;
+  width: 100px;
+  height: 80px;
+  font-size: 150px;
+}
+
+.drawJobLabel {
+  position: absolute;
+  top: 1360px;
+  bottom: 0px;
+  left: 845px;
+  right: px;
+  width: 500px;
+  text-align: center;
+  z-index:50;
+}
+
+.drawJob1 {
+  position: absolute;
+  top: 1425px;
+  bottom: 0px;
+  left: 900px;
+  right: px;
+  text-align: center;
+  z-index:50;
+}
+
+.drawJob2 {
+  position: absolute;
+  top: 1425px;
+  bottom: 0px;
+  left: 1150px;
+  right: px;
+  text-align: center;
+  z-index:50;
+}
+
+.drawJob3 {
+  position: absolute;
+  top: 1425px;
+  bottom: 0px;
+  left: 1400px;
+  right: px;
+  text-align: center;
+  z-index:50;
+}
+
+.drawJob4 {
+  position: absolute;
+  top: 1425px;
+  bottom: 0px;
+  left: 1650px;
+  right: px;
+  text-align: center;
+  z-index:50;
+}
+
+.drawJob5 {
+  position: absolute;
+  top: 1605px;
+  bottom: 0px;
+  left: 900px;
+  right: px;
+  text-align: center;
+  z-index:50;
+}
+
+.drawJob6 {
+  position: absolute;
+  top: 1605px;
+  bottom: 0px;
+  left: 1150px;
+  right: px;
+  text-align: center;
+  z-index:50;
+}
+
+.drawJob7 {
+  position: absolute;
+  top: 1605px;
+  bottom: 0px;
+  left: 1400px;
+  right: px;
+  text-align: center;
+  z-index:50;
+}
+
+.drawJob8 {
+  position: absolute;
+  top: 1605px;
+  bottom: 0px;
+  left: 1650px;
+  right: px;
+  text-align: center;
+  z-index:50;
 }
 
 .shop1Chosen1 {
   position: absolute;
-  top: 1900px;
+  top: 1950px;
   bottom: 0px;
   left: 0px;
   right: 0px;
   text-align: center;
-  z-index:2;
+  z-index:50;
 }
 .shop1Chosen2 {
   position: absolute;
-  top: 1900px;
+  top: 1950px;
   bottom: 0px;
   left: 250px;
   right: 0px;
   text-align: center;
+  z-index:50;
+}
+
+.showAlliance {
+  position: absolute;
+  top: 1950px;
+  bottom: 0px;
+  left: 900px;
+  right: 0px;
+  text-align: center;
   z-index:2;
 }
+
+.showBorder {
+  position: absolute;
+  top: 1950px;
+  bottom: 0px;
+  left: 1130px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.showRim {
+  position: absolute;
+  top: 1950px;
+  bottom: 0px;
+  left: 1380px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.showScenario {
+  position: absolute;
+  top: 2700px;
+  bottom: 0px;
+  left: 370px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.showMisbehave {
+  position: absolute;
+  top: 1950px;
+  bottom: 0px;
+  left: 1900px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
+.showBounty {
+  position: absolute;
+  top: 1950px;
+  bottom: 0px;
+  left: 2200px;
+  right: 0px;
+  text-align: center;
+  z-index:2;
+}
+
 .shop1Chosen3 {
   position: absolute;
-  top: 1900px;
+  top: 1950px;
   bottom: 0px;
-  left: 505px;
+  left: 499px;
   right: 0px;
   text-align: center;
   z-index:2;
@@ -2026,7 +3134,7 @@ img-wrapper {
   left: 213px;
   right: 0px;
   text-align: center;
-  z-index: 1;
+  z-index: -1;
 }
 
 .img2 {
@@ -2036,7 +3144,7 @@ img-wrapper {
   left: 740px;
   right: 0;
   text-align: center;
-  z-index: 3;
+  z-index: 50;
 }
 .img3 {
   position: absolute;
@@ -2045,7 +3153,7 @@ img-wrapper {
   left: 845px;
   right: 0;
   text-align: center;
-  z-index: 3;
+  z-index: 50;
 }
 .img4 {
   position: absolute;
@@ -2054,7 +3162,7 @@ img-wrapper {
   left: 945px;
   right: 0;
   text-align: center;
-  z-index: 3;
+  z-index: 50;
 }
 .img5 {
   position: absolute;
@@ -2063,7 +3171,7 @@ img-wrapper {
   left: 1050px;
   right: 0;
   text-align: center;
-  z-index: 3;
+  z-index: 50;
 }
 .img6 {
   position: absolute;
@@ -2072,7 +3180,7 @@ img-wrapper {
   left: 740px;
   right: 0;
   text-align: center;
-  z-index: 3;
+  z-index: 50;
 }
 .img7 {
   position: absolute;
@@ -2081,7 +3189,7 @@ img-wrapper {
   left: 845px;
   right: 0;
   text-align: center;
-  z-index: 3;
+  z-index: 50;
 }
 .img8 {
   position: absolute;
@@ -2090,7 +3198,7 @@ img-wrapper {
   left: 945px;
   right: 0;
   text-align: center;
-  z-index: 3;
+  z-index: 50;
 }
 .img9 {
   position: absolute;
@@ -2099,7 +3207,7 @@ img-wrapper {
   left: 1050px;
   right: 0;
   text-align: center;
-  z-index: 3;
+  z-index: 50;
 }
 .img10 {
   position: absolute;
@@ -2108,7 +3216,7 @@ img-wrapper {
   left: 740px;
   right: 0;
   text-align: center;
-  z-index: 3;
+  z-index: 50;
 }
 .img11 {
   position: absolute;
@@ -2117,7 +3225,7 @@ img-wrapper {
   left: 845px;
   right: 0;
   text-align: center;
-  z-index: 20;
+  z-index: 50;
 }
 .img12 {
   position: absolute;
@@ -2126,7 +3234,7 @@ img-wrapper {
   left: 945px;
   right: 0;
   text-align: center;
-  z-index: 30;
+  z-index: 50;
 }
 .img13 {
   position: absolute;
@@ -2135,7 +3243,7 @@ img-wrapper {
   left: 1050px;
   right: 0;
   text-align: center;
-  z-index: 40;
+  z-index: 50;
 }
 .p3deck1 {
   position: absolute;
@@ -2170,8 +3278,6 @@ img-wrapper {
 
 .container > canvas {
   position: absolute;
-  top: 0;
-  left: 0;
 }
 
 html{
@@ -2186,3 +3292,5 @@ h1 {
     font-variant: small-caps;
     letter-spacing: 4px;
 } 
+
+
