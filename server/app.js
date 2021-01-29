@@ -1,10 +1,19 @@
 const Express = require ("express")();
 const Http = require ("http").Server(Express);
 const Socketio = require ("socket.io")(Http);
+const PORT = process.env.PORT || 3000
 var fs = require('fs');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var xhr = new XMLHttpRequest();
 var FastBitSet = require('fastbitset');
+
+Object.defineProperty(Array.prototype, 'flat', {
+    value: function(depth = 1) {
+      return this.reduce(function (flat, toFlatten) {
+        return flat.concat((Array.isArray(toFlatten) && (depth>1)) ? toFlatten.flat(depth-1) : toFlatten);
+      }, []);
+    }
+});
 
 process.setMaxListeners(5)
 
@@ -17156,8 +17165,8 @@ Socketio.on("connection", socket => {
     });
 });
 
-Http.listen(3000, () => {
-    console.log("Listening at :3000...");
+Http.listen(PORT, () => {
+    console.log("Listening at port:" + PORT);
     console.log("!! RESTARTED SERVER !!");
     console.log("Random Game Cards");
     console.log("checking index =", shipInv[3][2][0]);
