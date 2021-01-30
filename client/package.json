@@ -5,12 +5,14 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "serve-build": "serve dist/"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
+    "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.4",
-    "serve": "^11.3.0",
+    "serve": "^11.3.2",
     "vue": "^2.6.11",
     "vue-dice-roller": "0.0.2",
     "vue-gallery-slideshow": "^1.5.0",

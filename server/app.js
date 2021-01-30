@@ -1,4 +1,9 @@
-const Express = require ("express")();
+const express = require ("express");
+const path = require("path");
+const Express = express();
+
+Express.use(express.static(path.join(__dirname, '../client/dist')));
+
 const Http = require ("http").Server(Express);
 const Socketio = require ("socket.io")(Http);
 const PORT = process.env.PORT || 3000
