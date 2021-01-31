@@ -13895,7 +13895,7 @@ this.socket.on("position4", data4 => {
         
         p1ViewNext: function () {
             this.playerCards[0][2]++;
-            this.playerCards[0][2] = thisplayerCards[0][2] % this.playerCards[0][0].length;
+            this.playerCards[0][2] = this.playerCards[0][2] % this.playerCards[0][0].length;
             var x = this.playerCards[0][2];
             this.playerCards[0][1] = this.playerCards[0][0][x];
         }, 
