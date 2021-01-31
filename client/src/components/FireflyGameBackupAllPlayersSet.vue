@@ -8153,7 +8153,8 @@ export default {
         }
     },
       created() {
-        this.socket = io("http://localhost:3000");
+        let url = process.env.NODE_ENV === 'development' ? "localhost:3000" : ""
+        this.socket = io(url, {transports:['websocket']});
 this.socket.on('chat-message', (data) => {
             this.messages.push({ message: data.message, type: 1, by: data.user })
             this.typing = false
@@ -8653,6 +8654,3 @@ this.socket.on("position4", data4 => {
     }
 }
 </script>
-
-
-

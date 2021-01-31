@@ -1,20 +1,21 @@
 FROM node:14.15.4-alpine3.10
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/client
+COPY ./client/package.json ./package.json
+RUN  npm install
+COPY ./client .
+RUN NODE_OPTIONS=--max_old_space_size=4096 npm run build
 
-COPY ./client/package.json ./client/package.json
-COPY ./server/package.json ./server/package.json
-
-RUN cd client && npm install --no-package-lock
-RUN cd server && npm install --no-package-lock
-
-COPY ./client ./client
-COPY ./server ./server
-
-RUN cd client && NODE_OPTIONS=--max_old_space_size=4096 npm run build
-
-EXPOSE 3000
 
 WORKDIR /usr/src/app/server
+COPY ./server/package.json ./package.json
+RUN npm install
+COPY ./server .
+
+
+# this line makes local development with docker possible,
+# but is ignored by heroku, which assigns a random port
+# accessible as an environment variable PORT
+EXPOSE 3000
 
 CMD ["node", "app.js"]
