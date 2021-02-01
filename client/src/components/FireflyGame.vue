@@ -13524,7 +13524,8 @@ export default {
         }
     },
       created() {
-        this.socket = io("http://localhost:3000");
+        let url = process.env.NODE_ENV === 'development' ? "localhost:3000" : ""
+        this.socket = io(url, {transports:['websocket']});
 this.socket.on('chat-message', (data) => {
             this.messages.push({ message: data.message, type: 1, by: data.user })
             this.typing = false
@@ -13894,7 +13895,7 @@ this.socket.on("position4", data4 => {
         
         p1ViewNext: function () {
             this.playerCards[0][2]++;
-            this.playerCards[0][2] = thisplayerCards[0][2] % this.playerCards[0][0].length;
+            this.playerCards[0][2] = this.playerCards[0][2] % this.playerCards[0][0].length;
             var x = this.playerCards[0][2];
             this.playerCards[0][1] = this.playerCards[0][0][x];
         }, 
@@ -14024,5 +14025,3 @@ this.socket.on("position4", data4 => {
     }
 }
 </script>
-
-
