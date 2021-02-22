@@ -6270,15 +6270,15 @@ function nextSupplyTemplate(supBox, player) {
 
       //shipInv[1][0][0]
         shipInv[player][0][supBox] = shipInv[0][0][shipInv[player][2][0]]
-        console.log("supply box = ", shipInv[player][0][supBox][1])
+        
     }
     else {
         shipInv[player][2][0]++;
         shipInv[player][0][supBox] = shipInv[0][0][
             shipInv[player][2][0]];
         
-        countDup3(shipInv[player][0], shipInv[player][1]);
-        console.log("supply box = ", shipInv[player][0][supBox][1])
+        
+        
         console.log("supIndex =", shipInv[player][2][0], "supBox =", supBox, "player =", player); 
     }
 }
@@ -6297,7 +6297,7 @@ function nextSupplyTemplateBackup(supIndex, supBox, player) {
     shipInv[player][2][supIndex] = shipInv[player][2][supIndex] * 1 + 1;
     shipInv[player][0][supBox] = shipInv[0][0][shipInv[player][2][supIndex]];
     
-    countDup3(shipInv[player][0], shipInv[player][1]);
+    
     console.log("supIndex =", supIndex, "supBox =", supBox, "player =", player); 
     
 }
@@ -6316,7 +6316,7 @@ function nextShipTemplate(supIndex, supBox, player) {
     shipCards[player][2][supIndex] = shipCards[player][2][supIndex] * 1 + 1;
     shipCards[player][0][supBox] = shipCards[0][0][shipCards[player][2][supIndex]];
     
-    countDup3(shipCards[player][0], shipCards[player][1]);
+    
     console.log("supIndex =", supIndex, "supBox =", supBox, "player =", player); 
     
 }

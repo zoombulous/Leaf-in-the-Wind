@@ -106,16 +106,7 @@
           <p>You Are Player {{player}}!</p>
         </div>
 
-      <div class="totalSupply">
-        <table class="list-group text-left">
-     
-          <ul id="example-1">
-            <li class="list-group-item" v-for="item in shipInv[1][1][0]" :key="item">
-              {{ item }}
-            </li>
-          </ul>
-        </table>
-      </div>
+      
       
       <div class="row">
         <div class="col-1-4">
@@ -1834,16 +1825,7 @@
       <div class="playerLabel">
         <p>Player 2</p>
         </div>
-      <div class="totalSupply">
-        <table class="list-group text-left">
-     
-          <ul id="example-1">
-            <li class="list-group-item" v-for="item in shipInv[2][1][0]" :key="item">
-              {{ item }}
-            </li>
-          </ul>
-        </table>
-      </div>
+      
       
       <div class="row">
         <div class="col-1-4">
@@ -2324,16 +2306,7 @@
       <div class="playerLabel">
         <p>Player 3</p>
         </div>
-      <div class="totalSupply">
-        <table class="list-group text-left">
-     
-          <ul id="example-1">
-            <li class="list-group-item" v-for="item in shipInv[3][1][0]" :key="item">
-              {{ item }}
-            </li>
-          </ul>
-        </table>
-      </div>
+      
       
       <div class="row">
         <div class="col-1-4">
@@ -2820,16 +2793,7 @@
       <div class="playerLabel">
         <p>Player 4</p>
         </div>
-      <div class="totalSupply">
-        <table class="list-group text-left">
-     
-          <ul id="example-1">
-            <li class="list-group-item" v-for="item in shipInv[4][1][0]" :key="item">
-              {{ item }}
-            </li>
-          </ul>
-        </table>
-      </div>
+      
       
       <div class="row">
         <div class="col-1-4">
@@ -3416,16 +3380,7 @@
           <p>You Are Player {{player}}!</p>
         </div>
 
-      <div class="totalSupply">
-        <table class="list-group text-left">
-     
-          <ul id="example-1">
-            <li class="list-group-item" v-for="item in shipInv[2][1][0]" :key="item">
-              {{ item }}
-            </li>
-          </ul>
-        </table>
-      </div>
+      
       
       <div class="row">
         <div class="col-1-4">
@@ -5140,16 +5095,7 @@
       <div class="playerLabel">
         <p>Player 1</p>
         </div>
-      <div class="totalSupply">
-        <table class="list-group text-left">
-     
-          <ul id="example-1">
-            <li class="list-group-item" v-for="item in shipInv[1][1][0]" :key="item">
-              {{ item }}
-            </li>
-          </ul>
-        </table>
-      </div>
+      
       
       <div class="row">
         <div class="col-1-4">
@@ -5635,16 +5581,7 @@
       <div class="playerLabel">
         <p>Player 3</p>
         </div>
-      <div class="totalSupply">
-        <table class="list-group text-left">
-     
-          <ul id="example-1">
-            <li class="list-group-item" v-for="item in shipInv[3][1][0]" :key="item">
-              {{ item }}
-            </li>
-          </ul>
-        </table>
-      </div>
+      
       
       <div class="row">
         <div class="col-1-4">
@@ -6131,16 +6068,7 @@
       <div class="playerLabel">
         <p>Player 4</p>
         </div>
-      <div class="totalSupply">
-        <table class="list-group text-left">
-     
-          <ul id="example-1">
-            <li class="list-group-item" v-for="item in shipInv[4][1][0]" :key="item">
-              {{ item }}
-            </li>
-          </ul>
-        </table>
-      </div>
+      
       
       <div class="row">
         <div class="col-1-4">
@@ -6726,16 +6654,7 @@
           <p>You Are Player {{player}}!</p>
         </div>
 
-      <div class="totalSupply">
-        <table class="list-group text-left">
-     
-          <ul id="example-1">
-            <li class="list-group-item" v-for="item in shipInv[3][1][0]" :key="item">
-              {{ item }}
-            </li>
-          </ul>
-        </table>
-      </div>
+      
       
       <div class="row">
         <div class="col-1-4">
@@ -8449,16 +8368,7 @@
       <div class="playerLabel">
         <p>Player 1</p>
         </div>
-      <div class="totalSupply">
-        <table class="list-group text-left">
-     
-          <ul id="example-1">
-            <li class="list-group-item" v-for="item in shipInv[1][1][0]" :key="item">
-              {{ item }}
-            </li>
-          </ul>
-        </table>
-      </div>
+      
       
       <div class="row">
         <div class="col-1-4">
@@ -8943,16 +8853,7 @@
       <div class="playerLabel">
         <p>Player 2</p>
         </div>
-      <div class="totalSupply">
-        <table class="list-group text-left">
-     
-          <ul id="example-1">
-            <li class="list-group-item" v-for="item in shipInv[2][1][0]" :key="item">
-              {{ item }}
-            </li>
-          </ul>
-        </table>
-      </div>
+      
       
       <div class="row">
         <div class="col-1-4">
@@ -9435,16 +9336,7 @@
       <div class="playerLabel">
         <p>Player 4</p>
         </div>
-      <div class="totalSupply">
-        <table class="list-group text-left">
-     
-          <ul id="example-1">
-            <li class="list-group-item" v-for="item in shipInv[4][1][0]" :key="item">
-              {{ item }}
-            </li>
-          </ul>
-        </table>
-      </div>
+      
       
       <div class="row">
         <div class="col-1-4">
@@ -10029,16 +9921,7 @@
           <p>You Are Player {{player}}!</p>
         </div>
 
-      <div class="totalSupply">
-        <table class="list-group text-left">
-     
-          <ul id="example-1">
-            <li class="list-group-item" v-for="item in shipInv[4][1][0]" :key="item">
-              {{ item }}
-            </li>
-          </ul>
-        </table>
-      </div>
+      
       
       <div class="row">
         <div class="col-1-4">
@@ -11752,16 +11635,7 @@
       <div class="playerLabel">
         <p>Player 1</p>
         </div>
-      <div class="totalSupply">
-        <table class="list-group text-left">
-     
-          <ul id="example-1">
-            <li class="list-group-item" v-for="item in shipInv[1][1][0]" :key="item">
-              {{ item }}
-            </li>
-          </ul>
-        </table>
-      </div>
+      
       
       <div class="row">
         <div class="col-1-4">
@@ -12246,16 +12120,7 @@
       <div class="playerLabel">
         <p>Player 2</p>
         </div>
-      <div class="totalSupply">
-        <table class="list-group text-left">
-     
-          <ul id="example-1">
-            <li class="list-group-item" v-for="item in shipInv[2][1][0]" :key="item">
-              {{ item }}
-            </li>
-          </ul>
-        </table>
-      </div>
+      
       
       <div class="row">
         <div class="col-1-4">
@@ -12736,16 +12601,7 @@
       <div class="playerLabel">
         <p>Player 3</p>
         </div>
-      <div class="totalSupply">
-        <table class="list-group text-left">
-     
-          <ul id="example-1">
-            <li class="list-group-item" v-for="item in shipInv[3][1][0]" :key="item">
-              {{ item }}
-            </li>
-          </ul>
-        </table>
-      </div>
+      
       
       <div class="row">
         <div class="col-1-4">
