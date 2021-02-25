@@ -6262,7 +6262,6 @@ function nextTemplate(group,player) {
 function nextSupplyTemplate(supBox, player) {
     console.log("tried to change ship supply")
       //restart if index is too great
-    
     if (shipInv[player][2][0] >= shipInv[0][0].length - 1) {
         shipInv[player][2][0] = 0
 
@@ -6280,6 +6279,14 @@ function nextSupplyTemplate(supBox, player) {
         
         
         console.log("supIndex =", shipInv[player][2][0], "supBox =", supBox, "player =", player); 
+    }
+    if isNaN(shipInv[player][2][0]) {
+	console.log("ship supply passes NaN check")
+    }
+    else {
+	shipInv[player][2][0] = 0
+	console.log("ship supply failed NAN check, attempted to rectify");
+	console.log("supIndex =", shipInv[player][2][0], "supBox =", supBox, "player =", player);
     }
 }
 
