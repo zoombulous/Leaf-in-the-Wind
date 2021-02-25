@@ -6260,33 +6260,32 @@ function nextTemplate(group,player) {
 
     
 function nextSupplyTemplate(supBox, player) {
-    console.log("tried to change ship supply")
+    console.log("tried to change ship supply, supBox =", supBox);
+    console.log("beginning supIndex =", shipInv[player][2][0], "supBox =", supBox, "player =", player);
       //restart if index is too great
     if (shipInv[player][2][0] >= shipInv[0][0].length - 1) {
         shipInv[player][2][0] = 0
 
-        console.log("Supply Index number = ", shipInv[player][2][0])
+        console.log("should set to 0, Supply Index number = ", shipInv[player][2][0]);
 
       //shipInv[1][0][0]
         shipInv[player][0][supBox] = shipInv[0][0][shipInv[player][2][0]]
         
     }
     else {
+	let prevIndex = shipInv[player][2][0]
         shipInv[player][2][0]++;
         shipInv[player][0][supBox] = shipInv[0][0][
             shipInv[player][2][0]];
         
-        
-        
-        console.log("supIndex =", shipInv[player][2][0], "supBox =", supBox, "player =", player); 
+        console.log("previous supIndex (should increment) =", prevIndex, "current supIndex =", shipInv[player][2][0], "supBox =", supBox, "player =", player); 
     }
-    if isNaN(shipInv[player][2][0]) {
+    if (shipInv[player][2][0] == shipInv[player][2][0]) {
 	console.log("ship supply passes NaN check")
     }
     else {
-	shipInv[player][2][0] = 0
-	console.log("ship supply failed NAN check, attempted to rectify");
-	console.log("supIndex =", shipInv[player][2][0], "supBox =", supBox, "player =", player);
+	
+	console.log("failed NaN check supIndex =", shipInv[player][2][0], "supBox =", supBox, "player =", player);
     }
 }
 
