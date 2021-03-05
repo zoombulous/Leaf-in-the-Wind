@@ -4416,33 +4416,31 @@ var shipInv =
     [
         //[possible supply [[i],[n]], [[i],[n]] ]
         [
-            [
-                [ [empty] ],
-                [ [cargo], ["Cargo"] ],
-                [ [contraband], ["Contraband"] ],
-                [ [one_fuel], ["Fuel"] ],
-                [ [two_fuel], ["Fuel"], ["Fuel"] ],
-                [ [one_part], ["Part"] ],
-                [ [two_part], ["Part"], ["Part"] ],
-                [ [passenger], ["Passenger"] ]
-            ],
+            [ [empty], [0]],
+            [ [cargo], [1] ],
+            [ [contraband], [2] ],
+            [ [one_fuel], [3] ],
+            [ [two_fuel], [4] ],
+            [ [one_part], [5] ],
+            [ [two_part], [6] ],
+            [ [passenger], [7] ]
         ],
         //[player [total], [chosen 12boxes] ]
         //player1
         [
             //chosen for boxes (12 in total)
-            [  [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ]
+            [  [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ]
             ],
             //totals
             [],
@@ -4453,19 +4451,19 @@ var shipInv =
         //player2
         [  
             //chosen for boxes (12 in total)
-            [  [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ]
-               ],
+            [  [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ]
+            ],
             //totals
             [],
             //index
@@ -4474,18 +4472,18 @@ var shipInv =
         ],//player3
         [  
             //chosen for boxes (12 in total)
-            [  [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ]
+            [  [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ]
             ],
             //totals
             [],
@@ -4495,18 +4493,18 @@ var shipInv =
         //player4
         [  
             //chosen for boxes (12 in total)
-            [  [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ],
-               [ [empty], ["Empty Slot"] ]
+            [  [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ],
+               [ [empty], [0] ]
             ],
             //totals
             [],
@@ -6260,33 +6258,37 @@ function nextTemplate(group,player) {
 
     
 function nextSupplyTemplate(supBox, player) {
-    console.log("tried to change ship supply, supBox =", supBox);
-    console.log("beginning supIndex =", shipInv[player][2][0], "supBox =", supBox, "player =", player);
+    console.log("Function Start, tried to change ship supply, supBox =", supBox);
+    console.log("beginning supIndex =", shipInv[player][0][supBox][1][0]);
+    let choiceLen = shipInv[0].length - 1
+    console.log("choiceLen =", choiceLen);
+    console.log("supply box contains = ", shipInv[player][0][supBox]);
+    console.log("index number = ", shipInv[player][0][supBox][1][0])
       //restart if index is too great
-    if (shipInv[player][2][0] >= shipInv[0][0].length - 1) {
-        shipInv[player][2][0] = 0
+    if (shipInv[player][0][supBox][1][0] >= choiceLen) {
+	console.log("computer says that ",
+		    shipInv[player][0][supBox][1][0], "is >=", choiceLen);
+        shipInv[player][0][supBox] = shipInv[0][0];
 
-        console.log("should set to 0, Supply Index number = ", shipInv[player][2][0]);
-
-      //shipInv[1][0][0]
-        shipInv[player][0][supBox] = shipInv[0][0][shipInv[player][2][0]]
+        console.log("should set to 0, Supply Index number = ", shipInv[player][supBox]);
         
     }
     else {
-	let prevIndex = shipInv[player][2][0]
-        shipInv[player][2][0]++;
-        shipInv[player][0][supBox] = shipInv[0][0][
-            shipInv[player][2][0]];
-        
-        console.log("previous supIndex (should increment) =", prevIndex, "current supIndex =", shipInv[player][2][0], "supBox =", supBox, "player =", player); 
+	let prevIndex = shipInv[player][0][supBox][1][0]
+	let changeBox = shipInv[player][0][supBox][1][0]
+	let boxIncr = changeBox + 1
+	console.log("boxIncr = ", boxIncr);
+	let getBox = shipInv[0][0]
+	console.log("getBox = ", getBox);
+	let result = shipInv[player][0][supBox] =
+	    shipInv[0][boxIncr];
+	console.log("result = ", result)
+        shipInv[player][0][supBox] =
+	    shipInv[0][boxIncr];
+
+        console.log("else is complete");  
     }
-    if (shipInv[player][2][0] == shipInv[player][2][0]) {
-	console.log("ship supply passes NaN check")
-    }
-    else {
-	
-	console.log("failed NaN check supIndex =", shipInv[player][2][0], "supBox =", supBox, "player =", player);
-    }
+    
 }
 
 function nextSupplyTemplateBackup(supIndex, supBox, player) {

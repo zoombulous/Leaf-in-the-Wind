@@ -1,3 +1,6 @@
+.text-center-1{
+    text-alignment:center
+}
 .masterPosition {
     position: relative;
     top: 1400px;
@@ -24,13 +27,13 @@
 
 .masterPositionPlayer3 {
     position: relative;
-    top: -1500px;
+    top: -1400px;
     left: 0px;
 }
 
 .masterPositionPlayer3Altered {
     position: relative;
-    top: -400px;
+    top: -500px;
     left: 300px;
 }
 
@@ -99,9 +102,9 @@ p.solid {border-style: solid;}
 
 .playerLabel {
   position: absolute;
-  top: -450px;
+  top: 275px;
   bottom: 0;
-  left: -1300px;
+  left: -1800px;
   right: 0;
   text-align: center;
   z-index:7;
@@ -123,9 +126,9 @@ p.solid {border-style: solid;}
 
 .totalSupply {
   position: absolute;
-  top: -200px;
+  top: 450px;
   bottom: 0;
-  left: -90px;
+  left: -565px;
   right: 0;
   text-align: left;
   z-index:7;
@@ -136,9 +139,9 @@ p.solid {border-style: solid;}
 
 .scrollDown {
   position: absolute;
-  top: -1400px;
+  top: -1410px;
   bottom: 0;
-  left: -100px;
+  left: -1310px;
   right: 0;
   text-align: center;
   z-index:7;
@@ -3271,6 +3274,7 @@ img-wrapper {
   height: auto;
   width: 10px;
 }
+
 
 .container {
   position: relative;
